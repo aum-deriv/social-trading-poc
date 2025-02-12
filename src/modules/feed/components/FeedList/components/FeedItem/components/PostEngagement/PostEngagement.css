@@ -1,50 +1,104 @@
 .post-engagement {
-    padding: 12px;
-    border-top: 1px solid #e0e0e0;
+    margin-left: 52px; /* 40px avatar + 12px gap */
 }
 
 .post-engagement__stats {
     display: flex;
-    gap: 16px;
-    margin-bottom: 12px;
-    color: #666;
-    font-size: 14px;
+    gap: 1rem;
+    color: #536471;
+    font-size: 13px;
+    margin-bottom: 0.5rem;
 }
 
 .post-engagement__stat {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 0.25rem;
 }
 
 .post-engagement__actions {
     display: flex;
-    justify-content: space-around;
-    padding: 8px 0;
-    border-top: 1px solid #e0e0e0;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    border-top: 1px solid #eee;
+    margin: 0.5rem 0;
 }
 
 .post-engagement__button {
-    background: none;
-    border: none;
-    padding: 8px 16px;
-    font-size: 14px;
-    color: #666;
-    cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 0.5rem;
+    color: #536471;
+    font-size: 13px;
+    background: none;
+    border: none;
+    padding: 0.5rem 0;
+    cursor: pointer;
     transition: color 0.2s ease;
 }
 
 .post-engagement__button:hover {
-    color: #333;
+    color: #1d9bf0;
+    & svg {
+        fill: #1d9bf0;
+    }
 }
 
 .post-engagement__button--liked {
-    color: #1a73e8;
+    color: #f91880;
+    & svg {
+        fill: #f91880;
+    }
 }
 
 .post-engagement__button--liked:hover {
-    color: #1557b0;
+    color: #f91880;
+    & svg {
+        fill: #f91880;
+    }
+}
+
+/* Comment section styles */
+.post-engagement__comments {
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid #eee;
+}
+
+.post-engagement__comment-form {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.post-engagement__comment-input {
+    flex: 1;
+}
+
+.post-engagement__comment-input input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #eee;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #0f1419;
+}
+
+.post-engagement__comment-input input::placeholder {
+    color: #536471;
+}
+
+.post-engagement__comment-button {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    background-color: #1d9bf0;
+    color: white;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.post-engagement__comment-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }

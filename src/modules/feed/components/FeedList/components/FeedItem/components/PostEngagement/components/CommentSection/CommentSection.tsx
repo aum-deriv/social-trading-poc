@@ -46,7 +46,7 @@ const CommentSection = ({
             )}
             <div className="comment-section__list">
                 {comments.map((comment) => (
-                    <div key={comment.id} className="comment-section__item">
+                    <div key={comment.id}>
                         <CommentItem
                             comment={comment}
                             currentUserId={currentUserId}

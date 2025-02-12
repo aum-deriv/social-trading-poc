@@ -1,12 +1,9 @@
 @import '../../styles/variables.css';
 
 .header {
-    background-color: #fff;
-    border-bottom: 1px solid #e9ecef;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .header__content {

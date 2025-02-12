@@ -1,5 +1,5 @@
 .welcome-page {
-  min-height: 100vh;
+  flex: 1;
   background: linear-gradient(135deg, #00d0ff 0%, #00d0ff 100%);
   padding: 2rem;
 }
