@@ -13,7 +13,7 @@ import "./FeedItem.css";
 
 interface FeedItemProps {
     post: Post;
-    user: User;
+    user?: User;
     currentUserId: string;
 }
 
@@ -79,7 +79,7 @@ const FeedItem = ({ post, user, currentUserId }: FeedItemProps) => {
 
     return (
         <article className="feed-item">
-            <PostHeader user={user} timestamp={post.createdAt} />
+            {user && <PostHeader user={user} timestamp={post.createdAt} />}
             <PostContent content={post.content} />
             <PostEngagement
                 postId={post.id}

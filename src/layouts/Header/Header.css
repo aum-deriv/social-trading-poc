@@ -1,9 +1,12 @@
 @import '../../styles/variables.css';
 
 .header {
+    background: linear-gradient(180deg, #67CDFF 0%, #67CDFF 100%);
+    border-bottom: 1px solid #e9ecef;
     position: sticky;
     top: 0;
     z-index: 1000;
+    background-color: #ffffff;
 }
 
 .header__content {
@@ -35,7 +38,7 @@
 .header__logo-text {
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-semibold);
-    color: #00d0ff;
+    color: #ffffff;
     letter-spacing: -0.01em;
 }
 
@@ -57,7 +60,7 @@
 
 .header__nav-link:hover,
 .header__nav-link--active {
-    color: #00d0ff;
+    color: #ffffff;
     background-color: rgba(0, 208, 255, 0.1);
 }
 
@@ -77,12 +80,12 @@
 }
 
 .header__action-btn {
-    color: #495057 !important;
+    color: #ffffff !important;
     font-weight: var(--font-weight-medium) !important;
 }
 
 .header__action-btn:hover {
-    color: #00d0ff !important;
+    color: #ffffff !important;
     background-color: rgba(0, 208, 255, 0.1) !important;
 }
 

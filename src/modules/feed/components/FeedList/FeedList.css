@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    padding: 0.8rem;
 }
 
 .feed-list__loading {
@@ -18,4 +19,27 @@
     background-color: #ffebee;
     border-radius: 8px;
     margin: 20px 0;
+}
+
+.feed-list__empty {
+    padding: 48px 24px;
+    text-align: center;
+    color: #64748b;
+    margin: 16px;
+}
+
+.feed-list__empty svg {
+    margin-bottom: 16px;
+    color: #94a3b8;
+}
+
+.feed-list__empty p {
+    font-size: 16px;
+    margin: 0;
+}
+
+.feed-list__empty-subtitle {
+    font-size: 14px;
+    color: #94a3b8;
+    margin-top: 8px !important;
 }

@@ -1,0 +1,45 @@
+.tab-navigation {
+    height: 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    z-index: 1000;
+}
+
+.tab-container {
+    display: flex;
+    gap: 24px;
+}
+
+.tab {
+    background: none;
+    border: none;
+    color: black;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 8px 0;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tab::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: black;
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+}
+
+.tab.active {
+    color: black;
+}
+
+.tab.active::after {
+    transform: scaleX(1);
+}

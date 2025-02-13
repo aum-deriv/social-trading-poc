@@ -1,4 +1,4 @@
-import type { Comment } from "@/types/post.types";
+import type { default as Post, Comment } from "@/types/post.types";
 
 interface CreatePostContent {
     text: string;
@@ -222,4 +222,39 @@ export const addReply = async (postId: string, data: AddReplyData) => {
     }
 
     return updateResponse.json();
+};
+
+export const getPosts = async (activeTab: string, userId: string) => {
+    if (activeTab === "For you") {
+        const response = await fetch("http://localhost:3001/posts");
+        if (!response.ok) {
+            throw new Error("Failed to fetch posts");
+        }
+        return response.json();
+    } else {
+        return getFollowingPosts(userId);
+    }
+};
+
+export const getFollowingPosts = async (userId: string) => {
+    try {
+        // Get current user to get following list
+        const userResponse = await fetch(`http://localhost:3001/users/${userId}`);
+        if (!userResponse.ok) {
+            throw new Error("Failed to fetch user data");
+        }
+        const user = await userResponse.json();
+
+        // Get all posts
+        const postsResponse = await fetch('http://localhost:3001/posts');
+        if (!postsResponse.ok) {
+            throw new Error("Failed to fetch posts");
+        }
+        const posts = await postsResponse.json();
+
+        // Filter posts by users being followed
+        return posts.filter((post: Post) => user.following.includes(post.userId));
+    } catch (error) {
+        throw new Error("Failed to fetch following posts");
+    }
 };

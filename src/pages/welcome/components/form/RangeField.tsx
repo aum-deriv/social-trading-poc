@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FormGroup } from "./FormGroup";
 import { TradingPreferences } from "../../../../types/trading";
 
@@ -25,6 +25,17 @@ export const RangeField: React.FC<RangeFieldProps> = ({
   onChange,
   suffix = "%",
 }) => {
+  const [percentage, setPercentage] = useState(
+    ((value - min) * 100) / (max - min)
+  );
+
+  const handleRangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = Number(e.target.value);
+    const newPercentage = ((newValue - min) * 100) / (max - min);
+    setPercentage(newPercentage);
+    onChange(newValue as TRiskTolerance);
+  };
+
   return (
     <FormGroup label={label}>
       {helperText && <span className="helper-text">{helperText}</span>}
@@ -34,9 +45,15 @@ export const RangeField: React.FC<RangeFieldProps> = ({
         max={max}
         step={step}
         value={value}
-        onChange={(e) => onChange(Number(e.target.value) as TRiskTolerance)}
+        onChange={handleRangeInput}
+        style={{
+          background: `linear-gradient(to right, #00d0ff 0%, #00d0ff ${percentage}%, #e5e7eb ${percentage}%, #e5e7eb 100%)`,
+        }}
       />
-      <span className="range-value">{value}{suffix}</span>
+      <span className="range-value">
+        {value}
+        {suffix}
+      </span>
     </FormGroup>
   );
 };

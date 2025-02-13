@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { UserType } from "../../types/user";
-import { TradingPreferences, WelcomeStep, WELCOME_STEPS } from "../../types/trading";
+import {
+  TradingPreferences,
+  WelcomeStep,
+  WELCOME_STEPS,
+} from "../../types/trading";
 import StepContent from "./components/StepContent";
 import "./Welcome.css";
 
@@ -27,7 +31,9 @@ const STEPS = [
 const Welcome = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const [currentStep, setCurrentStep] = useState<WelcomeStep>(WELCOME_STEPS.WELCOME);
+  const [currentStep, setCurrentStep] = useState<WelcomeStep>(
+    WELCOME_STEPS.WELCOME
+  );
   const [preferences, setPreferences] = useState<TradingPreferences>({
     riskTolerance: "medium",
     investmentStyle: "moderate",
@@ -49,7 +55,8 @@ const Welcome = () => {
     if (user.userType !== UserType.COPIER || user.isFirstLogin !== true) {
       navigate("/feed", { replace: true });
     }
-  }, [user, navigate]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handlePreferenceChange = (
     field: keyof TradingPreferences,
@@ -59,6 +66,33 @@ const Welcome = () => {
       ...prev,
       [field]: value,
     }));
+  };
+
+  const handleGetStarted = async () => {
+    try {
+      // Here you would typically make an API call to update user's isFirstLogin status
+      await fetch(`http://localhost:3001/users/${user?.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          isFirstLogin: false,
+          tradingPreferences: preferences,
+        }),
+      });
+
+      // Update local storage to reflect the change
+      const authData = localStorage.getItem("auth");
+      if (authData) {
+        const parsed = JSON.parse(authData);
+        parsed.user.isFirstLogin = false;
+        parsed.user.tradingPreferences = preferences;
+        localStorage.setItem("auth", JSON.stringify(parsed));
+      }
+    } catch (error) {
+      console.error("Error updating user status:", error);
+    }
   };
 
   const handleNext = () => {
@@ -71,6 +105,7 @@ const Welcome = () => {
         break;
       case WELCOME_STEPS.RISK:
       default:
+        handleGetStarted();
         navigate("/feed", { replace: true });
         break;
     }
@@ -94,13 +129,15 @@ const Welcome = () => {
 
   return (
     <div className="welcome-page">
-      <div className="progress-bar">
+      <div className={`progress-bar step-${currentStep}`}>
         {STEPS.map((step, index) => (
           <div
             key={step.key}
             className={`progress-step ${getStepClassName(step.key)}`}
           >
-            <div className="step-indicator">{index + 1}</div>
+            <div className="step-indicator">
+              {isStepCompleted(step.key) ? "✓" : index + 1}
+            </div>
             <div className="step-details">
               <h3>{step.title}</h3>
               <p>{step.description}</p>

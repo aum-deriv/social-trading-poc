@@ -1,5 +1,5 @@
 .post-content {
-    margin: 0.75rem 0 0.75rem 52px; /* 40px avatar + 12px gap */
+    padding: 0.8rem;
 }
 
 .post-content__text {

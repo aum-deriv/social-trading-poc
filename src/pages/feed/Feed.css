@@ -1,7 +1,5 @@
 .feed-page {
-    min-height: 100vh;
-    padding: 5px;
-    margin-top: 2rem;
+    height: 100vh;
 }
 
 .feed-page__container {

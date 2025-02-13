@@ -75,6 +75,7 @@ const Login = () => {
                 required
                 disabled={isSubmitting}
                 error={error ? " " : undefined}
+                className="login-input"
               />
               <TextInput
                 id="password"
@@ -85,6 +86,7 @@ const Login = () => {
                 required
                 disabled={isSubmitting}
                 error={error ? " " : undefined}
+                className="login-input"
               />
               <Button
                 type="submit"

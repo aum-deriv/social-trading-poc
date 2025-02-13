@@ -5,9 +5,10 @@ import "./PostForm.css";
 interface PostFormProps {
     currentUser: User;
     onSubmit: (content: { text: string; images: string[] }) => Promise<void>;
+    onClose?: () => void;
 }
 
-const PostForm = ({ currentUser, onSubmit }: PostFormProps) => {
+const PostForm = ({ currentUser, onSubmit, onClose }: PostFormProps) => {
     const [text, setText] = useState("");
     const [images, setImages] = useState<string[]>([]);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -53,6 +54,7 @@ const PostForm = ({ currentUser, onSubmit }: PostFormProps) => {
             });
             setText("");
             setImages([]);
+            onClose?.();
         } catch (error) {
             console.error("Failed to create post:", error);
             // TODO: Show error message to user
@@ -61,75 +63,97 @@ const PostForm = ({ currentUser, onSubmit }: PostFormProps) => {
         }
     };
 
+    const handleClose = () => {
+        onClose?.();
+    };
+
     return (
-        <form className="post-form" onSubmit={handleSubmit}>
-            <div className="post-form__header">
-                <img
-                    src={currentUser.profilePicture}
-                    alt={currentUser.username}
-                    className="post-form__avatar"
-                />
-                <span className="post-form__user-name">
-                    {currentUser.username}
-                </span>
-            </div>
-            <textarea
-                className="post-form__textarea"
-                placeholder="Share your trading insights..."
-                value={text}
-                onChange={handleTextChange}
-                disabled={isSubmitting}
-            />
-            {images.length > 0 && (
-                <div className="post-form__image-preview">
-                    {images.map((image, index) => (
-                        <div key={index} className="post-form__image-container">
-                            <img
-                                src={image}
-                                alt={`Preview ${index + 1}`}
-                                className="post-form__image"
-                            />
-                            <button
-                                type="button"
-                                className="post-form__remove-image"
-                                onClick={() => handleRemoveImage(index)}
-                                disabled={isSubmitting}
-                            >
-                                ×
-                            </button>
-                        </div>
-                    ))}
+        <div className="post-form-overlay">
+            <div className="post-form-modal">
+                <div className="post-form-modal__header">
+                    <h2>Create Post</h2>
+                    <button
+                        type="button"
+                        className="post-form-modal__close"
+                        onClick={handleClose}
+                    >
+                        ×
+                    </button>
                 </div>
-            )}
-            <div className="post-form__actions">
-                <input
-                    type="file"
-                    ref={fileInputRef}
-                    className="post-form__file-input"
-                    accept="image/*"
-                    multiple
-                    onChange={handleImageChange}
-                    disabled={isSubmitting}
-                />
-                <button
-                    type="button"
-                    className="post-form__button post-form__button--image"
-                    onClick={handleImageClick}
-                    disabled={isSubmitting}
-                >
-                    Add Image
-                </button>
-                <button
-                    type="submit"
-                    className="post-form__button post-form__button--submit"
-                    disabled={
-                        isSubmitting || (!text.trim() && images.length === 0)
-                    }
-                >
-                    {isSubmitting ? "Posting..." : "Post"}
-                </button>
+                <form className="post-form" onSubmit={handleSubmit}>
+                    <div className="post-form__header">
+                        <img
+                            src={currentUser.profilePicture}
+                            alt={currentUser.username}
+                            className="post-form__avatar"
+                        />
+                        <span className="post-form__user-name">
+                            {currentUser.username}
+                        </span>
+                    </div>
+                    <textarea
+                        className="post-form__textarea"
+                        placeholder="Share your trading insights..."
+                        value={text}
+                        onChange={handleTextChange}
+                        disabled={isSubmitting}
+                    />
+                    {images.length > 0 && (
+                        <div className="post-form__image-preview">
+                            {images.map((image, index) => (
+                                <div
+                                    key={index}
+                                    className="post-form__image-container"
+                                >
+                                    <img
+                                        src={image}
+                                        alt={`Preview ${index + 1}`}
+                                        className="post-form__image"
+                                    />
+                                    <button
+                                        type="button"
+                                        className="post-form__remove-image"
+                                        onClick={() => handleRemoveImage(index)}
+                                        disabled={isSubmitting}
+                                    >
+                                        ×
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                    <div className="post-form__actions">
+                        <input
+                            type="file"
+                            ref={fileInputRef}
+                            className="post-form__file-input"
+                            accept="image/*"
+                            multiple
+                            onChange={handleImageChange}
+                            disabled={isSubmitting}
+                        />
+                        <button
+                            type="button"
+                            className="post-form__button post-form__button--image"
+                            onClick={handleImageClick}
+                            disabled={isSubmitting}
+                        >
+                            Add Image
+                        </button>
+                        <button
+                            type="submit"
+                            className="post-form__button post-form__button--submit"
+                            disabled={
+                                isSubmitting ||
+                                (!text.trim() && images.length === 0)
+                            }
+                        >
+                            {isSubmitting ? "Posting..." : "Post"}
+                        </button>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
     );
 };
 

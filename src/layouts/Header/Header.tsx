@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
 import Button from "@/components/input/Button";
 import "./Header.css";
@@ -13,28 +13,12 @@ const Header = () => {
                 <div className="header__left">
                     <Link to="/" className="header__logo">
                         <img
-                            src="/champion_logo-blue.svg"
+                            src="/champion_logo-white.svg"
                             alt="Champion Logo"
                             className="header__logo-image"
                         />
                         <span className="header__logo-text">Social Trader</span>
                     </Link>
-                    {isAuthenticated && (
-                        <nav className="header__nav">
-                            <NavLink
-                                to="/feed"
-                                className={({ isActive }) =>
-                                    `header__nav-link ${
-                                        isActive
-                                            ? "header__nav-link--active"
-                                            : ""
-                                    }`
-                                }
-                            >
-                                Feed
-                            </NavLink>
-                        </nav>
-                    )}
                 </div>
                 <div className="header__right">
                     {isAuthenticated && (
@@ -44,7 +28,7 @@ const Header = () => {
                                 className="header__action-btn"
                             >
                                 <LegacyProfileXsIcon
-                                    fill="#00d0ff"
+                                    fill="#ffffff"
                                     iconSize="sm"
                                 />
                             </Button>

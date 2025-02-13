@@ -58,8 +58,7 @@
 }
 
 .form-wrapper {
-    width: 100%;
-    max-width: 400px;
+    width: 360px;
 }
 
 .form-wrapper h2 {
@@ -86,8 +85,12 @@
     text-align: center;
 }
 
+.login-input {
+    height: 55px;
+}
+
 .login-button {
-    margin-top: 0.5rem;
+    height: 55px;
 }
 
 /* Responsive adjustments */
@@ -117,6 +120,7 @@
 
     .form-wrapper {
         padding: 0;
+        width: 100%;
     }
 
     .form-wrapper h2 {

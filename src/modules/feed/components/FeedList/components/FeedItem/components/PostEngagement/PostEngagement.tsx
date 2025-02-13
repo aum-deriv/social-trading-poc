@@ -17,7 +17,7 @@ interface PostEngagementProps {
     };
     engagement: Post["engagement"];
     currentUserId: string;
-    currentUser: User;
+    currentUser?: User;
     onLike: () => void;
     onComment: (content: string) => void;
     onShare: () => void;
@@ -70,13 +70,15 @@ const PostEngagement = ({
                 </Button>
             </div>
 
-            <PostAIInsights
-                postId={postId}
-                content={content}
-                comments={comments}
-                userType={currentUser.userType}
-                onCopyTrader={() => console.log("Copy trader:", currentUser.id)}
-            />
+            {currentUser && (
+                <PostAIInsights
+                    postId={postId}
+                    content={content}
+                    comments={comments}
+                    userType={currentUser.userType}
+                    onCopyTrader={() => console.log("Copy trader:", currentUser.id)}
+                />
+            )}
 
             <CommentSection
                 comments={comments}
