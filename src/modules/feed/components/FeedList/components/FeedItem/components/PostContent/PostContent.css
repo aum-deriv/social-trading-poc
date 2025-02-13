@@ -38,10 +38,56 @@
     max-height: 286px;
 }
 
+.post-content__image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #f7f9fa;
+}
+
 .post-content__image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.post-content__image.loading {
+    animation: pulse 1.5s infinite;
+}
+
+.post-content__image-fallback {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fafafa;
+    color: #666;
+    gap: 8px;
+}
+
+.post-content__image-fallback svg {
+    opacity: 0.5;
+}
+
+.post-content__image-fallback span {
+    font-size: 14px;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0.6;
+    }
 }
 
 .post-content__image--single {

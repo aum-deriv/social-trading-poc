@@ -1,12 +1,18 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
 import BackIcon from "@/assets/icons/BackIcon";
+import LogoutIcon from "@/assets/icons/LogoutIcon";
 import "./Header.css";
 
 const Header = () => {
     const { username } = useParams();
-    const { user } = useAuth();
+    const { user, logout } = useAuth();
     const navigate = useNavigate();
+
+    const handleLogout = () => {
+        logout();
+        navigate("/login");
+    };
 
     const showBackButton = username && user?.username !== username;
 
@@ -29,6 +35,15 @@ const Header = () => {
                         />
                         <span className="header__logo-text">Social Trader</span>
                     </Link>
+                )}
+                {user && (
+                    <button 
+                        className="header__logout-button"
+                        onClick={handleLogout}
+                        aria-label="Logout"
+                    >
+                        <LogoutIcon />
+                    </button>
                 )}
             </div>
         </header>
