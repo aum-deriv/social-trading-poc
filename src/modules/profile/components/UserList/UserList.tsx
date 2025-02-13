@@ -18,9 +18,20 @@ const UserList = ({ users, currentUserId, onFollowUser, onUnfollowUser, listType
         navigate(`/profile/${username}`);
     };
 
+    const filteredUsers = users.filter(user => user.id !== currentUserId);
+
     return (
         <div className="user-list">
-            {users.filter(user => user.id !== currentUserId).map((user) => (
+            {filteredUsers.length === 0 ? (
+                <div className="user-list--empty">
+                    {listType === 'followers' 
+                        ? "No followers yet" 
+                        : listType === 'following' 
+                            ? "Not following anyone yet"
+                            : "No users found"
+                    }
+                </div>
+            ) : filteredUsers.map((user) => (
                 <div key={user.id} className="user-list__item">
                     <div 
                         className="user-list__user-info"

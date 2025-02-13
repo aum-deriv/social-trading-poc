@@ -1,4 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
+import FeedIcon from "@/assets/icons/FeedIcon";
+import DiscoverIcon from "@/assets/icons/DiscoverIcon";
+import ReportIcon from "@/assets/icons/ReportIcon";
+import ProfileIcon from "@/assets/icons/ProfileIcon";
+import PlusIcon from "@/assets/icons/PlusIcon";
 import { useAuth } from "@/context/AuthContext";
 import "./BottomNavigation.css";
 
@@ -24,45 +29,39 @@ const BottomNavigation = ({ onCreatePost }: BottomNavigationProps) => {
                 to="/feed"
                 className={`nav-item ${isActive("/feed") ? "active" : ""}`}
             >
-                <span>Feed</span>
+                <FeedIcon />
             </Link>
 
             <Link
                 to="/discover"
                 className={`nav-item ${isActive("/discover") ? "active" : ""}`}
             >
-                <span>Discover</span>
+                <DiscoverIcon />
             </Link>
             <div className="fab-placeholder">
                 <button className="fab" onClick={onCreatePost}>
-                    <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                    >
-                        <line x1="12" y1="5" x2="12" y2="19" />
-                        <line x1="5" y1="12" x2="19" y2="12" />
-                    </svg>
+                    <PlusIcon />
                 </button>
             </div>
             <Link
                 to="/report"
                 className={`nav-item ${isActive("/report") ? "active" : ""}`}
             >
-                <span>Report</span>
+                <ReportIcon />
             </Link>
 
-            <Link
-                to={`/profile/${user?.username}`}
-                className={`nav-item ${isActive("/profile") ? "active" : ""}`}
-            >
-                <span>Profile</span>
-            </Link>
+            {user ? (
+                <Link
+                    to={`/profile/${user.username}`}
+                    className={`nav-item ${isActive("/profile") ? "active" : ""}`}
+                >
+                    <ProfileIcon />
+                </Link>
+            ) : (
+                <div className="nav-item disabled">
+                    <ProfileIcon />
+                </div>
+            )}
         </nav>
     );
 };

@@ -6,10 +6,30 @@
 
 .header__content {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    height: 64px;
-    padding: 0 1.5rem;
+    justify-content: flex-start;
+    padding: 0 1rem;
+    height: 100%;
+}
+
+.header__back-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+    transition: opacity 0.2s ease;
+}
+
+.header__back-button:hover {
+    opacity: 0.8;
+}
+
+.header__back-button:active {
+    opacity: 0.6;
 }
 
 .header__logo {

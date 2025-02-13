@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import BackIcon from "@/assets/icons/BackIcon";
 import "./FullscreenModal.css";
 
 interface FullscreenModalProps {
@@ -20,18 +21,7 @@ const FullscreenModal = ({ isOpen, onClose, title, children }: FullscreenModalPr
                         onClick={onClose}
                         aria-label="Close modal"
                     >
-                        <svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        >
-                            <path d="M19 12H5M12 19l-7-7 7-7" />
-                        </svg>
+                        <BackIcon />
                     </button>
                     <h2 className="fullscreen-modal__title">{title}</h2>
                 </header>
