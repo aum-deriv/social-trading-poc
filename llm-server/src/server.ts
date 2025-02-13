@@ -1,10 +1,10 @@
-import express from "express";
-import cors from "cors";
 import dotenv from "dotenv";
-import insightsRouter from "./routes/insights";
-
 // Load environment variables
 dotenv.config();
+
+import express from "express";
+import cors from "cors";
+import insightsRouter from "./routes/insights";
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -13,8 +13,8 @@ const port = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-// Routes
-app.use("/api", insightsRouter);
+// Mount LLM routes
+app.use("/api/ai", insightsRouter);
 
 // Health check endpoint
 app.get("/health", (req, res) => {
@@ -43,4 +43,5 @@ app.use(
 // Start server
 app.listen(port, () => {
     console.log(`LLM Server running on port ${port}`);
+    console.log(`- LLM API: http://localhost:${port}/api/ai`);
 });

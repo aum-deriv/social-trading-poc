@@ -21,9 +21,11 @@
     "license": "ISC",
     "dependencies": {
         "@anthropic-ai/sdk": "^0.17.1",
+        "@types/json-server": "^0.14.7",
         "cors": "^2.8.5",
         "dotenv": "^16.4.5",
-        "express": "^4.18.2"
+        "express": "^4.18.2",
+        "json-server": "^1.0.0-beta.3"
     },
     "devDependencies": {
         "@types/cors": "^2.8.17",

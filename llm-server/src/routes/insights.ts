@@ -1,39 +1,24 @@
 import express, { Request, Response } from "express";
 import { LLMService } from "../services/llm";
-import { Post, User, TradingStrategy } from "../types";
+import { DataService } from "../services/data";
 
 const router = express.Router();
 const llmService = new LLMService();
+const dataService = new DataService();
 
-interface InsightsRequestBody {
-    posts: Post[];
-    user: User;
-    strategies: TradingStrategy[];
-}
-
-router.post(
-    "/feed-insights",
-    async (req: Request<{}, {}, InsightsRequestBody>, res: Response) => {
+router.get(
+    "/feed-insights/:userId",
+    async (req: Request<{ userId: string }>, res: Response) => {
         try {
-            const { posts, user, strategies } = req.body;
+            const { userId } = req.params;
 
-            if (!posts || !Array.isArray(posts)) {
-                return res.status(400).json({
-                    error: "Invalid request: posts array is required",
-                });
+            const user = dataService.getUser(userId);
+            if (!user) {
+                return res.status(404).json({ error: "User not found" });
             }
 
-            if (!user || typeof user !== "object") {
-                return res.status(400).json({
-                    error: "Invalid request: user object is required",
-                });
-            }
-
-            if (!strategies || !Array.isArray(strategies)) {
-                return res.status(400).json({
-                    error: "Invalid request: strategies array is required",
-                });
-            }
+            const posts = dataService.getUserPosts();
+            const strategies = dataService.getUserStrategies(userId);
 
             const insights = await llmService.generatePostInsights(
                 posts,
