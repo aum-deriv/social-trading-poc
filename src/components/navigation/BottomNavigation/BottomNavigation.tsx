@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import { useAuth } from "@/context/AuthContext";
 import "./BottomNavigation.css";
 
 interface BottomNavigationProps {
@@ -8,8 +9,14 @@ interface BottomNavigationProps {
 const BottomNavigation = ({ onCreatePost }: BottomNavigationProps) => {
     const location = useLocation();
     const currentPath = location.pathname;
+    const { user } = useAuth();
 
-    const isActive = (path: string) => currentPath === path;
+    const isActive = (path: string) => {
+        if (path === "/profile") {
+            return currentPath.startsWith("/profile");
+        }
+        return currentPath === path;
+    };
 
     return (
         <nav className="bottom-navigation">
@@ -51,7 +58,7 @@ const BottomNavigation = ({ onCreatePost }: BottomNavigationProps) => {
             </Link>
 
             <Link
-                to="/profile"
+                to={`/profile/${user?.username}`}
                 className={`nav-item ${isActive("/profile") ? "active" : ""}`}
             >
                 <span>Profile</span>

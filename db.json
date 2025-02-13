@@ -9,13 +9,22 @@
       "followers": [
         "copier1",
         "copier2",
-        "copier3"
+        "copier3",
+        "leader1"
       ],
-      "following": [],
+      "following": [
+        "copier1"
+      ],
       "accounts": [
         "acc1",
         "acc2"
       ],
+      "performance": {
+        "winRate": 78.5,
+        "totalPnL": 245.8,
+        "monthlyReturn": 12.5,
+        "totalTrades": 156
+      },
       "createdAt": "2024-01-01T00:00:00Z",
       "updatedAt": "2024-01-01T00:00:00Z"
     },
@@ -33,6 +42,12 @@
       "accounts": [
         "acc3"
       ],
+      "performance": {
+        "winRate": 68.5,
+        "totalPnL": 185.2,
+        "monthlyReturn": 8.7,
+        "totalTrades": 98
+      },
       "createdAt": "2024-01-02T00:00:00Z",
       "updatedAt": "2024-01-02T00:00:00Z"
     },
@@ -41,7 +56,9 @@
       "username": "newTrader",
       "email": "new@trading.com",
       "userType": "copier",
-      "followers": [],
+      "followers": [
+        "leader1"
+      ],
       "following": [
         "leader1",
         "leader2"

@@ -10,15 +10,7 @@ import {
   logout as authLogout,
   getStoredAuth,
 } from "../services/authService";
-import { UserType } from "../types/user";
-
-interface User {
-  id: string;
-  username: string;
-  email: string;
-  userType: UserType;
-  isFirstLogin?: boolean;
-}
+import type User from "@/types/user.types";
 
 interface AuthState {
   isAuthenticated: boolean;

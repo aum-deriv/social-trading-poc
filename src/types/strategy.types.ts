@@ -1,20 +1,25 @@
-interface TradingStrategy {
+export interface Strategy {
     id: string;
-    leaderId: string;
-    accountId: string; // Reference to the currency account
     name: string;
     description: string;
-    tradeType: string; // Unique identifier for the strategy type
-    riskLevel: "low" | "medium" | "high";
-    performance: {
-        totalReturn: number;
-        winRate: number;
-        averageProfit: number;
-    };
-    copiers: string[]; // Array of copier IDs
-    isActive: boolean;
+    creatorId: string;
+    copiers: string[];
+    winRate: number;
+    totalPnL: number;
     createdAt: string;
     updatedAt: string;
+    isActive: boolean;
+    riskLevel: 'low' | 'medium' | 'high';
+    minInvestment: number;
+    maxInvestment: number;
+    tradingPairs: string[];
+    timeframe: string;
+    performance: {
+        daily: number;
+        weekly: number;
+        monthly: number;
+        yearly: number;
+    };
 }
 
-export default TradingStrategy;
+export default Strategy;

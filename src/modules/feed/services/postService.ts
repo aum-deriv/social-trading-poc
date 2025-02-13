@@ -224,8 +224,18 @@ export const addReply = async (postId: string, data: AddReplyData) => {
     return updateResponse.json();
 };
 
+export const getUserPosts = async (userId: string) => {
+    const response = await fetch(`http://localhost:3001/posts?userId=${userId}`);
+    if (!response.ok) {
+        throw new Error("Failed to fetch user posts");
+    }
+    return response.json();
+};
+
 export const getPosts = async (activeTab: string, userId: string) => {
-    if (activeTab === "For you") {
+    if (activeTab === "profile") {
+        return getUserPosts(userId);
+    } else if (activeTab === "For you") {
         const response = await fetch("http://localhost:3001/posts");
         if (!response.ok) {
             throw new Error("Failed to fetch posts");

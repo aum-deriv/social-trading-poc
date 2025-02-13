@@ -1,0 +1,26 @@
+.profile-page {
+    height: 100vh;
+    max-width: 1200px;
+}
+
+.profile-page__loading,
+.profile-page__error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    font-size: 1.125rem;
+    color: #6b7280;
+}
+
+.profile-page__error {
+    color: #ef4444;
+}
+
+.profile-page__content {
+    margin-top: 2rem;
+}
+
+.profile-page__feed {
+    margin-top: 1rem;
+}
