@@ -2,16 +2,22 @@
   "users": [
     {
       "id": "leader1",
-      "username": "expertTrader",
+      "username": "newTrader",
+      "displayName": "Sarah Johnson | FX Pro",
       "email": "expert@trading.com",
-      "profilePicture": "https://example.com/avatar1.jpg",
+      "profilePicture": "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
       "userType": "leader",
       "followers": [
         "copier1",
         "copier2",
         "copier3"
       ],
-      "following": [],
+      "following": [
+        "leader11",
+        "leader9",
+        "leader2",
+        "leader13"
+      ],
       "accounts": [
         "acc1",
         "acc2"
@@ -21,13 +27,15 @@
     },
     {
       "id": "leader2",
-      "username": "proTrader",
+      "username": "michaelCryptoExpert",
+      "displayName": "Michael Chen | Crypto Expert",
       "email": "pro@trading.com",
-      "profilePicture": "https://example.com/avatar2.jpg",
+      "profilePicture": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
       "userType": "leader",
       "followers": [
         "copier1",
-        "copier3"
+        "copier3",
+        "leader1"
       ],
       "following": [],
       "accounts": [
@@ -38,8 +46,10 @@
     },
     {
       "id": "copier1",
-      "username": "newTrader",
+      "username": "alexLearning",
+      "displayName": "Alex Turner | Learning",
       "email": "new@trading.com",
+      "profilePicture": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
       "userType": "copier",
       "followers": [],
       "following": [
@@ -54,8 +64,10 @@
     },
     {
       "id": "copier2",
-      "username": "learner",
+      "username": "emmaStudent",
+      "displayName": "Emma Davis | Student",
       "email": "learn@trading.com",
+      "profilePicture": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
       "userType": "copier",
       "followers": [],
       "following": [
@@ -69,8 +81,10 @@
     },
     {
       "id": "copier3",
-      "username": "investor",
+      "username": "davidInvestor",
+      "displayName": "David Kim | Investor",
       "email": "invest@trading.com",
+      "profilePicture": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
       "userType": "copier",
       "followers": [],
       "following": [
@@ -83,6 +97,272 @@
       ],
       "createdAt": "2024-01-05T00:00:00Z",
       "updatedAt": "2024-01-05T00:00:00Z"
+    },
+    {
+      "id": "leader3",
+      "username": "mariaForexMaster",
+      "displayName": "Maria Garcia | Forex Master",
+      "email": "forex@trading.com",
+      "profilePicture": "https://images.unsplash.com/photo-1544005313-94ddf0286df2",
+      "userType": "leader",
+      "followers": [
+        "copier4",
+        "copier5"
+      ],
+      "following": [],
+      "accounts": [
+        "acc8"
+      ],
+      "createdAt": "2024-01-06T00:00:00Z",
+      "updatedAt": "2024-01-06T00:00:00Z"
+    },
+    {
+      "id": "leader4",
+      "username": "jamesCryptoKing",
+      "displayName": "James Wilson | Crypto King",
+      "email": "crypto@trading.com",
+      "profilePicture": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7",
+      "userType": "leader",
+      "followers": [
+        "copier6"
+      ],
+      "following": [],
+      "accounts": [
+        "acc9"
+      ],
+      "createdAt": "2024-01-07T00:00:00Z",
+      "updatedAt": "2024-01-07T00:00:00Z"
+    },
+    {
+      "id": "leader5",
+      "username": "lisaTechAnalyst",
+      "displayName": "Lisa Wang | Tech Analyst",
+      "email": "tech@trading.com",
+      "profilePicture": "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f",
+      "userType": "leader",
+      "followers": [
+        "copier7",
+        "copier8"
+      ],
+      "following": [],
+      "accounts": [
+        "acc10"
+      ],
+      "createdAt": "2024-01-08T00:00:00Z",
+      "updatedAt": "2024-01-08T00:00:00Z"
+    },
+    {
+      "id": "leader6",
+      "username": "robertSwingExpert",
+      "displayName": "Robert Brown | Swing Expert",
+      "email": "swing@trading.com",
+      "profilePicture": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
+      "userType": "leader",
+      "followers": [
+        "copier9"
+      ],
+      "following": [],
+      "accounts": [
+        "acc11"
+      ],
+      "createdAt": "2024-01-09T00:00:00Z",
+      "updatedAt": "2024-01-09T00:00:00Z"
+    },
+    {
+      "id": "leader7",
+      "username": "sophieDayTrading",
+      "displayName": "Sophie Miller | Day Trading Pro",
+      "email": "day@trading.com",
+      "profilePicture": "https://images.unsplash.com/photo-1534528741775-53994a69daeb",
+      "userType": "leader",
+      "followers": [
+        "copier10",
+        "copier11"
+      ],
+      "following": [],
+      "accounts": [
+        "acc12"
+      ],
+      "createdAt": "2024-01-10T00:00:00Z",
+      "updatedAt": "2024-01-10T00:00:00Z"
+    },
+    {
+      "id": "leader8",
+      "username": "danielOptionsMaster",
+      "displayName": "Daniel Lee | Options Master",
+      "email": "options@trading.com",
+      "profilePicture": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
+      "userType": "leader",
+      "followers": [
+        "copier12"
+      ],
+      "following": [],
+      "accounts": [
+        "acc13"
+      ],
+      "createdAt": "2024-01-11T00:00:00Z",
+      "updatedAt": "2024-01-11T00:00:00Z"
+    },
+    {
+      "id": "leader9",
+      "username": "isabellaScalping",
+      "displayName": "Isabella Martinez | Scalping Pro",
+      "email": "scalp@trading.com",
+      "profilePicture": "https://images.unsplash.com/photo-1531123897727-8f129e1688ce",
+      "userType": "leader",
+      "followers": [
+        "copier13",
+        "copier14",
+        "leader1"
+      ],
+      "following": [],
+      "accounts": [
+        "acc14"
+      ],
+      "createdAt": "2024-01-12T00:00:00Z",
+      "updatedAt": "2024-01-12T00:00:00Z"
+    },
+    {
+      "id": "leader10",
+      "username": "williamCommodity",
+      "displayName": "William Taylor | Commodity Expert",
+      "email": "commodity@trading.com",
+      "profilePicture": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
+      "userType": "leader",
+      "followers": [
+        "copier15"
+      ],
+      "following": [],
+      "accounts": [
+        "acc15"
+      ],
+      "createdAt": "2024-01-13T00:00:00Z",
+      "updatedAt": "2024-01-13T00:00:00Z"
+    },
+    {
+      "id": "leader11",
+      "username": "oliviaIndexSpecialist",
+      "displayName": "Olivia Anderson | Index Specialist",
+      "email": "index@trading.com",
+      "profilePicture": "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
+      "userType": "leader",
+      "followers": [
+        "copier16",
+        "copier17",
+        "leader1"
+      ],
+      "following": [],
+      "accounts": [
+        "acc16"
+      ],
+      "createdAt": "2024-01-14T00:00:00Z",
+      "updatedAt": "2024-01-14T00:00:00Z"
+    },
+    {
+      "id": "leader12",
+      "username": "thomasGlobalMarkets",
+      "displayName": "Thomas Wright | Global Markets",
+      "email": "global@trading.com",
+      "profilePicture": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
+      "userType": "leader",
+      "followers": [
+        "copier18"
+      ],
+      "following": [],
+      "accounts": [
+        "acc17"
+      ],
+      "createdAt": "2024-01-15T00:00:00Z",
+      "updatedAt": "2024-01-15T00:00:00Z"
+    },
+    {
+      "id": "leader13",
+      "username": "sophiaHedgeFund",
+      "displayName": "Sophia Park | Hedge Fund Pro",
+      "email": "hedge@trading.com",
+      "profilePicture": "https://images.unsplash.com/photo-1544005313-94ddf0286df2",
+      "userType": "leader",
+      "followers": [
+        "copier19",
+        "copier20",
+        "leader1"
+      ],
+      "following": [],
+      "accounts": [
+        "acc18"
+      ],
+      "createdAt": "2024-01-16T00:00:00Z",
+      "updatedAt": "2024-01-16T00:00:00Z"
+    },
+    {
+      "id": "leader14",
+      "username": "ryanAlgoTrading",
+      "displayName": "Ryan Cooper | Algo Trading",
+      "email": "algo@trading.com",
+      "profilePicture": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7",
+      "userType": "leader",
+      "followers": [
+        "copier21"
+      ],
+      "following": [],
+      "accounts": [
+        "acc19"
+      ],
+      "createdAt": "2024-01-17T00:00:00Z",
+      "updatedAt": "2024-01-17T00:00:00Z"
+    },
+    {
+      "id": "leader15",
+      "username": "emilyValueInvestor",
+      "displayName": "Emily White | Value Investor",
+      "email": "value@trading.com",
+      "profilePicture": "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f",
+      "userType": "leader",
+      "followers": [
+        "copier22",
+        "copier23"
+      ],
+      "following": [],
+      "accounts": [
+        "acc20"
+      ],
+      "createdAt": "2024-01-18T00:00:00Z",
+      "updatedAt": "2024-01-18T00:00:00Z"
+    },
+    {
+      "id": "leader16",
+      "username": "lucasTrendMaster",
+      "displayName": "Lucas Bennett | Trend Master",
+      "email": "trend@trading.com",
+      "profilePicture": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
+      "userType": "leader",
+      "followers": [
+        "copier24"
+      ],
+      "following": [],
+      "accounts": [
+        "acc21"
+      ],
+      "createdAt": "2024-01-19T00:00:00Z",
+      "updatedAt": "2024-01-19T00:00:00Z"
+    },
+    {
+      "id": "leader17",
+      "username": "victoriaPatternExpert",
+      "displayName": "Victoria Chang | Pattern Expert",
+      "email": "pattern@trading.com",
+      "profilePicture": "https://images.unsplash.com/photo-1534528741775-53994a69daeb",
+      "userType": "leader",
+      "followers": [
+        "copier25",
+        "copier26"
+      ],
+      "following": [],
+      "accounts": [
+        "acc22"
+      ],
+      "createdAt": "2024-01-20T00:00:00Z",
+      "updatedAt": "2024-01-20T00:00:00Z"
     }
   ],
   "currencyAccounts": [

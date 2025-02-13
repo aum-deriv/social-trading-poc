@@ -1,0 +1,113 @@
+.skeleton-card {
+  background-color: #fff;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.skeleton-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.skeleton-card--large .skeleton-card__avatar {
+  width: 120px;
+  height: 120px;
+}
+
+.skeleton-card--large .skeleton-card__banner {
+  height: 80px;
+}
+
+.skeleton-card--large .skeleton-card__info {
+  padding: 4rem 1.5rem 1.5rem;
+}
+
+.skeleton-card__rank {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1;
+}
+
+.skeleton-card {
+  background-color: #fff;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  position: relative;
+}
+
+.skeleton-card__banner {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 184, 230, 0.2) 0%,
+    rgba(0, 208, 255, 0.2) 50%,
+    rgba(51, 214, 255, 0.2) 100%
+  );
+  height: 80px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.skeleton-card__avatar {
+  position: absolute;
+  bottom: 0;
+  transform: translateY(50%);
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+}
+
+.skeleton-card__profit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skeleton-card__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1.5rem 1.5rem;
+}
+
+.skeleton-card__stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.skeleton-card__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .skeleton-card__banner {
+    height: 60px;
+  }
+
+  .skeleton-card__avatar {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  .skeleton-card__info {
+    padding-top: 2.75rem !important;
+  }
+}
