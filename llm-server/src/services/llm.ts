@@ -2,6 +2,13 @@ import Anthropic from "@anthropic-ai/sdk";
 import { Post, Comment, AIInsight, User, TradingStrategy } from "../types";
 import { PostSentiment } from "../types/sentiment";
 
+interface CommentSentiment {
+    overallSentiment: "positive" | "neutral" | "negative";
+    confidence: number;
+    keyThemes: string[];
+    riskIndicators: string[];
+}
+
 export class LLMService {
     private anthropic: Anthropic;
     private readonly MODEL = "claude-3-5-sonnet-20241022";
@@ -90,13 +97,34 @@ export class LLMService {
         });
         console.log(`[LLM] Received batch response from Anthropic`);
 
-        const content = response.content[0].text || "[]";
+        let content = "[]";
+        if (
+            Array.isArray(response.content) &&
+            response.content.length > 0 &&
+            response.content[0].text
+        ) {
+            content = response.content[0].text;
+        }
+
         const sanitizedContent = this.sanitizeJsonText(content);
         const jsonMatch = sanitizedContent.match(/\[[\s\S]*\]/);
         const jsonStr = jsonMatch ? jsonMatch[0] : "[]";
+        let parsedData;
 
-        console.log(`[LLM] Parsing batch response...`);
-        return JSON.parse(jsonStr) as AIInsight[];
+        try {
+            parsedData = JSON.parse(jsonStr);
+        } catch (e) {
+            console.error(
+                `[LLM] Error parsing JSON from Anthropic response:`,
+                e
+            );
+            parsedData = []; // fallback to empty array
+        }
+
+        console.log(
+            `[LLM] Successfully parsed batch response with ${parsedData.length} insights`
+        );
+        return parsedData;
     }
 
     public async generatePostInsights(
@@ -200,13 +228,39 @@ export class LLMService {
         });
         console.log(`[LLM] Received response from Anthropic`);
 
-        const content = response.content[0].text || "{}";
+        let content = "{}";
+        if (
+            Array.isArray(response.content) &&
+            response.content.length > 0 &&
+            response.content[0].text
+        ) {
+            content = response.content[0].text;
+        }
+
         const sanitizedContent = this.sanitizeJsonText(content);
         const jsonMatch = sanitizedContent.match(/\{[\s\S]*\}/);
         const jsonStr = jsonMatch ? jsonMatch[0] : "{}";
+        let parsedData;
+
+        try {
+            parsedData = JSON.parse(jsonStr);
+        } catch (e) {
+            console.error(
+                `[LLM] Error parsing JSON from Anthropic response:`,
+                e
+            );
+            parsedData = {
+                summary: "Error analyzing post",
+                sentiment: "analysis",
+                isLegitimate: true,
+                riskLevel: "medium",
+                recommendation:
+                    "Unable to provide recommendation due to analysis error",
+            };
+        }
 
         console.log(`[LLM] Parsed JSON response for post ${post.id}`);
-        return JSON.parse(jsonStr) as {
+        return parsedData as {
             summary: string;
             sentiment: PostSentiment;
             isLegitimate: boolean;
@@ -215,11 +269,18 @@ export class LLMService {
         };
     }
 
-    private async analyzePostComments(comments: Comment[]) {
+    private async analyzePostComments(
+        comments: Comment[]
+    ): Promise<CommentSentiment> {
         console.log(`[LLM] Analyzing ${comments.length} comments`);
         if (comments.length === 0) {
             console.log(`[LLM] No comments to analyze, returning neutral`);
-            return "neutral";
+            return {
+                overallSentiment: "neutral",
+                confidence: 0,
+                keyThemes: [],
+                riskIndicators: [],
+            };
         }
 
         const trimmedComments = this.trimComments(comments);
@@ -246,18 +307,42 @@ export class LLMService {
         });
         console.log(`[LLM] Received comment analysis from Anthropic`);
 
-        const content = response.content[0].text || "{}";
+        let content = "{}";
+        if (
+            Array.isArray(response.content) &&
+            response.content.length > 0 &&
+            response.content[0].text
+        ) {
+            content = response.content[0].text;
+        }
+
         const sanitizedContent = this.sanitizeJsonText(content);
         const jsonMatch = sanitizedContent.match(/\{[\s\S]*\}/);
         const jsonStr = jsonMatch ? jsonMatch[0] : "{}";
+        let parsedData;
+
+        try {
+            parsedData = JSON.parse(jsonStr);
+        } catch (e) {
+            console.error(
+                `[LLM] Error parsing JSON from Anthropic response:`,
+                e
+            );
+            parsedData = {
+                overallSentiment: "neutral",
+                confidence: 0,
+                keyThemes: [],
+                riskIndicators: [],
+            };
+        }
 
         console.log(`[LLM] Parsed JSON response for comment analysis`);
-        return JSON.parse(jsonStr);
+        return parsedData;
     }
 
     private determinePostSentiment(
         contentSentiment: PostSentiment,
-        commentSentiment: any
+        commentSentiment: CommentSentiment
     ): PostSentiment {
         console.log(
             `[LLM] Determining sentiment - Content: ${contentSentiment}, Comments: ${commentSentiment.overallSentiment}`
