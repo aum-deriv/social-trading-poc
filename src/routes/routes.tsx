@@ -43,56 +43,28 @@ export const routes: RouteObject[] = [
         ),
         errorElement: <NotFound />,
         children: [
-            {
-                element: <AuthLayout />,
-                errorElement: <NotFound />,
-                children: [
-                    {
-                        path: "/login",
-                        element: <Login />
-                    },
-                    {
-                        path: "/welcome",
-                        element: (
-                            <ProtectedRoute>
-                                <Welcome />
-                            </ProtectedRoute>
-                        )
-                    }
-                ]
-            },
-            {
-                element: (
-                    <ProtectedRoute>
-                        <MainLayout />
-                    </ProtectedRoute>
-                ),
-                errorElement: <NotFound />,
-                children: [
-                    {
-                        path: "/",
-                        element: <Feed />
-                    },
-                    {
-                        path: "/feed",
-                        element: <Feed />
-                    },
-                    {
-                        path: "/discover",
-                        element: (
-                            <Discover />
-                        ),
-                      },
-                    {
-                        path: "/profile/:username",
-                        element: <Profile />,
-                    },
-                    {
-                        path: "*",
-                        element: <NotFound />
-                    }
-                ]
-            }
+          {
+            path: "/",
+            element: <Feed />
+          },
+          {
+            path: "/feed",
+            element: <Feed />
+          },
+          {
+            path: "/discover",
+            element: <Discover />
+          },
+          {
+            path: "/profile/:username",
+            element: <Profile />,
+          },
+          {
+            path: "*",
+            element: <NotFound />
+          }
         ]
-    }
-  ]}];
+      }
+    ]
+  }
+];
