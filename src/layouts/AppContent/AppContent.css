@@ -5,7 +5,7 @@
   font-family: var(--font-family-base);
   margin: 0;
   padding: 0;
-  min-height: 0;
+  height: 100%;
   background-color: rgba(0, 208, 255, 0.05);
 }
 
@@ -35,7 +35,7 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .app-content {
-    min-height: calc(100vh - 56px - 160px);
+    height: calc(100% - 56px - 64px);
   }
 
   .app-content__inner {

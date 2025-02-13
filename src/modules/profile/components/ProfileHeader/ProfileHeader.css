@@ -131,7 +131,7 @@
 
 @media (max-width: 640px) {
     .profile-header {
-        padding: 1rem;
+        padding: unset;
     }
 
     .profile-header__main {
