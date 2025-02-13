@@ -8,13 +8,38 @@ import Welcome from "@/pages/welcome";
 import Profile from "@/pages/profile";
 import NotFound from "@/pages/not-found";
 import ProtectedRoute from "@/components/ProtectedRoute";
+import Discover from "@/pages/discover/Discover";
 
 export const routes: RouteObject[] = [
-    {
+  {
+    element: (
+      <AuthProvider>
+        <Outlet />
+      </AuthProvider>
+    ),
+    children: [
+      {
+        element: <AuthLayout />,
+        children: [
+          {
+            path: "/login",
+            element: <Login />,
+          },
+          {
+            path: "/welcome",
+            element: (
+              <ProtectedRoute>
+                <Welcome />
+              </ProtectedRoute>
+            ),
+          },
+        ],
+      },
+      {
         element: (
-            <AuthProvider>
-                <Outlet />
-            </AuthProvider>
+          <ProtectedRoute>
+            <MainLayout />
+          </ProtectedRoute>
         ),
         errorElement: <NotFound />,
         children: [
@@ -53,6 +78,12 @@ export const routes: RouteObject[] = [
                         element: <Feed />
                     },
                     {
+                        path: "/discover",
+                        element: (
+                            <Discover />
+                        ),
+                      },
+                    {
                         path: "/profile/:username",
                         element: <Profile />,
                     },
@@ -64,4 +95,4 @@ export const routes: RouteObject[] = [
             }
         ]
     }
-];
+  ]}];

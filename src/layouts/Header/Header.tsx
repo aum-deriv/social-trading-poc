@@ -15,8 +15,8 @@ const Header = () => {
                         <span className="header__logo-text">Social Trader</span>
                     </Link>
             </div>
-        </header>
-    );
+    </header>
+  );
 };
 
 export default Header;

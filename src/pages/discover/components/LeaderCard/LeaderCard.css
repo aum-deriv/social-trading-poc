@@ -1,0 +1,242 @@
+.leader-card {
+  background-color: #fff;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 20px;
+}
+
+.leader-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.leader-card--large .leader-card__avatar {
+  width: 120px;
+  height: 120px;
+}
+
+.leader-card--large .leader-card__banner {
+  height: 80px;
+}
+
+.leader-card--large .leader-card__info {
+  padding: 4rem 1.5rem 1.5rem;
+}
+
+.leader-card__banner {
+  background: #5bb5f9;
+  height: 60px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.leader-card__rank {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.leader-card__trophy {
+  color: #ffd700;
+}
+
+.leader-card__profit-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.leader-card__arrow-up {
+  color: var(--success);
+}
+
+.leader-card__arrow-down {
+  color: var(--error);
+}
+
+.leader-card__avatar {
+  position: absolute;
+  bottom: 0;
+  transform: translateY(50%);
+  width: 110px;
+  height: 110px;
+}
+
+.leader-card__avatar-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  overflow: visible;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.leader-card__avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.leader-card__avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e0e0e0;
+  color: #666;
+  font-size: 2rem;
+  font-weight: 500;
+  border-radius: 50%;
+}
+
+.leader-card__follow-icon {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #5bb5f9;
+  border: 2px solid #fff;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  z-index: 1;
+}
+
+.leader-card--large .leader-card__follow-icon {
+  width: 36px;
+  height: 36px;
+  border-width: 3px;
+}
+
+.leader-card__follow-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 8px rgba(91, 181, 249, 0.3);
+}
+
+.leader-card__follow-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.leader-card--large .leader-card__follow-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.leader-card__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 3rem 1rem 1rem;
+  text-align: center;
+}
+
+.leader-card__name {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.leader-card--large .leader-card__name {
+  font-size: var(--font-size-xl);
+}
+
+.leader-card__stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.leader-card__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.leader-card__stat-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.leader-card--large .leader-card__stat-label {
+  font-size: 1rem;
+}
+
+.leader-card__stat-value {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.leader-card--large .leader-card__stat-value {
+  font-size: 1.5rem;
+}
+
+.leader-card__stat-value--profit {
+  color: var(--success);
+}
+
+@media (max-width: 768px) {
+  .leader-card--large {
+    width: 100%;
+    margin: 0 0 20px 0;
+  }
+
+  .leader-card__banner {
+    height: 70px;
+  }
+
+  .leader-card__avatar {
+    width: 110px;
+    height: 110px;
+  }
+
+  .leader-card__info {
+    padding: 4rem 1.25rem 1.25rem;
+  }
+
+  .leader-card__stats {
+    gap: 2rem;
+    margin: 0.75rem 0 1.25rem;
+  }
+
+  .leader-card__stat-value {
+    font-size: 1.5rem;
+  }
+}

@@ -20,7 +20,7 @@
   top: 0;
   bottom: 0;
   width: 2px;
-  height: auto;
+  height: 90%;
   background: rgba(255, 255, 255, 0.3);
   z-index: 1;
 }
@@ -42,7 +42,7 @@
 }
 
 .progress-bar.step-risk::after {
-  height: 100%;
+  height: 90%;
 }
 
 .progress-step {
@@ -148,7 +148,6 @@
 .preferences-form {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
 }
 
 .form-group {

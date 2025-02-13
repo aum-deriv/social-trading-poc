@@ -4,6 +4,7 @@ interface User {
     id: string;
     username: string;
     email: string;
+    displayName: string;
     profilePicture?: string;
     userType: "leader" | "copier";
     followers?: string[]; // Array of user IDs
