@@ -1,0 +1,118 @@
+.ai-button {
+    position: relative;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: #00D0FF;
+    border: none;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ai-button:hover {
+    background: #00bfe8;
+}
+
+/* Loading state */
+.ai-button--loading {
+    background: rgba(0, 208, 255, 0.7);
+    cursor: not-allowed;
+}
+
+/* Background sparkles */
+.ai-button__background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.sparkle {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Position sparkles */
+.sparkle-1 { top: 20%; left: 15%; }
+.sparkle-2 { top: 60%; left: 25%; }
+.sparkle-3 { top: 30%; right: 20%; }
+.sparkle-4 { top: 70%; right: 25%; }
+.sparkle-5 { top: 45%; left: 50%; }
+
+/* Animations for each sparkle */
+.ai-button--visible .sparkle {
+    opacity: 1;
+    animation: float 3s infinite;
+}
+
+.ai-button--visible .sparkle-1 { animation-delay: 0s; }
+.ai-button--visible .sparkle-2 { animation-delay: 0.5s; }
+.ai-button--visible .sparkle-3 { animation-delay: 1s; }
+.ai-button--visible .sparkle-4 { animation-delay: 1.5s; }
+.ai-button--visible .sparkle-5 { animation-delay: 2s; }
+
+@keyframes float {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 0.2;
+    }
+    25% {
+        transform: translate(-2px, -4px) rotate(45deg);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translate(2px, -8px) rotate(90deg);
+        opacity: 0.4;
+    }
+    75% {
+        transform: translate(-2px, -4px) rotate(135deg);
+        opacity: 0.6;
+    }
+    100% {
+        transform: translate(0, 0) rotate(180deg);
+        opacity: 0.2;
+    }
+}
+
+/* Content layout */
+.ai-button__content {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    position: relative;
+    z-index: 1;
+}
+
+.ai-button__text {
+    position: relative;
+}
+
+.ai-button__icon {
+    font-size: 14px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.1); }
+    100% { opacity: 0.6; transform: scale(0.9); }
+}
+
+/* Disabled state */
+.ai-button:disabled {
+    background: rgba(0, 208, 255, 0.5);
+    cursor: not-allowed;
+}

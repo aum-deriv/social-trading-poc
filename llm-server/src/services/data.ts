@@ -2,8 +2,14 @@ import fs from "fs";
 import path from "path";
 import { Post, User, TradingStrategy } from "../types";
 
+interface Database {
+    users: User[];
+    posts: Post[];
+    tradingStrategies: TradingStrategy[];
+}
+
 export class DataService {
-    private data: any;
+    private data: Database;
 
     constructor() {
         // Go up two levels from src/services to reach root
@@ -17,6 +23,10 @@ export class DataService {
 
     getUserPosts(): Post[] {
         return this.data.posts;
+    }
+
+    getPost(postId: string): Post | null {
+        return this.data.posts.find((p: Post) => p.id === postId) || null;
     }
 
     getUserStrategies(userId: string): TradingStrategy[] {

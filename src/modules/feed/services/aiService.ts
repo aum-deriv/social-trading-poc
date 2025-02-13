@@ -1,49 +1,32 @@
 import { AIInsight } from "@/types/ai.types";
 
-interface AIResponse {
-    insights: AIInsight[];
+interface SingleInsightResponse {
+    insight: AIInsight;
 }
 
-export const getPostInsights = async (userId: string): Promise<AIInsight[]> => {
+export const getPostInsight = async (
+    userId: string,
+    postId: string
+): Promise<AIInsight | null> => {
     try {
         const response = await fetch(
-            `http://localhost:3002/api/ai/feed-insights/${userId}`
+            `http://localhost:3002/api/ai/post-insight/${userId}/${postId}`
         );
         if (!response.ok) {
-            console.warn(`AI insights service error: ${response.status}`);
-            return [];
+            console.warn(`AI insight service error: ${response.status}`);
+            return null;
         }
-        const data: AIResponse = await response.json();
+        const data: SingleInsightResponse = await response.json();
 
-        // Validate insights array
-        if (!data.insights || !Array.isArray(data.insights)) {
-            console.warn("Invalid insights response:", data);
-            return [];
-        }
-
-        // Filter out invalid insights
-        const validInsights = data.insights.filter(
-            (insight) =>
-                insight &&
-                insight.postId &&
-                insight.sentiment &&
-                insight.summary &&
-                typeof insight.isLegitimate === "boolean" &&
-                insight.riskLevel &&
-                insight.recommendation
-        );
-
-        if (validInsights.length < data.insights.length) {
-            console.warn(
-                `Filtered out ${
-                    data.insights.length - validInsights.length
-                } invalid insights`
-            );
+        // Validate insight
+        if (!data.insight || !data.insight.sentiment) {
+            console.warn("Invalid insight response:", data);
+            return null;
         }
 
-        return validInsights;
+        return data.insight;
     } catch (error) {
-        console.error("AI insights service error:", error);
-        return [];
+        console.error("AI insight service error:", error);
+        return null;
     }
 };

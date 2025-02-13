@@ -174,6 +174,131 @@ export class LLMService {
         return parsedData;
     }
 
+    private async analyzeSinglePost(
+        post: Post,
+        user: User,
+        strategies: TradingStrategy[]
+    ): Promise<AIInsight | null> {
+        console.log(`[LLM] Analyzing single post ${post.id}`);
+
+        const postData = {
+            id: post.id,
+            content: this.trimPostContent(post),
+            comments: this.trimComments(post.engagement.comments),
+        };
+
+        const prompt = `
+            You are an AI trading insights analyzer. Your task is to analyze this trading-related post and provide insights in a specific JSON format.
+
+            Input:
+            - Post: ${JSON.stringify(postData)}
+            - User Type: ${user.userType}
+            - Related Strategies: ${JSON.stringify(strategies)}
+
+            Instructions:
+            1. Analyze the post's content and comments
+            2. Generate insight following the exact structure below
+            3. Return ONLY a JSON object, no other text
+
+            Required JSON format:
+            {
+                "postId": "${post.id}",
+                "summary": "string (brief overview, 1 very-short sentence)",
+                "sentiment": "string (one of: pump_and_dump, spam, misleading, high_risk, conservative, consistent, verified_strategy, risk_managed, educational, analysis, discussion, update)",
+                "isLegitimate": "boolean (true/false)",
+                "riskLevel": "string (one of: low, medium, high)",
+                "recommendation": "string (personalized advice)"
+            }
+
+            Remember:
+            - Return ONLY the JSON object
+            - Include ALL required fields
+            - Use EXACT values for sentiment and riskLevel
+            - Ensure valid JSON syntax
+        `;
+
+        console.log(`[LLM] Sending request to Anthropic...`);
+        const response = await this.anthropic.messages.create({
+            model: this.MODEL,
+            max_tokens: 1024,
+            messages: [{ role: "user", content: prompt }],
+        });
+        console.log(`[LLM] Received response from Anthropic`);
+
+        let content = "{}";
+        if (
+            Array.isArray(response.content) &&
+            response.content.length > 0 &&
+            response.content[0].text
+        ) {
+            content = response.content[0].text;
+        }
+
+        // Log raw response for debugging
+        console.log(`[LLM] Raw response content:`, content);
+
+        const sanitizedContent = this.sanitizeJsonText(content);
+        console.log(`[LLM] Sanitized content:`, sanitizedContent);
+
+        // Try to find JSON object in the response
+        const jsonMatch = sanitizedContent.match(/\{[\s\S]*\}/);
+        if (!jsonMatch) {
+            console.warn(`[LLM] No JSON object found in response`);
+            return null;
+        }
+
+        const jsonStr = jsonMatch[0];
+        console.log(`[LLM] Extracted JSON string:`, jsonStr);
+
+        try {
+            const parsedData = JSON.parse(jsonStr);
+
+            // Validate insight has required fields
+            const isValid =
+                parsedData.postId === post.id &&
+                parsedData.summary &&
+                parsedData.sentiment &&
+                typeof parsedData.isLegitimate === "boolean" &&
+                parsedData.riskLevel &&
+                parsedData.recommendation;
+
+            if (!isValid) {
+                console.warn(`[LLM] Invalid insight:`, parsedData);
+                return null;
+            }
+
+            return parsedData;
+        } catch (e) {
+            console.error(
+                `[LLM] Error parsing JSON from Anthropic response:`,
+                e,
+                `\nJSON string:`,
+                jsonStr
+            );
+            return null;
+        }
+    }
+
+    public async generatePostInsight(
+        post: Post,
+        user: User,
+        strategies: TradingStrategy[]
+    ): Promise<AIInsight | null> {
+        console.log(`[LLM] Starting analysis for post ${post.id}`);
+        try {
+            const insight = await this.analyzeSinglePost(
+                post,
+                user,
+                strategies
+            );
+            console.log(`[LLM] Successfully analyzed post ${post.id}`);
+            return insight;
+        } catch (error) {
+            console.error(`[LLM] Error analyzing post ${post.id}:`, error);
+            return null;
+        }
+    }
+
     public async generatePostInsights(
         posts: Post[],
         user: User,
@@ -192,52 +317,6 @@ export class LLMService {
             console.error(`[LLM] Error in batch analysis:`, error);
             return [];
         }
-
-        /* Original implementation commented out
-        console.log(`[LLM] Starting analysis for ${posts.length} posts`);
-        const insights: AIInsight[] = [];
-
-        for (let i = 0; i < posts.length; i++) {
-            const post = posts[i];
-            console.log(
-                `[LLM] Processing post ${post.id} (${i + 1}/${posts.length})`
-            );
-
-            try {
-                console.log(`[LLM] Getting content analysis...`);
-                const analysis = await this.analyzePostContent(
-                    post,
-                    user,
-                    strategies
-                );
-
-                console.log(`[LLM] Getting comment analysis...`);
-                const sentiment = await this.analyzePostComments(
-                    post.engagement.comments
-                );
-
-                console.log(`[LLM] Determining final sentiment...`);
-                const finalSentiment = this.determinePostSentiment(
-                    analysis.sentiment,
-                    sentiment
-                );
-                console.log(`[LLM] Final sentiment: ${finalSentiment}`);
-
-                insights.push({
-                    postId: post.id,
-                    ...analysis,
-                    sentiment: finalSentiment,
-                });
-                console.log(`[LLM] Added insights for post ${post.id}`);
-            } catch (error) {
-                console.error(`[LLM] Error analyzing post ${post.id}:`, error);
-                // Continue with other posts even if one fails
-            }
-        }
-
-        console.log(`[LLM] Completed analysis for all posts`);
-        return insights;
-        */
     }
 
     private async analyzePostContent(

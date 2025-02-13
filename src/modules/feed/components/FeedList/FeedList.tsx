@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import type Post from "@/types/post.types";
 import type User from "@/types/user.types";
-import type { AIInsight } from "@/types/ai.types";
 import FeedItem from "./components/FeedItem";
 import { getPosts } from "../../services/postService";
-import { getPostInsights } from "../../services/aiService";
 import "./FeedList.css";
 
 interface FeedListProps {
@@ -17,39 +15,8 @@ const FeedList = ({ currentUserId, activeTab }: FeedListProps) => {
     const [usersCache, setUsersCache] = useState<{
         [key: string]: User;
     } | null>(null);
-    const [insights, setInsights] = useState<{ [key: string]: AIInsight }>({});
-    const [insightsLoading, setInsightsLoading] = useState(true);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-
-    // Fetch insights when currentUserId changes
-    useEffect(() => {
-        async function fetchInsights() {
-            if (currentUserId) {
-                try {
-                    setInsightsLoading(true);
-                    // Clear old insights first
-                    setInsights({});
-
-                    const insightsList = await getPostInsights(currentUserId);
-                    const insightsMap = insightsList.reduce((acc, insight) => {
-                        // Only add valid insights
-                        if (insight && insight.postId && insight.sentiment) {
-                            acc[insight.postId] = insight;
-                        }
-                        return acc;
-                    }, {} as { [key: string]: AIInsight });
-
-                    setInsights(insightsMap);
-                } catch (error) {
-                    console.error("Failed to fetch insights:", error);
-                } finally {
-                    setInsightsLoading(false);
-                }
-            }
-        }
-        fetchInsights();
-    }, [currentUserId]);
 
     // Fetch and cache users only when currentUserId changes
     useEffect(() => {
@@ -120,9 +87,6 @@ const FeedList = ({ currentUserId, activeTab }: FeedListProps) => {
                         post={post}
                         user={usersCache?.[post.userId]}
                         currentUserId={currentUserId}
-                        insight={
-                            insightsLoading ? undefined : insights[post.id]
-                        }
                     />
                 ))
             ) : (
