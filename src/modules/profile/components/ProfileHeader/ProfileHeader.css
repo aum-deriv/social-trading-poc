@@ -97,8 +97,8 @@
     grid-template-rows: repeat(2, 1fr);
     gap: 1.5rem;
     padding: 1.5rem;
-    background-color: #f9fafb;
-    border-radius: 0.5rem;
+    background-color: #E0F3FF;
+    border-radius: 1rem;
     max-width: 400px;
 }
 
