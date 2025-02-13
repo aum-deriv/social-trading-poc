@@ -1,9 +1,11 @@
 import { useState } from "react";
 import type Post from "@/types/post.types";
 import type User from "@/types/user.types";
+import type { AIInsight } from "@/types/ai.types";
 import PostHeader from "./components/PostHeader";
 import PostContent from "./components/PostContent";
 import PostEngagement from "./components/PostEngagement";
+import PostAIInsights from "./components/PostAIInsights/PostAIInsights";
 import {
     addComment,
     addReply,
@@ -15,9 +17,10 @@ interface FeedItemProps {
     post: Post;
     user?: User;
     currentUserId: string;
+    insight?: AIInsight;
 }
 
-const FeedItem = ({ post, user, currentUserId }: FeedItemProps) => {
+const FeedItem = ({ post, user, currentUserId, insight }: FeedItemProps) => {
     const [engagement, setEngagement] = useState(post.engagement);
 
     const handleLike = () => {
@@ -81,6 +84,16 @@ const FeedItem = ({ post, user, currentUserId }: FeedItemProps) => {
         <article className="feed-item">
             {user && <PostHeader user={user} timestamp={post.createdAt} />}
             <PostContent content={post.content} />
+            {/* Only render PostAIInsights if we have a valid insight */}
+            {insight && insight.sentiment && (
+                <PostAIInsights
+                    insight={insight}
+                    userType={user?.userType ?? "copier"}
+                    onCopyTrader={() => {
+                        /* TODO: Implement copy trader */
+                    }}
+                />
+            )}
             <PostEngagement
                 postId={post.id}
                 content={post.content}

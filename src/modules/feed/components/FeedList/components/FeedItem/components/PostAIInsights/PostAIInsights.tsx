@@ -1,37 +1,26 @@
 import Button from "@/components/input/Button";
 import Badge from "@/components/feedback/Badge";
-import type { Comment } from "@/types/post.types";
-import { PostSentiment, getSentimentDetails } from "./config";
+import { getSentimentDetails } from "./config";
+import type { AIInsight } from "@/types/ai.types";
 import "./PostAIInsights.css";
 
 interface PostAIInsightsProps {
-    postId: string;
-    content: {
-        text: string;
-        images?: string[];
-    };
-    comments: Comment[];
+    insight: AIInsight;
     userType: "leader" | "copier";
     onCopyTrader?: () => void;
 }
 
 const PostAIInsights = ({
-    postId, // Will be used for AI analysis caching
-    content, // Will be used for content analysis
-    comments, // Will be used for sentiment analysis
+    insight,
     userType,
     onCopyTrader,
 }: PostAIInsightsProps) => {
-    // Placeholder values - these would come from AI service
-    const isLegitimate = content.text.length > 0; // Simple validation for now
-    const summary = `Analysis of post ${postId}: ${content.text.substring(
-        0,
-        100
-    )}...`;
-    // This would be determined by AI service in production
-    const sentiment: PostSentiment =
-        comments.length > 0 ? "consistent" : "analysis";
-    const sentimentDetails = getSentimentDetails(sentiment);
+    // Return null if insight is not valid
+    if (!insight || !insight.sentiment) {
+        return null;
+    }
+
+    const sentimentDetails = getSentimentDetails(insight.sentiment);
 
     return (
         <div className="post-ai-insights">
@@ -39,15 +28,15 @@ const PostAIInsights = ({
             <h4 className="post-ai-insights__title">✦ AI Insights</h4>
 
             {/* Summary */}
-            <p className="post-ai-insights__summary">{summary}</p>
+            <p className="post-ai-insights__summary">{insight.summary}</p>
 
             {/* Badges Row */}
             <div className="post-ai-insights__badges">
                 <Badge
-                    variant={isLegitimate ? "success" : "warning"}
-                    icon={isLegitimate ? "✓" : "⚠️"}
+                    variant={insight.isLegitimate ? "success" : "warning"}
+                    icon={insight.isLegitimate ? "✓" : "⚠️"}
                 >
-                    {isLegitimate ? "Verified" : "Needs Verification"}
+                    {insight.isLegitimate ? "Verified" : "Needs Verification"}
                 </Badge>
                 <Badge
                     variant={sentimentDetails.variant}
@@ -55,7 +44,32 @@ const PostAIInsights = ({
                 >
                     {sentimentDetails.text}
                 </Badge>
+                <Badge
+                    variant={
+                        insight.riskLevel === "low"
+                            ? "success"
+                            : insight.riskLevel === "medium"
+                            ? "warning"
+                            : "failed"
+                    }
+                    icon={
+                        insight.riskLevel === "low"
+                            ? "🛡️"
+                            : insight.riskLevel === "medium"
+                            ? "⚠️"
+                            : "⚡"
+                    }
+                >
+                    {`${insight.riskLevel
+                        .charAt(0)
+                        .toUpperCase()}${insight.riskLevel.slice(1)} Risk`}
+                </Badge>
             </div>
+
+            {/* Recommendation */}
+            <p className="post-ai-insights__recommendation">
+                {insight.recommendation}
+            </p>
 
             {/* Quick Actions */}
             <div className="post-ai-insights__actions">

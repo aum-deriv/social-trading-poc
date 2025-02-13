@@ -72,27 +72,42 @@ export class LLMService {
         }));
 
         const prompt = `
-            Analyze these trading-related posts and provide insights based on the user's profile:
+            You are an AI trading insights analyzer. Your task is to analyze trading-related posts and provide insights in a specific JSON format.
 
-            Posts: ${JSON.stringify(postsData)}
-            User Type: ${user.userType}
-            Related Strategies: ${JSON.stringify(strategies)}
+            Input:
+            - Posts: ${JSON.stringify(postsData)}
+            - User Type: ${user.userType}
+            - Related Strategies: ${JSON.stringify(strategies)}
 
-            Provide an array of analyses in JSON format, where each analysis follows this structure:
-            {
-                "postId": "post's id",
-                "summary": "Brief overview of the post content",
-                "sentiment": "One of: pump_and_dump, spam, misleading, high_risk, conservative, consistent, verified_strategy, risk_managed, educational, analysis, discussion, update",
-                "isLegitimate": true,
-                "riskLevel": "Assessment of trading risk (low/medium/high)",
-                "recommendation": "Personalized recommendation based on user type and risk level"
-            }
+            Instructions:
+            1. Analyze each post's content and comments
+            2. Generate insights following the exact structure below
+            3. Return ONLY a JSON array, no other text
+
+            Required JSON format:
+            [
+                {
+                    "postId": "string (must match post's id)",
+                    "summary": "string (brief overview)",
+                    "sentiment": "string (one of: pump_and_dump, spam, misleading, high_risk, conservative, consistent, verified_strategy, risk_managed, educational, analysis, discussion, update)",
+                    "isLegitimate": "boolean (true/false)",
+                    "riskLevel": "string (one of: low, medium, high)",
+                    "recommendation": "string (personalized advice)"
+                },
+                ...
+            ]
+
+            Remember:
+            - Return ONLY the JSON array
+            - Include ALL required fields for each post
+            - Use EXACT values for sentiment and riskLevel
+            - Ensure valid JSON syntax
         `;
 
         console.log(`[LLM] Sending batch request to Anthropic...`);
         const response = await this.anthropic.messages.create({
             model: this.MODEL,
-            max_tokens: 1024,
+            max_tokens: 4096,
             messages: [{ role: "user", content: prompt }],
         });
         console.log(`[LLM] Received batch response from Anthropic`);
@@ -106,23 +121,55 @@ export class LLMService {
             content = response.content[0].text;
         }
 
-        const sanitizedContent = this.sanitizeJsonText(content);
-        const jsonMatch = sanitizedContent.match(/\[[\s\S]*\]/);
-        const jsonStr = jsonMatch ? jsonMatch[0] : "[]";
-        let parsedData;
+        // Log raw response for debugging
+        console.log(`[LLM] Raw response content:`, content);
 
+        const sanitizedContent = this.sanitizeJsonText(content);
+        console.log(`[LLM] Sanitized content:`, sanitizedContent);
+
+        // Try to find JSON array in the response
+        const jsonMatch = sanitizedContent.match(/\[[\s\S]*\]/);
+        if (!jsonMatch) {
+            console.warn(`[LLM] No JSON array found in response`);
+            return []; // Return empty array if no JSON found
+        }
+
+        const jsonStr = jsonMatch[0];
+        console.log(`[LLM] Extracted JSON string:`, jsonStr);
+
+        let parsedData;
         try {
             parsedData = JSON.parse(jsonStr);
+            if (!Array.isArray(parsedData)) {
+                console.warn(`[LLM] Parsed data is not an array`);
+                return [];
+            }
+            // Validate each insight has required fields
+            parsedData = parsedData.filter((insight) => {
+                const isValid =
+                    insight.postId &&
+                    insight.summary &&
+                    insight.sentiment &&
+                    typeof insight.isLegitimate === "boolean" &&
+                    insight.riskLevel &&
+                    insight.recommendation;
+                if (!isValid) {
+                    console.warn(`[LLM] Invalid insight:`, insight);
+                }
+                return isValid;
+            });
         } catch (e) {
             console.error(
                 `[LLM] Error parsing JSON from Anthropic response:`,
-                e
+                e,
+                `\nJSON string:`,
+                jsonStr
             );
-            parsedData = []; // fallback to empty array
+            return []; // Return empty array on parse error
         }
 
         console.log(
-            `[LLM] Successfully parsed batch response with ${parsedData.length} insights`
+            `[LLM] Successfully parsed batch response with ${parsedData.length} valid insights`
         );
         return parsedData;
     }
