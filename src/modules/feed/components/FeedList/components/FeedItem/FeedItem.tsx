@@ -7,10 +7,10 @@ import PostContent from "./components/PostContent";
 import PostEngagement from "./components/PostEngagement";
 import PostAIInsights from "./components/PostAIInsights/PostAIInsights";
 import {
-    addComment,
-    addReply,
-    likeComment,
-} from "@/modules/feed/services/postService";
+    useAddComment,
+    useAddReply,
+    useLikeComment,
+} from "@/modules/feed/hooks/usePostActions";
 import { usePostInsight } from "@/modules/feed/hooks/usePostInsight";
 import "./FeedItem.css";
 
@@ -69,13 +69,16 @@ const FeedItem = ({
         });
     };
 
+    const { addComment } = useAddComment(post.id);
+    const { likeComment } = useLikeComment(post.id);
+    const { addReply } = useAddReply(post.id);
+
     const handleComment = async (content: string) => {
         try {
-            const updatedPost = await addComment(post.id, {
-                userId: currentUserId,
-                content,
-            });
-            setEngagement(updatedPost.engagement);
+            const updatedPost = await addComment(currentUserId, content);
+            if (updatedPost) {
+                setEngagement(updatedPost.engagement);
+            }
         } catch (error) {
             console.error("Failed to add comment:", error);
         }
@@ -83,12 +86,10 @@ const FeedItem = ({
 
     const handleLikeComment = async (commentId: string) => {
         try {
-            const updatedPost = await likeComment(
-                post.id,
-                commentId,
-                currentUserId
-            );
-            setEngagement(updatedPost.engagement);
+            const updatedPost = await likeComment(commentId, currentUserId);
+            if (updatedPost) {
+                setEngagement(updatedPost.engagement);
+            }
         } catch (error) {
             console.error("Failed to like comment:", error);
         }
@@ -96,12 +97,14 @@ const FeedItem = ({
 
     const handleReplyToComment = async (commentId: string, content: string) => {
         try {
-            const updatedPost = await addReply(post.id, {
-                userId: currentUserId,
-                content,
+            const updatedPost = await addReply(
                 commentId,
-            });
-            setEngagement(updatedPost.engagement);
+                currentUserId,
+                content
+            );
+            if (updatedPost) {
+                setEngagement(updatedPost.engagement);
+            }
         } catch (error) {
             console.error("Failed to add reply:", error);
         }
