@@ -1,5 +1,7 @@
 import { useState } from "react";
 import type { Comment } from "@/types/post.types";
+import Avatar from "@/components/user/Avatar";
+import { useUser } from "@/modules/feed/hooks/useUser";
 import "./CommentItem.css";
 import Button from "@/components/input/Button";
 
@@ -21,6 +23,7 @@ const CommentItem = ({
     const [showReplies, setShowReplies] = useState(false);
     const isLiked = comment.likes.includes(currentUserId);
     const hasReplies = comment.replies && comment.replies.length > 0;
+    const { user, loading } = useUser(comment.userId);
 
     const toggleReplies = () => {
         setShowReplies(!showReplies);
@@ -39,13 +42,16 @@ const CommentItem = ({
     return (
         <div className="comment-item">
             <div className="comment-item__avatar">
-                {/* Placeholder avatar */}
-                <div className="comment-item__avatar-placeholder" />
+                <Avatar 
+                    size="small" 
+                    username={user?.displayName?.split('|')[0].trim() || comment.userId}
+                    src={user?.profilePicture}
+                />
             </div>
             <div className="comment-item__content">
                 <div className="comment-item__header">
                     <span className="comment-item__username">
-                        @{comment.userId}
+                        {loading ? `@${comment.userId}` : user?.displayName ? user.displayName.split('|')[0].trim() : `@${comment.userId}`}
                     </span>
                     <span className="comment-item__timestamp">
                         {formatDate(comment.createdAt)}

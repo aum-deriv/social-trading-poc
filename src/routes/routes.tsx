@@ -9,6 +9,7 @@ import Profile from "@/pages/profile";
 import NotFound from "@/pages/not-found";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import Discover from "@/pages/discover/Discover";
+import Reports from "@/pages/reports";
 
 export const routes: RouteObject[] = [
   {
@@ -45,15 +46,19 @@ export const routes: RouteObject[] = [
         children: [
           {
             path: "/",
-            element: <Feed />
+            element: <Feed />,
           },
           {
             path: "/feed",
-            element: <Feed />
+            element: <Feed />,
           },
           {
             path: "/discover",
-            element: <Discover />
+            element: <Discover />,
+          },
+          {
+            path: "/reports",
+            element: <Reports />,
           },
           {
             path: "/profile/:username",
@@ -61,10 +66,10 @@ export const routes: RouteObject[] = [
           },
           {
             path: "*",
-            element: <NotFound />
-          }
-        ]
-      }
-    ]
-  }
+            element: <NotFound />,
+          },
+        ],
+      },
+    ],
+  },
 ];

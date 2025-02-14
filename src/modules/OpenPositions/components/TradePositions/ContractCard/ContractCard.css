@@ -1,0 +1,21 @@
+.contract-card {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px;
+  min-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #67cdff;
+}
+
+.contract-card-item {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.contract-card-title {
+  font-weight: bold;
+  margin-bottom: 4px;
+}

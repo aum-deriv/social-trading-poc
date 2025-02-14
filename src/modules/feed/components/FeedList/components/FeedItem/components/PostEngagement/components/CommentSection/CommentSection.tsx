@@ -34,7 +34,10 @@ const CommentSection = ({
 
     return (
         <div className="comment-section">
-            <CommentInput onSubmit={onAddComment} />
+            <CommentInput 
+                onSubmit={onAddComment}
+                currentUserId={currentUserId}
+            />
             <div className="comment-section__divider" />
             {comments.length > 0 ? (
                 <div className="comment-section__count">
@@ -63,6 +66,7 @@ const CommentSection = ({
                                 <CommentInput
                                     onSubmit={handleSubmitReply}
                                     placeholder="Write a reply..."
+                                    currentUserId={currentUserId}
                                 />
                             </div>
                         )}

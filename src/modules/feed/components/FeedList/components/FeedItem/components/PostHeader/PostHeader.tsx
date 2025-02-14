@@ -1,4 +1,5 @@
 import type User from "@/types/user.types";
+import Avatar from "@/components/user/Avatar";
 import AIButton from "@/components/AIButton";
 import "./PostHeader.css";
 
@@ -30,14 +31,14 @@ const PostHeader = ({
     return (
         <div className="post-header">
             <div className="post-header__user-info">
-                <img
-                    className="post-header__avatar"
-                    src={user.profilePicture || "/default-avatar.png"}
-                    alt={user.username}
+                <Avatar
+                    size="medium"
+                    username={user.displayName?.split('|')[0].trim() || user.username}
+                    src={user.profilePicture}
                 />
                 <div className="post-header__text">
                     <span className="post-header__username">
-                        {user.username}
+                        {user.displayName?.split('|')[0].trim() || user.username}
                     </span>
                     <span className="post-header__timestamp">
                         {formatTimestamp(timestamp)}

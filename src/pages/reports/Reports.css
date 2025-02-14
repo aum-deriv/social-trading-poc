@@ -1,0 +1,22 @@
+/* Reports Component Styles */
+
+/* Container for the reports page */
+.reports-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+/* Header styles for the reports page */
+.report-header {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+/* Content styles for the reports page */
+.report-content {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #555;
+}

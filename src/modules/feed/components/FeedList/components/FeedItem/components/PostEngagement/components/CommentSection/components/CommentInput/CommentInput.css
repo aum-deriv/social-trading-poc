@@ -10,11 +10,13 @@
     flex-shrink: 0;
 }
 
-.comment-input__avatar-placeholder {
+.comment-input__avatar :global(.avatar--small) {
     width: 32px;
     height: 32px;
+}
+
+.comment-input__avatar :global(.avatar) {
     border-radius: 50%;
-    background-color: #e0e0e0;
 }
 
 .comment-input__container {

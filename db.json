@@ -1654,5 +1654,106 @@
       "createdAt": "2025-02-11T15:15:04.299Z",
       "updatedAt": "2025-02-11T15:15:04.299Z"
     }
+  ],
+  "contracts": [
+    {
+      "buy_price": 100,
+      "contract_id": "CONTRACT_O1",
+      "contract_type": "Options",
+      "currency": "USD",
+      "date_start": "2025-02-13T00:00:00Z",
+      "expiry_time": "2025-02-14T00:00:00Z",
+      "payout": 120,
+      "purchase_time": "2025-02-13T00:05:00Z",
+      "symbol": "XYZ"
+    },
+    {
+      "buy_price": 105,
+      "contract_id": "CONTRACT_O2",
+      "contract_type": "Options",
+      "currency": "USD",
+      "date_start": "2025-02-13T01:00:00Z",
+      "expiry_time": "2025-02-14T01:00:00Z",
+      "payout": 130,
+      "purchase_time": "2025-02-13T01:05:00Z",
+      "symbol": "XYZ"
+    },
+    {
+      "buy_price": 110,
+      "contract_id": "CONTRACT_O3",
+      "contract_type": "Options",
+      "currency": "USD",
+      "date_start": "2025-02-13T02:00:00Z",
+      "expiry_time": "2025-02-14T02:00:00Z",
+      "payout": 140,
+      "purchase_time": "2025-02-13T02:05:00Z",
+      "symbol": "XYZ"
+    },
+    {
+      "buy_price": 95,
+      "contract_id": "CONTRACT_A1",
+      "contract_type": "Accumulators",
+      "currency": "USD",
+      "date_start": "2025-02-13T03:00:00Z",
+      "expiry_time": "2025-02-14T03:00:00Z",
+      "payout": 115,
+      "purchase_time": "2025-02-13T03:05:00Z",
+      "symbol": "XYZ"
+    },
+    {
+      "buy_price": 98,
+      "contract_id": "CONTRACT_A2",
+      "contract_type": "Accumulators",
+      "currency": "USD",
+      "date_start": "2025-02-13T04:00:00Z",
+      "expiry_time": "2025-02-14T04:00:00Z",
+      "payout": 118,
+      "purchase_time": "2025-02-13T04:05:00Z",
+      "symbol": "XYZ"
+    },
+    {
+      "buy_price": 102,
+      "contract_id": "CONTRACT_A3",
+      "contract_type": "Accumulators",
+      "currency": "USD",
+      "date_start": "2025-02-13T05:00:00Z",
+      "expiry_time": "2025-02-14T05:00:00Z",
+      "payout": 122,
+      "purchase_time": "2025-02-13T05:05:00Z",
+      "symbol": "XYZ"
+    },
+    {
+      "buy_price": 115,
+      "contract_id": "CONTRACT_M1",
+      "contract_type": "Multipliers",
+      "currency": "USD",
+      "date_start": "2025-02-13T06:00:00Z",
+      "expiry_time": "2025-02-14T06:00:00Z",
+      "payout": 135,
+      "purchase_time": "2025-02-13T06:05:00Z",
+      "symbol": "XYZ"
+    },
+    {
+      "buy_price": 118,
+      "contract_id": "CONTRACT_M2",
+      "contract_type": "Multipliers",
+      "currency": "USD",
+      "date_start": "2025-02-13T07:00:00Z",
+      "expiry_time": "2025-02-14T07:00:00Z",
+      "payout": 138,
+      "purchase_time": "2025-02-13T07:05:00Z",
+      "symbol": "XYZ"
+    },
+    {
+      "buy_price": 120,
+      "contract_id": "CONTRACT_M3",
+      "contract_type": "Multipliers",
+      "currency": "USD",
+      "date_start": "2025-02-13T08:00:00Z",
+      "expiry_time": "2025-02-14T08:00:00Z",
+      "payout": 140,
+      "purchase_time": "2025-02-13T08:05:00Z",
+      "symbol": "XYZ"
+    }
   ]
 }

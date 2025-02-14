@@ -12,11 +12,9 @@
     align-items: flex-start;
 }
 
-.post-header__avatar {
+.post-header__user-info :global(.avatar--medium) {
     width: 40px;
     height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
 }
 
 .post-header__text {

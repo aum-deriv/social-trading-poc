@@ -1,16 +1,21 @@
 import { useState, FormEvent } from "react";
+import Avatar from "@/components/user/Avatar";
+import useCurrentUser from "@/modules/feed/hooks/useCurrentUser";
 import "./CommentInput.css";
 
 interface CommentInputProps {
     onSubmit: (content: string) => void;
     placeholder?: string;
+    currentUserId: string;
 }
 
 const CommentInput = ({
     onSubmit,
     placeholder = "Write a comment...",
+    currentUserId,
 }: CommentInputProps) => {
     const [content, setContent] = useState("");
+    const { user } = useCurrentUser(currentUserId);
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
@@ -23,8 +28,11 @@ const CommentInput = ({
     return (
         <form className="comment-input" onSubmit={handleSubmit}>
             <div className="comment-input__avatar">
-                {/* Placeholder avatar */}
-                <div className="comment-input__avatar-placeholder" />
+                <Avatar 
+                    size="small" 
+                    username={user?.displayName?.split('|')[0].trim() || currentUserId}
+                    src={user?.profilePicture}
+                />
             </div>
             <div className="comment-input__container">
                 <input

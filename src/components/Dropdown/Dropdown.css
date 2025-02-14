@@ -1,0 +1,21 @@
+.dropdown {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.dropdown-header {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+.dropdown-title {
+  font-size: 16px;
+  font-weight: 500;
+}

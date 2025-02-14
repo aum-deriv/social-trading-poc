@@ -1,0 +1,11 @@
+.profile-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+@media (max-width: 640px) {
+    .profile-actions {
+        width: 100%;
+        justify-content: center;
+    }
+}
