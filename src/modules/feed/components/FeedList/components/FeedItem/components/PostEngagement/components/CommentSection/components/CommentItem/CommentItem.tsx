@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { Comment } from "@/types/post.types";
 import "./CommentItem.css";
+import Button from "@/components/input/Button";
 
 interface CommentItemProps {
     comment: Comment;
@@ -53,27 +54,33 @@ const CommentItem = ({
                 <p className="comment-item__text">{comment.content}</p>
                 <div className="comment-item__actions">
                     {onLike && (
-                        <button
+                        <Button
                             className={`comment-item__action ${
                                 isLiked ? "comment-item__action--liked" : ""
                             }`}
                             onClick={onLike}
+                            variant="text"
                         >
                             {isLiked ? "Liked" : "Like"} ·{" "}
                             {comment.likes.length}
-                        </button>
+                        </Button>
                     )}
-                    <button className="comment-item__action" onClick={onReply}>
+                    <Button
+                        className="comment-item__action"
+                        onClick={onReply}
+                        variant="text"
+                    >
                         Reply
-                    </button>
+                    </Button>
                     {hasReplies && (
-                        <button
+                        <Button
                             className="comment-item__action"
                             onClick={toggleReplies}
+                            variant="text"
                         >
                             {showReplies ? "Hide" : "Show"} replies (
                             {comment.replies?.length})
-                        </button>
+                        </Button>
                     )}
                 </div>
                 {showReplies && comment.replies && (

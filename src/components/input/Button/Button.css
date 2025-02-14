@@ -40,11 +40,11 @@
 .button--text {
     background-color: transparent;
     color: #495057;
-    padding: 0.25rem 0.5rem;
+    padding: 0.25rem 0.25rem;
 }
 
-.button--text:hover:not(:disabled) {
-    background-color: rgba(0, 0, 0, 0.05);
+.button--text:focus {
+    outline: none;
 }
 
 .button--icon {
