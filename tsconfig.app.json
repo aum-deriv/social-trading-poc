@@ -34,7 +34,8 @@
             "@pages/*": ["src/pages/*"],
             "@utils/*": ["src/utils/*"],
             "@constants/*": ["src/constants/*"],
-            "@layouts/*": ["src/layouts/*"]
+            "@layouts/*": ["src/layouts/*"],
+            "@hooks/*": ["src/hooks/*"]
         }
     },
     "include": ["src"]
