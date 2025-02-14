@@ -3,16 +3,18 @@ import type Post from "@/types/post.types";
 import type { Comment } from "@/types/post.types";
 
 export const useCreatePost = () => {
-    return useMutateDB<Post>("posts");
+    const { create } = useMutateDB<Post>("posts");
+    return { create };
 };
 
 export const useUpdatePost = (postId: string) => {
-    return useMutateDB<Post>(`posts/${postId}`);
+    const { update } = useMutateDB<Post>("posts");
+    return { update: (data: Post) => update({ url: postId, data }) };
 };
 
 export const useAddComment = (postId: string) => {
     const { data: post } = useQueryDB<Post>(`posts/${postId}`);
-    const { mutate } = useUpdatePost(postId);
+    const { update } = useUpdatePost(postId);
 
     const addComment = async (userId: string, content: string) => {
         if (!post) return;
@@ -35,7 +37,7 @@ export const useAddComment = (postId: string) => {
             },
         };
 
-        return mutate(updatedPost);
+        return update(updatedPost);
     };
 
     return { addComment };
@@ -71,7 +73,7 @@ const findAndUpdateComment = (
 
 export const useLikeComment = (postId: string) => {
     const { data: post } = useQueryDB<Post>(`posts/${postId}`);
-    const { mutate } = useUpdatePost(postId);
+    const { update } = useUpdatePost(postId);
 
     const likeComment = async (commentId: string, userId: string) => {
         if (!post) return;
@@ -90,7 +92,7 @@ export const useLikeComment = (postId: string) => {
             },
         };
 
-        return mutate(updatedPost);
+        return update(updatedPost);
     };
 
     return { likeComment };
@@ -98,7 +100,7 @@ export const useLikeComment = (postId: string) => {
 
 export const useAddReply = (postId: string) => {
     const { data: post } = useQueryDB<Post>(`posts/${postId}`);
-    const { mutate } = useUpdatePost(postId);
+    const { update } = useUpdatePost(postId);
 
     const addReply = async (
         commentId: string,
@@ -135,7 +137,7 @@ export const useAddReply = (postId: string) => {
             },
         };
 
-        return mutate(updatedPost);
+        return update(updatedPost);
     };
 
     return { addReply };

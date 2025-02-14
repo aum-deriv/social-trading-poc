@@ -1,21 +1,31 @@
 import { useState } from "react";
 
-function useMutation<T, D = unknown>(url: string) {
+interface MutationOptions<D> {
+    url?: string;
+    data?: D;
+}
+
+function useMutation<T, D = unknown>(baseUrl: string) {
     const [data, setData] = useState<T | null>(null);
     const [error, setError] = useState<Error | null>(null);
     const [isLoading, setIsLoading] = useState(false);
 
-    const mutate = async (requestData?: D) => {
+    const executeMutation = async (
+        method: string,
+        options?: MutationOptions<D>
+    ) => {
         try {
             setIsLoading(true);
             setError(null);
 
+            const url = options?.url ? `${baseUrl}/${options.url}` : baseUrl;
+
             const response = await fetch(url, {
-                method: "POST",
+                method,
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: requestData ? JSON.stringify(requestData) : undefined,
+                body: options?.data ? JSON.stringify(options.data) : undefined,
             });
 
             if (!response.ok) {
@@ -34,7 +44,31 @@ function useMutation<T, D = unknown>(url: string) {
         }
     };
 
-    return { data, error, isLoading, mutate };
+    const create = async (options: MutationOptions<D>) => {
+        return executeMutation("POST", options);
+    };
+
+    const update = async (options: MutationOptions<D>) => {
+        return executeMutation("PUT", options);
+    };
+
+    const patch = async (options: MutationOptions<D>) => {
+        return executeMutation("PATCH", options);
+    };
+
+    const remove = async (url?: string) => {
+        return executeMutation("DELETE", url ? { url } : undefined);
+    };
+
+    return {
+        data,
+        error,
+        isLoading,
+        create,
+        update,
+        patch,
+        remove,
+    };
 }
 
 export default useMutation;

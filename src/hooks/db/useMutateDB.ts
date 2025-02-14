@@ -1,12 +1,25 @@
 import { useMutation } from "../base";
 import { DB_BASE_URL } from "./config";
 
-function useMutateDB<T, D = unknown>(path: string) {
+function useMutateDB<T>(basePath: string) {
     // Remove leading slash if present
-    const cleanPath = path.startsWith("/") ? path.slice(1) : path;
-    const url = `${DB_BASE_URL}/${cleanPath}`;
+    const cleanBasePath = basePath.startsWith("/")
+        ? basePath.slice(1)
+        : basePath;
+    const baseUrl = `${DB_BASE_URL}/${cleanBasePath}`;
 
-    return useMutation<T, D>(url);
+    const { data, error, isLoading, create, update, patch, remove } =
+        useMutation<T, T>(baseUrl);
+
+    return {
+        data,
+        error,
+        isLoading,
+        create,
+        update,
+        patch,
+        remove,
+    };
 }
 
 export default useMutateDB;
