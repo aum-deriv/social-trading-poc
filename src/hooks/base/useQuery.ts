@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 
-function useQuery<T>(url: string) {
+function useQuery<T>(url: string, enabled: boolean = true) {
     const [data, setData] = useState<T | null>(null);
     const [error, setError] = useState<Error | null>(null);
     const [isLoading, setIsLoading] = useState(false);
 
     const fetchData = async () => {
+        if (!enabled) return;
         try {
             setIsLoading(true);
             setError(null);
@@ -25,8 +26,10 @@ function useQuery<T>(url: string) {
     };
 
     useEffect(() => {
-        fetchData();
-    }, [url]);
+        if (enabled) {
+            fetchData();
+        }
+    }, [url, enabled]);
 
     return { data, error, isLoading, refetch: fetchData };
 }

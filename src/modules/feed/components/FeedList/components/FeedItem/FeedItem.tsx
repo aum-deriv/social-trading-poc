@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import type Post from "@/types/post.types";
 import type User from "@/types/user.types";
 import type { AIInsight } from "@/types/ai.types";
@@ -11,7 +11,7 @@ import {
     addReply,
     likeComment,
 } from "@/modules/feed/services/postService";
-import { getPostInsight } from "@/modules/feed/services/aiService";
+import { usePostInsight } from "@/modules/feed/hooks/usePostInsight";
 import "./FeedItem.css";
 
 interface FeedItemProps {
@@ -31,29 +31,30 @@ const FeedItem = ({
     const [insight, setInsight] = useState<AIInsight | undefined>(
         initialInsight
     );
-    const [isAnalyzing, setIsAnalyzing] = useState(false);
-
+    const [shouldAnalyze, setShouldAnalyze] = useState(false);
     const insightsRef = useRef<HTMLDivElement>(null);
 
-    const handleAnalyze = async () => {
-        setIsAnalyzing(true);
-        try {
-            const newInsight = await getPostInsight(currentUserId, post.id);
-            if (newInsight) {
-                setInsight(newInsight);
-                // Wait for state update and DOM render
-                setTimeout(() => {
-                    insightsRef.current?.scrollIntoView({
-                        behavior: "smooth",
-                        block: "center",
-                    });
-                }, 100);
-            }
-        } catch (error) {
-            console.error("Failed to analyze post:", error);
-        } finally {
-            setIsAnalyzing(false);
+    const { insight: newInsight, isLoading: isAnalyzing } = usePostInsight(
+        currentUserId,
+        post.id,
+        shouldAnalyze
+    );
+
+    useEffect(() => {
+        if (newInsight) {
+            setInsight(newInsight);
+            // Wait for state update and DOM render
+            setTimeout(() => {
+                insightsRef.current?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center",
+                });
+            }, 100);
         }
+    }, [newInsight]);
+
+    const handleAnalyze = () => {
+        setShouldAnalyze(true);
     };
 
     const handleLike = () => {
