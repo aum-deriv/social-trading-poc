@@ -115,14 +115,16 @@ const FeedList = ({
     return (
         <div className="feed-list">
             {posts.length > 0 ? (
-                posts.map((post) => (
-                    <FeedItem
-                        key={post.id}
-                        post={post}
-                        user={usersCache?.[post.userId]}
-                        currentUserId={currentUserId}
-                    />
-                ))
+                [...posts]
+                    .reverse()
+                    .map((post) => (
+                        <FeedItem
+                            key={post.id}
+                            post={post}
+                            user={usersCache?.[post.userId]}
+                            currentUserId={currentUserId}
+                        />
+                    ))
             ) : (
                 <div className="feed-list__empty">
                     <svg
