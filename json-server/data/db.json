@@ -1,1557 +1,1537 @@
 {
-  "users": [
-    {
-      "id": "leader1",
-      "username": "newTrader",
-      "displayName": "Sarah Johnson | FX Pro",
-      "email": "expert@trading.com",
-      "profilePicture": "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
-      "userType": "leader",
-      "followers": ["copier1", "copier2", "copier3", "leader1"],
-      "following": [
-        "leader9",
-        "leader3",
-        "leader8",
-        "leader1",
-        "leader4",
-        "leader5",
-        "leader11",
-        "leader6"
-      ],
-      "accounts": ["acc1", "acc2"],
-      "performance": {
-        "winRate": 78.5,
-        "totalPnL": 245.8,
-        "monthlyReturn": 12.5,
-        "totalTrades": 156
-      },
-      "createdAt": "2024-01-01T00:00:00Z",
-      "updatedAt": "2024-01-01T00:00:00Z"
-    },
-    {
-      "id": "leader2",
-      "username": "michaelCryptoExpert",
-      "displayName": "Michael Chen | Crypto Expert",
-      "email": "pro@trading.com",
-      "profilePicture": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
-      "userType": "leader",
-      "followers": ["copier1", "copier3", "leader2"],
-      "following": ["copier1"],
-      "accounts": ["acc3"],
-      "performance": {
-        "winRate": 68.5,
-        "totalPnL": 185.2,
-        "monthlyReturn": 8.7,
-        "totalTrades": 98
-      },
-      "createdAt": "2024-01-02T00:00:00Z",
-      "updatedAt": "2024-01-02T00:00:00Z"
-    },
-    {
-      "id": "copier1",
-      "username": "alexLearning",
-      "displayName": "Alex Turner | Learning",
-      "email": "new@trading.com",
-      "profilePicture": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
-      "userType": "copier",
-      "followers": ["leader1", "leader2"],
-      "following": ["leader1", "leader2"],
-      "accounts": ["acc4"],
-      "createdAt": "2024-01-03T00:00:00Z",
-      "updatedAt": "2024-01-03T00:00:00Z"
-    },
-    {
-      "id": "copier2",
-      "username": "emmaStudent",
-      "displayName": "Emma Davis | Student",
-      "email": "learn@trading.com",
-      "profilePicture": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
-      "userType": "copier",
-      "followers": [],
-      "following": ["leader1"],
-      "accounts": ["acc5"],
-      "createdAt": "2024-01-04T00:00:00Z",
-      "updatedAt": "2024-01-04T00:00:00Z"
-    },
-    {
-      "id": "copier3",
-      "username": "davidInvestor",
-      "displayName": "David Kim | Investor",
-      "email": "invest@trading.com",
-      "profilePicture": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
-      "userType": "copier",
-      "followers": [],
-      "following": ["leader1", "leader2"],
-      "accounts": ["acc6", "acc7"],
-      "createdAt": "2024-01-05T00:00:00Z",
-      "updatedAt": "2024-01-05T00:00:00Z"
-    },
-    {
-      "id": "leader3",
-      "username": "mariaForexMaster",
-      "displayName": "Maria Garcia | Forex Master",
-      "email": "forex@trading.com",
-      "profilePicture": "https://images.unsplash.com/photo-1544005313-94ddf0286df2",
-      "userType": "leader",
-      "followers": ["copier4", "copier5", "leader1"],
-      "following": [],
-      "accounts": ["acc8"],
-      "createdAt": "2024-01-06T00:00:00Z",
-      "updatedAt": "2024-01-06T00:00:00Z"
-    },
-    {
-      "id": "leader4",
-      "username": "jamesCryptoKing",
-      "displayName": "James Wilson | Crypto King",
-      "email": "crypto@trading.com",
-      "profilePicture": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7",
-      "userType": "leader",
-      "followers": ["copier6", "leader1"],
-      "following": [],
-      "accounts": ["acc9"],
-      "createdAt": "2024-01-07T00:00:00Z",
-      "updatedAt": "2024-01-07T00:00:00Z"
-    },
-    {
-      "id": "leader5",
-      "username": "lisaTechAnalyst",
-      "displayName": "Lisa Wang | Tech Analyst",
-      "email": "tech@trading.com",
-      "profilePicture": "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f",
-      "userType": "leader",
-      "followers": ["copier7", "copier8", "leader1"],
-      "following": [],
-      "accounts": ["acc10"],
-      "createdAt": "2024-01-08T00:00:00Z",
-      "updatedAt": "2024-01-08T00:00:00Z"
-    },
-    {
-      "id": "leader6",
-      "username": "robertSwingExpert",
-      "displayName": "Robert Brown | Swing Expert",
-      "email": "swing@trading.com",
-      "profilePicture": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
-      "userType": "leader",
-      "followers": ["copier9", "leader1"],
-      "following": [],
-      "accounts": ["acc11"],
-      "createdAt": "2024-01-09T00:00:00Z",
-      "updatedAt": "2024-01-09T00:00:00Z"
-    },
-    {
-      "id": "leader7",
-      "username": "sophieDayTrading",
-      "displayName": "Sophie Miller | Day Trading Pro",
-      "email": "day@trading.com",
-      "profilePicture": "https://images.unsplash.com/photo-1534528741775-53994a69daeb",
-      "userType": "leader",
-      "followers": ["copier10", "copier11"],
-      "following": [],
-      "accounts": ["acc12"],
-      "createdAt": "2024-01-10T00:00:00Z",
-      "updatedAt": "2024-01-10T00:00:00Z"
-    },
-    {
-      "id": "leader8",
-      "username": "danielOptionsMaster",
-      "displayName": "Daniel Lee | Options Master",
-      "email": "options@trading.com",
-      "profilePicture": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
-      "userType": "leader",
-      "followers": ["copier12", "leader1"],
-      "following": [],
-      "accounts": ["acc13"],
-      "createdAt": "2024-01-11T00:00:00Z",
-      "updatedAt": "2024-01-11T00:00:00Z"
-    },
-    {
-      "id": "leader9",
-      "username": "isabellaScalping",
-      "displayName": "Isabella Martinez | Scalping Pro",
-      "email": "scalp@trading.com",
-      "profilePicture": "https://images.unsplash.com/photo-1531123897727-8f129e1688ce",
-      "userType": "leader",
-      "followers": ["copier13", "copier14", "leader1"],
-      "following": [],
-      "accounts": ["acc14"],
-      "createdAt": "2024-01-12T00:00:00Z",
-      "updatedAt": "2024-01-12T00:00:00Z"
-    },
-    {
-      "id": "leader10",
-      "username": "williamCommodity",
-      "displayName": "William Taylor | Commodity Expert",
-      "email": "commodity@trading.com",
-      "profilePicture": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
-      "userType": "leader",
-      "followers": ["copier15"],
-      "following": [],
-      "accounts": ["acc15"],
-      "createdAt": "2024-01-13T00:00:00Z",
-      "updatedAt": "2024-01-13T00:00:00Z"
-    },
-    {
-      "id": "leader11",
-      "username": "oliviaIndexSpecialist",
-      "displayName": "Olivia Anderson | Index Specialist",
-      "email": "index@trading.com",
-      "profilePicture": "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
-      "userType": "leader",
-      "followers": ["copier16", "copier17", "leader1"],
-      "following": [],
-      "accounts": ["acc16"],
-      "createdAt": "2024-01-14T00:00:00Z",
-      "updatedAt": "2024-01-14T00:00:00Z"
-    },
-    {
-      "id": "leader12",
-      "username": "thomasGlobalMarkets",
-      "displayName": "Thomas Wright | Global Markets",
-      "email": "global@trading.com",
-      "profilePicture": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
-      "userType": "leader",
-      "followers": ["copier18"],
-      "following": [],
-      "accounts": ["acc17"],
-      "createdAt": "2024-01-15T00:00:00Z",
-      "updatedAt": "2024-01-15T00:00:00Z"
-    },
-    {
-      "id": "leader13",
-      "username": "sophiaHedgeFund",
-      "displayName": "Sophia Park | Hedge Fund Pro",
-      "email": "hedge@trading.com",
-      "profilePicture": "https://images.unsplash.com/photo-1544005313-94ddf0286df2",
-      "userType": "leader",
-      "followers": ["copier19", "copier20"],
-      "following": [],
-      "accounts": ["acc18"],
-      "createdAt": "2024-01-16T00:00:00Z",
-      "updatedAt": "2024-01-16T00:00:00Z"
-    },
-    {
-      "id": "leader14",
-      "username": "ryanAlgoTrading",
-      "displayName": "Ryan Cooper | Algo Trading",
-      "email": "algo@trading.com",
-      "profilePicture": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7",
-      "userType": "leader",
-      "followers": ["copier21"],
-      "following": [],
-      "accounts": ["acc19"],
-      "createdAt": "2024-01-17T00:00:00Z",
-      "updatedAt": "2024-01-17T00:00:00Z"
-    },
-    {
-      "id": "leader15",
-      "username": "emilyValueInvestor",
-      "displayName": "Emily White | Value Investor",
-      "email": "value@trading.com",
-      "profilePicture": "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f",
-      "userType": "leader",
-      "followers": ["copier22", "copier23"],
-      "following": [],
-      "accounts": ["acc20"],
-      "createdAt": "2024-01-18T00:00:00Z",
-      "updatedAt": "2024-01-18T00:00:00Z"
-    },
-    {
-      "id": "leader16",
-      "username": "lucasTrendMaster",
-      "displayName": "Lucas Bennett | Trend Master",
-      "email": "trend@trading.com",
-      "profilePicture": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
-      "userType": "leader",
-      "followers": ["copier24"],
-      "following": [],
-      "accounts": ["acc21"],
-      "createdAt": "2024-01-19T00:00:00Z",
-      "updatedAt": "2024-01-19T00:00:00Z"
-    },
-    {
-      "id": "leader17",
-      "username": "victoriaPatternExpert",
-      "displayName": "Victoria Chang | Pattern Expert",
-      "email": "pattern@trading.com",
-      "profilePicture": "https://images.unsplash.com/photo-1534528741775-53994a69daeb",
-      "userType": "leader",
-      "followers": ["copier25", "copier26"],
-      "following": [],
-      "accounts": ["acc22"],
-      "createdAt": "2024-01-20T00:00:00Z",
-      "updatedAt": "2024-01-20T00:00:00Z"
-    }
-  ],
-  "currencyAccounts": [
-    {
-      "id": "acc1",
-      "userId": "leader1",
-      "currency": "USD",
-      "balance": 100000,
-      "tradingStrategies": ["strat1", "strat2"],
-      "isActive": true,
-      "createdAt": "2024-01-01T00:00:00Z",
-      "updatedAt": "2024-01-01T00:00:00Z"
-    },
-    {
-      "id": "acc2",
-      "userId": "leader1",
-      "currency": "EUR",
-      "balance": 85000,
-      "tradingStrategies": ["strat3"],
-      "isActive": true,
-      "createdAt": "2024-01-01T00:00:00Z",
-      "updatedAt": "2024-01-01T00:00:00Z"
-    },
-    {
-      "id": "acc3",
-      "userId": "leader2",
-      "currency": "USD",
-      "balance": 150000,
-      "tradingStrategies": ["strat4"],
-      "isActive": true,
-      "createdAt": "2024-01-02T00:00:00Z",
-      "updatedAt": "2024-01-02T00:00:00Z"
-    },
-    {
-      "id": "acc4",
-      "userId": "copier1",
-      "currency": "USD",
-      "balance": 10000,
-      "tradingStrategies": [],
-      "isActive": true,
-      "createdAt": "2024-01-03T00:00:00Z",
-      "updatedAt": "2024-01-03T00:00:00Z"
-    },
-    {
-      "id": "acc5",
-      "userId": "copier2",
-      "currency": "USD",
-      "balance": 5000,
-      "tradingStrategies": [],
-      "isActive": true,
-      "createdAt": "2024-01-04T00:00:00Z",
-      "updatedAt": "2024-01-04T00:00:00Z"
-    },
-    {
-      "id": "acc6",
-      "userId": "copier3",
-      "currency": "USD",
-      "balance": 25000,
-      "tradingStrategies": [],
-      "isActive": true,
-      "createdAt": "2024-01-05T00:00:00Z",
-      "updatedAt": "2024-01-05T00:00:00Z"
-    },
-    {
-      "id": "acc7",
-      "userId": "copier3",
-      "currency": "EUR",
-      "balance": 20000,
-      "tradingStrategies": [],
-      "isActive": true,
-      "createdAt": "2024-01-05T00:00:00Z",
-      "updatedAt": "2024-01-05T00:00:00Z"
-    }
-  ],
-  "tradingStrategies": [
-    {
-      "id": "strat1",
-      "leaderId": "leader1",
-      "accountId": "acc1",
-      "name": "Conservative USD Growth",
-      "description": "Low-risk strategy focusing on stable USD pairs",
-      "tradeType": "swing_trading",
-      "riskLevel": "low",
-      "performance": {
-        "totalReturn": 15.5,
-        "winRate": 75.5,
-        "averageProfit": 2.3
-      },
-      "copiers": ["copier1", "copier2"],
-      "isActive": true,
-      "createdAt": "2024-01-01T00:00:00Z",
-      "updatedAt": "2024-01-01T00:00:00Z"
-    },
-    {
-      "id": "strat2",
-      "leaderId": "leader1",
-      "accountId": "acc1",
-      "name": "Aggressive USD Growth",
-      "description": "High-risk strategy for maximum USD returns",
-      "tradeType": "day_trading",
-      "riskLevel": "high",
-      "performance": {
-        "totalReturn": 45.5,
-        "winRate": 62.5,
-        "averageProfit": 7.8
-      },
-      "copiers": ["copier3"],
-      "isActive": true,
-      "createdAt": "2024-01-01T00:00:00Z",
-      "updatedAt": "2024-01-01T00:00:00Z"
-    },
-    {
-      "id": "strat3",
-      "leaderId": "leader1",
-      "accountId": "acc7",
-      "name": "EUR Scalping",
-      "description": "Quick trades on EUR pairs",
-      "tradeType": "scalping",
-      "riskLevel": "medium",
-      "performance": {
-        "totalReturn": 28.5,
-        "winRate": 82.5,
-        "averageProfit": 1.2
-      },
-      "copiers": ["copier3", "leader1"],
-      "isActive": true,
-      "createdAt": "2024-01-01T00:00:00Z",
-      "updatedAt": "2024-01-01T00:00:00Z"
-    },
-    {
-      "id": "strat4",
-      "leaderId": "leader2",
-      "accountId": "acc2",
-      "name": "USD Position Trading",
-      "description": "Long-term USD position trades",
-      "tradeType": "position_trading",
-      "riskLevel": "medium",
-      "performance": {
-        "totalReturn": 32.5,
-        "winRate": 68.5,
-        "averageProfit": 5.4
-      },
-      "copiers": ["copier1", "leader1"],
-      "isActive": true,
-      "createdAt": "2024-01-02T00:00:00Z",
-      "updatedAt": "2024-01-02T00:00:00Z"
-    },
-    {
-      "id": "strat5",
-      "leaderId": "leader2",
-      "accountId": "acc3",
-      "name": "GBP Trend Following",
-      "description": "Riding long-term trends on GBP pairs",
-      "tradeType": "trend_following",
-      "riskLevel": "medium",
-      "performance": {
-        "totalReturn": 22,
-        "winRate": 65,
-        "averageProfit": 4.5
-      },
-      "copiers": ["copier4", "copier5"],
-      "isActive": true,
-      "createdAt": "2024-01-06T00:00:00Z",
-      "updatedAt": "2024-01-06T00:00:00Z"
-    },
-    {
-      "id": "strat6",
-      "leaderId": "leader3",
-      "accountId": "acc2",
-      "name": "Crypto Momentum",
-      "description": "Capturing short-term momentum in crypto markets",
-      "tradeType": "momentum_trading",
-      "riskLevel": "high",
-      "performance": {
-        "totalReturn": 60,
-        "winRate": 55,
-        "averageProfit": 10
-      },
-      "copiers": ["copier2", "copier3"],
-      "isActive": true,
-      "createdAt": "2024-01-07T00:00:00Z",
-      "updatedAt": "2024-01-07T00:00:00Z"
-    },
-    {
-      "id": "strat7",
-      "leaderId": "leader3",
-      "accountId": "acc3",
-      "name": "ETH Scalping",
-      "description": "Aggressive scalping on ETH pairs",
-      "tradeType": "scalping",
-      "riskLevel": "high",
-      "performance": {
-        "totalReturn": 70,
-        "winRate": 60,
-        "averageProfit": 12
-      },
-      "copiers": ["copier6", "copier7"],
-      "isActive": true,
-      "createdAt": "2024-01-08T00:00:00Z",
-      "updatedAt": "2024-01-08T00:00:00Z"
-    },
-    {
-      "id": "strat8",
-      "leaderId": "leader4",
-      "accountId": "acc4",
-      "name": "AUD Swing Trading",
-      "description": "Swing trading strategy focused on AUD pairs",
-      "tradeType": "swing_trading",
-      "riskLevel": "medium",
-      "performance": {
-        "totalReturn": 25,
-        "winRate": 70,
-        "averageProfit": 3.5
-      },
-      "copiers": ["copier1", "copier8"],
-      "isActive": true,
-      "createdAt": "2024-01-09T00:00:00Z",
-      "updatedAt": "2024-01-09T00:00:00Z"
-    },
-    {
-      "id": "strat9",
-      "leaderId": "leader4",
-      "accountId": "acc1",
-      "name": "NZD Day Trading",
-      "description": "Day trading strategy focusing on NZD pairs",
-      "tradeType": "day_trading",
-      "riskLevel": "medium",
-      "performance": {
-        "totalReturn": 30,
-        "winRate": 65,
-        "averageProfit": 4
-      },
-      "copiers": ["copier2", "copier9"],
-      "isActive": true,
-      "createdAt": "2024-01-10T00:00:00Z",
-      "updatedAt": "2024-01-10T00:00:00Z"
-    },
-    {
-      "id": "strat10",
-      "leaderId": "leader5",
-      "accountId": "acc2",
-      "name": "CAD Position Trading",
-      "description": "Long-term position trading strategy on CAD pairs",
-      "tradeType": "position_trading",
-      "riskLevel": "low",
-      "performance": {
-        "totalReturn": 18,
-        "winRate": 78,
-        "averageProfit": 2.8
-      },
-      "copiers": ["copier3", "copier10"],
-      "isActive": true,
-      "createdAt": "2024-01-11T00:00:00Z",
-      "updatedAt": "2024-01-11T00:00:00Z"
-    },
-    {
-      "id": "strat11",
-      "leaderId": "leader5",
-      "accountId": "acc2",
-      "name": "JPY Trend Following",
-      "description": "Riding long-term trends on JPY pairs",
-      "tradeType": "trend_following",
-      "riskLevel": "medium",
-      "performance": {
-        "totalReturn": 27,
-        "winRate": 67,
-        "averageProfit": 4.2
-      },
-      "copiers": ["copier4", "copier5"],
-      "isActive": true,
-      "createdAt": "2024-01-12T00:00:00Z",
-      "updatedAt": "2024-01-12T00:00:00Z"
-    },
-    {
-      "id": "strat12",
-      "leaderId": "leader6",
-      "accountId": "acc3",
-      "name": "CHF Swing Trading",
-      "description": "Swing trading strategy focused on CHF pairs",
-      "tradeType": "swing_trading",
-      "riskLevel": "low",
-      "performance": {
-        "totalReturn": 16.5,
-        "winRate": 76,
-        "averageProfit": 2.5
-      },
-      "copiers": ["copier6", "copier7"],
-      "isActive": true,
-      "createdAt": "2024-01-13T00:00:00Z",
-      "updatedAt": "2024-01-13T00:00:00Z"
-    },
-    {
-      "id": "strat13",
-      "leaderId": "leader6",
-      "accountId": "acc3",
-      "name": "XAUUSD Scalping",
-      "description": "Scalping strategy focused on Gold",
-      "tradeType": "scalping",
-      "riskLevel": "high",
-      "performance": {
-        "totalReturn": 55,
-        "winRate": 58,
-        "averageProfit": 9
-      },
-      "copiers": ["copier8", "copier9"],
-      "isActive": true,
-      "createdAt": "2024-01-14T00:00:00Z",
-      "updatedAt": "2024-01-14T00:00:00Z"
-    },
-    {
-      "id": "strat14",
-      "leaderId": "leader7",
-      "accountId": "acc4",
-      "name": "Crude Oil Momentum",
-      "description": "Momentum Trading strategy focused on Crude Oil",
-      "tradeType": "momentum_trading",
-      "riskLevel": "high",
-      "performance": {
-        "totalReturn": 48,
-        "winRate": 57,
-        "averageProfit": 8
-      },
-      "copiers": ["copier10", "copier1"],
-      "isActive": true,
-      "createdAt": "2024-01-15T00:00:00Z",
-      "updatedAt": "2024-01-15T00:00:00Z"
-    }
-  ],
-  "copyRelationships": [
-    {
-      "id": "copy1",
-      "copierId": "copier1",
-      "leaderId": "leader1",
-      "strategyId": "strat1",
-      "copierAccountId": "acc4",
-      "status": "active",
-      "copySize": 1000,
-      "createdAt": "2024-01-03T00:00:00Z",
-      "updatedAt": "2024-01-03T00:00:00Z"
-    },
-    {
-      "id": "copy2",
-      "copierId": "copier2",
-      "leaderId": "leader1",
-      "strategyId": "strat1",
-      "copierAccountId": "acc5",
-      "status": "active",
-      "copySize": 500,
-      "createdAt": "2024-01-04T00:00:00Z",
-      "updatedAt": "2024-01-04T00:00:00Z"
-    },
-    {
-      "id": "copy3",
-      "copierId": "copier3",
-      "leaderId": "leader1",
-      "strategyId": "strat2",
-      "copierAccountId": "acc6",
-      "status": "active",
-      "copySize": 2500,
-      "createdAt": "2024-01-05T00:00:00Z",
-      "updatedAt": "2024-01-05T00:00:00Z"
-    },
-    {
-      "id": "copy4",
-      "copierId": "copier3",
-      "leaderId": "leader1",
-      "strategyId": "strat3",
-      "copierAccountId": "acc7",
-      "status": "active",
-      "copySize": 2000,
-      "createdAt": "2024-01-05T00:00:00Z",
-      "updatedAt": "2024-01-05T00:00:00Z"
-    },
-    {
-      "id": "copy5",
-      "copierId": "copier1",
-      "leaderId": "leader2",
-      "strategyId": "strat4",
-      "copierAccountId": "acc4",
-      "status": "paused",
-      "copySize": 1000,
-      "createdAt": "2024-01-03T00:00:00Z",
-      "updatedAt": "2024-01-03T00:00:00Z"
-    },
-    {
-      "id": "copy6",
-      "copierId": "copier4",
-      "leaderId": "leader2",
-      "strategyId": "strat5",
-      "copierAccountId": "acc9",
-      "status": "active",
-      "copySize": 1500,
-      "createdAt": "2024-01-08T00:00:00Z",
-      "updatedAt": "2024-01-08T00:00:00Z"
-    },
-    {
-      "id": "copy7",
-      "copierId": "copier5",
-      "leaderId": "leader2",
-      "strategyId": "strat5",
-      "copierAccountId": "acc10",
-      "status": "active",
-      "copySize": 800,
-      "createdAt": "2024-01-09T00:00:00Z",
-      "updatedAt": "2024-01-09T00:00:00Z"
-    },
-    {
-      "id": "copy8",
-      "copierId": "copier2",
-      "leaderId": "leader3",
-      "strategyId": "strat6",
-      "copierAccountId": "acc5",
-      "status": "active",
-      "copySize": 1200,
-      "createdAt": "2024-01-10T00:00:00Z",
-      "updatedAt": "2024-01-10T00:00:00Z"
-    },
-    {
-      "id": "copy9",
-      "copierId": "copier3",
-      "leaderId": "leader3",
-      "strategyId": "strat6",
-      "copierAccountId": "acc6",
-      "status": "active",
-      "copySize": 3000,
-      "createdAt": "2024-01-11T00:00:00Z",
-      "updatedAt": "2024-01-11T00:00:00Z"
-    },
-    {
-      "id": "copy10",
-      "copierId": "copier6",
-      "leaderId": "leader3",
-      "strategyId": "strat7",
-      "copierAccountId": "acc15",
-      "status": "active",
-      "copySize": 900,
-      "createdAt": "2024-01-12T00:00:00Z",
-      "updatedAt": "2024-01-12T00:00:00Z"
-    },
-    {
-      "id": "copy11",
-      "copierId": "copier7",
-      "leaderId": "leader3",
-      "strategyId": "strat7",
-      "copierAccountId": "acc16",
-      "status": "active",
-      "copySize": 1100,
-      "createdAt": "2024-01-13T00:00:00Z",
-      "updatedAt": "2024-01-13T00:00:00Z"
-    },
-    {
-      "id": "copy12",
-      "copierId": "copier1",
-      "leaderId": "leader4",
-      "strategyId": "strat8",
-      "copierAccountId": "acc4",
-      "status": "active",
-      "copySize": 700,
-      "createdAt": "2024-01-14T00:00:00Z",
-      "updatedAt": "2024-01-14T00:00:00Z"
-    },
-    {
-      "id": "copy13",
-      "copierId": "copier8",
-      "leaderId": "leader4",
-      "strategyId": "strat8",
-      "copierAccountId": "acc17",
-      "status": "active",
-      "copySize": 1300,
-      "createdAt": "2024-01-15T00:00:00Z",
-      "updatedAt": "2024-01-15T00:00:00Z"
-    },
-    {
-      "id": "copy14",
-      "copierId": "copier2",
-      "leaderId": "leader4",
-      "strategyId": "strat9",
-      "copierAccountId": "acc5",
-      "status": "active",
-      "copySize": 1000,
-      "createdAt": "2024-01-16T00:00:00Z",
-      "updatedAt": "2024-01-16T00:00:00Z"
-    },
-    {
-      "id": "copy15",
-      "copierId": "copier9",
-      "leaderId": "leader4",
-      "strategyId": "strat9",
-      "copierAccountId": "acc18",
-      "status": "active",
-      "copySize": 1600,
-      "createdAt": "2024-01-17T00:00:00Z",
-      "updatedAt": "2024-01-17T00:00:00Z"
-    },
-    {
-      "id": "copy16",
-      "copierId": "copier3",
-      "leaderId": "leader5",
-      "strategyId": "strat10",
-      "copierAccountId": "acc6",
-      "status": "active",
-      "copySize": 1400,
-      "createdAt": "2024-01-18T00:00:00Z",
-      "updatedAt": "2024-01-18T00:00:00Z"
-    },
-    {
-      "id": "copy17",
-      "copierId": "copier10",
-      "leaderId": "leader5",
-      "strategyId": "strat10",
-      "copierAccountId": "acc19",
-      "status": "active",
-      "copySize": 1700,
-      "createdAt": "2024-01-19T00:00:00Z",
-      "updatedAt": "2024-01-19T00:00:00Z"
-    },
-    {
-      "id": "copy18",
-      "copierId": "copier4",
-      "leaderId": "leader5",
-      "strategyId": "strat11",
-      "copierAccountId": "acc9",
-      "status": "active",
-      "copySize": 1100,
-      "createdAt": "2024-01-20T00:00:00Z",
-      "updatedAt": "2024-01-20T00:00:00Z"
-    },
-    {
-      "id": "copy19",
-      "copierId": "copier5",
-      "leaderId": "leader5",
-      "strategyId": "strat11",
-      "copierAccountId": "acc10",
-      "status": "active",
-      "copySize": 900,
-      "createdAt": "2024-01-21T00:00:00Z",
-      "updatedAt": "2024-01-21T00:00:00Z"
-    },
-    {
-      "id": "copy20",
-      "copierId": "copier6",
-      "leaderId": "leader6",
-      "strategyId": "strat12",
-      "copierAccountId": "acc15",
-      "status": "active",
-      "copySize": 1200,
-      "createdAt": "2024-01-22T00:00:00Z",
-      "updatedAt": "2024-01-22T00:00:00Z"
-    },
-    {
-      "id": "copy21",
-      "copierId": "copier7",
-      "leaderId": "leader6",
-      "strategyId": "strat12",
-      "copierAccountId": "acc16",
-      "status": "active",
-      "copySize": 1500,
-      "createdAt": "2024-01-23T00:00:00Z",
-      "updatedAt": "2024-01-23T00:00:00Z"
-    },
-    {
-      "id": "copy22",
-      "copierId": "copier8",
-      "leaderId": "leader6",
-      "strategyId": "strat13",
-      "copierAccountId": "acc17",
-      "status": "active",
-      "copySize": 800,
-      "createdAt": "2024-01-24T00:00:00Z",
-      "updatedAt": "2024-01-24T00:00:00Z"
-    },
-    {
-      "id": "copy23",
-      "copierId": "copier9",
-      "leaderId": "leader6",
-      "strategyId": "strat13",
-      "copierAccountId": "acc18",
-      "status": "active",
-      "copySize": 1100,
-      "createdAt": "2024-01-25T00:00:00Z",
-      "updatedAt": "2024-01-25T00:00:00Z"
-    },
-    {
-      "id": "copy24",
-      "copierId": "copier10",
-      "leaderId": "leader7",
-      "strategyId": "strat14",
-      "copierAccountId": "acc19",
-      "status": "active",
-      "copySize": 1300,
-      "createdAt": "2024-01-26T00:00:00Z",
-      "updatedAt": "2024-01-26T00:00:00Z"
-    },
-    {
-      "id": "copy25",
-      "copierId": "copier1",
-      "leaderId": "leader7",
-      "strategyId": "strat14",
-      "copierAccountId": "acc4",
-      "status": "active",
-      "copySize": 900,
-      "createdAt": "2024-01-27T00:00:00Z",
-      "updatedAt": "2024-01-27T00:00:00Z"
-    },
-    {
-      "id": "leader1-strat4",
-      "copierId": "leader1",
-      "leaderId": "leader2",
-      "strategyId": "strat4",
-      "copierAccountId": "default",
-      "status": "active",
-      "copySize": 1000,
-      "createdAt": "2025-02-13T13:25:24.482Z",
-      "updatedAt": "2025-02-13T13:25:24.482Z"
-    },
-    {
-      "id": "leader1-strat3",
-      "copierId": "leader1",
-      "leaderId": "leader1",
-      "strategyId": "strat3",
-      "copierAccountId": "default",
-      "status": "active",
-      "copySize": 1000,
-      "createdAt": "2025-02-13T14:17:59.717Z",
-      "updatedAt": "2025-02-13T14:17:59.717Z"
-    }
-  ],
-  "assets": [
-    {
-      "symbol": "BTC-USD",
-      "name": "Bitcoin",
-      "imageUrl": "https://images.unsplash.com/photo-1519162584292-56dfc9eb5db4?w=400",
-      "currentPrice": 62500.5,
-      "changePercentage": 2.75,
-      "direction": "up"
-    },
-    {
-      "symbol": "ETH-USD",
-      "name": "Ethereum",
-      "imageUrl": "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=400",
-      "currentPrice": 3050.25,
-      "changePercentage": -1.5,
-      "direction": "down"
-    },
-    {
-      "symbol": "AAPL",
-      "name": "Apple Inc.",
-      "imageUrl": "https://images.unsplash.com/photo-1491933382434-500287f9b54b?w=400",
-      "currentPrice": 175.8,
-      "changePercentage": 0.85,
-      "direction": "up"
-    },
-    {
-      "symbol": "TSLA",
-      "name": "Tesla, Inc.",
-      "imageUrl": "https://images.unsplash.com/photo-1620891549027-942fdc95d3f5?w=400",
-      "currentPrice": 850.0,
-      "changePercentage": -3.2,
-      "direction": "down"
-    },
-    {
-      "symbol": "GME",
-      "name": "GameStop Corp.",
-      "imageUrl": "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=400",
-      "currentPrice": 25.5,
-      "changePercentage": 5.1,
-      "direction": "up"
-    },
-    {
-      "symbol": "XAU-USD",
-      "name": "Gold",
-      "imageUrl": "https://images.unsplash.com/photo-1610375461246-83df859d849d?w=400",
-      "currentPrice": 2350.75,
-      "changePercentage": 1.2,
-      "direction": "up"
-    },
-    {
-      "symbol": "WTI",
-      "name": "Crude Oil",
-      "imageUrl": "https://images.unsplash.com/photo-1589492477829-5e65395b66cc?w=400",
-      "currentPrice": 80.2,
-      "changePercentage": -0.75,
-      "direction": "down"
-    },
-    {
-      "symbol": "EUR-USD",
-      "name": "Euro/US Dollar",
-      "imageUrl": "https://images.unsplash.com/photo-1580048915913-4f8f5cb481c4?w=400",
-      "currentPrice": 1.085,
-      "changePercentage": 0.3,
-      "direction": "up"
-    },
-    {
-      "symbol": "GBP-USD",
-      "name": "British Pound/US Dollar",
-      "imageUrl": "https://images.unsplash.com/photo-1600170311833-c2cf5280ce49?w=400",
-      "currentPrice": 1.26,
-      "changePercentage": -0.15,
-      "direction": "down"
-    },
-    {
-      "symbol": "NVDA",
-      "name": "NVIDIA Corporation",
-      "imageUrl": "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=400",
-      "currentPrice": 900.0,
-      "changePercentage": 4.5,
-      "direction": "up"
-    }
-  ],
-  "posts": [
-    {
-      "id": "post1",
-      "userId": "leader1",
-      "content": {
-        "text": "🎯 EUR/USD Technical Analysis\n\nKey levels to watch:\n- Resistance: 1.2150\n- Support: 1.2050\n\nBullish momentum building on 4H chart with strong RSI divergence.",
-        "images": [
-          "https://images.unsplash.com/photo-1642790106117-e829e14a795f"
-        ]
-      },
-      "engagement": {
-        "likes": ["copier1", "copier2", "copier3"],
-        "comments": [
-          {
-            "id": "comment1",
-            "userId": "copier1",
-            "content": "Great analysis! The RSI divergence is quite clear.",
-            "likes": ["leader1", "copier2"],
-            "createdAt": "2024-02-11T10:15:00Z",
-            "updatedAt": "2024-02-11T10:15:00Z"
-          },
-          {
-            "id": "45718641-0bc4-42f4-852e-e80052f1096f",
-            "userId": "copier1",
-            "content": "Wow this is great!",
-            "likes": [],
-            "createdAt": "2025-02-11T15:35:53.344Z",
-            "updatedAt": "2025-02-11T15:35:53.344Z",
-            "replies": [
-              {
-                "id": "1a2e6ef2-0f10-49da-bef5-5864da911794",
-                "userId": "copier1",
-                "content": "hello!",
-                "likes": [],
-                "createdAt": "2025-02-11T15:36:10.061Z",
-                "updatedAt": "2025-02-11T15:36:10.061Z"
-              }
-            ]
-          }
-        ],
-        "shares": 8
-      },
-      "createdAt": "2024-02-11T10:00:00Z",
-      "updatedAt": "2024-02-11T10:00:00Z"
-    },
-    {
-      "id": "post2",
-      "userId": "leader2",
-      "content": {
-        "text": "📊 Monthly Performance Update\n\nUSD Position Trading Strategy:\n✅ Win Rate: 68%\n✅ Profit Factor: 2.3\n✅ Average Hold Time: 12 days\n\nConsistency is key! 🎯",
-        "images": ["https://images.unsplash.com/photo-1543286386-2e659306cd6c"]
-      },
-      "engagement": {
-        "likes": ["copier1", "copier3", "leader1"],
-        "comments": [
-          {
-            "id": "comment2",
-            "userId": "copier3",
-            "content": "Impressive results! Love the consistency.",
-            "likes": ["leader2"],
-            "createdAt": "2024-02-11T09:30:00Z",
-            "updatedAt": "2024-02-11T09:30:00Z"
-          }
-        ],
-        "shares": 12
-      },
-      "createdAt": "2024-02-11T09:00:00Z",
-      "updatedAt": "2024-02-11T09:00:00Z"
-    },
-    {
-      "id": "post3",
-      "userId": "leader1",
-      "content": {
-        "text": "🚨 Trade Alert: EUR/JPY Breakout\n\nKey Points:\n- Breaking 4-hour resistance\n- Volume confirmation\n- Strong momentum indicators\n\nWatching 158.50 as next target. 🎯",
-        "images": [
-          "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3"
-        ]
-      },
-      "engagement": {
-        "likes": ["copier1", "copier2", "leader2"],
-        "comments": [],
-        "shares": 5
-      },
-      "createdAt": "2024-02-11T08:45:00Z",
-      "updatedAt": "2024-02-11T08:45:00Z"
-    },
-    {
-      "id": "post4",
-      "userId": "copier1",
-      "content": {
-        "text": "🎉 Success Story!\n\nBeen following @expertTrader's Conservative USD Strategy for 3 months now.\n\nResults:\n📈 +12% return\n😌 Much lower stress\n🎯 Better risk management\n\nThank you for the guidance! 🙏",
-        "images": []
-      },
-      "engagement": {
-        "likes": ["leader1", "copier2", "copier3"],
-        "comments": [
-          {
-            "id": "comment3",
+    "users": [
+        {
+            "id": "leader1",
+            "username": "newTrader",
+            "displayName": "Sarah Johnson | FX Pro",
+            "email": "expert@trading.com",
+            "profilePicture": "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
+            "userType": "leader",
+            "followers": ["copier1", "copier2", "copier3", "leader1"],
+            "following": [
+                "leader9",
+                "leader3",
+                "leader8",
+                "leader1",
+                "leader4",
+                "leader5",
+                "leader11",
+                "leader6"
+            ],
+            "accounts": ["acc1", "acc2"],
+            "performance": {
+                "winRate": 78.5,
+                "totalPnL": 245.8,
+                "monthlyReturn": 12.5,
+                "totalTrades": 156
+            },
+            "createdAt": "2024-01-01T00:00:00Z",
+            "updatedAt": "2024-01-01T00:00:00Z"
+        },
+        {
+            "id": "leader2",
+            "username": "michaelCryptoExpert",
+            "displayName": "Michael Chen | Crypto Expert",
+            "email": "pro@trading.com",
+            "profilePicture": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
+            "userType": "leader",
+            "followers": ["copier1", "copier3", "leader2"],
+            "following": ["copier1"],
+            "accounts": ["acc3"],
+            "performance": {
+                "winRate": 68.5,
+                "totalPnL": 185.2,
+                "monthlyReturn": 8.7,
+                "totalTrades": 98
+            },
+            "createdAt": "2024-01-02T00:00:00Z",
+            "updatedAt": "2024-01-02T00:00:00Z"
+        },
+        {
+            "id": "copier1",
+            "username": "alexLearning",
+            "displayName": "Alex Turner | Learning",
+            "email": "new@trading.com",
+            "profilePicture": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
+            "userType": "copier",
+            "followers": ["leader1", "leader2"],
+            "following": ["leader1", "leader2"],
+            "accounts": ["acc4"],
+            "createdAt": "2024-01-03T00:00:00Z",
+            "updatedAt": "2024-01-03T00:00:00Z"
+        },
+        {
+            "id": "copier2",
+            "username": "emmaStudent",
+            "displayName": "Emma Davis | Student",
+            "email": "learn@trading.com",
+            "profilePicture": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
+            "userType": "copier",
+            "followers": [],
+            "following": ["leader1"],
+            "accounts": ["acc5"],
+            "createdAt": "2024-01-04T00:00:00Z",
+            "updatedAt": "2024-01-04T00:00:00Z"
+        },
+        {
+            "id": "copier3",
+            "username": "davidInvestor",
+            "displayName": "David Kim | Investor",
+            "email": "invest@trading.com",
+            "profilePicture": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
+            "userType": "copier",
+            "followers": [],
+            "following": ["leader1", "leader2"],
+            "accounts": ["acc6", "acc7"],
+            "createdAt": "2024-01-05T00:00:00Z",
+            "updatedAt": "2024-01-05T00:00:00Z"
+        },
+        {
+            "id": "leader3",
+            "username": "mariaForexMaster",
+            "displayName": "Maria Garcia | Forex Master",
+            "email": "forex@trading.com",
+            "profilePicture": "https://images.unsplash.com/photo-1544005313-94ddf0286df2",
+            "userType": "leader",
+            "followers": ["copier4", "copier5", "leader1"],
+            "following": [],
+            "accounts": ["acc8"],
+            "createdAt": "2024-01-06T00:00:00Z",
+            "updatedAt": "2024-01-06T00:00:00Z"
+        },
+        {
+            "id": "leader4",
+            "username": "jamesCryptoKing",
+            "displayName": "James Wilson | Crypto King",
+            "email": "crypto@trading.com",
+            "profilePicture": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7",
+            "userType": "leader",
+            "followers": ["copier6", "leader1"],
+            "following": [],
+            "accounts": ["acc9"],
+            "createdAt": "2024-01-07T00:00:00Z",
+            "updatedAt": "2024-01-07T00:00:00Z"
+        },
+        {
+            "id": "leader5",
+            "username": "lisaTechAnalyst",
+            "displayName": "Lisa Wang | Tech Analyst",
+            "email": "tech@trading.com",
+            "profilePicture": "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f",
+            "userType": "leader",
+            "followers": ["copier7", "copier8", "leader1"],
+            "following": [],
+            "accounts": ["acc10"],
+            "createdAt": "2024-01-08T00:00:00Z",
+            "updatedAt": "2024-01-08T00:00:00Z"
+        },
+        {
+            "id": "leader6",
+            "username": "robertSwingExpert",
+            "displayName": "Robert Brown | Swing Expert",
+            "email": "swing@trading.com",
+            "profilePicture": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
+            "userType": "leader",
+            "followers": ["copier9", "leader1"],
+            "following": [],
+            "accounts": ["acc11"],
+            "createdAt": "2024-01-09T00:00:00Z",
+            "updatedAt": "2024-01-09T00:00:00Z"
+        },
+        {
+            "id": "leader7",
+            "username": "sophieDayTrading",
+            "displayName": "Sophie Miller | Day Trading Pro",
+            "email": "day@trading.com",
+            "profilePicture": "https://images.unsplash.com/photo-1534528741775-53994a69daeb",
+            "userType": "leader",
+            "followers": ["copier10", "copier11"],
+            "following": [],
+            "accounts": ["acc12"],
+            "createdAt": "2024-01-10T00:00:00Z",
+            "updatedAt": "2024-01-10T00:00:00Z"
+        },
+        {
+            "id": "leader8",
+            "username": "danielOptionsMaster",
+            "displayName": "Daniel Lee | Options Master",
+            "email": "options@trading.com",
+            "profilePicture": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
+            "userType": "leader",
+            "followers": ["copier12", "leader1"],
+            "following": [],
+            "accounts": ["acc13"],
+            "createdAt": "2024-01-11T00:00:00Z",
+            "updatedAt": "2024-01-11T00:00:00Z"
+        },
+        {
+            "id": "leader9",
+            "username": "isabellaScalping",
+            "displayName": "Isabella Martinez | Scalping Pro",
+            "email": "scalp@trading.com",
+            "profilePicture": "https://images.unsplash.com/photo-1531123897727-8f129e1688ce",
+            "userType": "leader",
+            "followers": ["copier13", "copier14", "leader1"],
+            "following": [],
+            "accounts": ["acc14"],
+            "createdAt": "2024-01-12T00:00:00Z",
+            "updatedAt": "2024-01-12T00:00:00Z"
+        },
+        {
+            "id": "leader10",
+            "username": "williamCommodity",
+            "displayName": "William Taylor | Commodity Expert",
+            "email": "commodity@trading.com",
+            "profilePicture": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
+            "userType": "leader",
+            "followers": ["copier15"],
+            "following": [],
+            "accounts": ["acc15"],
+            "createdAt": "2024-01-13T00:00:00Z",
+            "updatedAt": "2024-01-13T00:00:00Z"
+        },
+        {
+            "id": "leader11",
+            "username": "oliviaIndexSpecialist",
+            "displayName": "Olivia Anderson | Index Specialist",
+            "email": "index@trading.com",
+            "profilePicture": "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
+            "userType": "leader",
+            "followers": ["copier16", "copier17", "leader1"],
+            "following": [],
+            "accounts": ["acc16"],
+            "createdAt": "2024-01-14T00:00:00Z",
+            "updatedAt": "2024-01-14T00:00:00Z"
+        },
+        {
+            "id": "leader12",
+            "username": "thomasGlobalMarkets",
+            "displayName": "Thomas Wright | Global Markets",
+            "email": "global@trading.com",
+            "profilePicture": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
+            "userType": "leader",
+            "followers": ["copier18"],
+            "following": [],
+            "accounts": ["acc17"],
+            "createdAt": "2024-01-15T00:00:00Z",
+            "updatedAt": "2024-01-15T00:00:00Z"
+        },
+        {
+            "id": "leader13",
+            "username": "sophiaHedgeFund",
+            "displayName": "Sophia Park | Hedge Fund Pro",
+            "email": "hedge@trading.com",
+            "profilePicture": "https://images.unsplash.com/photo-1544005313-94ddf0286df2",
+            "userType": "leader",
+            "followers": ["copier19", "copier20"],
+            "following": [],
+            "accounts": ["acc18"],
+            "createdAt": "2024-01-16T00:00:00Z",
+            "updatedAt": "2024-01-16T00:00:00Z"
+        },
+        {
+            "id": "leader14",
+            "username": "ryanAlgoTrading",
+            "displayName": "Ryan Cooper | Algo Trading",
+            "email": "algo@trading.com",
+            "profilePicture": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7",
+            "userType": "leader",
+            "followers": ["copier21"],
+            "following": [],
+            "accounts": ["acc19"],
+            "createdAt": "2024-01-17T00:00:00Z",
+            "updatedAt": "2024-01-17T00:00:00Z"
+        },
+        {
+            "id": "leader15",
+            "username": "emilyValueInvestor",
+            "displayName": "Emily White | Value Investor",
+            "email": "value@trading.com",
+            "profilePicture": "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f",
+            "userType": "leader",
+            "followers": ["copier22", "copier23"],
+            "following": [],
+            "accounts": ["acc20"],
+            "createdAt": "2024-01-18T00:00:00Z",
+            "updatedAt": "2024-01-18T00:00:00Z"
+        },
+        {
+            "id": "leader16",
+            "username": "lucasTrendMaster",
+            "displayName": "Lucas Bennett | Trend Master",
+            "email": "trend@trading.com",
+            "profilePicture": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
+            "userType": "leader",
+            "followers": ["copier24"],
+            "following": [],
+            "accounts": ["acc21"],
+            "createdAt": "2024-01-19T00:00:00Z",
+            "updatedAt": "2024-01-19T00:00:00Z"
+        },
+        {
+            "id": "leader17",
+            "username": "victoriaPatternExpert",
+            "displayName": "Victoria Chang | Pattern Expert",
+            "email": "pattern@trading.com",
+            "profilePicture": "https://images.unsplash.com/photo-1534528741775-53994a69daeb",
+            "userType": "leader",
+            "followers": ["copier25", "copier26"],
+            "following": [],
+            "accounts": ["acc22"],
+            "createdAt": "2024-01-20T00:00:00Z",
+            "updatedAt": "2024-01-20T00:00:00Z"
+        }
+    ],
+    "currencyAccounts": [
+        {
+            "id": "acc1",
             "userId": "leader1",
-            "content": "Great to see your progress! Keep following the plan 💪",
-            "likes": ["copier1"],
-            "createdAt": "2024-02-11T08:20:00Z",
-            "updatedAt": "2024-02-11T08:20:00Z"
-          }
-        ],
-        "shares": 3
-      },
-      "createdAt": "2024-02-11T08:00:00Z",
-      "updatedAt": "2024-02-11T08:00:00Z"
-    },
-    {
-      "id": "post5",
-      "userId": "leader2",
-      "content": {
-        "text": "📚 Trading Education: Position Sizing\n\nKey principles:\n1. Never risk more than 2% per trade\n2. Account for market volatility\n3. Consider correlation between positions\n\nSwipe for examples ➡️",
-        "images": [
-          "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f",
-          "https://images.unsplash.com/photo-1551288049-bebda4e38f71"
-        ]
-      },
-      "engagement": {
-        "likes": ["copier1", "copier2", "copier3", "leader1"],
-        "comments": [
-          {
-            "id": "comment4",
-            "userId": "copier2",
-            "content": "This is exactly what I needed! Can you do more educational posts like this?",
-            "likes": ["leader2", "copier1"],
-            "createdAt": "2024-02-11T07:30:00Z",
-            "updatedAt": "2024-02-11T07:30:00Z"
-          }
-        ],
-        "shares": 15
-      },
-      "createdAt": "2024-02-11T07:00:00Z",
-      "updatedAt": "2024-02-11T07:00:00Z"
-    },
-    {
-      "id": "post6",
-      "userId": "leader1",
-      "content": {
-        "text": "💡 Strategy Update: EUR Scalping\n\nAdjusted parameters for current volatility:\n- Tighter stops\n- Faster exits\n- Focus on London session\n\nCheck performance tab for results 📊",
-        "images": ["https://images.unsplash.com/photo-1560221328-12fe60f83ab8"]
-      },
-      "engagement": {
-        "likes": ["copier3", "leader2"],
-        "comments": [
-          {
-            "id": "comment5",
-            "userId": "copier3",
-            "content": "The adjustments are working great! My results improved significantly.",
-            "likes": ["leader1"],
-            "createdAt": "2024-02-11T06:30:00Z",
-            "updatedAt": "2024-02-11T06:30:00Z"
-          }
-        ],
-        "shares": 7
-      },
-      "createdAt": "2024-02-11T06:00:00Z",
-      "updatedAt": "2024-02-11T06:00:00Z"
-    },
-    {
-      "id": "post7",
-      "userId": "copier2",
-      "content": {
-        "text": "❓Question for @expertTrader\n\nI noticed you often mention 'market structure' in your analysis. Could you explain what specific patterns you look for? Still learning! 📚",
-        "images": []
-      },
-      "engagement": {
-        "likes": ["leader1", "copier1"],
-        "comments": [
-          {
-            "id": "comment6",
+            "currency": "USD",
+            "balance": 100000,
+            "tradingStrategies": ["strat1", "strat2"],
+            "isActive": true,
+            "createdAt": "2024-01-01T00:00:00Z",
+            "updatedAt": "2024-01-01T00:00:00Z"
+        },
+        {
+            "id": "acc2",
             "userId": "leader1",
-            "content": "Great question! I'll make a detailed post about this tomorrow with examples.",
-            "likes": ["copier2", "copier1"],
-            "createdAt": "2024-02-11T05:30:00Z",
-            "updatedAt": "2024-02-11T05:30:00Z"
-          }
-        ],
-        "shares": 2
-      },
-      "createdAt": "2024-02-11T05:00:00Z",
-      "updatedAt": "2024-02-11T05:00:00Z"
-    },
-    {
-      "id": "post8",
-      "userId": "leader2",
-      "content": {
-        "text": "🎯 GBP/USD Trade Setup\n\nPotential reversal forming at key support:\n- Double bottom pattern\n- Bullish divergence on RSI\n- Strong institutional buying\n\nWatching for confirmation...",
-        "images": ["https://images.unsplash.com/photo-1559526324-593bc073d938"]
-      },
-      "engagement": {
-        "likes": ["copier1", "copier3", "leader1"],
-        "comments": [],
-        "shares": 6
-      },
-      "createdAt": "2024-02-11T04:30:00Z",
-      "updatedAt": "2024-02-11T04:30:00Z"
-    },
-    {
-      "id": "post9",
-      "userId": "leader1",
-      "content": {
-        "text": "📈 Weekly Market Outlook\n\nKey themes:\n1. USD weakness likely to continue\n2. Watch ECB speakers this week\n3. Major tech earnings impact\n\nSwipe for charts ➡️",
-        "images": [
-          "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3",
-          "https://images.unsplash.com/photo-1535320903710-d993d3d77d29",
-          "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f"
-        ]
-      },
-      "engagement": {
-        "likes": ["copier1", "copier2", "copier3", "leader2"],
-        "comments": [
-          {
-            "id": "comment7",
+            "currency": "EUR",
+            "balance": 85000,
+            "tradingStrategies": ["strat3"],
+            "isActive": true,
+            "createdAt": "2024-01-01T00:00:00Z",
+            "updatedAt": "2024-01-01T00:00:00Z"
+        },
+        {
+            "id": "acc3",
             "userId": "leader2",
-            "content": "Solid analysis! Completely agree on the USD outlook.",
-            "likes": ["leader1", "copier1"],
-            "createdAt": "2024-02-11T04:15:00Z",
-            "updatedAt": "2024-02-11T04:15:00Z"
-          }
-        ],
-        "shares": 20
-      },
-      "createdAt": "2024-02-11T04:00:00Z",
-      "updatedAt": "2024-02-11T04:00:00Z"
-    },
-    {
-      "id": "post10",
-      "userId": "copier3",
-      "content": {
-        "text": "📊 My First Month Results\n\nFollowing multiple strategies:\n- @expertTrader's EUR Scalping\n- @proTrader's Position Trading\n\nDiversification really helps! Up 8% this month 🎉",
-        "images": ["https://images.unsplash.com/photo-1551288049-bebda4e38f71"]
-      },
-      "engagement": {
-        "likes": ["leader1", "leader2", "copier1"],
-        "comments": [
-          {
-            "id": "comment8",
-            "userId": "leader2",
-            "content": "Great start! Smart approach with diversification.",
-            "likes": ["copier3"],
-            "createdAt": "2024-02-11T03:30:00Z",
-            "updatedAt": "2024-02-11T03:30:00Z"
-          }
-        ],
-        "shares": 4
-      },
-      "createdAt": "2024-02-11T03:00:00Z",
-      "updatedAt": "2024-02-11T03:00:00Z"
-    },
-    {
-      "id": "post11",
-      "userId": "leader1",
-      "content": {
-        "text": "🎓 Trading Psychology Tip\n\nEmotion management is key:\n1. Stick to your plan\n2. Accept losses as part of the game\n3. Don't overtrade\n\nWhat's your biggest psychological challenge? 🤔",
-        "images": []
-      },
-      "engagement": {
-        "likes": ["copier1", "copier2", "copier3", "leader2"],
-        "comments": [
-          {
-            "id": "comment9",
-            "userId": "copier2",
-            "content": "FOMO is my biggest challenge. Working on it!",
-            "likes": ["leader1", "copier1"],
-            "createdAt": "2024-02-11T02:30:00Z",
-            "updatedAt": "2024-02-11T02:30:00Z"
-          }
-        ],
-        "shares": 10
-      },
-      "createdAt": "2024-02-11T02:00:00Z",
-      "updatedAt": "2024-02-11T02:00:00Z"
-    },
-    {
-      "id": "post12",
-      "userId": "leader2",
-      "content": {
-        "text": "🚨 USD/JPY Trade Exit\n\nClosing our position from last week:\n✅ +120 pips profit\n✅ 1.5:1 reward ratio\n✅ Clean technical exit\n\nCheck the charts for analysis ➡️",
-        "images": [
-          "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3",
-          "https://images.unsplash.com/photo-1559526324-593bc073d938"
-        ]
-      },
-      "engagement": {
-        "likes": ["copier1", "copier3"],
-        "comments": [
-          {
-            "id": "comment10",
+            "currency": "USD",
+            "balance": 150000,
+            "tradingStrategies": ["strat4"],
+            "isActive": true,
+            "createdAt": "2024-01-02T00:00:00Z",
+            "updatedAt": "2024-01-02T00:00:00Z"
+        },
+        {
+            "id": "acc4",
             "userId": "copier1",
-            "content": "Perfect execution! Thanks for the detailed exit analysis.",
-            "likes": ["leader2"],
-            "createdAt": "2024-02-11T01:30:00Z",
-            "updatedAt": "2024-02-11T01:30:00Z"
-          }
-        ],
-        "shares": 5
-      },
-      "createdAt": "2024-02-11T01:00:00Z",
-      "updatedAt": "2024-02-11T01:00:00Z"
-    },
-    {
-      "id": "post13",
-      "userId": "leader1",
-      "content": {
-        "text": "📱 New Feature Alert!\n\nJust added risk calculators to my Conservative USD Strategy dashboard. Check it out in the strategy tab! 🔢",
-        "images": ["https://images.unsplash.com/photo-1554224155-6726b3ff858f"]
-      },
-      "engagement": {
-        "likes": ["copier1", "copier2"],
-        "comments": [
-          {
-            "id": "comment11",
+            "currency": "USD",
+            "balance": 10000,
+            "tradingStrategies": [],
+            "isActive": true,
+            "createdAt": "2024-01-03T00:00:00Z",
+            "updatedAt": "2024-01-03T00:00:00Z"
+        },
+        {
+            "id": "acc5",
             "userId": "copier2",
-            "content": "This is super helpful! Makes position sizing much easier.",
-            "likes": ["leader1"],
-            "createdAt": "2024-02-11T00:30:00Z",
-            "updatedAt": "2024-02-11T00:30:00Z"
-          }
-        ],
-        "shares": 3
-      },
-      "createdAt": "2024-02-11T00:00:00Z",
-      "updatedAt": "2024-02-11T00:00:00Z"
-    },
-    {
-      "id": "post14",
-      "userId": "copier1",
-      "content": {
-        "text": "💭 Trading Reflection\n\nBiggest lessons from this week:\n1. Patience pays off\n2. Trust the process\n3. Keep a trading journal\n\nThanks to my mentors @expertTrader @proTrader 🙏",
-        "images": []
-      },
-      "engagement": {
-        "likes": ["leader1", "leader2", "copier2"],
-        "comments": [
-          {
-            "id": "comment12",
-            "userId": "leader2",
-            "content": "Great mindset! Consistency and patience are key.",
-            "likes": ["copier1", "leader1"],
-            "createdAt": "2024-02-10T23:30:00Z",
-            "updatedAt": "2024-02-10T23:30:00Z"
-          }
-        ],
-        "shares": 2
-      },
-      "createdAt": "2024-02-10T23:00:00Z",
-      "updatedAt": "2024-02-10T23:00:00Z"
-    },
-    {
-      "id": "post15",
-      "userId": "leader2",
-      "content": {
-        "text": "🔍 Market Analysis: Gold\n\nKey technical levels for next week:\n- Resistance: $2050\n- Support: $2020\n\nWatch correlation with DXY and real yields 📈",
-        "images": [
-          "https://images.unsplash.com/photo-1610375461246-83df859d849d"
-        ]
-      },
-      "engagement": {
-        "likes": ["copier1", "copier3", "leader1"],
-        "comments": [
-          {
-            "id": "comment13",
+            "currency": "USD",
+            "balance": 5000,
+            "tradingStrategies": [],
+            "isActive": true,
+            "createdAt": "2024-01-04T00:00:00Z",
+            "updatedAt": "2024-01-04T00:00:00Z"
+        },
+        {
+            "id": "acc6",
             "userId": "copier3",
-            "content": "Do you think the Fed's stance will affect these levels?",
-            "likes": ["leader2"],
-            "createdAt": "2024-02-10T22:30:00Z",
-            "updatedAt": "2024-02-10T22:30:00Z"
-          }
-        ],
-        "shares": 7
-      },
-      "createdAt": "2024-02-10T22:00:00Z",
-      "updatedAt": "2024-02-10T22:00:00Z"
-    },
-    {
-      "id": "6b04",
-      "userId": "copier1",
-      "content": {
-        "text": "Cline sucks!",
-        "images": []
-      },
-      "engagement": {
-        "likes": [],
-        "comments": [],
-        "shares": 0
-      },
-      "createdAt": "2025-02-11T13:52:45.271Z",
-      "updatedAt": "2025-02-11T13:52:45.271Z"
-    },
-    {
-      "id": "ea6c",
-      "userId": "copier1",
-      "content": {
-        "text": "This is a test post.",
-        "images": []
-      },
-      "engagement": {
-        "likes": [],
-        "comments": [],
-        "shares": 0
-      },
-      "createdAt": "2025-02-11T15:15:04.299Z",
-      "updatedAt": "2025-02-11T15:15:04.299Z"
-    }
-  ],
-  "contracts": [
-    {
-      "buy_price": 100,
-      "contract_id": "CONTRACT_O1",
-      "contract_type": "Options",
-      "currency": "USD",
-      "date_start": "2025-02-13T00:00:00Z",
-      "expiry_time": "2025-02-14T00:00:00Z",
-      "payout": 120,
-      "purchase_time": "2025-02-13T00:05:00Z",
-      "symbol": "XYZ"
-    },
-    {
-      "buy_price": 105,
-      "contract_id": "CONTRACT_O2",
-      "contract_type": "Options",
-      "currency": "USD",
-      "date_start": "2025-02-13T01:00:00Z",
-      "expiry_time": "2025-02-14T01:00:00Z",
-      "payout": 130,
-      "purchase_time": "2025-02-13T01:05:00Z",
-      "symbol": "XYZ"
-    },
-    {
-      "buy_price": 110,
-      "contract_id": "CONTRACT_O3",
-      "contract_type": "Options",
-      "currency": "USD",
-      "date_start": "2025-02-13T02:00:00Z",
-      "expiry_time": "2025-02-14T02:00:00Z",
-      "payout": 140,
-      "purchase_time": "2025-02-13T02:05:00Z",
-      "symbol": "XYZ"
-    },
-    {
-      "buy_price": 95,
-      "contract_id": "CONTRACT_A1",
-      "contract_type": "Accumulators",
-      "currency": "USD",
-      "date_start": "2025-02-13T03:00:00Z",
-      "expiry_time": "2025-02-14T03:00:00Z",
-      "payout": 115,
-      "purchase_time": "2025-02-13T03:05:00Z",
-      "symbol": "XYZ"
-    },
-    {
-      "buy_price": 98,
-      "contract_id": "CONTRACT_A2",
-      "contract_type": "Accumulators",
-      "currency": "USD",
-      "date_start": "2025-02-13T04:00:00Z",
-      "expiry_time": "2025-02-14T04:00:00Z",
-      "payout": 118,
-      "purchase_time": "2025-02-13T04:05:00Z",
-      "symbol": "XYZ"
-    },
-    {
-      "buy_price": 102,
-      "contract_id": "CONTRACT_A3",
-      "contract_type": "Accumulators",
-      "currency": "USD",
-      "date_start": "2025-02-13T05:00:00Z",
-      "expiry_time": "2025-02-14T05:00:00Z",
-      "payout": 122,
-      "purchase_time": "2025-02-13T05:05:00Z",
-      "symbol": "XYZ"
-    },
-    {
-      "buy_price": 115,
-      "contract_id": "CONTRACT_M1",
-      "contract_type": "Multipliers",
-      "currency": "USD",
-      "date_start": "2025-02-13T06:00:00Z",
-      "expiry_time": "2025-02-14T06:00:00Z",
-      "payout": 135,
-      "purchase_time": "2025-02-13T06:05:00Z",
-      "symbol": "XYZ"
-    },
-    {
-      "buy_price": 118,
-      "contract_id": "CONTRACT_M2",
-      "contract_type": "Multipliers",
-      "currency": "USD",
-      "date_start": "2025-02-13T07:00:00Z",
-      "expiry_time": "2025-02-14T07:00:00Z",
-      "payout": 138,
-      "purchase_time": "2025-02-13T07:05:00Z",
-      "symbol": "XYZ"
-    },
-    {
-      "buy_price": 120,
-      "contract_id": "CONTRACT_M3",
-      "contract_type": "Multipliers",
-      "currency": "USD",
-      "date_start": "2025-02-13T08:00:00Z",
-      "expiry_time": "2025-02-14T08:00:00Z",
-      "payout": 140,
-      "purchase_time": "2025-02-13T08:05:00Z",
-      "symbol": "XYZ"
-    }
-  ],
-  "statements": [
-    {
-      "type": "Multipliers",
-      "action_type": "buy",
-      "currency": "USD",
-      "amount": -3,
-      "balance_after": 9969.54,
-      "reference_id": 543129132101,
-      "transaction_time": 1739452884
-    },
-    {
-      "type": "Multipliers",
-      "action_type": "sell",
-      "currency": "USD",
-      "amount": 0,
-      "balance_after": 9972.54,
-      "reference_id": 543129132108,
-      "transaction_time": 1739452745
-    },
-    {
-      "type": "Options",
-      "action_type": "buy",
-      "currency": "USD",
-      "amount": -3,
-      "balance_after": 9972.54,
-      "reference_id": 543129132105,
-      "transaction_time": 1739452677
-    },
-    {
-      "type": "Options",
-      "action_type": "sell",
-      "currency": "USD",
-      "amount": 0,
-      "balance_after": 9975.54,
-      "reference_id": 543112652068,
-      "transaction_time": 1739446842
-    },
-    {
-      "type": "Accumulators",
-      "action_type": "buy",
-      "currency": "USD",
-      "amount": -3,
-      "balance_after": 9975.54,
-      "reference_id": 543129132104,
-      "transaction_time": 1739446776
-    },
-    {
-      "type": "Accumulators",
-      "action_type": "buy",
-      "currency": "USD",
-      "amount": -3,
-      "balance_after": 9975.54,
-      "reference_id": 5431291321082,
-      "transaction_time": 1739446776
-    }
-  ]
+            "currency": "USD",
+            "balance": 25000,
+            "tradingStrategies": [],
+            "isActive": true,
+            "createdAt": "2024-01-05T00:00:00Z",
+            "updatedAt": "2024-01-05T00:00:00Z"
+        },
+        {
+            "id": "acc7",
+            "userId": "copier3",
+            "currency": "EUR",
+            "balance": 20000,
+            "tradingStrategies": [],
+            "isActive": true,
+            "createdAt": "2024-01-05T00:00:00Z",
+            "updatedAt": "2024-01-05T00:00:00Z"
+        }
+    ],
+    "tradingStrategies": [
+        {
+            "id": "strat1",
+            "leaderId": "leader1",
+            "accountId": "acc1",
+            "name": "Conservative USD Growth",
+            "description": "Low-risk strategy focusing on stable USD pairs",
+            "tradeType": "swing_trading",
+            "riskLevel": "low",
+            "performance": {
+                "totalReturn": 15.5,
+                "winRate": 75.5,
+                "averageProfit": 2.3
+            },
+            "copiers": ["copier1", "copier2"],
+            "isActive": true,
+            "createdAt": "2024-01-01T00:00:00Z",
+            "updatedAt": "2024-01-01T00:00:00Z"
+        },
+        {
+            "id": "strat2",
+            "leaderId": "leader1",
+            "accountId": "acc1",
+            "name": "Aggressive USD Growth",
+            "description": "High-risk strategy for maximum USD returns",
+            "tradeType": "day_trading",
+            "riskLevel": "high",
+            "performance": {
+                "totalReturn": 45.5,
+                "winRate": 62.5,
+                "averageProfit": 7.8
+            },
+            "copiers": ["copier3"],
+            "isActive": true,
+            "createdAt": "2024-01-01T00:00:00Z",
+            "updatedAt": "2024-01-01T00:00:00Z"
+        },
+        {
+            "id": "strat3",
+            "leaderId": "leader1",
+            "accountId": "acc7",
+            "name": "EUR Scalping",
+            "description": "Quick trades on EUR pairs",
+            "tradeType": "scalping",
+            "riskLevel": "medium",
+            "performance": {
+                "totalReturn": 28.5,
+                "winRate": 82.5,
+                "averageProfit": 1.2
+            },
+            "copiers": ["copier3", "leader1"],
+            "isActive": true,
+            "createdAt": "2024-01-01T00:00:00Z",
+            "updatedAt": "2024-01-01T00:00:00Z"
+        },
+        {
+            "id": "strat4",
+            "leaderId": "leader2",
+            "accountId": "acc2",
+            "name": "USD Position Trading",
+            "description": "Long-term USD position trades",
+            "tradeType": "position_trading",
+            "riskLevel": "medium",
+            "performance": {
+                "totalReturn": 32.5,
+                "winRate": 68.5,
+                "averageProfit": 5.4
+            },
+            "copiers": ["copier1", "leader1"],
+            "isActive": true,
+            "createdAt": "2024-01-02T00:00:00Z",
+            "updatedAt": "2024-01-02T00:00:00Z"
+        },
+        {
+            "id": "strat5",
+            "leaderId": "leader2",
+            "accountId": "acc3",
+            "name": "GBP Trend Following",
+            "description": "Riding long-term trends on GBP pairs",
+            "tradeType": "trend_following",
+            "riskLevel": "medium",
+            "performance": {
+                "totalReturn": 22,
+                "winRate": 65,
+                "averageProfit": 4.5
+            },
+            "copiers": ["copier4", "copier5"],
+            "isActive": true,
+            "createdAt": "2024-01-06T00:00:00Z",
+            "updatedAt": "2024-01-06T00:00:00Z"
+        },
+        {
+            "id": "strat6",
+            "leaderId": "leader3",
+            "accountId": "acc2",
+            "name": "Crypto Momentum",
+            "description": "Capturing short-term momentum in crypto markets",
+            "tradeType": "momentum_trading",
+            "riskLevel": "high",
+            "performance": {
+                "totalReturn": 60,
+                "winRate": 55,
+                "averageProfit": 10
+            },
+            "copiers": ["copier2", "copier3"],
+            "isActive": true,
+            "createdAt": "2024-01-07T00:00:00Z",
+            "updatedAt": "2024-01-07T00:00:00Z"
+        },
+        {
+            "id": "strat7",
+            "leaderId": "leader3",
+            "accountId": "acc3",
+            "name": "ETH Scalping",
+            "description": "Aggressive scalping on ETH pairs",
+            "tradeType": "scalping",
+            "riskLevel": "high",
+            "performance": {
+                "totalReturn": 70,
+                "winRate": 60,
+                "averageProfit": 12
+            },
+            "copiers": ["copier6", "copier7"],
+            "isActive": true,
+            "createdAt": "2024-01-08T00:00:00Z",
+            "updatedAt": "2024-01-08T00:00:00Z"
+        },
+        {
+            "id": "strat8",
+            "leaderId": "leader4",
+            "accountId": "acc4",
+            "name": "AUD Swing Trading",
+            "description": "Swing trading strategy focused on AUD pairs",
+            "tradeType": "swing_trading",
+            "riskLevel": "medium",
+            "performance": {
+                "totalReturn": 25,
+                "winRate": 70,
+                "averageProfit": 3.5
+            },
+            "copiers": ["copier1", "copier8"],
+            "isActive": true,
+            "createdAt": "2024-01-09T00:00:00Z",
+            "updatedAt": "2024-01-09T00:00:00Z"
+        },
+        {
+            "id": "strat9",
+            "leaderId": "leader4",
+            "accountId": "acc1",
+            "name": "NZD Day Trading",
+            "description": "Day trading strategy focusing on NZD pairs",
+            "tradeType": "day_trading",
+            "riskLevel": "medium",
+            "performance": {
+                "totalReturn": 30,
+                "winRate": 65,
+                "averageProfit": 4
+            },
+            "copiers": ["copier2", "copier9"],
+            "isActive": true,
+            "createdAt": "2024-01-10T00:00:00Z",
+            "updatedAt": "2024-01-10T00:00:00Z"
+        },
+        {
+            "id": "strat10",
+            "leaderId": "leader5",
+            "accountId": "acc2",
+            "name": "CAD Position Trading",
+            "description": "Long-term position trading strategy on CAD pairs",
+            "tradeType": "position_trading",
+            "riskLevel": "low",
+            "performance": {
+                "totalReturn": 18,
+                "winRate": 78,
+                "averageProfit": 2.8
+            },
+            "copiers": ["copier3", "copier10"],
+            "isActive": true,
+            "createdAt": "2024-01-11T00:00:00Z",
+            "updatedAt": "2024-01-11T00:00:00Z"
+        },
+        {
+            "id": "strat11",
+            "leaderId": "leader5",
+            "accountId": "acc2",
+            "name": "JPY Trend Following",
+            "description": "Riding long-term trends on JPY pairs",
+            "tradeType": "trend_following",
+            "riskLevel": "medium",
+            "performance": {
+                "totalReturn": 27,
+                "winRate": 67,
+                "averageProfit": 4.2
+            },
+            "copiers": ["copier4", "copier5"],
+            "isActive": true,
+            "createdAt": "2024-01-12T00:00:00Z",
+            "updatedAt": "2024-01-12T00:00:00Z"
+        },
+        {
+            "id": "strat12",
+            "leaderId": "leader6",
+            "accountId": "acc3",
+            "name": "CHF Swing Trading",
+            "description": "Swing trading strategy focused on CHF pairs",
+            "tradeType": "swing_trading",
+            "riskLevel": "low",
+            "performance": {
+                "totalReturn": 16.5,
+                "winRate": 76,
+                "averageProfit": 2.5
+            },
+            "copiers": ["copier6", "copier7"],
+            "isActive": true,
+            "createdAt": "2024-01-13T00:00:00Z",
+            "updatedAt": "2024-01-13T00:00:00Z"
+        },
+        {
+            "id": "strat13",
+            "leaderId": "leader6",
+            "accountId": "acc3",
+            "name": "XAUUSD Scalping",
+            "description": "Scalping strategy focused on Gold",
+            "tradeType": "scalping",
+            "riskLevel": "high",
+            "performance": {
+                "totalReturn": 55,
+                "winRate": 58,
+                "averageProfit": 9
+            },
+            "copiers": ["copier8", "copier9"],
+            "isActive": true,
+            "createdAt": "2024-01-14T00:00:00Z",
+            "updatedAt": "2024-01-14T00:00:00Z"
+        },
+        {
+            "id": "strat14",
+            "leaderId": "leader7",
+            "accountId": "acc4",
+            "name": "Crude Oil Momentum",
+            "description": "Momentum Trading strategy focused on Crude Oil",
+            "tradeType": "momentum_trading",
+            "riskLevel": "high",
+            "performance": {
+                "totalReturn": 48,
+                "winRate": 57,
+                "averageProfit": 8
+            },
+            "copiers": ["copier10", "copier1"],
+            "isActive": true,
+            "createdAt": "2024-01-15T00:00:00Z",
+            "updatedAt": "2024-01-15T00:00:00Z"
+        }
+    ],
+    "copyRelationships": [
+        {
+            "id": "copy1",
+            "copierId": "copier1",
+            "leaderId": "leader1",
+            "strategyId": "strat1",
+            "copierAccountId": "acc4",
+            "status": "active",
+            "copySize": 1000,
+            "createdAt": "2024-01-03T00:00:00Z",
+            "updatedAt": "2024-01-03T00:00:00Z"
+        },
+        {
+            "id": "copy2",
+            "copierId": "copier2",
+            "leaderId": "leader1",
+            "strategyId": "strat1",
+            "copierAccountId": "acc5",
+            "status": "active",
+            "copySize": 500,
+            "createdAt": "2024-01-04T00:00:00Z",
+            "updatedAt": "2024-01-04T00:00:00Z"
+        },
+        {
+            "id": "copy3",
+            "copierId": "copier3",
+            "leaderId": "leader1",
+            "strategyId": "strat2",
+            "copierAccountId": "acc6",
+            "status": "active",
+            "copySize": 2500,
+            "createdAt": "2024-01-05T00:00:00Z",
+            "updatedAt": "2024-01-05T00:00:00Z"
+        },
+        {
+            "id": "copy4",
+            "copierId": "copier3",
+            "leaderId": "leader1",
+            "strategyId": "strat3",
+            "copierAccountId": "acc7",
+            "status": "active",
+            "copySize": 2000,
+            "createdAt": "2024-01-05T00:00:00Z",
+            "updatedAt": "2024-01-05T00:00:00Z"
+        },
+        {
+            "id": "copy5",
+            "copierId": "copier1",
+            "leaderId": "leader2",
+            "strategyId": "strat4",
+            "copierAccountId": "acc4",
+            "status": "paused",
+            "copySize": 1000,
+            "createdAt": "2024-01-03T00:00:00Z",
+            "updatedAt": "2024-01-03T00:00:00Z"
+        },
+        {
+            "id": "copy6",
+            "copierId": "copier4",
+            "leaderId": "leader2",
+            "strategyId": "strat5",
+            "copierAccountId": "acc9",
+            "status": "active",
+            "copySize": 1500,
+            "createdAt": "2024-01-08T00:00:00Z",
+            "updatedAt": "2024-01-08T00:00:00Z"
+        },
+        {
+            "id": "copy7",
+            "copierId": "copier5",
+            "leaderId": "leader2",
+            "strategyId": "strat5",
+            "copierAccountId": "acc10",
+            "status": "active",
+            "copySize": 800,
+            "createdAt": "2024-01-09T00:00:00Z",
+            "updatedAt": "2024-01-09T00:00:00Z"
+        },
+        {
+            "id": "copy8",
+            "copierId": "copier2",
+            "leaderId": "leader3",
+            "strategyId": "strat6",
+            "copierAccountId": "acc5",
+            "status": "active",
+            "copySize": 1200,
+            "createdAt": "2024-01-10T00:00:00Z",
+            "updatedAt": "2024-01-10T00:00:00Z"
+        },
+        {
+            "id": "copy9",
+            "copierId": "copier3",
+            "leaderId": "leader3",
+            "strategyId": "strat6",
+            "copierAccountId": "acc6",
+            "status": "active",
+            "copySize": 3000,
+            "createdAt": "2024-01-11T00:00:00Z",
+            "updatedAt": "2024-01-11T00:00:00Z"
+        },
+        {
+            "id": "copy10",
+            "copierId": "copier6",
+            "leaderId": "leader3",
+            "strategyId": "strat7",
+            "copierAccountId": "acc15",
+            "status": "active",
+            "copySize": 900,
+            "createdAt": "2024-01-12T00:00:00Z",
+            "updatedAt": "2024-01-12T00:00:00Z"
+        },
+        {
+            "id": "copy11",
+            "copierId": "copier7",
+            "leaderId": "leader3",
+            "strategyId": "strat7",
+            "copierAccountId": "acc16",
+            "status": "active",
+            "copySize": 1100,
+            "createdAt": "2024-01-13T00:00:00Z",
+            "updatedAt": "2024-01-13T00:00:00Z"
+        },
+        {
+            "id": "copy12",
+            "copierId": "copier1",
+            "leaderId": "leader4",
+            "strategyId": "strat8",
+            "copierAccountId": "acc4",
+            "status": "active",
+            "copySize": 700,
+            "createdAt": "2024-01-14T00:00:00Z",
+            "updatedAt": "2024-01-14T00:00:00Z"
+        },
+        {
+            "id": "copy13",
+            "copierId": "copier8",
+            "leaderId": "leader4",
+            "strategyId": "strat8",
+            "copierAccountId": "acc17",
+            "status": "active",
+            "copySize": 1300,
+            "createdAt": "2024-01-15T00:00:00Z",
+            "updatedAt": "2024-01-15T00:00:00Z"
+        },
+        {
+            "id": "copy14",
+            "copierId": "copier2",
+            "leaderId": "leader4",
+            "strategyId": "strat9",
+            "copierAccountId": "acc5",
+            "status": "active",
+            "copySize": 1000,
+            "createdAt": "2024-01-16T00:00:00Z",
+            "updatedAt": "2024-01-16T00:00:00Z"
+        },
+        {
+            "id": "copy15",
+            "copierId": "copier9",
+            "leaderId": "leader4",
+            "strategyId": "strat9",
+            "copierAccountId": "acc18",
+            "status": "active",
+            "copySize": 1600,
+            "createdAt": "2024-01-17T00:00:00Z",
+            "updatedAt": "2024-01-17T00:00:00Z"
+        },
+        {
+            "id": "copy16",
+            "copierId": "copier3",
+            "leaderId": "leader5",
+            "strategyId": "strat10",
+            "copierAccountId": "acc6",
+            "status": "active",
+            "copySize": 1400,
+            "createdAt": "2024-01-18T00:00:00Z",
+            "updatedAt": "2024-01-18T00:00:00Z"
+        },
+        {
+            "id": "copy17",
+            "copierId": "copier10",
+            "leaderId": "leader5",
+            "strategyId": "strat10",
+            "copierAccountId": "acc19",
+            "status": "active",
+            "copySize": 1700,
+            "createdAt": "2024-01-19T00:00:00Z",
+            "updatedAt": "2024-01-19T00:00:00Z"
+        },
+        {
+            "id": "copy18",
+            "copierId": "copier4",
+            "leaderId": "leader5",
+            "strategyId": "strat11",
+            "copierAccountId": "acc9",
+            "status": "active",
+            "copySize": 1100,
+            "createdAt": "2024-01-20T00:00:00Z",
+            "updatedAt": "2024-01-20T00:00:00Z"
+        },
+        {
+            "id": "copy19",
+            "copierId": "copier5",
+            "leaderId": "leader5",
+            "strategyId": "strat11",
+            "copierAccountId": "acc10",
+            "status": "active",
+            "copySize": 900,
+            "createdAt": "2024-01-21T00:00:00Z",
+            "updatedAt": "2024-01-21T00:00:00Z"
+        },
+        {
+            "id": "copy20",
+            "copierId": "copier6",
+            "leaderId": "leader6",
+            "strategyId": "strat12",
+            "copierAccountId": "acc15",
+            "status": "active",
+            "copySize": 1200,
+            "createdAt": "2024-01-22T00:00:00Z",
+            "updatedAt": "2024-01-22T00:00:00Z"
+        },
+        {
+            "id": "copy21",
+            "copierId": "copier7",
+            "leaderId": "leader6",
+            "strategyId": "strat12",
+            "copierAccountId": "acc16",
+            "status": "active",
+            "copySize": 1500,
+            "createdAt": "2024-01-23T00:00:00Z",
+            "updatedAt": "2024-01-23T00:00:00Z"
+        },
+        {
+            "id": "copy22",
+            "copierId": "copier8",
+            "leaderId": "leader6",
+            "strategyId": "strat13",
+            "copierAccountId": "acc17",
+            "status": "active",
+            "copySize": 800,
+            "createdAt": "2024-01-24T00:00:00Z",
+            "updatedAt": "2024-01-24T00:00:00Z"
+        },
+        {
+            "id": "copy23",
+            "copierId": "copier9",
+            "leaderId": "leader6",
+            "strategyId": "strat13",
+            "copierAccountId": "acc18",
+            "status": "active",
+            "copySize": 1100,
+            "createdAt": "2024-01-25T00:00:00Z",
+            "updatedAt": "2024-01-25T00:00:00Z"
+        },
+        {
+            "id": "copy24",
+            "copierId": "copier10",
+            "leaderId": "leader7",
+            "strategyId": "strat14",
+            "copierAccountId": "acc19",
+            "status": "active",
+            "copySize": 1300,
+            "createdAt": "2024-01-26T00:00:00Z",
+            "updatedAt": "2024-01-26T00:00:00Z"
+        },
+        {
+            "id": "copy25",
+            "copierId": "copier1",
+            "leaderId": "leader7",
+            "strategyId": "strat14",
+            "copierAccountId": "acc4",
+            "status": "active",
+            "copySize": 900,
+            "createdAt": "2024-01-27T00:00:00Z",
+            "updatedAt": "2024-01-27T00:00:00Z"
+        },
+        {
+            "id": "leader1-strat4",
+            "copierId": "leader1",
+            "leaderId": "leader2",
+            "strategyId": "strat4",
+            "copierAccountId": "default",
+            "status": "active",
+            "copySize": 1000,
+            "createdAt": "2025-02-13T13:25:24.482Z",
+            "updatedAt": "2025-02-13T13:25:24.482Z"
+        },
+        {
+            "id": "leader1-strat3",
+            "copierId": "leader1",
+            "leaderId": "leader1",
+            "strategyId": "strat3",
+            "copierAccountId": "default",
+            "status": "active",
+            "copySize": 1000,
+            "createdAt": "2025-02-13T14:17:59.717Z",
+            "updatedAt": "2025-02-13T14:17:59.717Z"
+        }
+    ],
+    "assets": [
+        {
+            "symbol": "BTC-USD",
+            "name": "Bitcoin",
+            "imageUrl": "https://images.unsplash.com/photo-1519162584292-56dfc9eb5db4?w=400",
+            "currentPrice": 62500.5,
+            "changePercentage": 2.75,
+            "direction": "up"
+        },
+        {
+            "symbol": "ETH-USD",
+            "name": "Ethereum",
+            "imageUrl": "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=400",
+            "currentPrice": 3050.25,
+            "changePercentage": -1.5,
+            "direction": "down"
+        },
+        {
+            "symbol": "AAPL",
+            "name": "Apple Inc.",
+            "imageUrl": "https://images.unsplash.com/photo-1491933382434-500287f9b54b?w=400",
+            "currentPrice": 175.8,
+            "changePercentage": 0.85,
+            "direction": "up"
+        },
+        {
+            "symbol": "TSLA",
+            "name": "Tesla, Inc.",
+            "imageUrl": "https://images.unsplash.com/photo-1620891549027-942fdc95d3f5?w=400",
+            "currentPrice": 850,
+            "changePercentage": -3.2,
+            "direction": "down"
+        },
+        {
+            "symbol": "GME",
+            "name": "GameStop Corp.",
+            "imageUrl": "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=400",
+            "currentPrice": 25.5,
+            "changePercentage": 5.1,
+            "direction": "up"
+        },
+        {
+            "symbol": "XAU-USD",
+            "name": "Gold",
+            "imageUrl": "https://images.unsplash.com/photo-1610375461246-83df859d849d?w=400",
+            "currentPrice": 2350.75,
+            "changePercentage": 1.2,
+            "direction": "up"
+        },
+        {
+            "symbol": "WTI",
+            "name": "Crude Oil",
+            "imageUrl": "https://images.unsplash.com/photo-1589492477829-5e65395b66cc?w=400",
+            "currentPrice": 80.2,
+            "changePercentage": -0.75,
+            "direction": "down"
+        },
+        {
+            "symbol": "EUR-USD",
+            "name": "Euro/US Dollar",
+            "imageUrl": "https://images.unsplash.com/photo-1580048915913-4f8f5cb481c4?w=400",
+            "currentPrice": 1.085,
+            "changePercentage": 0.3,
+            "direction": "up"
+        },
+        {
+            "symbol": "GBP-USD",
+            "name": "British Pound/US Dollar",
+            "imageUrl": "https://images.unsplash.com/photo-1600170311833-c2cf5280ce49?w=400",
+            "currentPrice": 1.26,
+            "changePercentage": -0.15,
+            "direction": "down"
+        },
+        {
+            "symbol": "NVDA",
+            "name": "NVIDIA Corporation",
+            "imageUrl": "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=400",
+            "currentPrice": 900,
+            "changePercentage": 4.5,
+            "direction": "up"
+        }
+    ],
+    "posts": [
+        {
+            "id": "post1",
+            "userId": "leader1",
+            "content": {
+                "text": "🎯 EUR/USD Technical Analysis\n\nKey levels to watch:\n- Resistance: 1.2150\n- Support: 1.2050\n\nBullish momentum building on 4H chart with strong RSI divergence.",
+                "images": [
+                    "https://images.unsplash.com/photo-1642790106117-e829e14a795f"
+                ]
+            },
+            "engagement": {
+                "likes": ["copier1", "copier2", "copier3"],
+                "comments": [
+                    {
+                        "id": "comment1",
+                        "userId": "copier1",
+                        "content": "Great analysis! The RSI divergence is quite clear.",
+                        "likes": ["leader1", "copier2"],
+                        "createdAt": "2024-02-11T10:15:00Z",
+                        "updatedAt": "2024-02-11T10:15:00Z"
+                    },
+                    {
+                        "id": "45718641-0bc4-42f4-852e-e80052f1096f",
+                        "userId": "copier1",
+                        "content": "Wow this is great!",
+                        "likes": [],
+                        "createdAt": "2025-02-11T15:35:53.344Z",
+                        "updatedAt": "2025-02-11T15:35:53.344Z",
+                        "replies": [
+                            {
+                                "id": "1a2e6ef2-0f10-49da-bef5-5864da911794",
+                                "userId": "copier1",
+                                "content": "hello!",
+                                "likes": [],
+                                "createdAt": "2025-02-11T15:36:10.061Z",
+                                "updatedAt": "2025-02-11T15:36:10.061Z"
+                            }
+                        ]
+                    }
+                ],
+                "shares": 8
+            },
+            "createdAt": "2024-02-11T10:00:00Z",
+            "updatedAt": "2024-02-11T10:00:00Z"
+        },
+        {
+            "id": "post2",
+            "userId": "leader2",
+            "content": {
+                "text": "📊 Monthly Performance Update\n\nUSD Position Trading Strategy:\n✅ Win Rate: 68%\n✅ Profit Factor: 2.3\n✅ Average Hold Time: 12 days\n\nConsistency is key! 🎯",
+                "images": [
+                    "https://images.unsplash.com/photo-1543286386-2e659306cd6c"
+                ]
+            },
+            "engagement": {
+                "likes": ["copier1", "copier3", "leader1"],
+                "comments": [
+                    {
+                        "id": "comment2",
+                        "userId": "copier3",
+                        "content": "Impressive results! Love the consistency.",
+                        "likes": ["leader2"],
+                        "createdAt": "2024-02-11T09:30:00Z",
+                        "updatedAt": "2024-02-11T09:30:00Z"
+                    }
+                ],
+                "shares": 12
+            },
+            "createdAt": "2024-02-11T09:00:00Z",
+            "updatedAt": "2024-02-11T09:00:00Z"
+        },
+        {
+            "id": "post3",
+            "userId": "leader1",
+            "content": {
+                "text": "🚨 Trade Alert: EUR/JPY Breakout\n\nKey Points:\n- Breaking 4-hour resistance\n- Volume confirmation\n- Strong momentum indicators\n\nWatching 158.50 as next target. 🎯",
+                "images": [
+                    "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3"
+                ]
+            },
+            "engagement": {
+                "likes": ["copier1", "copier2", "leader2"],
+                "comments": [],
+                "shares": 5
+            },
+            "createdAt": "2024-02-11T08:45:00Z",
+            "updatedAt": "2024-02-11T08:45:00Z"
+        },
+        {
+            "id": "post4",
+            "userId": "copier1",
+            "content": {
+                "text": "🎉 Success Story!\n\nBeen following @expertTrader's Conservative USD Strategy for 3 months now.\n\nResults:\n📈 +12% return\n😌 Much lower stress\n🎯 Better risk management\n\nThank you for the guidance! 🙏",
+                "images": []
+            },
+            "engagement": {
+                "likes": ["leader1", "copier2", "copier3"],
+                "comments": [
+                    {
+                        "id": "comment3",
+                        "userId": "leader1",
+                        "content": "Great to see your progress! Keep following the plan 💪",
+                        "likes": ["copier1"],
+                        "createdAt": "2024-02-11T08:20:00Z",
+                        "updatedAt": "2024-02-11T08:20:00Z"
+                    }
+                ],
+                "shares": 3
+            },
+            "createdAt": "2024-02-11T08:00:00Z",
+            "updatedAt": "2024-02-11T08:00:00Z"
+        },
+        {
+            "id": "post5",
+            "userId": "leader2",
+            "content": {
+                "text": "📚 Trading Education: Position Sizing\n\nKey principles:\n1. Never risk more than 2% per trade\n2. Account for market volatility\n3. Consider correlation between positions\n\nSwipe for examples ➡️",
+                "images": [
+                    "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f",
+                    "https://images.unsplash.com/photo-1551288049-bebda4e38f71"
+                ]
+            },
+            "engagement": {
+                "likes": ["copier1", "copier2", "copier3", "leader1"],
+                "comments": [
+                    {
+                        "id": "comment4",
+                        "userId": "copier2",
+                        "content": "This is exactly what I needed! Can you do more educational posts like this?",
+                        "likes": ["leader2", "copier1"],
+                        "createdAt": "2024-02-11T07:30:00Z",
+                        "updatedAt": "2024-02-11T07:30:00Z"
+                    }
+                ],
+                "shares": 15
+            },
+            "createdAt": "2024-02-11T07:00:00Z",
+            "updatedAt": "2024-02-11T07:00:00Z"
+        },
+        {
+            "id": "post6",
+            "userId": "leader1",
+            "content": {
+                "text": "💡 Strategy Update: EUR Scalping\n\nAdjusted parameters for current volatility:\n- Tighter stops\n- Faster exits\n- Focus on London session\n\nCheck performance tab for results 📊",
+                "images": [
+                    "https://images.unsplash.com/photo-1560221328-12fe60f83ab8"
+                ]
+            },
+            "engagement": {
+                "likes": ["copier3", "leader2"],
+                "comments": [
+                    {
+                        "id": "comment5",
+                        "userId": "copier3",
+                        "content": "The adjustments are working great! My results improved significantly.",
+                        "likes": ["leader1"],
+                        "createdAt": "2024-02-11T06:30:00Z",
+                        "updatedAt": "2024-02-11T06:30:00Z"
+                    }
+                ],
+                "shares": 7
+            },
+            "createdAt": "2024-02-11T06:00:00Z",
+            "updatedAt": "2024-02-11T06:00:00Z"
+        },
+        {
+            "id": "post7",
+            "userId": "copier2",
+            "content": {
+                "text": "❓Question for @expertTrader\n\nI noticed you often mention 'market structure' in your analysis. Could you explain what specific patterns you look for? Still learning! 📚",
+                "images": []
+            },
+            "engagement": {
+                "likes": ["leader1", "copier1"],
+                "comments": [
+                    {
+                        "id": "comment6",
+                        "userId": "leader1",
+                        "content": "Great question! I'll make a detailed post about this tomorrow with examples.",
+                        "likes": ["copier2", "copier1"],
+                        "createdAt": "2024-02-11T05:30:00Z",
+                        "updatedAt": "2024-02-11T05:30:00Z"
+                    }
+                ],
+                "shares": 2
+            },
+            "createdAt": "2024-02-11T05:00:00Z",
+            "updatedAt": "2024-02-11T05:00:00Z"
+        },
+        {
+            "id": "post8",
+            "userId": "leader2",
+            "content": {
+                "text": "🎯 GBP/USD Trade Setup\n\nPotential reversal forming at key support:\n- Double bottom pattern\n- Bullish divergence on RSI\n- Strong institutional buying\n\nWatching for confirmation...",
+                "images": [
+                    "https://images.unsplash.com/photo-1559526324-593bc073d938"
+                ]
+            },
+            "engagement": {
+                "likes": ["copier1", "copier3", "leader1"],
+                "comments": [],
+                "shares": 6
+            },
+            "createdAt": "2024-02-11T04:30:00Z",
+            "updatedAt": "2024-02-11T04:30:00Z"
+        },
+        {
+            "id": "post9",
+            "userId": "leader1",
+            "content": {
+                "text": "📈 Weekly Market Outlook\n\nKey themes:\n1. USD weakness likely to continue\n2. Watch ECB speakers this week\n3. Major tech earnings impact\n\nSwipe for charts ➡️",
+                "images": [
+                    "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3",
+                    "https://images.unsplash.com/photo-1535320903710-d993d3d77d29",
+                    "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f"
+                ]
+            },
+            "engagement": {
+                "likes": ["copier1", "copier2", "copier3", "leader2"],
+                "comments": [
+                    {
+                        "id": "comment7",
+                        "userId": "leader2",
+                        "content": "Solid analysis! Completely agree on the USD outlook.",
+                        "likes": ["leader1", "copier1"],
+                        "createdAt": "2024-02-11T04:15:00Z",
+                        "updatedAt": "2024-02-11T04:15:00Z"
+                    }
+                ],
+                "shares": 20
+            },
+            "createdAt": "2024-02-11T04:00:00Z",
+            "updatedAt": "2024-02-11T04:00:00Z"
+        },
+        {
+            "id": "post10",
+            "userId": "copier3",
+            "content": {
+                "text": "📊 My First Month Results\n\nFollowing multiple strategies:\n- @expertTrader's EUR Scalping\n- @proTrader's Position Trading\n\nDiversification really helps! Up 8% this month 🎉",
+                "images": [
+                    "https://images.unsplash.com/photo-1551288049-bebda4e38f71"
+                ]
+            },
+            "engagement": {
+                "likes": ["leader1", "leader2", "copier1"],
+                "comments": [
+                    {
+                        "id": "comment8",
+                        "userId": "leader2",
+                        "content": "Great start! Smart approach with diversification.",
+                        "likes": ["copier3"],
+                        "createdAt": "2024-02-11T03:30:00Z",
+                        "updatedAt": "2024-02-11T03:30:00Z"
+                    }
+                ],
+                "shares": 4
+            },
+            "createdAt": "2024-02-11T03:00:00Z",
+            "updatedAt": "2024-02-11T03:00:00Z"
+        },
+        {
+            "id": "post11",
+            "userId": "leader1",
+            "content": {
+                "text": "🎓 Trading Psychology Tip\n\nEmotion management is key:\n1. Stick to your plan\n2. Accept losses as part of the game\n3. Don't overtrade\n\nWhat's your biggest psychological challenge? 🤔",
+                "images": []
+            },
+            "engagement": {
+                "likes": ["copier1", "copier2", "copier3", "leader2"],
+                "comments": [
+                    {
+                        "id": "comment9",
+                        "userId": "copier2",
+                        "content": "FOMO is my biggest challenge. Working on it!",
+                        "likes": ["leader1", "copier1"],
+                        "createdAt": "2024-02-11T02:30:00Z",
+                        "updatedAt": "2024-02-11T02:30:00Z"
+                    }
+                ],
+                "shares": 10
+            },
+            "createdAt": "2024-02-11T02:00:00Z",
+            "updatedAt": "2024-02-11T02:00:00Z"
+        },
+        {
+            "id": "post12",
+            "userId": "leader2",
+            "content": {
+                "text": "🚨 USD/JPY Trade Exit\n\nClosing our position from last week:\n✅ +120 pips profit\n✅ 1.5:1 reward ratio\n✅ Clean technical exit\n\nCheck the charts for analysis ➡️",
+                "images": [
+                    "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3",
+                    "https://images.unsplash.com/photo-1559526324-593bc073d938"
+                ]
+            },
+            "engagement": {
+                "likes": ["copier1", "copier3"],
+                "comments": [
+                    {
+                        "id": "comment10",
+                        "userId": "copier1",
+                        "content": "Perfect execution! Thanks for the detailed exit analysis.",
+                        "likes": ["leader2"],
+                        "createdAt": "2024-02-11T01:30:00Z",
+                        "updatedAt": "2024-02-11T01:30:00Z"
+                    }
+                ],
+                "shares": 5
+            },
+            "createdAt": "2024-02-11T01:00:00Z",
+            "updatedAt": "2024-02-11T01:00:00Z"
+        },
+        {
+            "id": "post13",
+            "userId": "leader1",
+            "content": {
+                "text": "📱 New Feature Alert!\n\nJust added risk calculators to my Conservative USD Strategy dashboard. Check it out in the strategy tab! 🔢",
+                "images": [
+                    "https://images.unsplash.com/photo-1554224155-6726b3ff858f"
+                ]
+            },
+            "engagement": {
+                "likes": ["copier1", "copier2"],
+                "comments": [
+                    {
+                        "id": "comment11",
+                        "userId": "copier2",
+                        "content": "This is super helpful! Makes position sizing much easier.",
+                        "likes": ["leader1"],
+                        "createdAt": "2024-02-11T00:30:00Z",
+                        "updatedAt": "2024-02-11T00:30:00Z"
+                    }
+                ],
+                "shares": 3
+            },
+            "createdAt": "2024-02-11T00:00:00Z",
+            "updatedAt": "2024-02-11T00:00:00Z"
+        },
+        {
+            "id": "post14",
+            "userId": "copier1",
+            "content": {
+                "text": "💭 Trading Reflection\n\nBiggest lessons from this week:\n1. Patience pays off\n2. Trust the process\n3. Keep a trading journal\n\nThanks to my mentors @expertTrader @proTrader 🙏",
+                "images": []
+            },
+            "engagement": {
+                "likes": ["leader1", "leader2", "copier2"],
+                "comments": [
+                    {
+                        "id": "comment12",
+                        "userId": "leader2",
+                        "content": "Great mindset! Consistency and patience are key.",
+                        "likes": ["copier1", "leader1"],
+                        "createdAt": "2024-02-10T23:30:00Z",
+                        "updatedAt": "2024-02-10T23:30:00Z"
+                    }
+                ],
+                "shares": 2
+            },
+            "createdAt": "2024-02-10T23:00:00Z",
+            "updatedAt": "2024-02-10T23:00:00Z"
+        },
+        {
+            "id": "post15",
+            "userId": "leader2",
+            "content": {
+                "text": "🔍 Market Analysis: Gold\n\nKey technical levels for next week:\n- Resistance: $2050\n- Support: $2020\n\nWatch correlation with DXY and real yields 📈",
+                "images": [
+                    "https://images.unsplash.com/photo-1610375461246-83df859d849d"
+                ]
+            },
+            "engagement": {
+                "likes": ["copier1", "copier3", "leader1"],
+                "comments": [
+                    {
+                        "id": "comment13",
+                        "userId": "copier3",
+                        "content": "Do you think the Fed's stance will affect these levels?",
+                        "likes": ["leader2"],
+                        "createdAt": "2024-02-10T22:30:00Z",
+                        "updatedAt": "2024-02-10T22:30:00Z"
+                    }
+                ],
+                "shares": 7
+            },
+            "createdAt": "2024-02-10T22:00:00Z",
+            "updatedAt": "2024-02-10T22:00:00Z"
+        }
+    ],
+    "contracts": [
+        {
+            "buy_price": 100,
+            "contract_id": "CONTRACT_O1",
+            "contract_type": "Options",
+            "currency": "USD",
+            "date_start": "2025-02-13T00:00:00Z",
+            "expiry_time": "2025-02-14T00:00:00Z",
+            "payout": 120,
+            "purchase_time": "2025-02-13T00:05:00Z",
+            "symbol": "XYZ"
+        },
+        {
+            "buy_price": 105,
+            "contract_id": "CONTRACT_O2",
+            "contract_type": "Options",
+            "currency": "USD",
+            "date_start": "2025-02-13T01:00:00Z",
+            "expiry_time": "2025-02-14T01:00:00Z",
+            "payout": 130,
+            "purchase_time": "2025-02-13T01:05:00Z",
+            "symbol": "XYZ"
+        },
+        {
+            "buy_price": 110,
+            "contract_id": "CONTRACT_O3",
+            "contract_type": "Options",
+            "currency": "USD",
+            "date_start": "2025-02-13T02:00:00Z",
+            "expiry_time": "2025-02-14T02:00:00Z",
+            "payout": 140,
+            "purchase_time": "2025-02-13T02:05:00Z",
+            "symbol": "XYZ"
+        },
+        {
+            "buy_price": 95,
+            "contract_id": "CONTRACT_A1",
+            "contract_type": "Accumulators",
+            "currency": "USD",
+            "date_start": "2025-02-13T03:00:00Z",
+            "expiry_time": "2025-02-14T03:00:00Z",
+            "payout": 115,
+            "purchase_time": "2025-02-13T03:05:00Z",
+            "symbol": "XYZ"
+        },
+        {
+            "buy_price": 98,
+            "contract_id": "CONTRACT_A2",
+            "contract_type": "Accumulators",
+            "currency": "USD",
+            "date_start": "2025-02-13T04:00:00Z",
+            "expiry_time": "2025-02-14T04:00:00Z",
+            "payout": 118,
+            "purchase_time": "2025-02-13T04:05:00Z",
+            "symbol": "XYZ"
+        },
+        {
+            "buy_price": 102,
+            "contract_id": "CONTRACT_A3",
+            "contract_type": "Accumulators",
+            "currency": "USD",
+            "date_start": "2025-02-13T05:00:00Z",
+            "expiry_time": "2025-02-14T05:00:00Z",
+            "payout": 122,
+            "purchase_time": "2025-02-13T05:05:00Z",
+            "symbol": "XYZ"
+        },
+        {
+            "buy_price": 115,
+            "contract_id": "CONTRACT_M1",
+            "contract_type": "Multipliers",
+            "currency": "USD",
+            "date_start": "2025-02-13T06:00:00Z",
+            "expiry_time": "2025-02-14T06:00:00Z",
+            "payout": 135,
+            "purchase_time": "2025-02-13T06:05:00Z",
+            "symbol": "XYZ"
+        },
+        {
+            "buy_price": 118,
+            "contract_id": "CONTRACT_M2",
+            "contract_type": "Multipliers",
+            "currency": "USD",
+            "date_start": "2025-02-13T07:00:00Z",
+            "expiry_time": "2025-02-14T07:00:00Z",
+            "payout": 138,
+            "purchase_time": "2025-02-13T07:05:00Z",
+            "symbol": "XYZ"
+        },
+        {
+            "buy_price": 120,
+            "contract_id": "CONTRACT_M3",
+            "contract_type": "Multipliers",
+            "currency": "USD",
+            "date_start": "2025-02-13T08:00:00Z",
+            "expiry_time": "2025-02-14T08:00:00Z",
+            "payout": 140,
+            "purchase_time": "2025-02-13T08:05:00Z",
+            "symbol": "XYZ"
+        }
+    ],
+    "statements": [
+        {
+            "type": "Multipliers",
+            "action_type": "buy",
+            "currency": "USD",
+            "amount": -3,
+            "balance_after": 9969.54,
+            "reference_id": 543129132101,
+            "transaction_time": 1739452884
+        },
+        {
+            "type": "Multipliers",
+            "action_type": "sell",
+            "currency": "USD",
+            "amount": 0,
+            "balance_after": 9972.54,
+            "reference_id": 543129132108,
+            "transaction_time": 1739452745
+        },
+        {
+            "type": "Options",
+            "action_type": "buy",
+            "currency": "USD",
+            "amount": -3,
+            "balance_after": 9972.54,
+            "reference_id": 543129132105,
+            "transaction_time": 1739452677
+        },
+        {
+            "type": "Options",
+            "action_type": "sell",
+            "currency": "USD",
+            "amount": 0,
+            "balance_after": 9975.54,
+            "reference_id": 543112652068,
+            "transaction_time": 1739446842
+        },
+        {
+            "type": "Accumulators",
+            "action_type": "buy",
+            "currency": "USD",
+            "amount": -3,
+            "balance_after": 9975.54,
+            "reference_id": 543129132104,
+            "transaction_time": 1739446776
+        },
+        {
+            "type": "Accumulators",
+            "action_type": "buy",
+            "currency": "USD",
+            "amount": -3,
+            "balance_after": 9975.54,
+            "reference_id": 5431291321082,
+            "transaction_time": 1739446776
+        }
+    ]
 }
