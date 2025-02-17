@@ -10,6 +10,8 @@ import {
     addComment,
     addReply,
     likeComment,
+    likePost,
+    sharePost,
 } from "@/modules/feed/services/postService";
 import { getPostInsight } from "@/modules/feed/services/aiService";
 import "./FeedItem.css";
@@ -56,16 +58,13 @@ const FeedItem = ({
         }
     };
 
-    const handleLike = () => {
-        const isLiked = engagement.likes.includes(currentUserId);
-        const newLikes = isLiked
-            ? engagement.likes.filter((id) => id !== currentUserId)
-            : [...engagement.likes, currentUserId];
-
-        setEngagement({
-            ...engagement,
-            likes: newLikes,
-        });
+    const handleLike = async () => {
+        try {
+            const updatedPost = await likePost(post.id, currentUserId);
+            setEngagement(updatedPost.engagement);
+        } catch (error) {
+            console.error("Failed to like post:", error);
+        }
     };
 
     const handleComment = async (content: string) => {
@@ -106,11 +105,13 @@ const FeedItem = ({
         }
     };
 
-    const handleShare = () => {
-        setEngagement({
-            ...engagement,
-            shares: engagement.shares + 1,
-        });
+    const handleShare = async () => {
+        try {
+            const updatedPost = await sharePost(post.id);
+            setEngagement(updatedPost.engagement);
+        } catch (error) {
+            console.error("Failed to share post:", error);
+        }
     };
 
     return (

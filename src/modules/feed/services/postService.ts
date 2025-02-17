@@ -20,26 +20,29 @@ interface AddReplyData extends AddCommentData {
 }
 
 export const createPost = async (data: CreatePostData) => {
-    const response = await fetch(`${import.meta.env.VITE_JSON_SERVER_URL}/posts`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            userId: data.userId,
-            content: {
-                text: data.content.text,
-                images: data.content.images,
+    const response = await fetch(
+        `${import.meta.env.VITE_JSON_SERVER_URL}/posts`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
             },
-            engagement: {
-                likes: [],
-                comments: [],
-                shares: 0,
-            },
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString(),
-        }),
-    });
+            body: JSON.stringify({
+                userId: data.userId,
+                content: {
+                    text: data.content.text,
+                    images: data.content.images,
+                },
+                engagement: {
+                    likes: [],
+                    comments: [],
+                    shares: 0,
+                },
+                createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString(),
+            }),
+        }
+    );
 
     if (!response.ok) {
         throw new Error("Failed to create post");
@@ -50,7 +53,9 @@ export const createPost = async (data: CreatePostData) => {
 
 export const addComment = async (postId: string, data: AddCommentData) => {
     // First get the current post
-    const getResponse = await fetch(`${import.meta.env.VITE_JSON_SERVER_URL}/posts/${postId}`);
+    const getResponse = await fetch(
+        `${import.meta.env.VITE_JSON_SERVER_URL}/posts/${postId}`
+    );
     if (!getResponse.ok) {
         throw new Error("Failed to fetch post");
     }
@@ -128,7 +133,9 @@ export const likeComment = async (
     userId: string
 ) => {
     // First get the current post
-    const getResponse = await fetch(`${import.meta.env.VITE_JSON_SERVER_URL}/posts/${postId}`);
+    const getResponse = await fetch(
+        `${import.meta.env.VITE_JSON_SERVER_URL}/posts/${postId}`
+    );
     if (!getResponse.ok) {
         throw new Error("Failed to fetch post");
     }
@@ -170,7 +177,9 @@ export const likeComment = async (
 
 export const addReply = async (postId: string, data: AddReplyData) => {
     // First get the current post
-    const getResponse = await fetch(`${import.meta.env.VITE_JSON_SERVER_URL}/posts/${postId}`);
+    const getResponse = await fetch(
+        `${import.meta.env.VITE_JSON_SERVER_URL}/posts/${postId}`
+    );
     if (!getResponse.ok) {
         throw new Error("Failed to fetch post");
     }
@@ -225,7 +234,9 @@ export const addReply = async (postId: string, data: AddReplyData) => {
 };
 
 export const getUserPosts = async (userId: string) => {
-    const response = await fetch(`${import.meta.env.VITE_JSON_SERVER_URL}/posts?userId=${userId}`);
+    const response = await fetch(
+        `${import.meta.env.VITE_JSON_SERVER_URL}/posts?userId=${userId}`
+    );
     if (!response.ok) {
         throw new Error("Failed to fetch user posts");
     }
@@ -236,7 +247,9 @@ export const getPosts = async (activeTab: string, userId: string) => {
     if (activeTab === "profile") {
         return getUserPosts(userId);
     } else if (activeTab === "For you") {
-        const response = await fetch(`${import.meta.env.VITE_JSON_SERVER_URL}/posts`);
+        const response = await fetch(
+            `${import.meta.env.VITE_JSON_SERVER_URL}/posts`
+        );
         if (!response.ok) {
             throw new Error("Failed to fetch posts");
         }
@@ -246,24 +259,90 @@ export const getPosts = async (activeTab: string, userId: string) => {
     }
 };
 
+export const getPost = async (postId: string) => {
+    const response = await fetch(
+        `${import.meta.env.VITE_JSON_SERVER_URL}/posts/${postId}`
+    );
+    if (!response.ok) {
+        throw new Error("Failed to fetch post");
+    }
+    return response.json();
+};
+
+export const updatePost = async (postId: string, data: Post) => {
+    const response = await fetch(
+        `${import.meta.env.VITE_JSON_SERVER_URL}/posts/${postId}`,
+        {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        }
+    );
+
+    if (!response.ok) {
+        throw new Error("Failed to update post");
+    }
+
+    return response.json();
+};
+
+export const likePost = async (postId: string, userId: string) => {
+    const post = await getPost(postId);
+    const isLiked = post.engagement.likes.includes(userId);
+
+    const updatedPost = {
+        ...post,
+        engagement: {
+            ...post.engagement,
+            likes: isLiked
+                ? post.engagement.likes.filter((id: string) => id !== userId)
+                : [...post.engagement.likes, userId],
+        },
+    };
+
+    return updatePost(postId, updatedPost);
+};
+
+export const sharePost = async (postId: string) => {
+    const post = await getPost(postId);
+
+    const updatedPost = {
+        ...post,
+        engagement: {
+            ...post.engagement,
+            shares: post.engagement.shares + 1,
+        },
+    };
+
+    return updatePost(postId, updatedPost);
+};
+
 export const getFollowingPosts = async (userId: string) => {
     try {
         // Get current user to get following list
-        const userResponse = await fetch(`${import.meta.env.VITE_JSON_SERVER_URL}/users/${userId}`);
+        const userResponse = await fetch(
+            `${import.meta.env.VITE_JSON_SERVER_URL}/users/${userId}`
+        );
         if (!userResponse.ok) {
             throw new Error("Failed to fetch user data");
         }
         const user = await userResponse.json();
 
         // Get all posts
-        const postsResponse = await fetch(`${import.meta.env.VITE_JSON_SERVER_URL}/posts`);
+        const postsResponse = await fetch(
+            `${import.meta.env.VITE_JSON_SERVER_URL}/posts`
+        );
         if (!postsResponse.ok) {
             throw new Error("Failed to fetch posts");
         }
         const posts = await postsResponse.json();
 
         // Filter posts by users being followed
-        return posts.filter((post: Post) => user.following.includes(post.userId));
+        return posts.filter((post: Post) =>
+            user.following.includes(post.userId)
+        );
     } catch {
         throw new Error("Failed to fetch following posts");
     }
