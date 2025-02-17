@@ -121,7 +121,9 @@ const FeedItem = ({
                     timestamp={post.createdAt}
                     onAnalyze={handleAnalyze}
                     isAnalyzing={isAnalyzing}
-                    showAnalyzeButton={!insight}
+                    showAnalyzeButton={
+                        !insight && post.userId !== currentUserId
+                    }
                 />
             )}
             <PostContent content={post.content} />
