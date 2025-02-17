@@ -61,36 +61,33 @@ const FeedList = ({
         fetchUsers();
     }, [currentUserId]);
 
+    const fetchPosts = async () => {
+        try {
+            setLoading(true);
+            const postsData = await getPosts(activeTab, currentUserId);
+            setPosts(postsData);
+        } catch (err) {
+            setError(err instanceof Error ? err.message : "An error occurred");
+        } finally {
+            setLoading(false);
+        }
+    };
+
     // Only fetch posts when activeTab changes
     useEffect(() => {
-        async function fetchPosts() {
-            try {
-                setLoading(true);
-                const postsData = await getPosts(activeTab, currentUserId);
-                setPosts(postsData);
-            } catch (err) {
-                setError(
-                    err instanceof Error ? err.message : "An error occurred"
-                );
-            } finally {
-                setLoading(false);
-            }
-        }
-        // Only fetch posts if we have the users cache
         if (usersCache) {
+            fetchPosts();
+        }
+    }, [activeTab, currentUserId, usersCache]);
+
+    // Handle refresh separately
+    useEffect(() => {
+        if (shouldRefresh && usersCache) {
             fetchPosts().then(() => {
-                if (shouldRefresh) {
-                    onRefreshComplete?.();
-                }
+                onRefreshComplete?.();
             });
         }
-    }, [
-        activeTab,
-        currentUserId,
-        usersCache,
-        shouldRefresh,
-        onRefreshComplete,
-    ]);
+    }, [shouldRefresh]);
 
     if (loading) {
         return (
