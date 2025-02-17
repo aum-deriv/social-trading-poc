@@ -1,7 +1,6 @@
 import type Post from "@/types/post.types";
 import type User from "@/types/user.types";
 import CommentSection from "./components/CommentSection/CommentSection";
-import PostAIInsights from "../PostAIInsights/PostAIInsights";
 import Button from "@/components/input/Button";
 import "./PostEngagement.css";
 import {
@@ -26,11 +25,8 @@ interface PostEngagementProps {
 }
 
 const PostEngagement = ({
-    postId,
-    content,
     engagement,
     currentUserId,
-    currentUser,
     onLike,
     onComment,
     onShare,
