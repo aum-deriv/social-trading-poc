@@ -24,13 +24,13 @@
   position: absolute;
   top: 5%;
   left: 5%;
-  font-size: large;
+  font-size: x-large;
   font-weight: bold;
 }
 
 .user-card__rank > svg {
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
 }
 
 .user-card__avatar-container {
