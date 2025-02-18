@@ -1,0 +1,92 @@
+.strategy-form {
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.strategy-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.strategy-form__field label {
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+}
+
+.strategy-form__field input,
+.strategy-form__field textarea,
+.strategy-form__field select {
+  padding: var(--spacing-sm);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  background-color: var(--background-secondary);
+  color: var(--text-primary);
+  font-size: var(--font-size-base);
+  width: 100%;
+  transition: border-color var(--transition-fast);
+}
+
+.strategy-form__field input:focus,
+.strategy-form__field textarea:focus,
+.strategy-form__field select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.strategy-form__field textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.strategy-form__error {
+  color: var(--error-color);
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-sm);
+  background-color: var(--error-background);
+  border-radius: var(--border-radius-md);
+}
+
+.strategy-form__actions {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.strategy-form__button {
+  flex: 1;
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius-md);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.strategy-form__button--primary {
+  background-color: var(--primary-color);
+  color: var(--background-primary);
+  border: none;
+}
+
+.strategy-form__button--primary:disabled {
+  background-color: var(--disabled-color);
+  cursor: not-allowed;
+}
+
+.strategy-form__button--secondary {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.strategy-form__button--primary:hover:not(:disabled) {
+  background-color: var(--primary-color-dark);
+}
+
+.strategy-form__button--secondary:hover {
+  background-color: var(--background-secondary);
+}

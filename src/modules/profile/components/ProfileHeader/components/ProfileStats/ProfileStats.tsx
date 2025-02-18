@@ -37,6 +37,48 @@ const ProfileStats = ({ followers, following, strategies, onFollowAction }: Prof
     refetch: refetchFollowing,
   } = useFollowers(following);
 
+  const handleCopyStrategy = async (strategyId: string, isCopying: boolean) => {
+    if (!currentUser?.id) return;
+
+    try {
+      if (isCopying) {
+        // Stop copying
+        const response = await fetch(
+          `${import.meta.env.VITE_JSON_SERVER_URL}/copyRelationships?copierId=${currentUser.id}&strategyId=${strategyId}`
+        );
+        if (!response.ok) return;
+        const relations = await response.json();
+
+        // Delete the copy relationship
+        if (relations.length > 0) {
+          await fetch(
+            `${import.meta.env.VITE_JSON_SERVER_URL}/copyRelationships/${relations[0].id}`,
+            { method: 'DELETE' }
+          );
+        }
+      } else {
+        // Start copying
+        await fetch(`${import.meta.env.VITE_JSON_SERVER_URL}/copyRelationships`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            copierId: currentUser.id,
+            strategyId,
+            status: 'active',
+            copySize: 1000, // Default copy size
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
+          }),
+        });
+      }
+
+      // Refetch profile data to update strategies
+      await onFollowAction();
+    } catch (error) {
+      console.error('Error handling strategy copy:', error);
+    }
+  };
+
   return (
     <>
       <div className="profile-stats">
@@ -127,10 +169,11 @@ const ProfileStats = ({ followers, following, strategies, onFollowAction }: Prof
       >
         <StrategyList
           strategies={strategies}
-          onCopyStrategy={async strategyId => {
-            // TODO: Implement copy strategy
-            console.log('Copy strategy:', strategyId);
-          }}
+          isOwnProfile={
+            currentUser?.userType === 'leader' &&
+            strategies.some(s => s.leaderId === currentUser.id)
+          }
+          onCopyStrategy={handleCopyStrategy}
         />
       </FullscreenModal>
     </>

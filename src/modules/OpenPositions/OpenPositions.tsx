@@ -1,32 +1,27 @@
-import { useState } from "react";
-import Dropdown from "@components/Dropdown/Dropdown";
-import { TradePositions } from "./components/TradePositions";
-import { tradeTypes } from "./constants";
-import dbData from "../../../json-server/data/db.json";
-import "./OpenPositions.css";
+import { useState } from 'react';
+import Dropdown from '@components/Dropdown/Dropdown';
+import { TradePositions } from './components/TradePositions';
+import dbData from '../../../json-server/data/db.json';
+import { TradeType } from './types';
+import './OpenPositions.css';
 
 const OpenPositions = () => {
-  const [selectedTradeType, setSelectedTradeType] = useState<
-    keyof typeof tradeTypes
-  >(tradeTypes.Options);
+  const [selectedTradeType, setSelectedTradeType] = useState<TradeType>(TradeType.Options);
 
   const handleTradeTypeChange = (selected: string) => {
-    setSelectedTradeType(selected as keyof typeof tradeTypes);
+    setSelectedTradeType(selected as TradeType);
   };
 
   return (
     <div className="open-positions">
       <div className="open-positions-header">
         <Dropdown
-          options={Object.values(tradeTypes)}
+          options={Object.values(TradeType)}
           selected={selectedTradeType}
           onSelect={handleTradeTypeChange}
         />
       </div>
-      <TradePositions
-        contracts={dbData.contracts || []}
-        tradeType={selectedTradeType}
-      />
+      <TradePositions contracts={dbData.contracts || []} tradeType={selectedTradeType} />
     </div>
   );
 };

@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import AIButton from '../AIButton';
+import { useReducer, useEffect } from 'react';
+import Button from '../input/Button';
 import { translateText } from '../../services/translationService';
 
 interface TranslateButtonProps {
@@ -7,22 +7,125 @@ interface TranslateButtonProps {
   onTranslation: (translatedText: string) => void;
 }
 
+interface TranslateState {
+  isTranslating: boolean;
+  error: string | null;
+  isEnglish: boolean;
+  isTranslated: boolean;
+  translatedText: string | null;
+  showingOriginal: boolean;
+}
+
+type TranslateAction =
+  | { type: 'START_TRANSLATION' }
+  | { type: 'TRANSLATION_SUCCESS'; payload: string }
+  | { type: 'TRANSLATION_ERROR'; payload: string }
+  | { type: 'TOGGLE_LANGUAGE' }
+  | { type: 'SET_IS_ENGLISH'; payload: boolean }
+  | { type: 'RESET_ERROR' };
+
+const initialState: TranslateState = {
+  isTranslating: false,
+  error: null,
+  isEnglish: true,
+  isTranslated: false,
+  translatedText: null,
+  showingOriginal: false,
+};
+
+function translateReducer(state: TranslateState, action: TranslateAction): TranslateState {
+  switch (action.type) {
+    case 'START_TRANSLATION':
+      return {
+        ...state,
+        isTranslating: true,
+        error: null,
+      };
+    case 'TRANSLATION_SUCCESS':
+      return {
+        ...state,
+        isTranslating: false,
+        isTranslated: true,
+        translatedText: action.payload,
+        showingOriginal: false,
+        error: null,
+      };
+    case 'TRANSLATION_ERROR':
+      return {
+        ...state,
+        isTranslating: false,
+        error: action.payload,
+      };
+    case 'TOGGLE_LANGUAGE':
+      return {
+        ...state,
+        showingOriginal: !state.showingOriginal,
+      };
+    case 'SET_IS_ENGLISH':
+      return {
+        ...state,
+        isEnglish: action.payload,
+      };
+    case 'RESET_ERROR':
+      return {
+        ...state,
+        error: null,
+      };
+    default:
+      return state;
+  }
+}
+
 const TranslateButton = ({ text, onTranslation }: TranslateButtonProps) => {
-  const [isTranslating, setIsTranslating] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [isEnglish, setIsEnglish] = useState(true);
+  const [state, dispatch] = useReducer(translateReducer, initialState);
+  const { isTranslating, error, isEnglish, isTranslated, translatedText, showingOriginal } = state;
 
   const handleTranslate = async () => {
-    setError(null);
+    // If already translated, toggle between original and translated text
+    if (isTranslated) {
+      dispatch({ type: 'TOGGLE_LANGUAGE' });
+      onTranslation(showingOriginal ? translatedText || text : text);
+      return;
+    }
+
+    // First-time translation
+    dispatch({ type: 'START_TRANSLATION' });
     try {
-      setIsTranslating(true);
-      const translatedText = await translateText(text);
-      onTranslation(translatedText);
+      const translated = await translateText(text);
+      dispatch({ type: 'TRANSLATION_SUCCESS', payload: translated });
+      onTranslation(translated);
     } catch (error) {
       console.error('Translation error:', error);
-      setError(error instanceof Error ? error.message : 'Translation failed');
-    } finally {
-      setIsTranslating(false);
+      dispatch({
+        type: 'TRANSLATION_ERROR',
+        payload: error instanceof Error ? error.message : 'Translation failed',
+      });
+    }
+  };
+
+  const getButtonText = () => {
+    if (error) return 'Translation Failed';
+    if (isTranslating) return '✦ Translating...';
+    if (isTranslated) {
+      return showingOriginal ? '✦ Show Translation' : '✦ Show Original';
+    }
+    return '✦ See translation';
+  };
+
+  // Helper function to check if text contains only English characters
+  const isEnglishText = (text: string): boolean => {
+    return /^[A-Za-z0-9\s!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]*$/.test(text);
+  };
+
+  // Helper function to check if text is in English via translation
+  const checkLanguageViaTranslation = async (text: string) => {
+    try {
+      const translatedText = await translateText(text);
+      // If translation returns the same text, it's English
+      dispatch({ type: 'SET_IS_ENGLISH', payload: translatedText === text });
+    } catch {
+      // Hide button on error
+      dispatch({ type: 'SET_IS_ENGLISH', payload: true });
     }
   };
 
@@ -33,24 +136,13 @@ const TranslateButton = ({ text, onTranslation }: TranslateButtonProps) => {
       return;
     }
 
-    // Skip text that's already in English (contains only ASCII characters and emojis)
-    const isAscii = /^[\x00-\x7F\u{1F300}-\u{1F9FF}]*$/u.test(text);
-    if (isAscii) {
-      setIsEnglish(true);
+    // Skip text that's already in English
+    if (isEnglishText(text)) {
+      dispatch({ type: 'SET_IS_ENGLISH', payload: true });
       return;
     }
 
-    const checkLanguage = async () => {
-      try {
-        const translatedText = await translateText(text);
-        // If translation returns the same text, it's English
-        setIsEnglish(translatedText === text);
-      } catch {
-        // Hide button on error
-        setIsEnglish(true);
-      }
-    };
-    checkLanguage();
+    checkLanguageViaTranslation(text);
   }, [text]);
 
   if (isEnglish) {
@@ -58,14 +150,14 @@ const TranslateButton = ({ text, onTranslation }: TranslateButtonProps) => {
   }
 
   return (
-    <AIButton
+    <Button
       onClick={handleTranslate}
-      isLoading={isTranslating}
-      loadingText="Translating..."
-      disabled={!!error}
+      disabled={!!error || isTranslating}
+      variant="text"
+      className="post-engagement__button"
     >
-      {error ? 'Translation Failed' : 'Translate'}
-    </AIButton>
+      {getButtonText()}
+    </Button>
   );
 };
 

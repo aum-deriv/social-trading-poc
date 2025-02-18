@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Tick from '../../../../assets/icons/Tick';
 import Trophy from '../../../../assets/icons/Trophy';
 import '../UserCard/UserCard.css';
@@ -31,6 +32,19 @@ interface StrategyCardProps {
 }
 
 const StrategyCard: FC<StrategyCardProps> = ({ strategy, rank, onFollow, onCopy, large }) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = (e: React.MouseEvent) => {
+    // Don't navigate if clicking on buttons
+    if (
+      (e.target as HTMLElement).tagName === 'BUTTON' ||
+      (e.target as HTMLElement).closest('button')
+    ) {
+      return;
+    }
+    navigate(`/strategies/${strategy.id}`);
+  };
+
   const formatCopiers = (count: number) => {
     return new Intl.NumberFormat('en-US', {
       notation: 'compact',
@@ -39,7 +53,11 @@ const StrategyCard: FC<StrategyCardProps> = ({ strategy, rank, onFollow, onCopy,
   };
 
   return (
-    <div className={`leader-card ${large ? 'leader-card--large' : ''}`}>
+    <div
+      className={`leader-card ${large ? 'leader-card--large' : ''}`}
+      onClick={handleCardClick}
+      style={{ cursor: 'pointer' }}
+    >
       {rank && (
         <div className="leader-card__rank">
           {rank <= 3 && <Trophy className="leader-card__trophy" />}#{rank}

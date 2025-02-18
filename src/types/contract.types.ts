@@ -7,5 +7,8 @@ export interface Contract {
   expiry_time: string;
   payout: number;
   purchase_time: string;
-  symbol: string;
+  strategy_name: string;
+  leader: string;
+  leader_id: string;
+  strategy_id: string;
 }

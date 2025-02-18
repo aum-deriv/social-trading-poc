@@ -10,7 +10,6 @@ interface PostHeaderProps {
   onAnalyze: () => void;
   isAnalyzing?: boolean;
   showAnalyzeButton?: boolean;
-  translationButton?: React.ReactNode;
 }
 
 const PostHeader = ({
@@ -19,7 +18,6 @@ const PostHeader = ({
   onAnalyze,
   isAnalyzing,
   showAnalyzeButton = true,
-  translationButton,
 }: PostHeaderProps) => {
   return (
     <div className="post-header">
@@ -36,19 +34,16 @@ const PostHeader = ({
           <span className="post-header__timestamp">{formatTimestamp(timestamp)}</span>
         </div>
       </div>
-      <div className="post-header__buttons">
-        {showAnalyzeButton && (
-          <AIButton
-            onClick={onAnalyze}
-            isLoading={isAnalyzing}
-            disabled={isAnalyzing}
-            loadingText="Analyzing..."
-          >
-            Ask AI
-          </AIButton>
-        )}
-        {translationButton}
-      </div>
+      {showAnalyzeButton && (
+        <AIButton
+          onClick={onAnalyze}
+          isLoading={isAnalyzing}
+          disabled={isAnalyzing}
+          loadingText="Analyzing..."
+        >
+          Ask AI
+        </AIButton>
+      )}
     </div>
   );
 };

@@ -1,22 +1,77 @@
 :root {
-    /* Font weights */
-    --font-weight-regular: 400;
-    --font-weight-medium: 500;
-    --font-weight-semibold: 600;
+  /* Font weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
 
-    /* Font sizes */
-    --font-size-xs: 0.75rem;    /* 12px */
-    --font-size-sm: 0.875rem;   /* 14px */
-    --font-size-base: 1rem;     /* 16px */
-    --font-size-lg: 1.125rem;   /* 18px */
-    --font-size-xl: 1.25rem;    /* 20px */
-    --font-size-2xl: 1.5rem;    /* 24px */
+  /* Font sizes */
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-base: 1rem; /* 16px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem; /* 20px */
+  --font-size-2xl: 1.5rem; /* 24px */
 
-    /* Line heights */
-    --line-height-tight: 1.25;
-    --line-height-normal: 1.5;
-    --line-height-relaxed: 1.75;
+  /* Line heights */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
 
-    /* Font families */
-    --font-family-base: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  /* Font families */
+  --font-family-base:
+    'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Colors */
+  --primary-color: #007bff;
+  --primary-color-dark: #0056b3;
+  --text-primary: #1a1a1a;
+  --text-secondary: #666666;
+  --background-primary: #ffffff;
+  --background-secondary: #f8f9fa;
+  --border-color: #e0e0e0;
+  --disabled-color: #cccccc;
+
+  /* Status Colors */
+  --success-color: #28a745;
+  --success-background: #e8f5e9;
+  --warning-color: #ffc107;
+  --warning-background: #fff3e0;
+  --error-color: #dc3545;
+  --error-background: #ffebee;
+
+  /* Trade Type Colors */
+  --rise-fall-color: #0066cc;
+  --rise-fall-background: #e8f5ff;
+  --touch-no-touch-color: #3366ff;
+  --touch-no-touch-background: #f0f4ff;
+  --accumulators-color: #cc5500;
+  --accumulators-background: #fff4e6;
+  --digits-color: #6633cc;
+  --digits-background: #f3f0ff;
+  --multipliers-color: #00995c;
+  --multipliers-background: #e6fff4;
+  --turbos-color: #cc0000;
+  --turbos-background: #ffe6e6;
+
+  /* Layout */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  /* Border Radius */
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 1rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
 }

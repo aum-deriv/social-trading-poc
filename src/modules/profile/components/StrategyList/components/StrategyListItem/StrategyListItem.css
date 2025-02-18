@@ -1,0 +1,124 @@
+.strategy-list__item {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: var(--color-background-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.strategy-list__item:hover {
+  transform: translateY(-2px);
+}
+
+.strategy-list__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.strategy-list__header-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.strategy-list__description {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+  text-align: left;
+  width: 100%;
+}
+
+.strategy-list__stats {
+  display: flex;
+  gap: 2rem;
+  padding: 0.8rem;
+  background-color: #00d0ff10;
+  border-radius: 1rem;
+}
+
+.strategy-list__stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+}
+
+.strategy-list__stat-value {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.strategy-list__stat-label {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.strategy-list__meta {
+  display: flex;
+}
+
+.strategy-list__risk {
+  display: inline-block;
+  padding: 0.375rem 1rem;
+  border-radius: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Risk level styles */
+.strategy-list__risk--low {
+  background-color: var(--success-background);
+  color: var(--success-color);
+}
+
+.strategy-list__risk--medium {
+  background-color: var(--warning-background);
+  color: var(--warning-color);
+}
+
+.strategy-list__risk--high {
+  background-color: var(--error-background);
+  color: var(--error-color);
+}
+
+.strategy-list__copy-btn {
+  border: none;
+  border-radius: 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.strategy-list__copy-btn--primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.strategy-list__copy-btn--primary:hover {
+  background-color: var(--primary-color-dark);
+  transform: translateY(-1px);
+}
+
+.strategy-list__copy-btn--secondary {
+  background-color: var(--background-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.strategy-list__copy-btn--secondary:hover {
+  background-color: var(--border-color);
+  transform: translateY(-1px);
+}

@@ -57,30 +57,72 @@ const CopierOverviewContent: React.FC = () => {
     <>
       <div className="copier-overview-container">
         <div className="copier-overview-card">
-          <h3>Total Copiers</h3>
-          <p>{metrics.totalCopiers}</p>
+          <div className="card-header">
+            <h3 className="card-title">Net Income</h3>
+            <span className="menu-dots">•••</span>
+          </div>
+          <div className="card-value">
+            <span className="currency-symbol">$</span>
+            {metrics.totalPnL.toLocaleString()}
+          </div>
+          <div className="change-indicator">
+            <span className="change-positive">+35%</span>
+            <span className="change-period">from last month</span>
+          </div>
         </div>
 
         <div className="copier-overview-card">
-          <h3>Total Capital Allocated</h3>
-          <p>${metrics.totalCapital.toLocaleString()}</p>
+          <div className="card-header">
+            <h3 className="card-title">Total Capital</h3>
+            <span className="menu-dots">•••</span>
+          </div>
+          <div className="card-value">
+            <span className="currency-symbol">$</span>
+            {metrics.totalCapital.toLocaleString()}
+          </div>
+          <div className="change-indicator">
+            <span className="change-positive">+12%</span>
+            <span className="change-period">from last month</span>
+          </div>
         </div>
 
         <div className="copier-overview-card">
-          <h3>Win Rate (%)</h3>
-          <p>{metrics.winRate}%</p>
+          <div className="card-header">
+            <h3 className="card-title">Win Rate</h3>
+            <span className="menu-dots">•••</span>
+          </div>
+          <div className="card-value">{metrics.winRate}%</div>
+          <div className="change-indicator">
+            <span className="change-positive">+5%</span>
+            <span className="change-period">from last month</span>
+          </div>
         </div>
 
         <div className="copier-overview-card">
-          <h3>Total Profit/Loss (P&L) of Copiers</h3>
-          <p>${metrics.totalPnL.toLocaleString()}</p>
-          <h4>Average Copier P&L</h4>
-          <p>${metrics.avgPnL.toLocaleString()}</p>
+          <div className="card-header">
+            <h3 className="card-title">Total Copiers</h3>
+            <span className="menu-dots">•••</span>
+          </div>
+          <div className="card-value">{metrics.totalCopiers}</div>
+          <div className="change-indicator">
+            <span className="change-positive">+15%</span>
+            <span className="change-period">from last month</span>
+          </div>
         </div>
 
         <div className="copier-overview-card">
-          <h3>Total Fees Earned</h3>
-          <p>${metrics.totalFees.toLocaleString()}</p>
+          <div className="card-header">
+            <h3 className="card-title">Total Fees</h3>
+            <span className="menu-dots">•••</span>
+          </div>
+          <div className="card-value">
+            <span className="currency-symbol">$</span>
+            {metrics.totalFees.toLocaleString()}
+          </div>
+          <div className="change-indicator">
+            <span className="change-positive">+8%</span>
+            <span className="change-period">from last month</span>
+          </div>
         </div>
       </div>
       <div className="charts-section">

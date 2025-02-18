@@ -11,6 +11,7 @@ import NotFound from '@/pages/not-found';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import Discover from '@/pages/discover/Discover';
 import Reports from '@/pages/reports';
+import StrategyDetails from '@/pages/strategy';
 
 export const routes: RouteObject[] = [
   {
@@ -68,6 +69,10 @@ export const routes: RouteObject[] = [
           {
             path: '/profile/:username',
             element: <Profile />,
+          },
+          {
+            path: '/strategies/:id',
+            element: <StrategyDetails />,
           },
           {
             path: '*',

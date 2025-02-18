@@ -10,6 +10,15 @@ interface PostContentProps {
 
 const PostContent = ({ content, translatedText }: PostContentProps) => {
   const { text, images = [] } = content;
+  // Display text is controlled entirely by props, add AI translation indicator when showing translated text
+  const displayText = translatedText ? (
+    <>
+      {translatedText}
+      <span className="post-content__translation-indicator">✦ Translated by AI</span>
+    </>
+  ) : (
+    text
+  );
   const hasImages = images.length > 0;
   const isSingleImage = images.length === 1;
 
@@ -49,12 +58,7 @@ const PostContent = ({ content, translatedText }: PostContentProps) => {
     <div className="post-content">
       {text && (
         <div className="post-content__text-container">
-          <p className="post-content__text">{text}</p>
-          {translatedText && (
-            <div className="post-content__translation">
-              <p className="post-content__translated-text">{translatedText}</p>
-            </div>
-          )}
+          <div className="post-content__text">{displayText}</div>
         </div>
       )}
 

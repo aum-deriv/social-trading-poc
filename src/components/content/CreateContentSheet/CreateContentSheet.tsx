@@ -6,14 +6,17 @@ import ActionSheet from '@/components/modal/ActionSheet';
 import type { ActionSheetAction } from '@/components/modal/ActionSheet';
 import FullscreenModal from '@/components/modal/FullscreenModal/FullscreenModal';
 import PostForm from '@/modules/feed/components/PostForm';
+import StrategyForm from '@/modules/strategy/components/StrategyForm/StrategyForm';
 import CreatePostIcon from '@/assets/icons/CreatePostIcon';
 import CreateStrategyIcon from '@/assets/icons/CreateStrategyIcon';
+
+import type { StrategyFormData } from '@/modules/strategy/components/StrategyForm/StrategyForm';
 
 interface CreateContentSheetProps {
   isOpen: boolean;
   onClose: () => void;
   onCreatePost: (content: { text: string; images: string[] }) => Promise<any>;
-  onCreateStrategy: () => void;
+  onCreateStrategy: (strategy: StrategyFormData) => Promise<any>;
   userType: UserType;
   currentUser: User;
 }
@@ -29,6 +32,7 @@ const CreateContentSheet: React.FC<CreateContentSheetProps> = ({
   type PendingAction = 'createPost' | 'createStrategy' | null;
 
   const [showPostForm, setShowPostForm] = useState(false);
+  const [showStrategyForm, setShowStrategyForm] = useState(false);
   const [pendingAction, setPendingAction] = useState<PendingAction>(null);
 
   const navigate = useNavigate();
@@ -43,13 +47,18 @@ const CreateContentSheet: React.FC<CreateContentSheetProps> = ({
       setShowPostForm(true);
       setPendingAction(null);
     } else if (pendingAction === 'createStrategy') {
-      onCreateStrategy();
+      setShowStrategyForm(true);
       setPendingAction(null);
     }
   };
 
   const handlePostFormClose = () => {
     setShowPostForm(false);
+    setPendingAction(null);
+  };
+
+  const handleStrategyFormClose = () => {
+    setShowStrategyForm(false);
     setPendingAction(null);
   };
 
@@ -102,6 +111,17 @@ const CreateContentSheet: React.FC<CreateContentSheetProps> = ({
           currentUser={currentUser}
           onSubmit={handlePostSubmit}
           onClose={handlePostFormClose}
+        />
+      </FullscreenModal>
+      <FullscreenModal
+        isOpen={showStrategyForm}
+        onClose={handleStrategyFormClose}
+        title="Create Strategy"
+      >
+        <StrategyForm
+          currentUser={currentUser}
+          onSubmit={onCreateStrategy}
+          onClose={handleStrategyFormClose}
         />
       </FullscreenModal>
     </>

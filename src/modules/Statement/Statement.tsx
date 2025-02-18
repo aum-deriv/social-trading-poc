@@ -19,40 +19,28 @@ const Statement = () => {
   const statements = (dbData.statements || []) as StatementItem[];
   const { width } = useViewport();
 
-  // Define columns as an array of header strings since our Table component expects string[]
-  const columns = [
-    'Type',
-    'Ref. ID',
-    'Currency',
-    'Transaction time',
-    'Transaction',
-    'Credit/Debit',
-    'Balance',
-  ];
-
   // Map each statement object to an array of values matching the column order
-  const data = statements.map((statement: StatementItem) => [
-    statement.type,
-    statement.reference_id,
-    statement.currency,
-    formatTimestamp(statement.transaction_time.toString()),
-    statement.action_type,
-    statement.amount,
-    statement.balance_after,
-  ]);
+  const data = statements.map((statement: StatementItem) => ({
+    Type: statement.type,
+    'Ref. ID': statement.reference_id,
+    Currency: statement.currency,
+    'Transaction time': formatTimestamp(statement.transaction_time.toString()),
+    Transaction: statement.action_type,
+    'Credit/Debit': statement.amount,
+    Balance: statement.balance_after,
+  }));
 
   return width >= BREAKPOINTS.DESKTOP ? (
-    <Table columns={columns} data={data} />
+    <Table data={data} />
   ) : (
     <div className="contract-card-container">
       {data.map((item, index) => {
-        const items = columns.map((column, idx) => {
-          return {
-            title: column,
-            value: item[idx],
-          };
-        });
-        return <ContractCard items={items} key={index} />;
+        const items = Object.entries(item).map(([key, value]) => ({
+          title: key,
+          value,
+        }));
+
+        return <ContractCard items={items} key={index} isStatement />;
       })}
     </div>
   );

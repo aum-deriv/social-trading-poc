@@ -1,12 +1,13 @@
-import React from "react";
-import "./Table.css";
+import React from 'react';
+import './Table.css';
 
 interface TableProps {
-  columns: string[];
-  data: React.ReactNode[][];
+  data: Record<string, React.ReactNode>[];
 }
 
-const Table: React.FC<TableProps> = ({ columns, data }) => {
+const Table: React.FC<TableProps> = ({ data }) => {
+  const columns = Object.keys(data[0]);
+
   return (
     <table className="table">
       <thead>
@@ -19,7 +20,7 @@ const Table: React.FC<TableProps> = ({ columns, data }) => {
       <tbody>
         {data.map((row, rowIndex) => (
           <tr key={rowIndex}>
-            {row.map((cell, cellIndex) => (
+            {Object.values(row).map((cell, cellIndex) => (
               <td key={cellIndex}>{cell}</td>
             ))}
           </tr>

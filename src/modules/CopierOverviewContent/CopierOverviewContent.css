@@ -6,54 +6,64 @@
 }
 
 .copier-overview-card {
-  text-align: center;
-  background: linear-gradient(135deg, #fdfbfb, #ebedee);
-  background-size: 200% 200%;
-  border: 1px solid #e0e0e0;
+  background: #ffffff;
   border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease,
-    background-position 0.5s ease;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: relative;
 }
 
-.copier-overview-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-  background-position: right center;
-}
-
-.copier-overview-card h3 {
-  margin: 0 0 12px 0;
-  font-size: 22px;
-  color: #2a3f54;
-  font-family: "Helvetica Neue", Arial, sans-serif;
-}
-
-.copier-overview-card p {
-  font-size: 38px;
-  margin: 0;
-  font-weight: bold;
-  color: #1a73e8;
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  text-align: center;
-}
-
-.copier-overview-card h4 {
-  margin-top: 16px;
-  font-size: 20px;
-  color: #555;
-  font-family: "Helvetica Neue", Arial, sans-serif;
-}
-
-/* Styling for single-value cards */
-.copier-overview-card:has(p:only-of-type) {
+.card-header {
   display: flex;
-  flex-direction: column;
-  min-height: 150px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
 }
 
-.copier-overview-card:has(p:only-of-type) p:only-of-type {
-  margin-top: auto;
-  margin-bottom: auto;
+.card-title {
+  font-size: 14px;
+  color: #666;
+  font-weight: normal;
+  margin: 0;
+}
+
+.menu-dots {
+  font-size: 20px;
+  color: #666;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.card-value {
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+  margin: 16px 0;
+}
+
+.currency-symbol {
+  font-size: 24px;
+  font-weight: normal;
+  margin-right: 4px;
+}
+
+.change-indicator {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+}
+
+.change-positive {
+  color: #4caf50;
+}
+
+.change-negative {
+  color: #f44336;
+}
+
+.change-period {
+  color: #888;
+  font-size: 14px;
+  margin-left: 4px;
 }

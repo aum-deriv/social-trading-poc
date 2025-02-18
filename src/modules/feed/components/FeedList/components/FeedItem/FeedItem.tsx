@@ -114,14 +114,6 @@ const FeedItem = ({ post, user, currentUserId, insight: initialInsight }: FeedIt
           onAnalyze={handleAnalyze}
           isAnalyzing={isAnalyzing}
           showAnalyzeButton={!insight && post.userId !== currentUserId}
-          translationButton={
-            <TranslateButton
-              text={post.content.text}
-              onTranslation={text => {
-                setTranslatedText(text);
-              }}
-            />
-          }
         />
       )}
       <PostContent content={post.content} translatedText={translatedText} />
@@ -147,6 +139,14 @@ const FeedItem = ({ post, user, currentUserId, insight: initialInsight }: FeedIt
         onReplyToComment={handleReplyToComment}
         onLikeComment={handleLikeComment}
         onShare={handleShare}
+        translationButton={
+          <TranslateButton
+            text={post.content.text}
+            onTranslation={text => {
+              setTranslatedText(text);
+            }}
+          />
+        }
       />
     </article>
   );

@@ -1,21 +1,113 @@
 .contract-card {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  padding: 20px;
-  min-width: 300px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #67cdff;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 400px;
+}
+
+.success-icon-container {
+  background: #00d0ff;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  position: relative;
+}
+
+.success-icon-container--statement {
+  background: #99d5c5;
+}
+
+.success-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.message {
+  text-align: center;
+  margin-bottom: 32px;
+  font-size: 20px;
+  color: #333;
+  line-height: 1.4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.contract-card-items {
+  border-top: 2px dashed #e0e0e0;
+  padding-top: 24px;
+  margin-bottom: 24px;
 }
 
 .contract-card-item {
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.contract-card-item:last-child {
+  margin-bottom: 0;
 }
 
 .contract-card-title {
-  font-weight: bold;
-  margin-bottom: 4px;
+  color: #666;
+  font-size: 14px;
+}
+
+.contract-card-up-title {
+  color: #666;
+  font-size: 16px;
+}
+
+.contract-card-value {
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.contract-card-up-value {
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.share-button {
+  width: 100%;
+  background: #4361ee;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.share-button:hover {
+  background: #3651d4;
+}
+
+.contract-card-button {
+  background: #ff474c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  width: 120px;
+  cursor: pointer;
 }
