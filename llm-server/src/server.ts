@@ -7,6 +7,7 @@ import cors from 'cors';
 import insightsRouter from './routes/insights';
 import translationRouter from './routes/translation';
 import marketRouter from './routes/market';
+import leaderSuggestionsRouter from './routes/leaderSuggestions';
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -24,6 +25,7 @@ app.get('/health', (req, res) => {
 app.use('/api/ai', insightsRouter);
 app.use('/api/translation', translationRouter);
 app.use('/api/market', marketRouter);
+app.use('/api/leader-suggestions', leaderSuggestionsRouter);
 
 // Error handling middleware
 app.use(

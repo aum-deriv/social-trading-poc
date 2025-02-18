@@ -6,6 +6,18 @@ if (!JSON_SERVER_URL) {
 }
 
 export class DataService {
+    async getLeaders(): Promise<User[]> {
+        try {
+            const response = await fetch(`${JSON_SERVER_URL}/users?userType=leader`);
+            if (!response.ok) throw new Error('Failed to fetch leaders');
+            const data = await response.json();
+            return data as User[];
+        } catch (error) {
+            console.error('Error fetching leaders:', error);
+            return [];
+        }
+    }
+
     async getUserPosts(): Promise<Post[]> {
         try {
             const response = await fetch(`${JSON_SERVER_URL}/posts`);
@@ -30,12 +42,23 @@ export class DataService {
         }
     }
 
-    async getUserStrategies(userId: string): Promise<TradingStrategy[]> {
+    async getUserStrategies(accountId: string): Promise<TradingStrategy[]> {
         try {
-            const response = await fetch(`${JSON_SERVER_URL}/tradingStrategies?copiers_like=${userId}`);
-            if (!response.ok) throw new Error('Failed to fetch strategies');
-            const data = await response.json();
-            return data as TradingStrategy[];
+            // First try to get strategies by accountId
+            const accountResponse = await fetch(`${JSON_SERVER_URL}/tradingStrategies?accountId=${accountId}`);
+            if (!accountResponse.ok) throw new Error('Failed to fetch strategies by accountId');
+            const accountData = await accountResponse.json() as TradingStrategy[];
+            
+            // If we found strategies, return them
+            if (accountData.length > 0) {
+                return accountData;
+            }
+            
+            // If no strategies found by accountId, try by leaderId
+            const leaderResponse = await fetch(`${JSON_SERVER_URL}/tradingStrategies?leaderId=${accountId}`);
+            if (!leaderResponse.ok) throw new Error('Failed to fetch strategies by leaderId');
+            const leaderData = await leaderResponse.json();
+            return leaderData as TradingStrategy[];
         } catch (error) {
             console.error('Error fetching strategies:', error);
             return [];

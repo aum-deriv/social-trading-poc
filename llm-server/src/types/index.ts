@@ -3,9 +3,26 @@ import { PostSentiment } from "./sentiment";
 export interface User {
   id: string;
   userType: "leader" | "copier";
+  username: string;
+  displayName: string;
+  profilePicture: string;
   followers: string[];
   following: string[];
   accounts: string[];
+  performance?: {
+    winRate: number;
+    totalPnL: number;
+    monthlyReturn: number;
+    totalTrades: number;
+  };
+  tradingPreferences?: {
+    riskTolerance: "low" | "medium" | "high";
+    investmentStyle: "conservative" | "moderate" | "aggressive";
+    tradingFrequency: "daily" | "weekly" | "monthly";
+    preferredMarkets: string[];
+    maxDrawdown: number;
+    targetReturn: number;
+  };
 }
 
 export interface Post {
