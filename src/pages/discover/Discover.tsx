@@ -270,7 +270,7 @@ export default function Discover() {
           .map(leader => ({
             id: leader.id,
             username: leader.username,
-            avatar: leader.profilePicture,
+            profilePicture: leader.profilePicture,
             copiers: Math.floor(Math.random() * 2000) + 500,
             totalProfit: Math.floor(Math.random() * 900000) + 100000,
             winRate: Math.floor(Math.random() * 20) + 70,

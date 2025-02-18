@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '../../../../context/AuthContext';
-import LeaderCard from '../LeaderCard';
+import UserCard from '../UserCard';
 import SkeletonCard from '../SkeletonCard';
 import ErrorState from '../../../../components/feedback/ErrorState/ErrorState';
 import { fetchLeaderSuggestions } from '../../../../services/leaderSuggestionsService';
@@ -52,16 +52,17 @@ export default function SuggestedLeadersSection({ onFollow }: SuggestedLeadersSe
   return (
     <div className="discover__leaders-grid">
       {suggestions.map(suggestion => (
-        <LeaderCard
+        <UserCard
           key={suggestion.leaderId}
-          leader={{
+          user={{
             id: suggestion.leaderId,
             username: suggestion.username,
-            avatar: suggestion.profilePicture,
+            profilePicture: suggestion.profilePicture,
             copiers: 0,
             totalProfit: suggestion.performance.totalPnL,
             winRate: suggestion.performance.winRate,
             isFollowing: false,
+            displayName: suggestion.displayName,
           }}
           onFollow={onFollow}
         />

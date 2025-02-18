@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Tick from '../../../../assets/icons/Tick';
 import Trophy from '../../../../assets/icons/Trophy';
-import '../LeaderCard/LeaderCard.css';
+import '../UserCard/UserCard.css';
 import PlusIcon from '@/assets/icons/PlusIcon';
 
 interface Strategy {

@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import LeaderCard from '../LeaderCard';
+import UserCard from '../UserCard';
 import SkeletonCard from '../SkeletonCard';
 import SuggestedLeadersSection from '../SuggestedLeadersSection/SuggestedLeadersSection';
 
@@ -65,7 +65,7 @@ export default function LeadersSection({ loading, leaders, onFollow }: LeadersSe
       <h2 className="discover__section-title">Top 3 Leaders</h2>
       <div className="discover__top-leaders">
         {topLeaders.map((leader, index) => (
-          <LeaderCard key={leader.id} leader={leader} rank={index + 1} onFollow={onFollow} large />
+          <UserCard key={leader.id} user={leader} rank={index + 1} onFollow={onFollow} />
         ))}
       </div>
 
@@ -75,14 +75,14 @@ export default function LeadersSection({ loading, leaders, onFollow }: LeadersSe
       <h2 className="discover__section-title">Top Earners</h2>
       <div className="discover__leaders-grid">
         {topEarners.map(leader => (
-          <LeaderCard key={leader.id} leader={leader} onFollow={onFollow} />
+          <UserCard key={leader.id} user={leader} onFollow={onFollow} />
         ))}
       </div>
 
       <h2 className="discover__section-title">Most Popular</h2>
       <div className="discover__leaders-grid">
         {mostPopular.map(leader => (
-          <LeaderCard key={leader.id} leader={leader} onFollow={onFollow} />
+          <UserCard key={leader.id} user={leader} onFollow={onFollow} />
         ))}
       </div>
     </>
