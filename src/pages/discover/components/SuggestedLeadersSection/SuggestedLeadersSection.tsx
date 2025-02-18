@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import './SuggestedLeadersSection.css';
+import '../shared.css';
 import { useAuth } from '../../../../context/AuthContext';
 import UserCard from '../UserCard';
 import SkeletonCard from '../SkeletonCard';
@@ -33,11 +35,14 @@ export default function SuggestedLeadersSection() {
 
   if (loading) {
     return (
-      <div className="discover__leaders-grid">
-        {[...Array(5)].map((_, index) => (
-          <SkeletonCard key={`ai-${index}`} />
-        ))}
-      </div>
+      <>
+        <h2 className="section-title">AI Suggested Leaders</h2>
+        <div className="suggested-leaders">
+          {[...Array(5)].map((_, index) => (
+            <SkeletonCard key={`ai-${index}`} />
+          ))}
+        </div>
+      </>
     );
   }
 
@@ -46,22 +51,25 @@ export default function SuggestedLeadersSection() {
   }
 
   return (
-    <div className="discover__leaders-grid">
-      {suggestions.map(suggestion => (
-        <UserCard
-          key={suggestion.leaderId}
-          user={{
-            id: suggestion.leaderId,
-            username: suggestion.username,
-            profilePicture: suggestion.profilePicture,
-            copiers: 0,
-            totalProfit: suggestion.performance.totalPnL,
-            winRate: suggestion.performance.winRate,
-            isFollowing: false,
-            displayName: suggestion.displayName,
-          }}
-        />
-      ))}
-    </div>
+    <>
+      <h2 className="section-title">AI Suggested Leaders</h2>
+      <div className="suggested-leaders">
+        {suggestions.map(suggestion => (
+          <UserCard
+            key={suggestion.leaderId}
+            user={{
+              id: suggestion.leaderId,
+              username: suggestion.username,
+              profilePicture: suggestion.profilePicture,
+              copiers: 0,
+              totalProfit: suggestion.performance.totalPnL,
+              winRate: suggestion.performance.winRate,
+              isFollowing: false,
+              displayName: suggestion.displayName,
+            }}
+          />
+        ))}
+      </div>
+    </>
   );
 }

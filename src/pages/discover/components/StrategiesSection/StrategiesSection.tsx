@@ -1,4 +1,6 @@
 import { useMemo } from 'react';
+import './StrategiesSection.css';
+import '../shared.css';
 import { useNavigate } from 'react-router-dom';
 import StrategyListItem from '@/components/strategy/StrategyListItem';
 import SkeletonCard from '../SkeletonCard';
@@ -28,22 +30,22 @@ export default function StrategiesSection({ loading, strategies, onCopy }: Strat
   if (loading) {
     return (
       <>
-        <h2 className="discover__section-title">Top Strategies</h2>
-        <div className="discover__top-leaders">
+        <h2 className="section-title">Top Strategies</h2>
+        <div className="top-strategies">
           {[...Array(3)].map((_, index) => (
             <SkeletonCard key={index} large showRank />
           ))}
         </div>
 
-        <h2 className="discover__section-title">AI Suggested Strategies</h2>
-        <div className="discover__leaders-grid">
+        <h2 className="section-title">AI Suggested Strategies</h2>
+        <div className="strategies-grid">
           {[...Array(5)].map((_, index) => (
             <SkeletonCard key={`ai-${index}`} />
           ))}
         </div>
 
-        <h2 className="discover__section-title">Popular Strategies</h2>
-        <div className="discover__leaders-grid">
+        <h2 className="section-title">Popular Strategies</h2>
+        <div className="strategies-grid">
           {[...Array(5)].map((_, index) => (
             <SkeletonCard key={`popular-${index}`} />
           ))}
@@ -54,8 +56,8 @@ export default function StrategiesSection({ loading, strategies, onCopy }: Strat
 
   return (
     <>
-      <h2 className="discover__section-title">Top Strategies</h2>
-      <div className="discover__top-leaders">
+      <h2 className="section-title">Top Strategies</h2>
+      <div className="top-strategies">
         {topStrategies.map((strategy, index) => (
           <StrategyListItem
             key={strategy.id}
@@ -69,8 +71,8 @@ export default function StrategiesSection({ loading, strategies, onCopy }: Strat
         ))}
       </div>
 
-      <h2 className="discover__section-title">AI Suggested Strategies</h2>
-      <div className="discover__leaders-grid">
+      <h2 className="section-title">AI Suggested Strategies</h2>
+      <div className="strategies-grid">
         {aiSuggestedStrategies.map(strategy => (
           <StrategyListItem
             key={strategy.id}
@@ -83,8 +85,8 @@ export default function StrategiesSection({ loading, strategies, onCopy }: Strat
         ))}
       </div>
 
-      <h2 className="discover__section-title">Popular Strategies</h2>
-      <div className="discover__leaders-grid">
+      <h2 className="section-title">Popular Strategies</h2>
+      <div className="strategies-grid">
         {popularStrategies.map(strategy => (
           <StrategyListItem
             key={strategy.id}
