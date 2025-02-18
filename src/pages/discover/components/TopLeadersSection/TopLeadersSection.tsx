@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import UserCard from '../UserCard';
 import SkeletonCard from '../SkeletonCard';
 import '../shared.css';
@@ -14,12 +14,27 @@ interface Leader {
   isFollowing: boolean;
 }
 
-interface TopLeadersSectionProps {
-  loading: boolean;
-  leaders: Leader[];
-}
+export const TopLeadersSection: FC = () => {
+  const [leaders, setLeaders] = useState<Leader[]>([]);
+  const [loading, setLoading] = useState(true);
 
-export const TopLeadersSection: FC<TopLeadersSectionProps> = ({ loading, leaders }) => {
+  useEffect(() => {
+    const fetchTopLeaders = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(`${import.meta.env.VITE_LLM_SERVER_URL}/api/top-leaders`);
+        const data = await response.json();
+        setLeaders(data);
+      } catch (error) {
+        console.error('Error fetching top leaders:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTopLeaders();
+  }, []);
+
   if (loading) {
     return (
       <>

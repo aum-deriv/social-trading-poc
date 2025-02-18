@@ -1,8 +1,10 @@
 export interface SuggestedLeader {
+  copiers: number;
   leaderId: string;
   username: string;
   displayName: string;
   profilePicture: string;
+  totalProfit: number;
   compatibilityScore: number;
   matchDetails: {
     riskScore: number;

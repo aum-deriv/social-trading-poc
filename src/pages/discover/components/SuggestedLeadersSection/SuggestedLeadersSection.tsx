@@ -25,6 +25,7 @@ export default function SuggestedLeadersSection() {
       setLoading(true);
       const { suggestions: leaderSuggestions } = await fetchLeaderSuggestions(user.id);
       setSuggestions(leaderSuggestions);
+      console.log(leaderSuggestions);
     } catch (err) {
       console.error('Error fetching suggestions:', err);
       setError(err instanceof Error ? err.message : 'Failed to fetch suggestions');
@@ -61,8 +62,8 @@ export default function SuggestedLeadersSection() {
               id: suggestion.leaderId,
               username: suggestion.username,
               profilePicture: suggestion.profilePicture,
-              copiers: 0,
-              totalProfit: suggestion.performance.totalPnL,
+              copiers: suggestion.copiers,
+              totalProfit: suggestion.totalProfit,
               winRate: suggestion.performance.winRate,
               isFollowing: false,
               displayName: suggestion.displayName,

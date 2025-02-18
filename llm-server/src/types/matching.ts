@@ -17,6 +17,8 @@ export interface LeaderSuggestion {
   username: string;
   displayName: string;
   profilePicture: string;
+  copiers: number;
+  totalProfit: number;
   compatibilityScore: number;
   matchDetails: {
     riskScore: number;

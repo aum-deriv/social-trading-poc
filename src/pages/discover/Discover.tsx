@@ -29,16 +29,6 @@ interface User {
   followers: string[];
 }
 
-interface Leader {
-  id: string;
-  username: string;
-  avatar?: string;
-  copiers: number;
-  totalProfit: number;
-  winRate: number;
-  isFollowing: boolean;
-}
-
 interface Asset {
   symbol: string;
   name: string;
@@ -50,7 +40,6 @@ interface Asset {
 
 export default function Discover() {
   const [activeTab, setActiveTab] = useState<string>('');
-  const [leaders, setLeaders] = useState<Leader[]>([]);
   const [strategies, setStrategies] = useState<ExtendedStrategy[]>([]);
   const [assets, setAssets] = useState<Asset[]>([]);
   const [loading, setLoading] = useState(true);
@@ -171,24 +160,6 @@ export default function Discover() {
           setIsLeader(currentUser?.userType === 'leader');
         }
 
-        // Get current user data to check following status
-        const currentUserData = user
-          ? await fetch(`${JSON_SERVER_URL}/users/${user.id}`).then(res => res.json())
-          : null;
-
-        // Process leaders
-        const leaders = users
-          .filter(u => u.userType === 'leader')
-          .map(leader => ({
-            id: leader.id,
-            username: leader.username,
-            profilePicture: leader.profilePicture,
-            copiers: Math.floor(Math.random() * 2000) + 500,
-            totalProfit: Math.floor(Math.random() * 900000) + 100000,
-            winRate: Math.floor(Math.random() * 20) + 70,
-            isFollowing: currentUserData ? currentUserData.following.includes(leader.id) : false,
-          }));
-
         // Get copy relationships for current user
         const copyRelationsRes = await fetch(
           `${JSON_SERVER_URL}/copyRelationships?copierId=${user?.id}`
@@ -220,7 +191,6 @@ export default function Discover() {
           };
         });
 
-        setLeaders(leaders);
         setStrategies(processedStrategies);
         setLoading(false);
       } catch (error) {
@@ -259,7 +229,7 @@ export default function Discover() {
       <Search />
       <TabNavigation tabs={tabs} activeTab={activeTab} onTabChange={handleTabChange} />
       {activeTab === 'Leaders' ? (
-        <LeadersSection loading={loading} leaders={leaders} />
+        <LeadersSection />
       ) : activeTab === 'Strategies' ? (
         <StrategiesSection loading={loading} strategies={strategies} onCopy={handleCopyStrategy} />
       ) : (
