@@ -74,6 +74,7 @@ const UserCard: FC<UserCardProps> = ({ user, onFollow, rank }) => {
           className="user-card__follow-button"
           onClick={() => onFollow(user.id ?? '')}
           rounded
+          variant={user.isFollowing ? 'secondary' : 'primary'}
         >
           {user.isFollowing ? 'Following' : 'Follow'}
         </Button>
