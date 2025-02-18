@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { Strategy } from '@/types/strategy.types';
 import { useAuth } from '@/context/AuthContext';
-import StrategyListItem from './components/StrategyListItem/StrategyListItem';
+import StrategyListItem from '@/components/strategy/StrategyListItem';
 import './StrategyList.css';
 
 interface StrategyListProps {

@@ -31,4 +31,15 @@ export interface Strategy {
   };
 }
 
+export interface ExtendedStrategy extends Strategy {
+  leader?: {
+    username: string;
+    displayName: string;
+    profilePicture?: string;
+  };
+  currency?: string;
+  isFollowing?: boolean;
+  isCopying?: boolean;
+}
+
 export default Strategy;

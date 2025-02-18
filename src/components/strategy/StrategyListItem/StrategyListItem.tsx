@@ -1,13 +1,23 @@
 import { FC } from 'react';
 import type { Strategy } from '@/types/strategy.types';
+
+interface ExtendedStrategy extends Strategy {
+  leader?: {
+    username: string;
+    displayName: string;
+    profilePicture?: string;
+  };
+}
+import Trophy from '@/assets/icons/Trophy';
 import './StrategyListItem.css';
 
 interface StrategyListItemProps {
-  strategy: Strategy;
+  strategy: ExtendedStrategy;
   showCopyButton?: boolean;
   isCopying?: boolean;
   onCopy?: (strategyId: string, isCopying: boolean) => void;
   onClick?: (strategyId: string) => void;
+  rank?: number;
 }
 
 const StrategyListItem: FC<StrategyListItemProps> = ({
@@ -16,6 +26,7 @@ const StrategyListItem: FC<StrategyListItemProps> = ({
   isCopying = false,
   onCopy,
   onClick,
+  rank,
 }) => {
   const getRiskLevelClass = (riskLevel: string) => {
     const level = riskLevel.toLowerCase();
@@ -24,13 +35,18 @@ const StrategyListItem: FC<StrategyListItemProps> = ({
 
   return (
     <div
-      className="strategy-list__item"
+      className={`strategy-list__item ${rank ? 'strategy-list__item--ranked' : ''}`}
       onClick={() => onClick?.(strategy.id)}
       style={{ cursor: 'pointer' }}
     >
       <div className="strategy-list__header">
         <div className="strategy-list__header-main">
-          <h4>{strategy.name}</h4>
+          <div className="strategy-list__title">
+            <h4>{strategy.name}</h4>
+            {strategy.leader && (
+              <span className="strategy-list__username">by @{strategy.leader.username}</span>
+            )}
+          </div>
           {showCopyButton && onCopy && (
             <button
               className={`strategy-list__copy-btn ${
@@ -71,10 +87,19 @@ const StrategyListItem: FC<StrategyListItemProps> = ({
           <span className="strategy-list__stat-value">{strategy.performance.averageProfit}%</span>
           <span className="strategy-list__stat-label">Avg. Profit</span>
         </div>
+        <div className="strategy-list__stat-item">
+          <span className="strategy-list__stat-value">{strategy.copiers.length}</span>
+          <span className="strategy-list__stat-label">Copiers</span>
+        </div>
       </div>
 
       <div className="strategy-list__meta">
         <span className={getRiskLevelClass(strategy.riskLevel)}>{strategy.riskLevel} Risk</span>
+        {rank && (
+          <div className="strategy-list__rank">
+            <Trophy className="strategy-list__trophy" />#{rank}
+          </div>
+        )}
       </div>
     </div>
   );

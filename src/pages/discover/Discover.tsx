@@ -8,17 +8,7 @@ import StrategiesSection from './components/StrategiesSection';
 import TrendingAssets from './components/TrendingAssets';
 import './Discover.css';
 
-interface TradingStrategy {
-  id: string;
-  leaderId: string;
-  accountId: string;
-  name: string;
-  description: string;
-  tradeType: string;
-  riskLevel: string;
-  copiers: string[];
-  isActive: boolean;
-}
+import type { Strategy, ExtendedStrategy } from '@/types/strategy.types';
 
 interface CurrencyAccount {
   id: string;
@@ -58,28 +48,10 @@ interface Asset {
   direction: 'up' | 'down';
 }
 
-interface Strategy {
-  id: string;
-  leaderId: string;
-  accountId: string;
-  name: string;
-  description: string;
-  tradeType: string;
-  copiers: string[];
-  leader?: {
-    username: string;
-    displayName: string;
-    profilePicture?: string;
-  };
-  currency?: string;
-  isFollowing?: boolean;
-  isCopying?: boolean;
-}
-
 export default function Discover() {
   const [activeTab, setActiveTab] = useState<string>('');
   const [leaders, setLeaders] = useState<Leader[]>([]);
-  const [strategies, setStrategies] = useState<Strategy[]>([]);
+  const [strategies, setStrategies] = useState<ExtendedStrategy[]>([]);
   const [assets, setAssets] = useState<Asset[]>([]);
   const [loading, setLoading] = useState(true);
   const [isLeader, setIsLeader] = useState(false);
@@ -190,7 +162,7 @@ export default function Discover() {
           fetch(`${JSON_SERVER_URL}/currencyAccounts`),
         ]);
 
-        const [users, strategiesData, accounts]: [User[], TradingStrategy[], CurrencyAccount[]] =
+        const [users, strategiesData, accounts]: [User[], Strategy[], CurrencyAccount[]] =
           await Promise.all([usersRes.json(), strategiesRes.json(), currencyAccountsRes.json()]);
 
         // Check if current user is a leader
@@ -223,7 +195,7 @@ export default function Discover() {
         );
         const copyRelations = await copyRelationsRes.json();
 
-        const processedStrategies = strategiesData.map(strategy => {
+        const processedStrategies: ExtendedStrategy[] = strategiesData.map(strategy => {
           const leader = users.find(u => u.id === strategy.leaderId);
           const account = accounts.find(a => a.id === strategy.accountId);
           const isCopying = copyRelations.some(
@@ -231,6 +203,11 @@ export default function Discover() {
           );
           return {
             ...strategy,
+            performance: {
+              totalReturn: Math.floor(Math.random() * 200) - 100, // -100 to +100
+              winRate: Math.floor(Math.random() * 40) + 60, // 60 to 100
+              averageProfit: Math.floor(Math.random() * 20) + 10, // 10 to 30
+            },
             leader: leader
               ? {
                   username: leader.username,
