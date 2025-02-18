@@ -6,11 +6,7 @@ import ErrorState from '../../../../components/feedback/ErrorState/ErrorState';
 import { fetchLeaderSuggestions } from '../../../../services/leaderSuggestionsService';
 import { SuggestedLeader } from '../../../../types/leader.types';
 
-interface SuggestedLeadersSectionProps {
-  onFollow: (leaderId: string) => Promise<void>;
-}
-
-export default function SuggestedLeadersSection({ onFollow }: SuggestedLeadersSectionProps) {
+export default function SuggestedLeadersSection() {
   const { user } = useAuth();
   const [loading, setLoading] = useState(true);
   const [suggestions, setSuggestions] = useState<SuggestedLeader[]>([]);
@@ -64,7 +60,6 @@ export default function SuggestedLeadersSection({ onFollow }: SuggestedLeadersSe
             isFollowing: false,
             displayName: suggestion.displayName,
           }}
-          onFollow={onFollow}
         />
       ))}
     </div>

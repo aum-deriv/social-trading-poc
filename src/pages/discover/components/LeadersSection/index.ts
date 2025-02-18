@@ -1,1 +1,1 @@
-export { default } from "./LeadersSection";
+export { default } from './LeadersSection';

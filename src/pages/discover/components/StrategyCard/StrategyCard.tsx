@@ -1,9 +1,11 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '@/context/AuthContext';
 import Tick from '../../../../assets/icons/Tick';
 import Trophy from '../../../../assets/icons/Trophy';
 import '../UserCard/UserCard.css';
 import PlusIcon from '@/assets/icons/PlusIcon';
+import { toggleUserFollow } from '@/services/userService';
 
 interface Strategy {
   id: string;
@@ -26,13 +28,30 @@ interface Strategy {
 interface StrategyCardProps {
   strategy: Strategy;
   rank?: number;
-  onFollow: (id: string) => void;
   onCopy: (id: string) => void;
   large?: boolean;
 }
 
-const StrategyCard: FC<StrategyCardProps> = ({ strategy, rank, onFollow, onCopy, large }) => {
+const StrategyCard: FC<StrategyCardProps> = ({ strategy, rank, onCopy, large }) => {
   const navigate = useNavigate();
+  const { user: currentUser } = useAuth();
+  const [isFollowing, setIsFollowing] = useState(strategy.isFollowing ?? false);
+  const [loading, setLoading] = useState(false);
+
+  const handleFollow = async () => {
+    if (!currentUser?.id || !strategy.leaderId) return;
+
+    try {
+      setLoading(true);
+      const newFollowingStatus = await toggleUserFollow(strategy.leaderId, currentUser.id);
+      setIsFollowing(newFollowingStatus);
+    } catch (error) {
+      console.error('Error following leader:', error);
+      // Could add toast notification here
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleCardClick = (e: React.MouseEvent) => {
     // Don't navigate if clicking on buttons
@@ -77,11 +96,8 @@ const StrategyCard: FC<StrategyCardProps> = ({ strategy, rank, onFollow, onCopy,
                 {strategy.leader?.displayName.slice(0, 2).toUpperCase() || 'ST'}
               </div>
             )}
-            <button
-              className="leader-card__follow-icon"
-              onClick={() => onFollow(strategy.leaderId)}
-            >
-              {strategy.isFollowing ? <Tick /> : <PlusIcon />}
+            <button className="leader-card__follow-icon" onClick={handleFollow} disabled={loading}>
+              {isFollowing ? <Tick /> : <PlusIcon />}
             </button>
           </div>
         </div>

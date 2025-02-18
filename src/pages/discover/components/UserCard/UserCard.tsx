@@ -1,8 +1,10 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
+import { useAuth } from '@/context/AuthContext';
 import './UserCard.css';
 import Button from '@/components/input/Button/Button';
 import Trophy from '@/assets/icons/Trophy';
 import User from '@/types/user.types';
+import { toggleUserFollow } from '@/services/userService';
 
 interface UserCardProps {
   user: Partial<User> & {
@@ -12,10 +14,27 @@ interface UserCardProps {
     winRate: number;
   };
   rank?: number;
-  onFollow: (id: string) => Promise<void>;
 }
 
-const UserCard: FC<UserCardProps> = ({ user, onFollow, rank }) => {
+const UserCard: FC<UserCardProps> = ({ user, rank }) => {
+  const { user: currentUser } = useAuth();
+  const [isFollowing, setIsFollowing] = useState(user.isFollowing);
+  const [loading, setLoading] = useState(false);
+
+  const handleFollow = async () => {
+    if (!currentUser?.id || !user.id) return;
+
+    try {
+      setLoading(true);
+      const newFollowingStatus = await toggleUserFollow(user.id, currentUser.id);
+      setIsFollowing(newFollowingStatus);
+    } catch (error) {
+      console.error('Error following user:', error);
+      // Could add toast notification here
+    } finally {
+      setLoading(false);
+    }
+  };
   const formatProfit = (profit: number) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -72,11 +91,12 @@ const UserCard: FC<UserCardProps> = ({ user, onFollow, rank }) => {
         </div>
         <Button
           className="user-card__follow-button"
-          onClick={() => onFollow(user.id ?? '')}
+          onClick={handleFollow}
           rounded
-          variant={user.isFollowing ? 'secondary' : 'primary'}
+          variant={isFollowing ? 'secondary' : 'primary'}
+          isLoading={loading}
         >
-          {user.isFollowing ? 'Following' : 'Follow'}
+          {isFollowing ? 'Following' : 'Follow'}
         </Button>
       </div>
     </div>
