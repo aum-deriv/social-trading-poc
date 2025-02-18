@@ -1,4 +1,5 @@
-import { FC, useState } from 'react';
+import { FC, useState, MouseEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import './UserCard.css';
 import Button from '@/components/input/Button/Button';
@@ -21,7 +22,16 @@ const UserCard: FC<UserCardProps> = ({ user, rank }) => {
   const [isFollowing, setIsFollowing] = useState(user.isFollowing);
   const [loading, setLoading] = useState(false);
 
-  const handleFollow = async () => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    if (user.username) {
+      navigate(`/profile/${user.username}`);
+    }
+  };
+
+  const handleFollow = async (e: MouseEvent) => {
+    e.stopPropagation();
     if (!currentUser?.id || !user.id) return;
 
     try {
@@ -52,7 +62,7 @@ const UserCard: FC<UserCardProps> = ({ user, rank }) => {
   };
 
   return (
-    <div className="user-card">
+    <div className="user-card" onClick={handleCardClick} style={{ cursor: 'pointer' }}>
       <div className="user-card__header">
         {rank && (
           <div className="user-card__rank">

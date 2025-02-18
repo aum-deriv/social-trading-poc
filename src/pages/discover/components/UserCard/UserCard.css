@@ -2,6 +2,8 @@
   background: white;
   border-radius: 16px;
   padding: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   position: relative;
   width: 270px;
   height: 270px;
@@ -10,7 +12,12 @@
   align-items: center;
   justify-content: space-around;
   gap: 1rem;
-  border: 1px solid #eee
+  border: 1px solid #eee;
+}
+
+.user-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .user-card__header{
