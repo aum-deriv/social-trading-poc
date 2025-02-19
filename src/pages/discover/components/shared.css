@@ -1,6 +1,6 @@
 .section-title {
+  width: 100%;
   font-size: 1.5rem;
-  margin: 2rem 0 1.5rem;
   color: var(--text-primary);
   text-align: center;
 }
@@ -20,7 +20,8 @@
 @media (max-width: 480px) {
   .section-title {
     font-size: 1.25rem;
-    margin: 1.5rem 0 1rem;
+    padding-inline: 14px;
+    text-align: left;
   }
 
   .leaders-grid {

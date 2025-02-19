@@ -25,7 +25,6 @@ export default function SuggestedLeadersSection() {
       setLoading(true);
       const { suggestions: leaderSuggestions } = await fetchLeaderSuggestions(user.id);
       setSuggestions(leaderSuggestions);
-      console.log(leaderSuggestions);
     } catch (err) {
       console.error('Error fetching suggestions:', err);
       setError(err instanceof Error ? err.message : 'Failed to fetch suggestions');
@@ -53,7 +52,7 @@ export default function SuggestedLeadersSection() {
 
   return (
     <>
-      <h2 className="section-title">AI Suggested Leaders</h2>
+      <h2 className="section-title">✧ AI Suggested Leaders</h2>
       <div className="suggested-leaders">
         {suggestions.map(suggestion => (
           <UserCard

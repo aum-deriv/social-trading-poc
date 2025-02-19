@@ -15,6 +15,12 @@
   }
 }
 
+.strategies-section__tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin: 10px 0;
+}
+
 .strategies-grid {
   display: flex;
   flex-direction: row;

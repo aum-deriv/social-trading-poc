@@ -1,10 +1,12 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import './StrategiesSection.css';
 import '../shared.css';
-import { useNavigate } from 'react-router-dom';
-import StrategyListItem from '@/components/strategy/StrategyListItem';
 import SkeletonCard from '../SkeletonCard';
+import Chip from '@/components/Chip';
 import type { ExtendedStrategy } from '@/types/strategy.types';
+import TopStrategiesSection from '../TopStrategiesSection';
+import AIStrategiesSection from '../AIStrategiesSection';
+import PopularStrategiesSection from '../PopularStrategiesSection';
 
 interface StrategiesSectionProps {
   loading: boolean;
@@ -13,7 +15,6 @@ interface StrategiesSectionProps {
 }
 
 export default function StrategiesSection({ loading, strategies, onCopy }: StrategiesSectionProps) {
-  const navigate = useNavigate();
   // Strategy sections
   const topStrategies = useMemo(() => {
     return strategies.slice(0, 3);
@@ -27,77 +28,66 @@ export default function StrategiesSection({ loading, strategies, onCopy }: Strat
     return strategies.slice(8, 13);
   }, [strategies]);
 
+  type StrategyTab = 'top' | 'ai' | 'popular';
+  const [activeTab, setActiveTab] = useState<StrategyTab>('top');
+
   if (loading) {
     return (
       <>
-        <h2 className="section-title">Top Strategies</h2>
-        <div className="top-strategies">
-          {[...Array(3)].map((_, index) => (
-            <SkeletonCard key={index} large showRank />
-          ))}
+        <div className="strategies-section__tabs">
+          <Chip active={activeTab === 'top'} onClick={() => setActiveTab('top')}>
+            Top Strategies
+          </Chip>
+          <Chip active={activeTab === 'ai'} onClick={() => setActiveTab('ai')}>
+            AI Suggested
+          </Chip>
+          <Chip active={activeTab === 'popular'} onClick={() => setActiveTab('popular')}>
+            Popular
+          </Chip>
         </div>
 
-        <h2 className="section-title">AI Suggested Strategies</h2>
-        <div className="strategies-grid">
-          {[...Array(5)].map((_, index) => (
-            <SkeletonCard key={`ai-${index}`} />
-          ))}
-        </div>
-
-        <h2 className="section-title">Popular Strategies</h2>
-        <div className="strategies-grid">
-          {[...Array(5)].map((_, index) => (
-            <SkeletonCard key={`popular-${index}`} />
-          ))}
-        </div>
+        <>
+          <h2 className="section-title">
+            {activeTab === 'top'
+              ? 'Top Strategies'
+              : activeTab === 'ai'
+                ? 'AI Suggested Strategies'
+                : 'Popular Strategies'}
+          </h2>
+          <div className={activeTab === 'top' ? 'top-strategies' : 'strategies-grid'}>
+            {[...Array(activeTab === 'top' ? 3 : 5)].map((_, index) => (
+              <SkeletonCard
+                key={index}
+                large={activeTab === 'top'}
+                showRank={activeTab === 'top'}
+              />
+            ))}
+          </div>
+        </>
       </>
     );
   }
 
   return (
     <>
-      <h2 className="section-title">Top Strategies</h2>
-      <div className="top-strategies">
-        {topStrategies.map((strategy, index) => (
-          <StrategyListItem
-            key={strategy.id}
-            strategy={strategy}
-            rank={index + 1}
-            showCopyButton={true}
-            isCopying={strategy.isCopying}
-            onCopy={(strategyId: string) => onCopy(strategyId)}
-            onClick={(strategyId: string) => navigate(`/strategies/${strategyId}`)}
-          />
-        ))}
+      <div className="strategies-section__tabs">
+        <Chip active={activeTab === 'top'} onClick={() => setActiveTab('top')}>
+          Top Strategies
+        </Chip>
+        <Chip active={activeTab === 'ai'} onClick={() => setActiveTab('ai')}>
+          AI Suggested
+        </Chip>
+        <Chip active={activeTab === 'popular'} onClick={() => setActiveTab('popular')}>
+          Popular
+        </Chip>
       </div>
-
-      <h2 className="section-title">AI Suggested Strategies</h2>
-      <div className="strategies-grid">
-        {aiSuggestedStrategies.map(strategy => (
-          <StrategyListItem
-            key={strategy.id}
-            strategy={strategy}
-            showCopyButton={true}
-            isCopying={strategy.isCopying}
-            onCopy={(strategyId: string) => onCopy(strategyId)}
-            onClick={(strategyId: string) => navigate(`/strategies/${strategyId}`)}
-          />
-        ))}
-      </div>
-
-      <h2 className="section-title">Popular Strategies</h2>
-      <div className="strategies-grid">
-        {popularStrategies.map(strategy => (
-          <StrategyListItem
-            key={strategy.id}
-            strategy={strategy}
-            showCopyButton={true}
-            isCopying={strategy.isCopying}
-            onCopy={(strategyId: string) => onCopy(strategyId)}
-            onClick={(strategyId: string) => navigate(`/strategies/${strategyId}`)}
-          />
-        ))}
-      </div>
+      {activeTab === 'top' && <TopStrategiesSection strategies={topStrategies} onCopy={onCopy} />}
+      {activeTab === 'ai' && (
+        <AIStrategiesSection strategies={aiSuggestedStrategies} onCopy={onCopy} />
+      )}
+      {activeTab === 'popular' && (
+        <PopularStrategiesSection strategies={popularStrategies} onCopy={onCopy} />
+      )}
     </>
   );
 }

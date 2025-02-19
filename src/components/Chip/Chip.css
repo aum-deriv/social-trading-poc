@@ -6,7 +6,7 @@
   border-radius: 100px;
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--text-primary);
   background: transparent;
   color: var(--text-primary);
   cursor: pointer;
@@ -14,15 +14,14 @@
 }
 
 .chip:hover {
-  background: var(--background-secondary);
+  background: var(--brand-color);
+  color: white;
+  border: 1px solid transparent;
 }
 
 .chip--active {
-  background: var(--background-primary);
-  color: var(--primary-color);
-  border-color: var(--primary-color);
+  background: var(--brand-color);
+  color: white;
+  border: 1px solid transparent;
 }
 
-.chip--active:hover {
-  background: var(--background-primary);
-}

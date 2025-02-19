@@ -1,0 +1,15 @@
+.strategies-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1400px;
+}
+
+@media (max-width: 480px) {
+  .strategies-grid {
+    gap: 1rem;
+  }
+}

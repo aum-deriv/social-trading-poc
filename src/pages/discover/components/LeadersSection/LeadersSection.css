@@ -1,3 +1,9 @@
+.leaders-section__tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin: 10px 0;
+}
+
 .leaders-section {
   display: flex;
   flex-direction: column;
