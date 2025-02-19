@@ -8,7 +8,6 @@ import TrendingAssets from './components/TrendingAssets';
 import './Discover.css';
 
 import type { Strategy, ExtendedStrategy } from '@/types/strategy.types';
-import AISearchBar from '@/components/AISearchBar';
 
 interface CurrencyAccount {
   id: string;
@@ -226,7 +225,6 @@ export default function Discover() {
 
   return (
     <div className="discover">
-      <AISearchBar />
       <TabNavigation tabs={tabs} activeTab={activeTab} onTabChange={handleTabChange} />
       {activeTab === 'Leaders' ? (
         <LeadersSection />
