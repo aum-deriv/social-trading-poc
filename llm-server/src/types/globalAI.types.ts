@@ -1,7 +1,7 @@
 import type { User, TradingStrategy } from './index';
 import type { TrendingAsset } from '../services/globalAI/queryFunctions';
 
-export type QueryType = 'data_query' | 'product_info';
+export type QueryType = 'data_query' | 'product_info' | 'invalid';
 
 export type QueryFunction =
   | 'getLeadersByPerformance'
