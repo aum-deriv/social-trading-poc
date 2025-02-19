@@ -70,6 +70,32 @@ const makeAnthropicRequest = async (
   }, 2);
 };
 
+export const detectLanguage = async (text: string): Promise<'EN' | 'NON-EN'> => {
+  const cacheKey = `lang:${text}`;
+  const cached = translationCache.get(cacheKey);
+
+  if (cached && Date.now() - cached.timestamp < CACHE_EXPIRY) {
+    return cached.text as 'EN' | 'NON-EN';
+  }
+
+  try {
+    const detectPrompt = `You are a language detection expert. Analyze the given text and respond with ONLY "EN" if the text is in English, or "NON-EN" if it contains non-English text. Do not provide any explanation. Text: "${text}"`;
+
+    const result = await makeAnthropicRequest(detectPrompt, 'claude-3-haiku-20240307');
+    const language = result.trim() === 'EN' ? 'EN' : 'NON-EN';
+
+    translationCache.set(cacheKey, {
+      text: language,
+      timestamp: Date.now(),
+    });
+
+    return language;
+  } catch (error) {
+    console.error('Error detecting language:', error);
+    return 'EN'; // Default to English if detection fails
+  }
+};
+
 export const translateText = async (text: string, targetLang: string = 'EN'): Promise<string> => {
   const cacheKey = `${text}:${targetLang}`;
   const cached = translationCache.get(cacheKey);

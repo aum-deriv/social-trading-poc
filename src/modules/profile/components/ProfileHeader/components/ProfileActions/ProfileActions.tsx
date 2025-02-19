@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import Button from '@/components/input/Button';
 import { upgradeToLeader } from '@/services/userService';
+import UpgradeModal from '@/components/modals/UpgradeModal/UpgradeModal';
 import './ProfileActions.css';
+import User from '@/types/user.types';
 
 interface ProfileActionsProps {
   isOwnProfile: boolean;
@@ -9,7 +12,7 @@ interface ProfileActionsProps {
   userId: string;
   onFollow: () => Promise<void>;
   onUnfollow: () => Promise<void>;
-  onUpgrade?: () => void;
+  onUpgrade?: (updatedUser: User) => void;
 }
 
 const ProfileActions = ({
@@ -21,10 +24,19 @@ const ProfileActions = ({
   onUnfollow,
   onUpgrade,
 }: ProfileActionsProps) => {
-  const handleUpgrade = async () => {
+  const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false);
+
+  const handleUpgradeClick = () => {
+    setIsUpgradeModalOpen(true);
+  };
+
+  const handleUpgradeConfirm = async () => {
     try {
-      await upgradeToLeader(userId);
-      onUpgrade?.();
+      const updatedUser = await upgradeToLeader(userId);
+      if (onUpgrade) {
+        onUpgrade(updatedUser);
+      }
+      setIsUpgradeModalOpen(false);
     } catch (error) {
       console.error('Error upgrading to leader:', error);
       // Here you might want to show an error notification to the user
@@ -42,9 +54,16 @@ const ProfileActions = ({
         </Button>
       )}
       {isOwnProfile && userType === 'copier' && (
-        <Button variant="secondary" onClick={handleUpgrade}>
-          Upgrade to Leader
-        </Button>
+        <>
+          <Button variant="secondary" onClick={handleUpgradeClick}>
+            Upgrade to Leader
+          </Button>
+          <UpgradeModal
+            isOpen={isUpgradeModalOpen}
+            onClose={() => setIsUpgradeModalOpen(false)}
+            onConfirm={handleUpgradeConfirm}
+          />
+        </>
       )}
     </div>
   );

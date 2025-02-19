@@ -35,12 +35,9 @@ const ProfileHeader = ({
     tradingPreferences,
   } = profile;
 
-  const handleUpgrade = () => {
+  const handleUpgrade = (updatedUser: User) => {
     if (onProfileUpdate) {
-      onProfileUpdate({
-        ...profile,
-        userType: UserType.LEADER,
-      });
+      onProfileUpdate(updatedUser);
     }
   };
 
@@ -65,7 +62,7 @@ const ProfileHeader = ({
           strategies={strategies}
           onFollowAction={onFollow}
         />
-        {userType === 'leader' && profile.performance && (
+        {userType === UserType.LEADER && profile.performance && (
           <ProfilePerformance performance={profile.performance} />
         )}
         {tradingPreferences && (

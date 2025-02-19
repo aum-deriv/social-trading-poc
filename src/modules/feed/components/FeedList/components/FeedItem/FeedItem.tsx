@@ -142,7 +142,8 @@ const FeedItem = ({ post, user, currentUserId, insight: initialInsight }: FeedIt
         translationButton={
           <TranslateButton
             text={post.content.text}
-            onTranslation={text => {
+            language={post?.language ?? 'EN'}
+            onTranslation={(text: string) => {
               setTranslatedText(text);
             }}
           />

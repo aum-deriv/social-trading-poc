@@ -1,6 +1,7 @@
 import './ProfileBasicInfo.css';
 import ProfileBadge from '../ProfileBadge';
 import ProfileActions from '../ProfileActions';
+import User from '@/types/user.types';
 
 interface ProfileBasicInfoProps {
   username: string;
@@ -12,7 +13,7 @@ interface ProfileBasicInfoProps {
   isFollowing: boolean;
   onFollow: () => Promise<void>;
   onUnfollow: () => Promise<void>;
-  onUpgrade?: () => void;
+  onUpgrade?: (updatedUser: User) => void;
 }
 
 const ProfileBasicInfo = ({
