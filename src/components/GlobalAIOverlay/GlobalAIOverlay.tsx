@@ -1,5 +1,6 @@
 import Overlay from '@/components/Overlay/Overlay';
 import ChatMessage from '@components/ChatMessage/ChatMessage';
+import AISearchBar from '@components/AISearchBar/AISearchBar';
 import './GlobalAIOverlay.css';
 
 interface GlobalAIOverlayProps {
@@ -11,7 +12,10 @@ const GlobalAIOverlay = ({ isOpen, onClose }: GlobalAIOverlayProps) => {
   return (
     <Overlay isOpen={isOpen} onClose={onClose} className="global-ai-overlay">
       <div className="global-ai-overlay__content">
-        <ChatMessage from="aum" message="hi"></ChatMessage>
+        <div className="global-ai-overlay__content-chat">
+          <ChatMessage from="aum" message="hi"></ChatMessage>
+        </div>
+        <AISearchBar />
       </div>
     </Overlay>
   );
