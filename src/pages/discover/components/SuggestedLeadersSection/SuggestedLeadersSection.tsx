@@ -3,7 +3,7 @@ import './SuggestedLeadersSection.css';
 import '../shared.css';
 import { useAuth } from '../../../../context/AuthContext';
 import UserCard from '../UserCard';
-import SkeletonCard from '../SkeletonCard';
+import SkeletonUserCard from '../SkeletonUserCard';
 import ErrorState from '../../../../components/feedback/ErrorState/ErrorState';
 import { fetchLeaderSuggestions } from '../../../../services/leaderSuggestionsService';
 import { SuggestedLeader } from '../../../../types/leader.types';
@@ -40,7 +40,7 @@ export default function SuggestedLeadersSection() {
         <h2 className="section-title">AI Suggested Leaders</h2>
         <div className="suggested-leaders">
           {[...Array(5)].map((_, index) => (
-            <SkeletonCard key={`ai-${index}`} />
+            <SkeletonUserCard key={`ai-${index}`} />
           ))}
         </div>
       </>

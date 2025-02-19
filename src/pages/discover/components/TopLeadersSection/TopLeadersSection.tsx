@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import UserCard from '../UserCard';
-import SkeletonCard from '../SkeletonCard';
+import SkeletonUserCard from '../SkeletonUserCard';
 import '../shared.css';
 import './TopLeadersSection.css';
 
@@ -41,7 +41,7 @@ export const TopLeadersSection: FC = () => {
         <h2 className="section-title">Top 3 Leaders</h2>
         <div className="top-leaders">
           {[...Array(3)].map((_, index) => (
-            <SkeletonCard key={index} large showRank />
+            <SkeletonUserCard key={index} rank={index + 1} />
           ))}
         </div>
       </>
