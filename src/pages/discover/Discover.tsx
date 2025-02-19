@@ -2,13 +2,13 @@ import { useEffect, useState, useCallback } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { CopyRelationship } from '../../types/copy.types';
 import TabNavigation from '../../components/navigation/TabNavigation';
-import Search from './components/Search';
 import LeadersSection from './components/LeadersSection';
 import StrategiesSection from './components/StrategiesSection';
 import TrendingAssets from './components/TrendingAssets';
 import './Discover.css';
 
 import type { Strategy, ExtendedStrategy } from '@/types/strategy.types';
+import AISearchBar from '@/components/AISearchBar';
 
 interface CurrencyAccount {
   id: string;
@@ -226,7 +226,7 @@ export default function Discover() {
 
   return (
     <div className="discover">
-      <Search />
+      <AISearchBar />
       <TabNavigation tabs={tabs} activeTab={activeTab} onTabChange={handleTabChange} />
       {activeTab === 'Leaders' ? (
         <LeadersSection />
