@@ -1,4 +1,5 @@
 import type { User, TradingStrategy } from './index';
+import type { TrendingAsset } from '../services/globalAI/queryFunctions';
 
 export type QueryType = 'data_query' | 'product_info';
 
@@ -16,7 +17,7 @@ export interface QueryParameters {
   timeframe?: 'day' | 'week' | 'month' | 'year';
   filters?: {
     minReturn?: number;
-    maxRisk?: number;
+    maxRisk?: 'low' | 'medium' | 'high';
     markets?: string[];
     [key: string]: string | number | boolean | string[] | undefined;
   };
@@ -27,7 +28,6 @@ export interface GlobalAIResponse {
   type: QueryType;
   data?: {
     items: Array<{
-      id: string;
       type: 'leader' | 'strategy' | 'copier' | 'market';
       aiScore: number;
       analysis: {
@@ -35,7 +35,8 @@ export interface GlobalAIResponse {
         risks: string[];
         recommendation?: string;
       };
-      data: User | TradingStrategy;
+      data: User | TradingStrategy | TrendingAsset;
+      id: string;
     }>;
     summary: {
       total: number;
