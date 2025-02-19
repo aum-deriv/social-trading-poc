@@ -1,0 +1,28 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: 100px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.chip:hover {
+  background: var(--background-secondary);
+}
+
+.chip--active {
+  background: var(--background-primary);
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.chip--active:hover {
+  background: var(--background-primary);
+}
