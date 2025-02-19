@@ -4,7 +4,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 1000;
+    z-index: 9999;
     background-color: #fff;
 }
 
@@ -59,6 +59,7 @@
     flex: 1;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    padding: 1rem;
 }
 
 @keyframes slideIn {

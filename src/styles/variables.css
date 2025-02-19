@@ -3,6 +3,7 @@
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
+  --font-weight-bold: 700;
 
   /* Font sizes */
   --font-size-xs: 0.75rem; /* 12px */
@@ -11,6 +12,8 @@
   --font-size-lg: 1.125rem; /* 18px */
   --font-size-xl: 1.25rem; /* 20px */
   --font-size-2xl: 1.5rem; /* 24px */
+  --font-size-3xl: 2rem; /* 32px */
+  --font-size-5xl: 4rem; /* 64px */
 
   /* Line heights */
   --line-height-tight: 1.25;
@@ -21,18 +24,64 @@
   --font-family-base:
     'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  /* Brand Color */
-  --brand-color: #00d0ff;
+  /* Layout */
+  --spacing-2xs: 0.125rem;
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
 
-  /* Colors */
-  --primary-color: #007bff;
-  --primary-color-dark: #0056b3;
+  /* Border Radius */
+  --border-radius-xs: 0.125rem;
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 1rem;
+  --border-radius-xl: 1.5rem;
+  --border-radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-opacity: 0.1;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, var(--shadow-opacity));
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, var(--shadow-opacity));
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, var(--shadow-opacity));
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* Breakpoints */
+  --breakpoint-small-mobile: 480px;
+  --breakpoint-mobile: 768px;
+  --breakpoint-tablet: 1024px;
+  --breakpoint-desktop: 1280px;
+}
+
+/* Light Theme (default) */
+:root[data-theme='light'] {
+  /* Base colors */
+  --primary-color: #00d0ff;
+  --primary-color-dark: #67e3ff;
+  --primary-color-light: #004a5a;
+
+  /* Text colors */
   --text-primary: #1a1a1a;
   --text-secondary: #666666;
+  --text-tertiary: #999999;
+  --text-inverted: #ffffff;
+
+  /* Background colors */
   --background-primary: #ffffff;
   --background-secondary: #f8f9fa;
+  --background-tertiary: #f0f0f0;
+  --background-inverted: #1a1a1a;
+
+  /* Border colors */
   --border-color: #e0e0e0;
-  --disabled-color: #cccccc;
+  --border-color-light: #f0f0f0;
+  --border-color-dark: #cccccc;
 
   /* Status Colors */
   --success-color: #28a745;
@@ -41,6 +90,9 @@
   --warning-background: #fff3e0;
   --error-color: #dc3545;
   --error-background: #ffebee;
+  --info-color: #0088cc;
+  --info-background: #e6f3ff;
+  --disabled-color: #cccccc;
 
   /* Trade Type Colors */
   --rise-fall-color: #0066cc;
@@ -56,26 +108,88 @@
   --turbos-color: #cc0000;
   --turbos-background: #ffe6e6;
 
-  /* Layout */
-  --spacing-xs: 0.25rem;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 1.5rem;
-  --spacing-xl: 2rem;
+  /* Chart colors */
+  --chart-grid: #e0e0e0;
+  --chart-line: #007bff;
+  --chart-fill: rgba(0, 123, 255, 0.1);
 
-  /* Border Radius */
-  --border-radius-sm: 0.25rem;
-  --border-radius-md: 0.5rem;
-  --border-radius-lg: 1rem;
-  --border-radius-xl: 2rem;
+  /* Shadow opacity */
+  --shadow-opacity: 0.1;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  /* Logo */
+  --logo-filter: none;
+}
 
-  /* Transitions */
-  --transition-fast: 0.2s ease;
-  --transition-normal: 0.3s ease;
-  --transition-slow: 0.5s ease;
+/* Dark Theme */
+:root[data-theme='dark'] {
+  /* Base colors */
+  --primary-color: #3391ff;
+  --primary-color-dark: #1a7fff;
+  --primary-color-light: #1a3c66;
+
+  /* Text colors */
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+  --text-tertiary: #808080;
+  --text-inverted: #1a1a1a;
+
+  /* Background colors */
+  --background-primary: #1a1a1a;
+  --background-secondary: #2d2d2d;
+  --background-tertiary: #404040;
+  --background-inverted: #ffffff;
+
+  /* Border colors */
+  --border-color: #404040;
+  --border-color-light: #333333;
+  --border-color-dark: #505050;
+
+  /* Status Colors */
+  --success-color: #2fb344;
+  --success-background: #132e1a;
+  --warning-color: #ffca28;
+  --warning-background: #332b17;
+  --error-color: #ef5350;
+  --error-background: #331a1a;
+  --info-color: #3399ff;
+  --info-background: #1a2633;
+  --disabled-color: #4d4d4d;
+
+  /* Trade Type Colors */
+  --rise-fall-color: #3399ff;
+  --rise-fall-background: #1a2633;
+  --touch-no-touch-color: #668fff;
+  --touch-no-touch-background: #1a2033;
+  --accumulators-color: #ff8533;
+  --accumulators-background: #332619;
+  --digits-color: #9966ff;
+  --digits-background: #261a33;
+  --multipliers-color: #00cc7a;
+  --multipliers-background: #1a332b;
+  --turbos-color: #ff3333;
+  --turbos-background: #331a1a;
+
+  /* Chart colors */
+  --chart-grid: #404040;
+  --chart-line: #3391ff;
+  --chart-fill: rgba(51, 145, 255, 0.1);
+
+  /* Shadow opacity */
+  --shadow-opacity: 0.3;
+
+  /* Logo */
+  --logo-filter: invert(1);
+}
+
+/* System preference based theme */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    color-scheme: light;
+  }
 }

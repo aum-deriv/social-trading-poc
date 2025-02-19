@@ -1,8 +1,44 @@
+.statement-header {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.statement-filters {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.statement-filters__item {
+  width: 250px;
+}
+
 .statement-card-container {
   margin-top: 30px;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
+}
+
+@media (max-width: 768px) {
+  .statement-header {
+    width: 100%;
+  }
+
+  .statement-filters__item {
+    width: 100%;
+  }
+
+  .statement-filters {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+@media (max-width: 1280px) {
+  .statement-card-container {
+    justify-content: center;
+  }
 }

@@ -1,10 +1,14 @@
-import Table from '../../components/Table/Table';
+import { useState } from 'react';
 import dbData from '../../../json-server/data/db.json';
-import { formatTimestamp } from '@/utils';
-import { useViewport } from '@/hooks';
-import { BREAKPOINTS } from '@/constants';
 import { StatementCard } from './components/StatementCard';
+import Dropdown from '@/components/Dropdown/Dropdown';
+import { TradeType } from '../OpenPositions/types';
 import './Statement.css';
+
+enum SortOrder {
+  NewestFirst = 'Newest First',
+  OldestFirst = 'Oldest First',
+}
 
 interface StatementItem {
   type: string;
@@ -17,27 +21,53 @@ interface StatementItem {
 }
 
 const Statement = () => {
+  const [selectedTradeType, setSelectedTradeType] = useState<TradeType>(TradeType.Multipliers);
+  const [sortOrder, setSortOrder] = useState<SortOrder>(SortOrder.NewestFirst);
   const statements = (dbData.statements || []) as StatementItem[];
-  const { width } = useViewport();
 
-  // Map each statement object to an array of values matching the column order
-  const data = statements.map((statement: StatementItem) => ({
-    Type: statement.type,
-    'Ref. ID': statement.referenceId,
-    Currency: statement.currency,
-    'Transaction time': formatTimestamp(statement.transactionTime.toString()),
-    Transaction: statement.actionType,
-    'Credit/Debit': statement.amount,
-    Balance: statement.balanceAfter,
-  }));
+  const handleTradeTypeChange = (selected: string) => {
+    setSelectedTradeType(selected as TradeType);
+  };
 
-  return width >= BREAKPOINTS.DESKTOP ? (
-    <Table data={data} />
-  ) : (
-    <div className="statement-card-container">
-      {statements.map(item => (
-        <StatementCard {...item} />
-      ))}
+  const handleSortOrderChange = (selected: string) => {
+    setSortOrder(selected as SortOrder);
+  };
+
+  const filteredStatements = statements.filter(item => item.type === selectedTradeType);
+
+  const sortedStatements = [...filteredStatements].sort((a, b) => {
+    const dateA = new Date(a.transactionTime);
+    const dateB = new Date(b.transactionTime);
+    return sortOrder === SortOrder.NewestFirst
+      ? dateB.getTime() - dateA.getTime()
+      : dateA.getTime() - dateB.getTime();
+  });
+
+  return (
+    <div>
+      <div className="statement-header">
+        <div className="statement-filters">
+          <div className="statement-filters__item">
+            <Dropdown
+              options={Object.values(TradeType)}
+              selected={selectedTradeType}
+              onSelect={handleTradeTypeChange}
+            />
+          </div>
+          <div className="statement-filters__item">
+            <Dropdown
+              options={Object.values(SortOrder)}
+              selected={sortOrder}
+              onSelect={handleSortOrderChange}
+            />
+          </div>
+        </div>
+      </div>
+      <div className="statement-card-container">
+        {sortedStatements.map(item => (
+          <StatementCard key={item.referenceId} {...item} />
+        ))}
+      </div>
     </div>
   );
 };

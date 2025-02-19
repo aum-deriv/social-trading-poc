@@ -1,8 +1,5 @@
-import Table from '@/components/Table';
 import { BaseContract, MultiplierContract } from '@/types/contract.types';
 import { useTradePositionsDataMapper } from '../../hooks';
-import { useViewport } from '@/hooks';
-import { BREAKPOINTS } from '@/constants';
 import { TradeType } from '../../types';
 import './TradePositions.css';
 import MultiplierOpenPosition from '../MultiplierOpenPosition';
@@ -15,16 +12,8 @@ interface PositionsTableProps {
 }
 
 const TradePositions = ({ contracts, tradeType }: PositionsTableProps) => {
-  const {
-    multiplierContracts,
-    tableViewedMultiplierContracts,
-    optionContracts,
-    tableViewedOptionContracts,
-    accumulatorContracts,
-    tableViewedAccumulatorContracts,
-    removeContract,
-  } = useTradePositionsDataMapper(contracts);
-  const { width } = useViewport();
+  const { multiplierContracts, optionContracts, accumulatorContracts, removeContract } =
+    useTradePositionsDataMapper(contracts);
 
   const renderContracts = () => {
     if (tradeType === TradeType.Multipliers) {
@@ -44,23 +33,7 @@ const TradePositions = ({ contracts, tradeType }: PositionsTableProps) => {
     ));
   };
 
-  const renderTables = () => {
-    if (tradeType === TradeType.Multipliers) {
-      return <Table data={tableViewedMultiplierContracts} />;
-    }
-
-    if (tradeType === TradeType.Accumulators) {
-      return <Table data={tableViewedAccumulatorContracts} />;
-    }
-
-    return <Table data={tableViewedOptionContracts} />;
-  };
-
-  return width >= BREAKPOINTS.DESKTOP ? (
-    renderTables()
-  ) : (
-    <div className="contract-card-container">{renderContracts()}</div>
-  );
+  return <div className="contract-card-container">{renderContracts()}</div>;
 };
 
 export default TradePositions;

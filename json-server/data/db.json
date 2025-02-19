@@ -1737,6 +1737,181 @@
       "strategyName": "Swing Shift",
       "contractId": "CONTRACT_A3",
       "currency": "USD"
+    },
+    {
+      "contractType": "Multipliers",
+      "symbol": "Volatility 150",
+      "multiplier": 15,
+      "contractCost": 4.5,
+      "stake": 15,
+      "leaderId": "leader10",
+      "leader": "Koji Matsuda",
+      "strategyId": "strategy10",
+      "strategyName": "Neural Surge",
+      "contractId": "CONTRACT_M4",
+      "currency": "USD"
+    },
+    {
+      "contractType": "Multipliers",
+      "symbol": "Volatility 250",
+      "multiplier": 25,
+      "contractCost": 7.5,
+      "stake": 25,
+      "leaderId": "leader11",
+      "leader": "Naomi Kitagawa",
+      "strategyId": "strategy11",
+      "strategyName": "Omega Flow",
+      "contractId": "CONTRACT_M5",
+      "currency": "USD"
+    },
+    {
+      "contractType": "Multipliers",
+      "symbol": "Volatility 350",
+      "multiplier": 35,
+      "contractCost": 10.5,
+      "stake": 35,
+      "leaderId": "leader12",
+      "leader": "Masaru Okamoto",
+      "strategyId": "strategy12",
+      "strategyName": "Hyper Drive",
+      "contractId": "CONTRACT_M6",
+      "currency": "USD"
+    },
+    {
+      "contractType": "Multipliers",
+      "symbol": "Volatility 400",
+      "multiplier": 40,
+      "contractCost": 12.0,
+      "stake": 40,
+      "leaderId": "leader13",
+      "leader": "Asuka Takeda",
+      "strategyId": "strategy13",
+      "strategyName": "Nova Pulse",
+      "contractId": "CONTRACT_M7",
+      "currency": "USD"
+    },
+    {
+      "contractType": "Multipliers",
+      "symbol": "Volatility 450",
+      "multiplier": 50,
+      "contractCost": 15.0,
+      "stake": 50,
+      "leaderId": "leader14",
+      "leader": "Miyuki Sakamoto",
+      "strategyId": "strategy14",
+      "strategyName": "AI Infinity",
+      "contractId": "CONTRACT_M8",
+      "currency": "USD"
+    },
+    {
+      "contractType": "Options",
+      "symbol": "Volatility 150",
+      "stake": 15,
+      "leaderId": "leader15",
+      "leader": "Kenji Yamamoto",
+      "strategyId": "strategy15",
+      "strategyName": "Zenith Move",
+      "contractId": "CONTRACT_O4",
+      "currency": "USD"
+    },
+    {
+      "contractType": "Options",
+      "symbol": "Volatility 250",
+      "stake": 25,
+      "leaderId": "leader16",
+      "leader": "Ryota Tanaka",
+      "strategyId": "strategy16",
+      "strategyName": "Momentum Strike",
+      "contractId": "CONTRACT_O5",
+      "currency": "USD"
+    },
+    {
+      "contractType": "Options",
+      "symbol": "Volatility 350",
+      "stake": 35,
+      "leaderId": "leader17",
+      "leader": "Hikaru Fujimoto",
+      "strategyId": "strategy17",
+      "strategyName": "Optima Pulse",
+      "contractId": "CONTRACT_O6",
+      "currency": "USD"
+    },
+    {
+      "contractType": "Options",
+      "symbol": "Volatility 400",
+      "stake": 40,
+      "leaderId": "leader18",
+      "leader": "Daichi Sakamoto",
+      "strategyId": "strategy18",
+      "strategyName": "Skyward Leap",
+      "contractId": "CONTRACT_O7",
+      "currency": "USD"
+    },
+    {
+      "contractType": "Options",
+      "symbol": "Volatility 450",
+      "stake": 50,
+      "leaderId": "leader19",
+      "leader": "Emi Sugimoto",
+      "strategyId": "strategy19",
+      "strategyName": "Lunar Glide",
+      "contractId": "CONTRACT_O8",
+      "currency": "USD"
+    },
+    {
+      "contractType": "Accumulators",
+      "symbol": "Volatility 150",
+      "stake": 15,
+      "leaderId": "leader20",
+      "leader": "Shinji Nakamura",
+      "strategyId": "strategy20",
+      "strategyName": "Grid Lock",
+      "contractId": "CONTRACT_A4",
+      "currency": "USD"
+    },
+    {
+      "contractType": "Accumulators",
+      "symbol": "Volatility 250",
+      "stake": 25,
+      "leaderId": "leader21",
+      "leader": "Rika Hoshino",
+      "strategyId": "strategy21",
+      "strategyName": "Echo Wave",
+      "contractId": "CONTRACT_A5",
+      "currency": "USD"
+    },
+    {
+      "contractType": "Accumulators",
+      "symbol": "Volatility 350",
+      "stake": 35,
+      "leaderId": "leader22",
+      "leader": "Haruto Kitagawa",
+      "strategyId": "strategy22",
+      "strategyName": "Horizon Drift",
+      "contractId": "CONTRACT_A6",
+      "currency": "USD"
+    },
+    {
+      "contractType": "Accumulators",
+      "symbol": "Volatility 400",
+      "stake": 40,
+      "leaderId": "leader23",
+      "leader": "Souta Takahashi",
+      "strategyId": "strategy23",
+      "strategyName": "Momentum Grid",
+      "contractId": "CONTRACT_A7",
+      "currency": "USD"
+    },
+    {
+      "contractType": "Accumulators",
+      "symbol": "Volatility 450",
+      "stake": 50,
+      "leaderId": "leader24",
+      "leader": "Aya Nakamoto",
+      "strategyId": "strategy24",
+      "strategyName": "Infinity Surge",
+      "contractId": "CONTRACT_A8",
+      "currency": "USD"
     }
   ],
   "statements": [
@@ -1793,6 +1968,141 @@
       "balanceAfter": 9975.54,
       "referenceId": 5431291321082,
       "transactionTime": "2025-08-01T08:00:00Z"
+    },
+    {
+      "type": "Multipliers",
+      "actionType": "buy",
+      "currency": "USD",
+      "amount": -5,
+      "balanceAfter": 9965.54,
+      "referenceId": 543129132201,
+      "transactionTime": "2025-03-15T08:00:00Z"
+    },
+    {
+      "type": "Multipliers",
+      "actionType": "sell",
+      "currency": "USD",
+      "amount": 8,
+      "balanceAfter": 9978.54,
+      "referenceId": 543129132202,
+      "transactionTime": "2025-05-20T12:00:00Z"
+    },
+    {
+      "type": "Multipliers",
+      "actionType": "buy",
+      "currency": "USD",
+      "amount": -7,
+      "balanceAfter": 9971.54,
+      "referenceId": 543129132203,
+      "transactionTime": "2025-02-25T10:30:00Z"
+    },
+    {
+      "type": "Multipliers",
+      "actionType": "sell",
+      "currency": "USD",
+      "amount": 10,
+      "balanceAfter": 9984.54,
+      "referenceId": 543129132204,
+      "transactionTime": "2025-06-05T14:45:00Z"
+    },
+    {
+      "type": "Multipliers",
+      "actionType": "buy",
+      "currency": "USD",
+      "amount": -4,
+      "balanceAfter": 9980.54,
+      "referenceId": 543129132205,
+      "transactionTime": "2025-07-17T07:25:00Z"
+    },
+    {
+      "type": "Options",
+      "actionType": "buy",
+      "currency": "USD",
+      "amount": -6,
+      "balanceAfter": 9974.54,
+      "referenceId": 543129132301,
+      "transactionTime": "2025-02-22T09:15:00Z"
+    },
+    {
+      "type": "Options",
+      "actionType": "sell",
+      "currency": "USD",
+      "amount": 9,
+      "balanceAfter": 9983.54,
+      "referenceId": 543129132302,
+      "transactionTime": "2025-04-30T11:10:00Z"
+    },
+    {
+      "type": "Options",
+      "actionType": "buy",
+      "currency": "USD",
+      "amount": -8,
+      "balanceAfter": 9975.54,
+      "referenceId": 543129132303,
+      "transactionTime": "2025-06-15T13:35:00Z"
+    },
+    {
+      "type": "Options",
+      "actionType": "sell",
+      "currency": "USD",
+      "amount": 7,
+      "balanceAfter": 9982.54,
+      "referenceId": 543129132304,
+      "transactionTime": "2025-08-10T15:20:00Z"
+    },
+    {
+      "type": "Options",
+      "actionType": "buy",
+      "currency": "USD",
+      "amount": -3,
+      "balanceAfter": 9979.54,
+      "referenceId": 543129132305,
+      "transactionTime": "2025-09-18T16:30:00Z"
+    },
+    {
+      "type": "Accumulators",
+      "actionType": "buy",
+      "currency": "USD",
+      "amount": -5,
+      "balanceAfter": 9976.54,
+      "referenceId": 543129132401,
+      "transactionTime": "2025-01-20T10:40:00Z"
+    },
+    {
+      "type": "Accumulators",
+      "actionType": "sell",
+      "currency": "USD",
+      "amount": 10,
+      "balanceAfter": 9986.54,
+      "referenceId": 543129132402,
+      "transactionTime": "2025-03-25T12:50:00Z"
+    },
+    {
+      "type": "Accumulators",
+      "actionType": "buy",
+      "currency": "USD",
+      "amount": -9,
+      "balanceAfter": 9977.54,
+      "referenceId": 543129132403,
+      "transactionTime": "2025-05-29T14:00:00Z"
+    },
+    {
+      "type": "Accumulators",
+      "actionType": "sell",
+      "currency": "USD",
+      "amount": 6,
+      "balanceAfter": 9983.54,
+      "referenceId": 543129132404,
+      "transactionTime": "2025-07-13T16:45:00Z"
+    },
+    {
+      "type": "Accumulators",
+      "actionType": "buy",
+      "currency": "USD",
+      "amount": -7,
+      "balanceAfter": 9976.54,
+      "referenceId": 543129132405,
+      "transactionTime": "2025-08-22T18:20:00Z"
     }
   ]
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import type { TradingPreferences } from '@/types/trading';
 import { PreferencesStep } from '@/pages/welcome/components/steps/PreferencesStep';
 import { RiskStep } from '@/pages/welcome/components/steps/RiskStep';
-import Modal from '@/components/modal/Modal';
+import FullscreenModal from '@/components/modal/FullscreenModal';
 import { useAuth } from '@/context/AuthContext';
 
 const useUpdateTradingPreferences = () => {
@@ -92,7 +92,7 @@ const EditTradingPreferencesModal: React.FC<EditTradingPreferencesModalProps> = 
   };
 
   return (
-    <Modal
+    <FullscreenModal
       isOpen={true}
       onClose={onClose}
       title={`Edit ${currentStep === 'preferences' ? 'Trading Preferences' : 'Risk Settings'}`}
@@ -111,7 +111,7 @@ const EditTradingPreferencesModal: React.FC<EditTradingPreferencesModalProps> = 
           buttonText="Save"
         />
       )}
-    </Modal>
+    </FullscreenModal>
   );
 };
 

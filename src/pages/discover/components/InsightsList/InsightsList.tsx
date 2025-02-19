@@ -9,22 +9,25 @@ interface InsightsListProps {
   insights: AIInsight[];
   loadingSymbol: { symbol: string; name: string } | null;
   onRemoveInsight?: (postId: string) => void;
+  hideCloseButtons?: boolean;
+  hideLoader?: boolean;
 }
 
 export default function InsightsList({
   insights,
   loadingSymbol,
   onRemoveInsight,
+  hideCloseButtons,
+  hideLoader,
 }: InsightsListProps) {
-  if (insights.length === 0 && !loadingSymbol) {
+  if (insights.length === 0) {
     return null;
   }
-
   return (
     <div className="insights-list">
       <h3 className="insights-list__title">AI Insights</h3>
       <div className="insights-list__content">
-        {loadingSymbol && (
+        {loadingSymbol && !hideLoader && (
           <AILoader
             symbol={`${loadingSymbol.name} (${loadingSymbol.symbol})`}
             size={60}
@@ -38,13 +41,15 @@ export default function InsightsList({
                 ✦ AI Insights for{' '}
                 {insight.symbolName || insight.symbol || insight.postId.split('_')[0]}
               </h4>
-              <button
-                className="post-ai-insights__close"
-                onClick={() => onRemoveInsight?.(insight.postId)}
-                aria-label="Close insight"
-              >
-                ✕
-              </button>
+              {!hideCloseButtons && (
+                <button
+                  className="post-ai-insights__close"
+                  onClick={() => onRemoveInsight?.(insight.postId)}
+                  aria-label="Close insight"
+                >
+                  ✕
+                </button>
+              )}
             </div>
             {/* Quick Actions */}
             <div className="post-ai-insights__actions">

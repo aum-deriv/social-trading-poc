@@ -3,6 +3,12 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
+}
+
+@media (max-width: 1280px) {
+  .contract-card-container {
+    justify-content: center;
+  }
 }
