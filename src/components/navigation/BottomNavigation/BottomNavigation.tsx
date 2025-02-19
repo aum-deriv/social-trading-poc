@@ -5,13 +5,15 @@ import ReportIcon from '@/assets/icons/ReportIcon';
 import ProfileIcon from '@/assets/icons/ProfileIcon';
 import PlusIcon from '@/assets/icons/PlusIcon';
 import { useAuth } from '@/context/AuthContext';
+import GlobalAIButton from '@/components/GlobalAIButton';
 import './BottomNavigation.css';
 
 interface BottomNavigationProps {
   onCreateContent: () => void;
+  onGlobalAI: () => void;
 }
 
-const BottomNavigation = ({ onCreateContent }: BottomNavigationProps) => {
+const BottomNavigation = ({ onCreateContent, onGlobalAI }: BottomNavigationProps) => {
   const location = useLocation();
   const currentPath = location.pathname;
   const { user } = useAuth();
@@ -38,6 +40,7 @@ const BottomNavigation = ({ onCreateContent }: BottomNavigationProps) => {
       >
         <PlusIcon />
       </button>
+      <GlobalAIButton onClick={onGlobalAI} />
       <Link to="/reports" className={`nav-item ${isActive('/reports') ? 'active' : ''}`}>
         <ReportIcon />
       </Link>

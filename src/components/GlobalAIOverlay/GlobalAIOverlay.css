@@ -1,0 +1,10 @@
+.global-ai-overlay .overlay__content {
+  padding: 20px;
+}
+
+.global-ai-overlay__content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,35 @@
+@import "../../styles/variables.css";
+
+.global-ai-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #00d0ff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.global-ai-button__icon {
+  font-size: 24px;
+  color: #fff;
+  animation: pulse 2s infinite;
+}
+
+.global-ai-button:hover {
+  background: #00D0FF50;
+}
+
+.global-ai-button:hover .global-ai-button__icon {
+  color: #007aff;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 0.6; transform: scale(0.9); }
+}

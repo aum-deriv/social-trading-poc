@@ -1,0 +1,29 @@
+.chat-message {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 55%;
+}
+
+.chat-message__from {
+  font-size: small;
+  font-weight: bold;
+  color: #000;
+}
+
+.chat-message__content {
+  background: rgb(245, 245, 245, 0.5);
+  backdrop-filter: blur(4px);
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.chat-message__text {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #333;
+}
+
+.chat-message__attachments {
+  margin-top: 8px;
+}
