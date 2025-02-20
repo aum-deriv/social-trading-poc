@@ -1,5 +1,5 @@
 import { FC, FormEvent, useState } from 'react';
-import DiscoverIcon from '@/assets/icons/DiscoverIcon';
+import MessageIcon from '@/assets/icons/MessageIcon';
 import './AISearchBar.css';
 
 interface AISearchBarProps {
@@ -16,6 +16,7 @@ const AISearchBar: FC<AISearchBarProps> = ({ isLoading, onSearch, placeholder })
     e.preventDefault();
     if (query.trim()) {
       onSearch(query.trim());
+      setQuery('');
     }
   };
 
@@ -35,7 +36,7 @@ const AISearchBar: FC<AISearchBarProps> = ({ isLoading, onSearch, placeholder })
         disabled={isLoading}
       />
       <button type="submit" className="ai-search-bar__button">
-        <DiscoverIcon />
+        <MessageIcon />
       </button>
     </form>
   );

@@ -114,11 +114,6 @@ strong {
   color: var(--text-primary);
 }
 
-/* Selection color */
-::selection {
-  color: var(--text-inverted);
-}
-
 /* Scrollbar styles */
 ::-webkit-scrollbar {
   width: 8px;

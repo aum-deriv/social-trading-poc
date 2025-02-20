@@ -1,8 +1,8 @@
 @import "../../styles/variables.css";
 
 .global-ai-button {
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: var(--primary-color);
   border: none;
@@ -12,22 +12,96 @@
   justify-content: center;
   transition: all 0.3s ease;
   padding: 0;
+  position: relative;
+  overflow: visible;
 }
 
-.global-ai-button__icon {
+.global-ai-button__wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.global-ai-button__sparkle {
   font-size: 24px;
   color: var(--text-inverted);
-  animation: pulse 2s infinite;
+  animation: sparkle 2s infinite;
+  position: relative;
+  z-index: 2;
+}
+
+.global-ai-button__particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.global-ai-button__particles .particle {
+  position: absolute;
+  color: var(--text-inverted);
+  font-size: 12px;
+  opacity: 0.3;
+  animation: orbit 2s linear infinite;
+}
+
+.global-ai-button__particles .particle:nth-child(1) {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-delay: 0s;
+}
+
+.global-ai-button__particles .particle:nth-child(2) {
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  animation-delay: -0.5s;
+}
+
+.global-ai-button__particles .particle:nth-child(3) {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-delay: -1s;
+}
+
+.global-ai-button__particles .particle:nth-child(4) {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  animation-delay: -1.5s;
 }
 
 .global-ai-button:hover {
   background: var(--primary-color-light);
 }
 
-.global-ai-button:hover .global-ai-button__icon {
+.global-ai-button:hover .global-ai-button__sparkle {
   color: var(--primary-color-dark);
+  animation: sparkleHover 1s infinite;
 }
 
-@keyframes pulse {
-  50% { opacity: 0.8; }
+.global-ai-button:hover .particle {
+  animation-duration: 1.5s;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(0.92); }
+}
+
+@keyframes sparkleHover {
+  0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
+  50% { opacity: 0.8; transform: scale(1.1) rotate(15deg); }
+}
+
+@keyframes orbit {
+  0% { transform: rotate(0deg) translateX(15px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(15px) rotate(-360deg); }
 }
