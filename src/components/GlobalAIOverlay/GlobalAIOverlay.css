@@ -12,6 +12,10 @@
   border-radius: 50px;
 }
 
+.global-ai-overlay__content-loader {
+  animation: loader-animation 1s ease infinite;
+}
+
 .global-ai-overlay__content {
   width: 100%;
   height: 100%;
@@ -53,4 +57,10 @@
 
 .global-ai-overlay__content-chat-input {
   width: 100%;
+}
+
+@keyframes loader-animation {
+  50% {
+    opacity: 0.75;
+  }
 }

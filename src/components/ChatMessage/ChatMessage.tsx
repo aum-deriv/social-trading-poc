@@ -1,14 +1,15 @@
 import './ChatMessage.css';
 
 interface ChatMessageProps {
-  from: string;
-  message: string;
+  className?: string;
+  from?: string;
+  message?: string;
   attachments?: React.ReactNode;
 }
 
-const ChatMessage = ({ from, message, attachments }: ChatMessageProps) => {
+const ChatMessage = ({ className, from, message, attachments }: ChatMessageProps) => {
   return (
-    <div className="chat-message">
+    <div className={`chat-message ${className}`}>
       <div className="chat-message__content">
         <div className="chat-message__from">{from}</div>
         <div className="chat-message__text">{message}</div>

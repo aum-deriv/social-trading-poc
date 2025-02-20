@@ -18,8 +18,7 @@
 }
 
 .chat-message__text {
-  font-size: 14px;
-  line-height: 1.4;
+  font-size: larger;
   color: var(--text-primary);
 }
 
