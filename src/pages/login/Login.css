@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180deg, #00d0ff 0%, #ffffff 340px);
+  background: var(--background-primary);
 }
 
 .login-content {
@@ -19,7 +19,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: black;
+  color: var(--text-primary);
   padding: 2rem;
 }
 
@@ -32,18 +32,19 @@
   width: 80px;
   height: 80px;
   margin-bottom: 2rem;
+  transition: filter var(--transition-normal);
 }
 
 .branding-content h1 {
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-semibold);
   margin-bottom: 1rem;
-  color: black;
+  color: var(--text-primary);
 }
 
 .branding-content p {
   font-size: var(--font-size-lg);
-  opacity: 0.9;
+  color: var(--text-secondary);
   line-height: var(--line-height-relaxed);
 }
 
@@ -56,12 +57,13 @@
 
 .form-wrapper {
   width: 360px;
+  padding: var(--spacing-xl);
 }
 
 .form-wrapper h2 {
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-semibold);
-  color: #333;
+  color: var(--text-primary);
   margin-bottom: 2rem;
 }
 
@@ -72,7 +74,7 @@
 }
 
 .login-error {
-  color: #dc2626;
+  color: var(--error-color);
   padding: 0.75rem 1.5rem;
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-regular);
@@ -82,11 +84,32 @@
 .login-input {
   height: 50px;
   font-size: var(--font-size-base);
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: 0 var(--spacing-md);
+  transition: border-color var(--transition-fast);
+}
+
+.login-input:focus {
+  border-color: var(--primary-color);
+  outline: none;
 }
 
 .login-button {
   height: 50px;
   font-size: var(--font-size-base);
+  background-color: var(--primary-color);
+  color: var(--text-inverted);
+  border: none;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.login-button:hover {
+  background-color: var(--primary-color-dark);
 }
 
 /* Responsive adjustments */
@@ -113,11 +136,10 @@
   .login-form-container {
     width: 100%;
     padding: 2rem 0;
-    border-radius: 0.5rem;
   }
 
   .form-wrapper {
-    padding: 0;
+    padding: var(--spacing-lg);
     width: 100%;
   }
 

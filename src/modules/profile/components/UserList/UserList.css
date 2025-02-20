@@ -7,20 +7,20 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  background-color: white;
-  transition: background-color 0.2s;
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  background-color: var(--background-primary);
+  transition: background-color var(--transition-fast);
 }
 
 .user-list__item:hover {
-  background-color: #f9fafb;
+  background-color: var(--background-secondary);
 }
 
 .user-list__user-info {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: var(--spacing-md);
   flex: 1;
   cursor: pointer;
 }
@@ -28,26 +28,26 @@
 .user-list__avatar {
   width: 3rem;
   height: 3rem;
-  border-radius: 9999px;
+  border-radius: var(--border-radius-full);
   object-fit: cover;
 }
 
 .user-list__details {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: var(--spacing-2xs);
   text-align: left;
 }
 
 .user-list__username {
-  font-weight: 600;
-  color: #111827;
-  font-size: 1rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  font-size: var(--font-size-base);
 }
 
 .user-list__type {
-  color: #6b7280;
-  font-size: 0.875rem;
+  color: var(--text-tertiary);
+  font-size: var(--font-size-sm);
   text-transform: capitalize;
 }
 
@@ -56,18 +56,18 @@
   align-items: center;
   justify-content: center;
   min-height: 200px;
-  color: #6b7280;
-  font-size: 0.875rem;
+  color: var(--text-tertiary);
+  font-size: var(--font-size-sm);
   text-align: center;
-  padding: 2rem;
-  background-color: #f9fafb;
-  border-radius: 0.5rem;
+  padding: var(--spacing-xl);
+  background-color: var(--background-secondary);
+  border-radius: var(--border-radius-md);
 }
 
 .user-list--empty {
   text-align: center;
-  padding: 2rem;
-  color: #6b7280;
-  font-size: 1rem;
-  border-radius: 0.5rem;
+  padding: var(--spacing-xl);
+  color: var(--text-tertiary);
+  font-size: var(--font-size-base);
+  border-radius: var(--border-radius-md);
 }

@@ -2,36 +2,36 @@
 
 .insights-list {
   width: 100%;
-  max-width: 1200px;
+  max-width: var(--max-width-xl);
   margin: 0 auto;
-  padding-bottom: 48px;
+  padding-bottom: var(--spacing-3xl);
 }
 
 .insights-list__title {
-  font-size: 18px;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 24px;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xl);
   text-align: center;
 }
 
 .insights-list__content {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  max-width: 800px;
+  gap: var(--spacing-xl);
+  max-width: var(--max-width-lg);
   margin: 0 auto;
 }
 
 .post-ai-insights {
-  background: white;
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background: var(--background-primary);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  animation: fadeInUp 0.5s ease-out;
+  gap: var(--spacing-md);
+  animation: fadeInUp var(--transition-normal);
   opacity: 0;
   animation-fill-mode: forwards;
 }
@@ -44,22 +44,22 @@
 }
 
 .post-ai-insights__title {
-  font-size: 14px;
-  color: #333;
-  font-weight: 600;
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  font-weight: var(--font-weight-semibold);
   margin: 0;
 }
 
 .post-ai-insights__close {
   background: none;
   border: none;
-  color: #666;
+  color: var(--text-tertiary);
   cursor: pointer;
-  padding: 8px;
-  font-size: 14px;
+  padding: var(--spacing-sm);
+  font-size: var(--font-size-sm);
   line-height: 1;
   opacity: 0.7;
-  transition: opacity 0.2s ease;
+  transition: opacity var(--transition-fast);
 }
 
 .post-ai-insights__close:hover {
@@ -67,27 +67,27 @@
 }
 
 .post-ai-insights__summary {
-  color: #333;
-  font-size: 14px;
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
   line-height: 1.5;
-  background: #f8f9fa;
-  padding: 12px;
-  border-radius: 8px;
+  background: var(--background-secondary);
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius-md);
 }
 
 .post-ai-insights__badges {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: var(--spacing-sm);
 }
 
 .post-ai-insights__recommendation {
-  color: #333;
-  font-size: 14px;
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
   line-height: 1.5;
-  padding: 12px;
-  background: #f8f9fa;
-  border-radius: 8px;
+  padding: var(--spacing-sm);
+  background: var(--background-secondary);
+  border-radius: var(--border-radius-md);
   width: 100%;
 }
 
@@ -98,7 +98,7 @@
 .post-ai-insights__actions-grid {
   display: flex;
   justify-content: flex-end;
-  gap: 8px;
+  gap: var(--spacing-sm);
 }
 
 .post-ai-insights__resources {
@@ -106,47 +106,47 @@
 }
 
 .post-ai-insights__resources-title {
-  font-size: 14px;
-  color: #666;
-  font-weight: 600;
-  margin-bottom: 8px;
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-sm);
 }
 
 .post-ai-insights__links {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--spacing-sm);
 }
 
 .post-ai-insights__link {
-  color: var(--color-primary);
+  color: var(--primary-color);
   text-decoration: none;
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  border-radius: 8px;
-  background: #f8f9fa;
-  transition: background-color 0.2s ease;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  background: var(--background-secondary);
+  transition: background-color var(--transition-fast);
 }
 
 .post-ai-insights__link:hover {
-  background: #e9ecef;
+  background: var(--background-tertiary);
 }
 
 /* Loading State */
 .insight-card.loading {
-  min-height: 150px;
+  min-height: var(--min-height-card);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: white;
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  gap: 16px;
+  background: var(--background-primary);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+  gap: var(--spacing-md);
 }
 
 .insight-card__header {
@@ -157,15 +157,15 @@
 }
 
 .insight-card__symbol {
-  font-size: 16px;
-  color: #333;
-  font-weight: 600;
+  font-size: var(--font-size-md);
+  color: var(--text-primary);
+  font-weight: var(--font-weight-semibold);
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(var(--spacing-lg));
   }
   to {
     opacity: 1;

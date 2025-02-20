@@ -1,15 +1,15 @@
 .skeleton-user-card {
-  background: white;
-  border-radius: 16px;
-  padding: 0.5rem;
+  background: var(--background-primary);
+  border-radius: var(--border-radius-xl);
+  padding: var(--spacing-xs);
   width: 270px;
   height: 270px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  gap: 1rem;
-  border: 1px solid #eee;
+  gap: var(--spacing-md);
+  border: 1px solid var(--border-color);
   position: relative;
 }
 
@@ -17,7 +17,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: var(--spacing-md);
   width: 100%;
 }
 
@@ -30,7 +30,7 @@
 .skeleton-user-card__avatar-container {
   width: 100px;
   height: 100px;
-  margin-top: 1rem;
+  margin-top: var(--spacing-md);
 }
 
 .skeleton-user-card__cta {
@@ -38,19 +38,19 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  gap: 1rem;
+  gap: var(--spacing-md);
 }
 
 .skeleton-user-card__stats {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--spacing-xs);
 }
 
 .skeleton-user-card__stat {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: var(--spacing-2xs);
 }
 
 @media (max-width: 768px) {

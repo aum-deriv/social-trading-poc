@@ -1,123 +1,134 @@
 .post-form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: 16px;
-    background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: var(--background-primary);
+  border-radius: var(--border-radius-lg);
 }
 
 .post-form__header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
 }
 
 .post-form__avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .post-form__user-name {
-    font-weight: 600;
-    color: #333;
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
 }
 
 .post-form__textarea {
-    width: 100%;
-    min-height: 120px;
-    padding: 12px;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    resize: none;
-    font-size: 16px;
-    line-height: 1.5;
+  width: 100%;
+  min-height: 120px;
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  resize: none;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--text-primary);
+  background-color: var(--background-primary);
+  transition: border-color var(--transition-fast);
 }
 
 .post-form__textarea:focus {
-    outline: none;
-    border-color: #007aff;
+  outline: none;
+  border-color: var(--primary-color);
 }
 
 .post-form__image-preview {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 8px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: var(--spacing-sm);
 }
 
 .post-form__image-container {
-    position: relative;
-    aspect-ratio: 1;
+  position: relative;
+  aspect-ratio: 1;
 }
 
 .post-form__image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--border-radius-md);
 }
 
 .post-form__remove-image {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: #fff;
-    border: none;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: #666;
-    font-size: 16px;
-    line-height: 1;
+  position: absolute;
+  top: calc(var(--spacing-sm) * -1);
+  right: calc(var(--spacing-sm) * -1);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--background-primary);
+  border: none;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-tertiary);
+  font-size: var(--font-size-base);
+  line-height: 1;
+  transition: all var(--transition-fast);
+}
+
+.post-form__remove-image:hover {
+  color: var(--text-primary);
+  box-shadow: var(--shadow-md);
 }
 
 .post-form__actions {
-    display: flex;
-    gap: 12px;
-    margin-top: auto;
+  display: flex;
+  gap: var(--spacing-md);
+  margin-top: auto;
 }
 
 .post-form__file-input {
-    display: none;
+  display: none;
 }
 
 .post-form__button {
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s;
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all var(--transition-fast);
 }
 
 .post-form__button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .post-form__button--image {
-    background: #f8f8f8;
-    border: none;
-    color: #666;
+  background: var(--background-secondary);
+  border: none;
+  color: var(--text-tertiary);
 }
 
 .post-form__button--image:hover:not(:disabled) {
-    background: #eee;
+  background: var(--background-tertiary);
+  color: var(--text-primary);
 }
 
 .post-form__button--submit {
-    background: #007aff;
-    border: none;
-    color: #fff;
-    margin-left: auto;
+  background: var(--primary-color);
+  border: none;
+  color: var(--text-inverted);
+  margin-left: auto;
 }
 
 .post-form__button--submit:hover:not(:disabled) {
-    background: #0066d6;
+  background: var(--primary-color-dark);
 }

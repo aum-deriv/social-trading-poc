@@ -1,6 +1,7 @@
 .main-layout {
   display: flex;
   flex-direction: column;
-  background: linear-gradient(180deg, #00d0ff 0%, #ffffff 340px);
+  background: var(--background-primary);
   min-height: 100vh;
+  transition: background var(--transition-normal);
 }

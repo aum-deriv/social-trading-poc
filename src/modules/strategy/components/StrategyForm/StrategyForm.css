@@ -21,7 +21,7 @@
 .strategy-form__field textarea,
 .strategy-form__field select {
   padding: var(--spacing-sm);
-  border: 1px solid var(--border-color);
+  border: var(--border-width) solid var(--border-color);
   border-radius: var(--border-radius-md);
   background-color: var(--background-secondary);
   color: var(--text-primary);
@@ -39,14 +39,14 @@
 
 .strategy-form__field textarea {
   resize: vertical;
-  min-height: 100px;
+  min-height: var(--spacing-8xl);
 }
 
 .strategy-form__error {
-  color: var(--error-color);
+  color: var(--error);
   font-size: var(--font-size-sm);
   padding: var(--spacing-sm);
-  background-color: var(--error-background);
+  background-color: var(--error-light);
   border-radius: var(--border-radius-md);
 }
 
@@ -73,18 +73,18 @@
 }
 
 .strategy-form__button--primary:disabled {
-  background-color: var(--disabled-color);
+  background-color: var(--disabled);
   cursor: not-allowed;
 }
 
 .strategy-form__button--secondary {
   background-color: transparent;
   color: var(--text-primary);
-  border: 1px solid var(--border-color);
+  border: var(--border-width) solid var(--border-color);
 }
 
 .strategy-form__button--primary:hover:not(:disabled) {
-  background-color: var(--primary-color-dark);
+  background-color: var(--primary-dark);
 }
 
 .strategy-form__button--secondary:hover {

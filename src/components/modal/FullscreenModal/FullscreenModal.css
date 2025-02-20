@@ -1,81 +1,80 @@
 .fullscreen-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 9999;
-    background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background-color: var(--background-primary);
 }
 
 .fullscreen-modal.entering {
-    animation: slideIn 0.3s ease-out;
+  animation: slideIn 0.3s ease-out;
 }
 
 .fullscreen-modal.exiting {
-    animation: slideOut 0.3s ease-in;
+  animation: slideOut 0.3s ease-in;
 }
 
 .fullscreen-modal__content {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .fullscreen-modal__header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 16px;
-    border-bottom: 1px solid #eee;
-    background-color: #fff;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--background-primary);
 }
 
 .fullscreen-modal__close {
-    background: none;
-    border: none;
-    padding: 8px;
-    margin: -8px;
-    cursor: pointer;
-    color: #666;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: color 0.2s ease;
+  background: none;
+  border: none;
+  padding: var(--spacing-sm);
+  margin: calc(var(--spacing-sm) * -1);
+  cursor: pointer;
+  color: var(--text-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-fast);
 }
 
 .fullscreen-modal__close:hover {
-    color: #333;
+  color: var(--text-primary);
 }
 
 .fullscreen-modal__title {
-    margin: 0;
-    font-size: 18px;
-    font-weight: 600;
-    color: #333;
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
 }
 
 .fullscreen-modal__body {
-    flex: 1;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 1rem;
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 @keyframes slideIn {
-    from {
-        transform: translateY(100%);
-    }
-    to {
-        transform: translateY(0);
-    }
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
 @keyframes slideOut {
-    from {
-        transform: translateY(0);
-    }
-    to {
-        transform: translateY(100%);
-    }
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
 }

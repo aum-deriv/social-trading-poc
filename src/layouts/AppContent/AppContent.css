@@ -1,17 +1,16 @@
-@import "../../styles/variables.css";
+@import '../../styles/variables.css';
 
 .app-content {
   flex: 1;
   font-family: var(--font-family-base);
   margin: 0;
-  padding: 0;
+  padding: var(--spacing-md);
   height: 100%;
-  background-color: rgba(0, 208, 255, 0.05);
 }
 
 .app-content__inner {
   display: flex;
-  gap: 2rem;
+  gap: var(--spacing-xl);
   margin: 0;
   padding: 0;
 }
@@ -39,7 +38,7 @@
   }
 
   .app-content__inner {
-    gap: 1rem;
+    gap: var(--spacing-md);
     flex-direction: column;
   }
 }

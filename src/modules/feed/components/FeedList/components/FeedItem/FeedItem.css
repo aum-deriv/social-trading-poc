@@ -1,10 +1,13 @@
 .feed-item {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  border: 1px solid #eee;
-  background-color: white;
-  border-radius: 10px;
+  gap: var(--spacing-md);
+  border: 1px solid var(--border-color);
+  background-color: var(--background-primary);
+  border-radius: var(--border-radius-lg);
   width: 100%;
-  padding: 1rem;
+  padding: var(--spacing-md);
+  transition:
+    border-color var(--transition-fast),
+    background-color var(--transition-fast);
 }

@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import StrategyListItem from '@/components/strategy/StrategyListItem';
 import type { ExtendedStrategy } from '@/types/strategy.types';
 import '../shared.css';
-import './PopularStrategiesSection.css';
 
 interface PopularStrategiesProps {
   strategies: ExtendedStrategy[];
@@ -15,7 +14,6 @@ const PopularStrategiesSection: FC<PopularStrategiesProps> = ({ strategies, onCo
 
   return (
     <div className="strategies-grid">
-      <h2 className="section-title">Popular Strategies</h2>
       {strategies.map(strategy => (
         <StrategyListItem
           key={strategy.id}

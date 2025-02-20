@@ -37,7 +37,7 @@ const AILoader: React.FC<AILoaderProps> = ({
           className="ai-loader__svg"
         />
       </div>
-      {showText && <div className="ai-loader__text">Analyzing with AI...</div>}
+      {showText && <div className="ai-loader__text">{title ?? 'Analyzing with AI...'}</div>}
     </div>
   );
 };

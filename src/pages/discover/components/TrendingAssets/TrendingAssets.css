@@ -1,5 +1,5 @@
 .trending-assets-container {
-  padding: 16px;
+  padding: var(--spacing-md);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,14 +8,14 @@
 .trending-assets-heading {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 24px;
-  font-size: 18px;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xl);
+  font-size: var(--font-size-lg);
   justify-content: center;
 }
 
 .yahoo-finance-logo {
-  height: 24px;
+  height: var(--spacing-xl);
   width: auto;
 }
 
@@ -31,22 +31,22 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  gap: 32px;
+  gap: var(--spacing-2xl);
 }
 
 .trending-assets {
   display: grid;
   grid-template-columns: repeat(auto-fit, 280px);
-  gap: 24px;
+  gap: var(--spacing-xl);
   justify-content: center;
-  max-width: 1200px;
+  max-width: var(--max-width-xl);
   width: 100%;
-  margin-bottom: 50px;
+  margin-bottom: var(--spacing-3xl);
 }
 
 .trending-assets-insights {
   width: 100%;
-  max-width: 1200px;
+  max-width: var(--max-width-xl);
 }
 
 @media (max-width: 1024px) {
@@ -56,12 +56,12 @@
     left: 0;
     right: 0;
     height: 75vh;
-    background: white;
-    z-index: 1000;
-    border-radius: 20px 20px 0 0;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+    background: var(--background-primary);
+    z-index: var(--z-index-modal);
+    border-radius: var(--border-radius-xl) var(--border-radius-xl) 0 0;
+    box-shadow: var(--shadow-lg);
     transform: translateY(100%);
-    transition: transform 0.3s ease-in-out;
+    transition: transform var(--transition-normal);
     display: flex;
     flex-direction: column;
   }
@@ -71,10 +71,10 @@
   }
 
   .trending-assets-insights.modal .insights-list {
-    padding: 20px;
+    padding: var(--spacing-lg);
     height: 100%;
     overflow-y: auto;
-    background: white;
+    background: var(--background-primary);
     -webkit-overflow-scrolling: touch;
     display: flex;
     flex-direction: column;
@@ -89,37 +89,36 @@
     flex-shrink: 0;
     position: sticky;
     top: 0;
-    background: white;
-    padding: 16px 0;
+    background: var(--background-primary);
+    padding: var(--spacing-md) 0;
     margin: 0;
     z-index: 1;
   }
 
   .trending-assets-insights.modal .insights-list__content {
-    padding-bottom: 80px; /* Add extra padding at bottom for better scroll experience */
+    padding-bottom: var(--spacing-5xl);
   }
 
   .modal-close-button {
     position: absolute;
-    top: 16px;
-    right: 16px;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
     background: none;
     border: none;
-    padding: 8px;
+    padding: var(--spacing-sm);
     cursor: pointer;
-    z-index: 1001;
+    z-index: var(--z-index-modal-button);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #666;
+    color: var(--text-tertiary);
   }
 
   .modal-close-button:hover {
-    color: #333;
+    color: var(--text-primary);
   }
 }
 
-/* Add backdrop when modal is open */
 @media (max-width: 1024px) {
   .modal-backdrop {
     position: fixed;
@@ -127,10 +126,10 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
+    background: var(--overlay-color);
+    z-index: var(--z-index-backdrop);
     opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity var(--transition-normal);
     pointer-events: none;
   }
 
@@ -140,15 +139,15 @@
   }
 
   .trending-assets-insights.modal {
-    z-index: 1000;
+    z-index: var(--z-index-modal);
   }
 }
 
 .asset-card {
-  background: white;
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background: var(--background-primary);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -156,11 +155,11 @@
 }
 
 .asset-card__image {
-  width: 80px;
-  height: 80px;
+  width: var(--spacing-5xl);
+  height: var(--spacing-5xl);
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 12px;
+  margin-bottom: var(--spacing-sm);
 }
 
 .asset-card__content {
@@ -168,21 +167,21 @@
 }
 
 .asset-card__header {
-  margin-bottom: 12px;
+  margin-bottom: var(--spacing-sm);
 }
 
 .asset-card__title {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
   margin: 0;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .asset-card__symbol {
-  font-size: 14px;
-  color: #666;
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
   display: block;
-  margin-top: 4px;
+  margin-top: var(--spacing-2xs);
 }
 
 .asset-card__stats {
@@ -190,20 +189,20 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-top: 12px;
+  margin-top: var(--spacing-sm);
 }
 
 .asset-card__left {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 4px;
+  gap: var(--spacing-2xs);
 }
 
 .asset-card__price {
-  font-size: 16px;
-  font-weight: 600;
-  color: #333;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
 }
 
 .asset-card__ai-button {
@@ -214,46 +213,46 @@
 .asset-card__change {
   display: flex;
   align-items: center;
-  gap: 4px;
-  font-size: 14px;
-  font-weight: 500;
+  gap: var(--spacing-2xs);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
 }
 
 .asset-card__change.up {
-  color: #22c55e;
+  color: var(--success);
 }
 
 .asset-card__change.down {
-  color: #ef4444;
+  color: var(--error);
 }
 
 /* Skeleton loading styles */
 .skeleton {
-  animation: pulse 1.5s infinite;
+  animation: pulse var(--transition-slow) infinite;
 }
 
 .skeleton-image {
-  width: 80px;
-  height: 80px;
+  width: var(--spacing-5xl);
+  height: var(--spacing-5xl);
   border-radius: 50%;
-  background: #f3f4f6;
+  background: var(--skeleton-background);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 12px;
+  margin-bottom: var(--spacing-sm);
 }
 
 .skeleton-yahoo-logo {
-  width: 40px;
+  width: var(--spacing-2xl);
   height: auto;
   opacity: 0.3;
 }
 
 .skeleton-text {
-  height: 16px;
-  background: #f3f4f6;
-  border-radius: 4px;
-  margin: 8px 0;
+  height: var(--font-size-md);
+  background: var(--skeleton-background);
+  border-radius: var(--border-radius-sm);
+  margin: var(--spacing-sm) 0;
 }
 
 @keyframes pulse {

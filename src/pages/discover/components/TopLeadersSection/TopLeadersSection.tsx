@@ -2,7 +2,6 @@ import { FC, useEffect, useState } from 'react';
 import UserCard from '../UserCard';
 import SkeletonUserCard from '../SkeletonUserCard';
 import '../shared.css';
-import './TopLeadersSection.css';
 
 interface Leader {
   id: string;
@@ -39,7 +38,7 @@ export const TopLeadersSection: FC = () => {
     return (
       <>
         <h2 className="section-title">Top 3 Leaders</h2>
-        <div className="top-leaders">
+        <div className="leaders-grid">
           {[...Array(3)].map((_, index) => (
             <SkeletonUserCard key={index} rank={index + 1} />
           ))}
@@ -51,7 +50,7 @@ export const TopLeadersSection: FC = () => {
   return (
     <>
       <h2 className="section-title">Top 3 Leaders</h2>
-      <div className="top-leaders">
+      <div className="leaders-grid">
         {leaders.map((leader, index) => (
           <UserCard key={leader.id} user={leader} rank={index + 1} />
         ))}

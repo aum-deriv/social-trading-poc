@@ -11,16 +11,16 @@
 .ai-search-bar::after {
   content: '';
   position: absolute;
-  inset: -2px;
-  border-radius: calc(var(--border-radius-lg) + 2px);
+  inset: calc(var(--border-width) * -2);
+  border-radius: calc(var(--border-radius-lg) + var(--border-width) * 2);
   background: linear-gradient(
     45deg,
     var(--brand-color),
-    white,
+    var(--background-primary),
     var(--brand-color),
-    white,
+    var(--background-primary),
     var(--brand-color),
-    white
+    var(--background-primary)
   );
   background-size: 400% 400%;
   opacity: 0;
@@ -31,7 +31,7 @@
 
 .ai-search-bar--focused::after {
   opacity: 1;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3)
+  box-shadow: var(--shadow-lg);
 }
 
 .ai-search-bar::before {

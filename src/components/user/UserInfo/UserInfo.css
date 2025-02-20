@@ -1,82 +1,82 @@
 .user-info {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
 }
 
 .user-info__content {
-    display: flex;
-    flex-direction: column;
-    gap: 0.125rem;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing-xs) / 2);
 }
 
 .user-info__primary {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
 }
 
 .user-info__username {
-    font-weight: 500;
-    color: #212529;
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
 }
 
 .user-info__timestamp {
-    font-size: 0.75rem;
-    color: #6c757d;
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
 }
 
 .user-info__subtitle {
-    font-size: 0.875rem;
-    color: #495057;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
 }
 
 /* Size variants */
 .user-info--small {
-    gap: 0.5rem;
+  gap: var(--spacing-xs);
 }
 
 .user-info--small .user-info__username {
-    font-size: 0.875rem;
+  font-size: var(--font-size-sm);
 }
 
 .user-info--small .user-info__timestamp {
-    font-size: 0.75rem;
+  font-size: var(--font-size-xs);
 }
 
 .user-info--small .user-info__subtitle {
-    font-size: 0.75rem;
+  font-size: var(--font-size-xs);
 }
 
 .user-info--medium .user-info__username {
-    font-size: 1rem;
+  font-size: var(--font-size-base);
 }
 
 .user-info--medium .user-info__timestamp {
-    font-size: 0.875rem;
+  font-size: var(--font-size-sm);
 }
 
 .user-info--medium .user-info__subtitle {
-    font-size: 0.875rem;
+  font-size: var(--font-size-sm);
 }
 
 .user-info--large {
-    gap: 1rem;
+  gap: var(--spacing-md);
 }
 
 .user-info--large .user-info__username {
-    font-size: 1.125rem;
+  font-size: var(--font-size-lg);
 }
 
 .user-info--large .user-info__timestamp {
-    font-size: 0.875rem;
+  font-size: var(--font-size-sm);
 }
 
 .user-info--large .user-info__subtitle {
-    font-size: 1rem;
+  font-size: var(--font-size-base);
 }
 
 /* Hover state */
 .user-info:hover .user-info__username {
-    color: #007bff;
+  color: var(--primary-color);
 }

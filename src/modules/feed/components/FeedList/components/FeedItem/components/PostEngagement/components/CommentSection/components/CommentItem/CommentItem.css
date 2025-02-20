@@ -1,10 +1,11 @@
 .comment-item {
   display: flex;
-  gap: 12px;
-  padding: 12px;
-  border-radius: 8px;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-md);
   text-align: left;
-  background: #00d0ff10;
+  background: color-mix(in srgb, var(--primary-color) 5%, transparent);
+  transition: background-color var(--transition-fast);
 }
 
 .comment-item__avatar {
@@ -27,61 +28,61 @@
 .comment-item__header {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 4px;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
 }
 
 .comment-item__username {
-  font-weight: 600;
-  font-size: 14px;
-  color: #333;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
 }
 
 .comment-item__timestamp {
-  font-size: 12px;
-  color: #666;
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
 }
 
 .comment-item__text {
-  font-size: 14px;
-  line-height: 1.5;
-  margin: 0 0 8px;
-  color: #333;
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  margin: 0 0 var(--spacing-sm);
+  color: var(--text-primary);
   word-break: break-word;
   text-align: left;
 }
 
 .comment-item__actions {
   display: flex;
-  gap: 16px;
-  margin-top: 4px;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-xs);
 }
 
 .comment-item__action {
   background: none;
   border: none;
   padding: 0;
-  font-size: 12px;
-  color: #666;
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
   cursor: pointer;
-  transition: color 0.2s;
+  transition: color var(--transition-fast);
 }
 
 .comment-item__action:hover {
-  color: #333;
+  color: var(--text-primary);
 }
 
 .comment-item__action--liked {
-  color: #007bff;
+  color: var(--primary-color);
 }
 
 .comment-item__action--liked:hover {
-  color: #0056b3;
+  color: var(--primary-color-dark);
 }
 
 .comment-item__replies {
-  margin-top: 8px;
-  margin-left: 24px;
-  border-left: 2px solid #e0e0e0;
-  padding-left: 12px;
+  margin-top: var(--spacing-sm);
+  margin-left: var(--spacing-xl);
+  border-left: 2px solid var(--border-color);
+  padding-left: var(--spacing-md);
 }

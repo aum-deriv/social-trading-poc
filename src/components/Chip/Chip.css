@@ -14,14 +14,13 @@
 }
 
 .chip:hover {
-  background: var(--brand-color);
+  background: var(--primary-color);
   color: white;
   border: 1px solid transparent;
 }
 
 .chip--active {
-  background: var(--brand-color);
+  background: var(--primary-color);
   color: white;
   border: 1px solid transparent;
 }
-

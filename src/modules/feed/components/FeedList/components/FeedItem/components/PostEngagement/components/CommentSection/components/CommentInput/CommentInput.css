@@ -1,74 +1,75 @@
 .comment-input {
-    display: flex;
-    gap: 12px;
-    padding: 12px;
-    border-radius: 8px;
-    background-color: #fff;
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  background-color: var(--background-primary);
 }
 
 .comment-input__avatar {
-    flex-shrink: 0;
+  flex-shrink: 0;
 }
 
 .comment-input__avatar :global(.avatar--small) {
-    width: 32px;
-    height: 32px;
+  width: 32px;
+  height: 32px;
 }
 
 .comment-input__avatar :global(.avatar) {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
 .comment-input__container {
-    display: flex;
-    gap: 8px;
-    flex-grow: 1;
-    align-items: center;
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-grow: 1;
+  align-items: center;
 }
 
 .comment-input__field {
-    flex-grow: 1;
-    padding: 8px 12px;
-    border: 1px solid #e0e0e0;
-    border-radius: 20px;
-    font-size: 14px;
-    color: #333;
-    background-color: #f5f5f5;
-    transition: border-color 0.2s, background-color 0.2s;
-    text-align: left;
+  flex-grow: 1;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  background-color: var(--background-secondary);
+  transition:
+    border-color var(--transition-fast),
+    background-color var(--transition-fast);
+  text-align: left;
 }
 
 .comment-input {
-    text-align: left;
+  text-align: left;
 }
 
 .comment-input__field:focus {
-    outline: none;
-    border-color: #007bff;
-    background-color: #fff;
+  outline: none;
+  border-color: var(--primary-color);
+  background-color: var(--background-primary);
 }
 
 .comment-input__field::placeholder {
-    color: #666;
+  color: var(--text-tertiary);
 }
 
 .comment-input__submit {
-    padding: 6px 16px;
-    border: none;
-    border-radius: 16px;
-    background-color: #007bff;
-    color: white;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s;
+  border: none;
+  border-radius: 16px;
+  background-color: var(--primary-color);
+  color: var(--text-inverted);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
 }
 
 .comment-input__submit:hover:not(:disabled) {
-    background-color: #0056b3;
+  background-color: var(--primary-color-dark);
 }
 
 .comment-input__submit:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
+  background-color: var(--background-tertiary);
+  cursor: not-allowed;
 }

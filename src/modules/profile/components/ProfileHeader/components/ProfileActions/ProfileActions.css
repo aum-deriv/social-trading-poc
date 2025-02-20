@@ -1,11 +1,11 @@
 .profile-actions {
-    display: flex;
-    gap: 0.5rem;
+  display: flex;
+  gap: var(--spacing-xs);
 }
 
 @media (max-width: 640px) {
-    .profile-actions {
-        width: 100%;
-        justify-content: center;
-    }
+  .profile-actions {
+    width: 100%;
+    justify-content: center;
+  }
 }

@@ -1,39 +1,43 @@
-import { BaseContract, MultiplierContract } from '@/types/contract.types';
-import { useTradePositionsDataMapper } from '../../hooks';
+import { BaseContract } from '@/types/contract.types';
 import { TradeType } from '../../types';
 import './TradePositions.css';
-import MultiplierOpenPosition from '../MultiplierOpenPosition';
-import OptionOpenPosition from '../OptionOpenPosition';
-import AccumulatorOpenPosition from '../AccumulatorOpenPosition';
+import { OpenPositionCard } from '../OpenPositionCard/OpenPositionCard';
 
 interface PositionsTableProps {
-  contracts: MultiplierContract[] & BaseContract[];
+  contracts: BaseContract[];
   tradeType: TradeType;
 }
 
-const TradePositions = ({ contracts, tradeType }: PositionsTableProps) => {
-  const { multiplierContracts, optionContracts, accumulatorContracts, removeContract } =
-    useTradePositionsDataMapper(contracts);
-
-  const renderContracts = () => {
-    if (tradeType === TradeType.Multipliers) {
-      return multiplierContracts.map(contract => (
-        <MultiplierOpenPosition {...contract} onClose={removeContract} key={contract.contractId} />
-      ));
-    }
-
-    if (tradeType === TradeType.Accumulators) {
-      return accumulatorContracts.map(contract => (
-        <AccumulatorOpenPosition {...contract} onSell={removeContract} key={contract.contractId} />
-      ));
-    }
-
-    return optionContracts.map(contract => (
-      <OptionOpenPosition {...contract} onSell={removeContract} key={contract.contractId} />
-    ));
+const TradePositions = ({ contracts }: PositionsTableProps) => {
+  const handleClose = (contractId: string) => {
+    // TODO: Implement contract close logic
+    console.log('Closing contract:', contractId);
   };
 
-  return <div className="contract-card-container">{renderContracts()}</div>;
+  return (
+    <div className="contract-card-container">
+      {contracts.map(contract => (
+        <OpenPositionCard
+          key={contract.contractId}
+          contractId={contract.contractId}
+          contractType={contract.contractType}
+          symbol={contract.symbol}
+          currency={contract.currency}
+          stake={contract.stake}
+          leaderId={contract.leaderId}
+          leaderDisplayName={contract.leader}
+          strategyId={contract.strategyId}
+          strategyDisplayName={contract.strategyName}
+          multiplier={contract.multiplier}
+          buyPrice={contract.buyPrice}
+          dateStart={contract.dateStart}
+          expiryTime={contract.expiryTime}
+          payout={contract.payout}
+          onClose={handleClose}
+        />
+      ))}
+    </div>
+  );
 };
 
 export default TradePositions;

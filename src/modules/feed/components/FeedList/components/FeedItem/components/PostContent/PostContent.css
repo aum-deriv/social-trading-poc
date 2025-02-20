@@ -1,39 +1,41 @@
 .post-content__text-container {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--spacing-md);
 }
 
 .post-content__text {
-  color: #0f1419;
-  font-size: 15px;
-  line-height: 1.5;
+  color: var(--text-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
   margin: 0;
   white-space: pre-wrap;
 }
 
 .post-content__text a {
-  color: #1d9bf0;
+  color: var(--primary-color);
   text-decoration: none;
+  transition: color var(--transition-fast);
 }
 
 .post-content__text a:hover {
   text-decoration: underline;
+  color: var(--primary-color-dark);
 }
 
 .post-content__translation-indicator {
   display: block;
-  margin-top: 12px;
-  color: #536471;
-  font-size: 13px;
-  font-weight: 400;
+  margin-top: var(--spacing-md);
+  color: var(--text-tertiary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
 }
 
 .post-content__images {
-  margin-top: 0.75rem;
-  border-radius: 16px;
+  margin-top: var(--spacing-md);
+  border-radius: var(--border-radius-xl);
   overflow: hidden;
-  border: 1px solid #eee;
+  border: 1px solid var(--border-color);
 }
 
 .post-content__images--single {
@@ -45,7 +47,7 @@
   width: 100%;
   height: 100%;
   min-height: 200px;
-  background-color: #f7f9fa;
+  background-color: var(--background-secondary);
 }
 
 .post-content__image {
@@ -53,7 +55,7 @@
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--transition-normal);
   position: absolute;
   top: 0;
   left: 0;
@@ -65,7 +67,7 @@
 
 .post-content__image.loading {
   animation: fade-pulse 2s ease-in-out infinite;
-  background-color: #f7f9fa;
+  background-color: var(--background-secondary);
 }
 
 .post-content__image-fallback {
@@ -78,9 +80,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #fafafa;
-  color: #666;
-  gap: 8px;
+  background-color: var(--background-secondary);
+  color: var(--text-secondary);
+  gap: var(--spacing-sm);
 }
 
 .post-content__image-fallback svg {
@@ -88,7 +90,7 @@
 }
 
 .post-content__image-fallback span {
-  font-size: 14px;
+  font-size: var(--font-size-sm);
 }
 
 @keyframes fade-pulse {
@@ -105,5 +107,5 @@
 
 .post-content__image--single {
   max-height: 510px;
-  border-radius: 16px;
+  border-radius: var(--border-radius-xl);
 }

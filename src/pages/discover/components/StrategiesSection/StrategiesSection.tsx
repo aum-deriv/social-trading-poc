@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
-import './StrategiesSection.css';
 import '../shared.css';
+import './StrategiesSection.css';
 import SkeletonCard from '../SkeletonCard';
 import Chip from '@/components/Chip';
 import type { ExtendedStrategy } from '@/types/strategy.types';
@@ -33,7 +33,7 @@ export default function StrategiesSection({ loading, strategies, onCopy }: Strat
 
   if (loading) {
     return (
-      <>
+      <div className="strategies-section">
         <div className="strategies-section__tabs">
           <Chip active={activeTab === 'top'} onClick={() => setActiveTab('top')}>
             Top Strategies
@@ -46,36 +46,30 @@ export default function StrategiesSection({ loading, strategies, onCopy }: Strat
           </Chip>
         </div>
 
-        <>
-          <h2 className="section-title">
-            {activeTab === 'top'
-              ? 'Top Strategies'
-              : activeTab === 'ai'
-                ? 'AI Suggested Strategies'
-                : 'Popular Strategies'}
-          </h2>
-          <div className={activeTab === 'top' ? 'top-strategies' : 'strategies-grid'}>
-            {[...Array(activeTab === 'top' ? 3 : 5)].map((_, index) => (
-              <SkeletonCard
-                key={index}
-                large={activeTab === 'top'}
-                showRank={activeTab === 'top'}
-              />
-            ))}
-          </div>
-        </>
-      </>
+        <h2 className="section-title">
+          {activeTab === 'top'
+            ? 'Top Strategies'
+            : activeTab === 'ai'
+              ? 'AI Suggested Strategies'
+              : 'Popular Strategies'}
+        </h2>
+        <div className="strategies-grid">
+          {[...Array(activeTab === 'top' ? 3 : 5)].map((_, index) => (
+            <SkeletonCard key={index} large={activeTab === 'top'} showRank={activeTab === 'top'} />
+          ))}
+        </div>
+      </div>
     );
   }
 
   return (
-    <>
+    <div className="strategies-section">
       <div className="strategies-section__tabs">
         <Chip active={activeTab === 'top'} onClick={() => setActiveTab('top')}>
           Top Strategies
         </Chip>
         <Chip active={activeTab === 'ai'} onClick={() => setActiveTab('ai')}>
-          AI Suggested
+          ✧ AI Suggested
         </Chip>
         <Chip active={activeTab === 'popular'} onClick={() => setActiveTab('popular')}>
           Popular
@@ -88,6 +82,6 @@ export default function StrategiesSection({ loading, strategies, onCopy }: Strat
       {activeTab === 'popular' && (
         <PopularStrategiesSection strategies={popularStrategies} onCopy={onCopy} />
       )}
-    </>
+    </div>
   );
 }

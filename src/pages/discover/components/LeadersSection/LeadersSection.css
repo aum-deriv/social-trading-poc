@@ -1,19 +1,19 @@
 .leaders-section__tabs {
   display: flex;
-  gap: 0.5rem;
-  margin: 10px 0;
+  gap: var(--spacing-xs);
+  margin: var(--spacing-sm) 0;
 }
 
 .leaders-section {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  padding: 0 1rem;
+  gap: var(--spacing-2xl);
+  padding: 0 var(--spacing-md);
 }
 
 @media (max-width: 480px) {
   .leaders-section {
-    gap: 1.5rem;
-    padding: 0 0.5rem;
+    gap: var(--spacing-lg);
+    padding: 0 var(--spacing-xs);
   }
 }

@@ -1,47 +1,47 @@
 .profile-performance {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 1.5rem;
-    padding: 1.5rem;
-    background-color: #00d0ff10;
-    border-radius: 1rem;
-    width: 100%;
-    max-width: 400px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  background-color: color-mix(in srgb, var(--primary-color) 5%, transparent);
+  border-radius: var(--border-radius-lg);
+  width: 100%;
+  max-width: 400px;
 }
 
 .profile-performance__stat {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2xs);
 }
 
 .profile-performance__label {
-    font-size: 0.75rem;
-    color: #6b7280;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .profile-performance__value {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: #1f2937;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
 }
 
 .profile-performance__value--positive {
-    color: #059669;
+  color: var(--success-color);
 }
 
 .profile-performance__value--negative {
-    color: #dc2626;
+  color: var(--error-color);
 }
 
 @media (max-width: 640px) {
-    .profile-performance {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-        padding: 1rem;
-        max-width: 100%;
-    }
+  .profile-performance {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    max-width: 100%;
+  }
 }

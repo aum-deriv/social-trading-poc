@@ -1,6 +1,7 @@
 import { useState, FormEvent } from 'react';
 import { useNavigate, useLocation, Navigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
+import { useTheme } from '@/context/ThemeContext';
 import TextInput from '@/components/input/TextInput';
 import Button from '@/components/input/Button';
 import './Login.css';
@@ -17,6 +18,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { login, error, clearError, isAuthenticated, user } = useAuth();
+  const { theme } = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -54,7 +56,11 @@ const Login = () => {
       <div className="login-content">
         <div className="login-branding">
           <div className="branding-content">
-            <img src="/champion_logo-blue.svg" alt="Logo" className="logo" />
+            <img
+              src={`/champion_logo-${theme === 'dark' ? 'white' : 'blue'}.svg`}
+              alt="Logo"
+              className="logo"
+            />
             <h1>Champion Social Trade</h1>
             <p>Connect with expert traders and copy their strategies</p>
           </div>

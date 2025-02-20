@@ -1,9 +1,28 @@
-.open-positions-header {
-  width: 250px;
+.open-positions {
+  background: var(--background-primary);
+  min-height: 100%;
 }
 
-@media (max-width: 768px) {
+.open-positions-header {
+  margin-bottom: var(--spacing-lg);
+  padding: 0 var(--spacing-md);
+}
+
+.open-positions-tabs {
+  display: flex;
+  gap: var(--spacing-xs);
+  margin: var(--spacing-sm) 0;
+}
+
+.open-positions-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+@media (max-width: 480px) {
   .open-positions-header {
-    width: 100%;
+    padding: 0 var(--spacing-xs);
   }
 }

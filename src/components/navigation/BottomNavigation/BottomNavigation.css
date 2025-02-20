@@ -5,11 +5,14 @@
   right: 0;
   height: 64px;
   backdrop-filter: blur(32px);
-  background: #ffffffd4;
+  background: color-mix(in srgb, var(--background-primary) 95%, transparent);
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   z-index: 1000;
+  transition:
+    background-color var(--transition-normal),
+    border-color var(--transition-normal);
 }
 
 .nav-item {
@@ -17,14 +20,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #666;
+  color: var(--text-secondary);
   text-decoration: none;
-  padding: 8px;
+  padding: var(--spacing-sm);
   border: none;
   background: none;
   cursor: pointer;
   position: relative;
-  transition: color 0.2s;
+  transition: color var(--transition-fast);
 }
 
 .nav-item svg {
@@ -33,7 +36,7 @@
 }
 
 .nav-item.active {
-  color: #0070ff;
+  color: var(--primary-color);
 }
 
 .nav-item.disabled {
@@ -43,19 +46,22 @@
 
 .nav-item--create {
   border-radius: 50%;
-  background: #00d0ff36;
+  background: color-mix(in srgb, var(--primary-color) 20%, transparent);
+  transition: all var(--transition-fast);
 }
 
 .nav-item--create.active {
-  border-color: #007aff;
+  background: color-mix(in srgb, var(--primary-color) 30%, transparent);
+  color: var(--primary-color);
 }
 
 @media (hover: hover) {
   .nav-item--create:hover {
-    border-color: #007aff;
+    background: color-mix(in srgb, var(--primary-color) 30%, transparent);
+    color: var(--primary-color);
   }
 
   .nav-item:hover {
-    color: #007aff;
+    color: var(--primary-color);
   }
 }

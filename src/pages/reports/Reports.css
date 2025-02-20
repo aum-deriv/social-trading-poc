@@ -1,36 +1,11 @@
-/* Reports Component Styles */
-
-/* Container for the reports page */
-.reports-container {
-  display: flex;
-  flex: 1;
-  padding: 20px;
-  margin-bottom: 64px;
+.reports {
+  margin-bottom: calc(var(--spacing-2xl) + var(--spacing-xl));
 }
 
-/* Header styles for the reports page */
-.reports-sidebar {
-  min-width: 250px;
-  flex-shrink: 0;
+.reports .tab-navigation {
+  max-width: 25rem;
+  padding: 0 var(--spacing-md);
 }
 
-/* Content styles for the reports page */
 .reports-content {
-  flex-grow: 1;
-  margin-left: 24px;
-}
-
-@media (max-width: 1280px) {
-  .reports-container {
-    display: block;
-  }
-
-  .reports-sidebar {
-    margin-bottom: 24px;
-    flex-shrink: unset;
-  }
-
-  .reports-content {
-    margin-left: 0;
-  }
 }

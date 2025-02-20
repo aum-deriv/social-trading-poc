@@ -3,26 +3,37 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 16px;
   z-index: 1000;
 }
 
 .tab-container {
   display: flex;
-  gap: 24px;
+  gap: var(--spacing-xl);
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+}
+
+.tab-container::-webkit-scrollbar {
+  display: none;
 }
 
 .tab {
   background: none;
   border: none;
-  color: black;
-  font-size: 16px;
-  font-weight: 600;
-  padding: 8px 0;
+  color: var(--text-secondary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  padding: var(--spacing-sm) 0;
   position: relative;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--transition-fast);
   text-align: left;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  min-width: min-content;
 }
 
 .tab:focus {
@@ -30,19 +41,24 @@
 }
 
 .tab::after {
-  content: "";
+  content: '';
   position: absolute;
-  bottom: -2px;
+  bottom: 0;
   left: 0;
   right: 0;
   height: 2px;
-  background: black;
+  background: var(--primary-color);
   transform: scaleX(0);
-  transition: transform 0.2s ease;
+  transition: transform var(--transition-fast);
+  z-index: 2;
+}
+
+.tab:hover {
+  color: var(--text-primary);
 }
 
 .tab.active {
-  color: black;
+  color: var(--primary-color);
 }
 
 .tab.active::after {
@@ -55,15 +71,30 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 16px;
+  padding: var(--spacing-md);
+  border-bottom: none;
 }
 
 .tab-navigation.vertical .tab-container {
   flex-direction: column;
-  gap: 16px;
+  gap: var(--spacing-md);
 }
 
 .tab-navigation.vertical .tab {
   width: 100%;
-  padding: 8px 0;
+  padding: var(--spacing-sm) 0;
+}
+
+.tab-navigation.vertical .tab::after {
+  top: 0;
+  bottom: 0;
+  left: -2px;
+  right: auto;
+  width: 2px;
+  height: 100%;
+  transform: scaleY(0);
+}
+
+.tab-navigation.vertical .tab.active::after {
+  transform: scaleY(1);
 }

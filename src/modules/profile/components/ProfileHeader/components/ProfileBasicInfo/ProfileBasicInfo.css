@@ -1,63 +1,63 @@
 .profile-basic-info {
-    display: flex;
-    gap: 2rem;
-    align-items: flex-start;
+  display: flex;
+  gap: var(--spacing-xl);
+  align-items: flex-start;
 }
 
 .profile-basic-info__avatar {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--background-primary);
+  box-shadow: var(--shadow-sm);
 }
 
 .profile-basic-info__content {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
 }
 
 .profile-basic-info__name-container {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
 }
 
 .profile-basic-info__display-name {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin: 0;
-    color: #1f2937;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  margin: 0;
+  color: var(--text-primary);
 }
 
 .profile-basic-info__username {
-    font-size: 1rem;
-    color: #6b7280;
-    margin: 0;
-    margin-bottom: 0.5rem;
-    text-align: left;
+  font-size: var(--font-size-base);
+  color: var(--text-tertiary);
+  margin: 0;
+  margin-bottom: var(--spacing-xs);
+  text-align: left;
 }
 
 @media (max-width: 640px) {
-    .profile-basic-info {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 1rem;
-    }
+  .profile-basic-info {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--spacing-md);
+  }
 
-    .profile-basic-info__avatar {
-        width: 100px;
-        height: 100px;
-    }
+  .profile-basic-info__avatar {
+    width: 100px;
+    height: 100px;
+  }
 
-    .profile-basic-info__content {
-        align-items: center;
-    }
+  .profile-basic-info__content {
+    align-items: center;
+  }
 
-    .profile-basic-info__username {
-        text-align: center;
-    }
+  .profile-basic-info__username {
+    text-align: center;
+  }
 }

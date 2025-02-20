@@ -1,0 +1,64 @@
+.theme-toggle {
+  background: none;
+  border: none;
+  padding: var(--spacing-sm);
+  cursor: pointer;
+  color: var(--text-primary);
+  border-radius: var(--border-radius-md);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: all var(--transition-fast);
+  position: absolute;
+  opacity: 0;
+  transform: scale(0.5) rotate(-30deg);
+  fill: currentColor;
+}
+
+/* Sun icon - visible in dark theme */
+[data-theme='dark'] .theme-toggle svg:nth-child(1) {
+  opacity: 1;
+  transform: scale(1) rotate(0);
+}
+
+/* Moon icon - visible in light theme */
+[data-theme='light'] .theme-toggle svg:nth-child(2) {
+  opacity: 1;
+  transform: scale(1) rotate(0);
+}
+
+/* Rotate sun icon out when switching to light theme */
+[data-theme='light'] .theme-toggle svg:nth-child(1) {
+  transform: scale(0.5) rotate(90deg);
+}
+
+/* Rotate moon icon out when switching to dark theme */
+[data-theme='dark'] .theme-toggle svg:nth-child(2) {
+  transform: scale(0.5) rotate(-90deg);
+}
+
+/* Add smooth transition for theme changes */
+:root {
+  transition:
+    color var(--transition-normal),
+    background-color var(--transition-normal),
+    border-color var(--transition-normal);
+}
+
+/* Prevent transition on page load */
+.no-transition * {
+  transition: none !important;
+}

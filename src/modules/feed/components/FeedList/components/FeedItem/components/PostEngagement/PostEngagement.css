@@ -1,71 +1,79 @@
 .post-engagement__stats {
   display: flex;
-  gap: 1rem;
-  color: #536471;
-  font-size: 13px;
-  margin-bottom: 0.5rem;
+  gap: var(--spacing-md);
+  color: var(--text-tertiary);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-xs);
 }
 
 .post-engagement__stat {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: var(--spacing-xs);
 }
 
 .post-engagement__actions {
   display: flex;
-  gap: 1rem;
-  padding: 0.5rem 0;
-  border-top: 1px solid #eee;
-  margin: 0.5rem 0;
+  gap: var(--spacing-md);
+  padding: var(--spacing-xs) 0;
+  border-top: 1px solid var(--border-color);
+  margin: var(--spacing-xs) 0;
 }
 
 .post-engagement__button {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  color: #536471;
-  font-size: 13px;
+  gap: var(--spacing-xs);
+  color: var(--text-tertiary);
+  font-size: var(--font-size-sm);
   background: none;
   border: none;
-  padding: 0.5rem 0.3rem;
+  padding: var(--spacing-xs) calc(var(--spacing-xs) * 0.6);
   cursor: pointer;
-  transition: color 0.2s ease;
+  transition: all var(--transition-fast);
+}
+
+.post-engagement__button svg {
+  fill: var(--text-tertiary);
+  transition: fill var(--transition-fast);
 }
 
 .post-engagement__button:hover {
-  color: #1d9bf0;
+  color: var(--primary-color);
   outline: none;
-  & svg {
-    fill: #1d9bf0;
-  }
+}
+
+.post-engagement__button:hover svg {
+  fill: var(--primary-color);
 }
 
 .post-engagement__button--liked {
-  color: #f91880;
-  & svg {
-    fill: #f91880;
-  }
+  color: var(--error-color);
+}
+
+.post-engagement__button--liked svg {
+  fill: var(--error-color);
 }
 
 .post-engagement__button--liked:hover {
-  color: #f91880;
-  & svg {
-    fill: #f91880;
-  }
+  color: var(--error-color);
+}
+
+.post-engagement__button--liked:hover svg {
+  fill: var(--error-color);
 }
 
 /* Comment section styles */
 .post-engagement__comments {
-  margin-top: 1rem;
-  padding-top: 0.5rem;
-  border-top: 1px solid #eee;
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-xs);
+  border-top: 1px solid var(--border-color);
 }
 
 .post-engagement__comment-form {
   display: flex;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
 }
 
 .post-engagement__comment-input {
@@ -74,25 +82,32 @@
 
 .post-engagement__comment-input input {
   width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #eee;
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-color);
   border-radius: 20px;
-  font-size: 14px;
-  color: #0f1419;
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  transition: border-color var(--transition-fast);
 }
 
 .post-engagement__comment-input input::placeholder {
-  color: #536471;
+  color: var(--text-tertiary);
+}
+
+.post-engagement__comment-input input:focus {
+  outline: none;
+  border-color: var(--primary-color);
 }
 
 .post-engagement__comment-button {
-  padding: 0.5rem 1rem;
+  padding: var(--spacing-xs) var(--spacing-md);
   border-radius: 20px;
-  background-color: #1d9bf0;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--text-inverted);
   border: none;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   cursor: pointer;
+  transition: background-color var(--transition-fast);
 }
 
 .post-engagement__comment-button:disabled {

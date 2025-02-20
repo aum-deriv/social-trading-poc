@@ -1,89 +1,89 @@
 .multiplier-position {
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  min-width: 320px;
+  background: var(--background-primary);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-sm);
+  min-width: var(--min-width-card);
 }
 
 .position-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #eee;
+  padding-bottom: var(--spacing-sm);
+  border-bottom: var(--border-width) solid var(--border-color);
 }
 
 .position-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
-  padding-top: 12px;
+  margin-bottom: var(--spacing-sm);
+  padding-top: var(--spacing-sm);
 }
 
 .info-item {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--spacing-2xs);
 }
 
 .info-label {
-  font-size: 14px;
-  color: #666;
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
 }
 
 .info-value {
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   font-style: italic;
 }
 
 .symbol-section {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--spacing-sm);
 }
 
 .chart-icon {
-  width: 24px;
-  height: 24px;
-  color: #666;
+  width: var(--spacing-xl);
+  height: var(--spacing-xl);
+  color: var(--text-tertiary);
 }
 
 .symbol-text {
-  font-size: 14px;
-  font-weight: 500;
-  color: #333;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
 }
 
 .multiplier-section {
   display: flex;
   align-items: center;
-  gap: 4px;
-  color: #666;
-  font-size: 14px;
+  gap: var(--spacing-2xs);
+  color: var(--text-tertiary);
+  font-size: var(--font-size-sm);
   flex-direction: column;
 }
 
 .multiplier-arrow {
-  color: #ff4444;
+  color: var(--error);
 }
 
 .currency-badge {
   display: inline-block;
-  background: #f0f0f0;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-  color: #666;
-  margin-bottom: 16px;
+  background: var(--background-secondary);
+  padding: var(--spacing-2xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  margin-bottom: var(--spacing-md);
 }
 
 .contract-details {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin-bottom: 24px;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
 }
 
 .detail-item:nth-child(even) {
@@ -94,51 +94,51 @@
 .detail-item {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--spacing-2xs);
 }
 
 .detail-label {
-  font-size: 12px;
-  color: #666;
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
 }
 
 .detail-value {
-  font-size: 14px;
-  color: #333;
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
 }
 
 .total-section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 0;
-  border-top: 1px solid #eee;
+  padding: var(--spacing-md) 0;
+  border-top: var(--border-width) solid var(--border-color);
 }
 
 .total-label {
-  font-size: 14px;
-  color: #666;
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
 }
 
 .total-value {
-  font-size: 16px;
-  font-weight: 500;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
 }
 
 .close-button {
   width: 100%;
-  padding: 12px;
-  background: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  color: #333;
-  font-size: 14px;
-  font-weight: 500;
+  padding: var(--spacing-sm);
+  background: var(--background-primary);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color var(--transition-fast);
   outline: none;
 }
 
 .close-button:hover {
-  background: #f5f5f5;
+  background: var(--background-secondary);
 }

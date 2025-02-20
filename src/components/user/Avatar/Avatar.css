@@ -1,58 +1,58 @@
 .avatar {
-    border-radius: 50%;
-    object-fit: cover;
-    background-color: #e9ecef;
+  border-radius: var(--border-radius-full, 50%);
+  object-fit: cover;
+  background-color: var(--background-secondary);
 }
 
 /* Sizes */
 .avatar--small {
-    width: 2rem;
-    height: 2rem;
+  width: calc(var(--spacing-md) * 2);
+  height: calc(var(--spacing-md) * 2);
 }
 
 .avatar--medium {
-    width: 2.5rem;
-    height: 2.5rem;
+  width: calc(var(--spacing-md) * 2.5);
+  height: calc(var(--spacing-md) * 2.5);
 }
 
 .avatar--large {
-    width: 3.5rem;
-    height: 3.5rem;
+  width: calc(var(--spacing-md) * 3.5);
+  height: calc(var(--spacing-md) * 3.5);
 }
 
 /* Placeholder */
 .avatar--placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #6c757d;
-    color: white;
-    font-weight: 500;
-    font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--text-tertiary);
+  color: var(--text-inverted);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
 }
 
 .avatar--placeholder.avatar--small {
-    font-size: 0.75rem;
+  font-size: var(--font-size-xs);
 }
 
 .avatar--placeholder.avatar--medium {
-    font-size: 1rem;
+  font-size: var(--font-size-base);
 }
 
 .avatar--placeholder.avatar--large {
-    font-size: 1.25rem;
+  font-size: var(--font-size-lg);
 }
 
 /* Image loading state */
 .avatar:not([src]) {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 /* Hover effect */
 .avatar {
-    transition: transform 0.2s ease;
+  transition: transform var(--transition-fast);
 }
 
 .avatar:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
