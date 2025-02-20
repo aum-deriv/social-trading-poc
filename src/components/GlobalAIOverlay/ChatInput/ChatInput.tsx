@@ -2,12 +2,13 @@ import AISearchBar from '@/components/AISearchBar';
 import './ChatInput.css';
 
 interface ChatInputProps {
+  isLoading?: boolean;
   onSubmit: (query: string) => void;
 }
 
-const ChatInput = ({ onSubmit }: ChatInputProps) => (
+const ChatInput = ({ isLoading, onSubmit }: ChatInputProps) => (
   <div className="chat-input">
-    <AISearchBar placeholder="Ask Champion AI" onSearch={onSubmit} />
+    <AISearchBar isLoading={isLoading} placeholder="Ask Champion AI" onSearch={onSubmit} />
   </div>
 );
 

@@ -1,17 +1,11 @@
 .data-attachments {
   display: flex;
-  flex-direction: column;
+  overflow-x: scroll;
   gap: var(--spacing-md);
-  width: 100%;
+  scrollbar-width: none;
+  padding: 10px 0;
 }
 
-.data-attachments__card {
-  transform: scale(0.8);
-  transform-origin: top center;
-}
-
-.data-attachments__summary {
-  display: flex;
-  gap: var(--spacing-sm);
-  flex-wrap: wrap;
+.data-attachments > div {
+    /* transform: scale(0.5); */
 }

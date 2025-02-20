@@ -1,5 +1,4 @@
 import { FC, useState, MouseEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import './UserCard.css';
 import Button from '@/components/input/Button/Button';
@@ -22,11 +21,9 @@ const UserCard: FC<UserCardProps> = ({ user, rank }) => {
   const [isFollowing, setIsFollowing] = useState(user.isFollowing);
   const [loading, setLoading] = useState(false);
 
-  const navigate = useNavigate();
-
   const handleCardClick = () => {
     if (user.username) {
-      navigate(`/profile/${user.username}`);
+      window.location.href = `/profile/${user.username}`;
     }
   };
 
@@ -80,7 +77,7 @@ const UserCard: FC<UserCardProps> = ({ user, rank }) => {
               />
             ) : (
               <div className="user-card__avatar-placeholder">
-                {user.username && user.username.slice(0, 2).toUpperCase()}
+                {!!user.username && user.username.slice(0, 2).toUpperCase()}
               </div>
             )}
           </div>
@@ -90,14 +87,26 @@ const UserCard: FC<UserCardProps> = ({ user, rank }) => {
 
       <div className="user-card__cta">
         <div className="user-card__stats">
-          <div className="user-card__stat">
-            <div className="user-card__stat-label">Copiers</div>
-            <div className="user-card__stat-value">{formatCopiers(user.copiers)}</div>
-          </div>
-          <div className="user-card__stat">
-            <div className="user-card__stat-label">Total Profit</div>
-            <div className="user-card__stat-value">{formatProfit(Math.abs(user.totalProfit))}</div>
-          </div>
+          {!!user.copiers && (
+            <div className="user-card__stat">
+              <div className="user-card__stat-label">Copiers</div>
+              <div className="user-card__stat-value">{formatCopiers(user.copiers)}</div>
+            </div>
+          )}
+          {!!user.totalProfit && (
+            <div className="user-card__stat">
+              <div className="user-card__stat-label">Total Profit</div>
+              <div className="user-card__stat-value">
+                {formatProfit(Math.abs(user.totalProfit))}
+              </div>
+            </div>
+          )}
+          {!!user.winRate && (
+            <div className="user-card__stat">
+              <div className="user-card__stat-label">Win Rate</div>
+              <div className="user-card__stat-value">{user.winRate}</div>
+            </div>
+          )}
         </div>
         <Button
           className="user-card__follow-button"

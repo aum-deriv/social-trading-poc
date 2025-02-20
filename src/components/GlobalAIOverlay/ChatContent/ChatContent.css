@@ -1,11 +1,13 @@
 .chat-content {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--spacing-lg);
-  overflow-y: auto;
+  overflow-y: scroll;
   padding: var(--spacing-md);
+  scrollbar-width: none;
 }
 
 .chat-content__message {

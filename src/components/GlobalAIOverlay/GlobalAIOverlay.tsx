@@ -10,11 +10,10 @@ import ChatInput from './ChatInput';
 import './GlobalAIOverlay.css';
 
 interface GlobalAIOverlayProps {
-  isOpen: boolean;
   onClose: () => void;
 }
 
-const GlobalAIOverlay = ({ isOpen, onClose }: GlobalAIOverlayProps) => {
+const GlobalAIOverlay = ({ onClose }: GlobalAIOverlayProps) => {
   const { user } = useAuth();
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -68,7 +67,7 @@ const GlobalAIOverlay = ({ isOpen, onClose }: GlobalAIOverlayProps) => {
 
   return (
     <Overlay
-      isOpen={isOpen}
+      isOpen
       onClose={onClose}
       className="global-ai-overlay"
       header={
@@ -79,8 +78,8 @@ const GlobalAIOverlay = ({ isOpen, onClose }: GlobalAIOverlayProps) => {
     >
       <div className="global-ai-overlay__container">
         <ChatContent messages={messages} isLoading={isLoading} />
-        <Suggestions suggestions={suggestions} onSelect={handleQuery} />
-        <ChatInput onSubmit={handleQuery} />
+        {!messages.length && <Suggestions suggestions={suggestions} onSelect={handleQuery} />}
+        <ChatInput isLoading={isLoading} onSubmit={handleQuery} />
       </div>
     </Overlay>
   );

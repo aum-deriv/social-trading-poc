@@ -9,7 +9,6 @@ import AppContent from '@/layouts/AppContent';
 import BottomNavigation from '@/components/navigation/BottomNavigation';
 import CreateContentSheet from '@/components/content/CreateContentSheet';
 import GlobalAIOverlay from '@/components/GlobalAIOverlay';
-import ChatBot from '@/components/ChatBot';
 import type { StrategyFormData } from '@/modules/strategy/components/StrategyForm/StrategyForm';
 import './MainLayout.css';
 
@@ -62,7 +61,7 @@ const MainLayout = () => {
           currentUser={user}
         />
       )}
-      <GlobalAIOverlay isOpen={showGlobalAI} onClose={() => setShowGlobalAI(false)} />
+      {showGlobalAI && <GlobalAIOverlay onClose={() => setShowGlobalAI(false)} />}
     </div>
   );
 };

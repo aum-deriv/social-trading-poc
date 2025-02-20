@@ -2,7 +2,6 @@ import { GlobalAIResponse } from '@/types/ai.types';
 
 class GlobalAIService {
   private static instance: GlobalAIService;
-  private readonly baseUrl = '/api/global-ai';
 
   private constructor() {}
 
@@ -15,7 +14,7 @@ class GlobalAIService {
 
   async sendQuery(query: string): Promise<GlobalAIResponse> {
     try {
-      const response = await fetch(`${this.baseUrl}/query`, {
+      const response = await fetch(`${import.meta.env.VITE_LLM_SERVER_URL}/api/global-ai/query`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

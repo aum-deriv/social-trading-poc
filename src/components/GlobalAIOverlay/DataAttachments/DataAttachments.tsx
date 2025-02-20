@@ -1,9 +1,9 @@
 import { GlobalAIResponse } from '@/types/ai.types';
 import UserCard from '@/pages/discover/components/UserCard/UserCard';
-import StrategyCard from '@/pages/discover/components/StrategyCard/StrategyCard';
+import StrategyListItem from '@/components/strategy/StrategyListItem';
 import AssetCard from '@/components/AssetCard';
-import Chip from '@/components/Chip';
 import './DataAttachments.css';
+import { ExtendedStrategy } from '@/types/strategy.types';
 
 interface DataAttachmentsProps {
   data: NonNullable<GlobalAIResponse['data']>;
@@ -19,24 +19,6 @@ interface UserData {
   winRate: number;
 }
 
-interface StrategyData {
-  id: string;
-  leaderId: string;
-  accountId: string;
-  name: string;
-  description: string;
-  tradeType: string;
-  copiers: string[];
-  leader?: {
-    username: string;
-    displayName: string;
-    profilePicture?: string;
-  };
-  currency?: string;
-  isFollowing?: boolean;
-  isCopying?: boolean;
-}
-
 interface MarketData {
   symbol: string;
   name: string;
@@ -47,11 +29,6 @@ interface MarketData {
 }
 
 const DataAttachments = ({ data }: DataAttachmentsProps) => {
-  const handleCopyStrategy = (id: string) => {
-    // Handle copy strategy
-    console.log('Copy strategy:', id);
-  };
-
   return (
     <div className="data-attachments">
       {data.items.map(item => {
@@ -66,7 +43,12 @@ const DataAttachments = ({ data }: DataAttachmentsProps) => {
           case 'strategy':
             return (
               <div key={item.id} className="data-attachments__card">
-                <StrategyCard strategy={item.data as StrategyData} onCopy={handleCopyStrategy} />
+                <StrategyListItem
+                  strategy={item.data as ExtendedStrategy}
+                  onClick={() => {
+                    window.location.href = `/strategies/${item.id}`;
+                  }}
+                />
               </div>
             );
           case 'market':
@@ -77,10 +59,6 @@ const DataAttachments = ({ data }: DataAttachmentsProps) => {
             );
         }
       })}
-      <div className="data-attachments__summary">
-        <Chip>Trends: {data.summary.analysis.trends.join(', ')}</Chip>
-        <Chip>Insights: {data.summary.analysis.insights.join(', ')}</Chip>
-      </div>
     </div>
   );
 };

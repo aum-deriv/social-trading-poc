@@ -7,7 +7,7 @@
     transform var(--transition-fast),
     box-shadow var(--transition-fast);
   position: relative;
-  width: 270px;
+  width: 270px !important;
   height: 270px;
   display: flex;
   flex-direction: column;
