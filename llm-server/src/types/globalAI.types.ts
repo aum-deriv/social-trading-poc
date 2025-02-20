@@ -1,7 +1,7 @@
 import type { User, TradingStrategy } from './index';
 import type { TrendingAsset } from '../services/globalAI/queryFunctions';
 
-export type QueryType = 'data_query' | 'product_info' | 'invalid';
+export type QueryType = 'data_query' | 'product_info' | 'self_query' | 'invalid';
 
 export type QueryFunction =
   | 'getLeadersByPerformance'
@@ -28,7 +28,7 @@ export interface GlobalAIResponse {
   type: QueryType;
   data?: {
     items: Array<{
-      type: 'leader' | 'strategy' | 'copier' | 'market';
+      type: 'leader' | 'strategy' | 'copier' | 'market' | 'user';
       aiScore: number;
       analysis: {
         strengths: string[];

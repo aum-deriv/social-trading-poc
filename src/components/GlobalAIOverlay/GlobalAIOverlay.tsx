@@ -38,7 +38,7 @@ const GlobalAIOverlay = ({ onClose }: GlobalAIOverlayProps) => {
       setMessages(prev => [...prev, userMessage]);
 
       // Call API and add AI response
-      const response = await globalAIService.sendQuery(query);
+      const response = await globalAIService.sendQuery(query, user?.id);
 
       const aiMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),

@@ -2,6 +2,7 @@ import Anthropic from '@anthropic-ai/sdk';
 import { QueryType, GlobalAIResponse, FunctionCallResult } from '../types/globalAI.types';
 import { queryFunctions, TrendingAsset } from './globalAI/queryFunctions';
 import { User, TradingStrategy } from '../types';
+import { DataService } from './data';
 
 export class GlobalAIService {
   private anthropic: Anthropic;
@@ -15,7 +16,7 @@ export class GlobalAIService {
     this.anthropic = new Anthropic({ apiKey });
   }
 
-  async processQuery(query: string): Promise<GlobalAIResponse> {
+  async processQuery(query: string, userId?: string): Promise<GlobalAIResponse> {
     // Step 1: Determine query type
     const queryType = await this.determineQueryType(query);
 
@@ -33,7 +34,27 @@ export class GlobalAIService {
       };
     }
 
-    if (queryType === 'data_query') {
+    if (queryType === 'self_query') {
+      if (!userId) {
+        return {
+          type: 'product_info',
+          answer: 'Please log in to view your information.',
+          navigation: {
+            steps: ['Go to Login page', 'Enter your credentials'],
+            relevantScreens: ['login'],
+            features: ['User Authentication'],
+          },
+        };
+      }
+
+      // Handle self queries
+      const response = await this.handleSelfQuestion(query, userId);
+      return {
+        type: queryType,
+        answer: response.answer,
+        data: response.data,
+      };
+    } else if (queryType === 'data_query') {
       // Step 2: Get function call details
       const functionCall = await this.determineQueryFunction(query);
 
@@ -75,15 +96,14 @@ export class GlobalAIService {
 
   private async determineQueryType(query: string): Promise<QueryType> {
     const prompt = `
-      First, determine if this query is related to social trading, copy trading, traders, strategies, or platform features.
-      If not, return "invalid".
+      Analyze this query and determine its type:
+      1. self_query - About the current user (e.g., "Who am I?", "Show my stats", "What's my performance?", "My trading preferences")
+      2. data_query - Needs data analysis (e.g., "Who are the best performers?", "Show me profitable traders", "List top strategies")
+      3. product_info - About features/navigation (e.g., "How do I copy a trader?", "Where can I find my balance?")
+      4. invalid - Not related to social trading or platform features
 
-      If the query is valid, analyze it and determine if it's:
-      1. data_query - Needs data analysis (e.g., "Who are the best performers?", "Show me the most profitable traders", "List top strategies")
-      2. product_info - About features/navigation (e.g., "How do I copy a trader?", "Where can I find my balance?", "How to create a strategy?")
-
-      Query: ${query}
-      Return just one word: "data_query" or "product_info"
+      Query: "${query}"
+      Return just one word: "self_query", "data_query", "product_info", or "invalid"
     `;
 
     const response = await this.anthropic.messages.create({
@@ -92,17 +112,18 @@ export class GlobalAIService {
       messages: [{ role: 'user', content: prompt }],
     });
 
-    const result = response.content[0].text.trim().toLowerCase();
-    if (result === 'invalid') return 'invalid';
-    return result === 'data_query' ? 'data_query' : 'product_info';
+    const result = response.content[0].text.trim().toLowerCase() as QueryType;
+    return result;
   }
 
   private async determineQueryFunction(query: string): Promise<FunctionCallResult | 'invalid'> {
     const prompt = `
       You are a JSON generator. 
       
-      First, verify if this query is related to social trading, copy trading, traders, strategies, or platform features.
-      If not, respond with: "invalid"
+      First, check if this query is:
+      1. About the current user (e.g., "Who am I?", "Show my stats", "What's my performance?")
+      2. Related to social trading, copy trading, traders, strategies, or platform features
+      If neither, respond with: "invalid"
 
       Important: We only have access to these data fields for leaders:
       - performance (winRate, totalPnL, monthlyReturn)
@@ -385,6 +406,90 @@ export class GlobalAIService {
     });
 
     return response.content[0].text;
+  }
+
+  private async handleSelfQuestion(
+    query: string,
+    userId: string
+  ): Promise<{ answer: string; data: GlobalAIResponse['data'] }> {
+    const userData = await new DataService().getUser(userId);
+    if (!userData) {
+      throw new Error('User not found');
+    }
+
+    const prompt = `
+      You are analyzing a user's profile and answering their question.
+      Query: "${query}"
+      User Data: ${JSON.stringify(userData)}
+
+      Important Rules:
+      1. Be personal and direct
+      2. Focus on relevant stats for the query
+      3. Include specific numbers when available
+      4. Keep it under 3 sentences
+      5. Add a relevant tip or suggestion
+      6. For performance queries, compare to platform averages
+      7. For risk queries, consider their preferences
+      8. For strategy queries, look at their active strategies
+      9. Error Handling:
+         - If you're not sure about something, be honest and apologize
+         - If data seems incomplete, mention limitations
+
+      Return ONLY a JSON object in this format:
+      {
+        "answer": "Your personalized response here",
+        "data": {
+          "items": [{
+            "type": "user",
+            "aiScore": 85,
+            "analysis": {
+              "strengths": ["2-3 key strengths"],
+              "risks": ["2-3 potential risks"],
+              "recommendation": "personalized recommendation"
+            },
+            "data": {
+              "id": "user-id",
+              "userType": "leader/copier",
+              "performance": {
+                "winRate": 0.75,
+                "totalPnL": 5000,
+                "monthlyReturn": 15
+              }
+            }
+          }],
+          "summary": {
+            "total": 1,
+            "analysis": {
+              "trends": ["key trend about the user"],
+              "insights": ["important insight about their trading"]
+            }
+          }
+        }
+      }
+    `;
+
+    const response = await this.anthropic.messages.create({
+      model: this.MODEL,
+      max_tokens: 1024,
+      messages: [{ role: 'user', content: prompt }],
+    });
+
+    const result = JSON.parse(response.content[0].text);
+    return {
+      answer: result.answer,
+      data: {
+        items: [
+          {
+            type: 'user',
+            aiScore: this.calculateAIScore(userData, result.data.items[0].analysis),
+            analysis: result.data.items[0].analysis,
+            data: userData,
+            id: userData.id,
+          },
+        ],
+        summary: result.data.summary,
+      },
+    };
   }
 
   private async handleProductQuery(query: string): Promise<{

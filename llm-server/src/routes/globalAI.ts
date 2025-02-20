@@ -6,13 +6,13 @@ const globalAI = new GlobalAIService();
 
 router.post('/query', async (req, res) => {
   try {
-    const { query } = req.body;
+    const { query, userId } = req.body;
 
     if (!query) {
       return res.status(400).json({ error: 'Query is required' });
     }
 
-    const response = await globalAI.processQuery(query);
+    const response = await globalAI.processQuery(query, userId);
     res.json(response);
   } catch (error) {
     console.error('[GlobalAI] Error:', error);

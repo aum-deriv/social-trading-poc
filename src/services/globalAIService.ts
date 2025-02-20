@@ -12,14 +12,14 @@ class GlobalAIService {
     return GlobalAIService.instance;
   }
 
-  async sendQuery(query: string): Promise<GlobalAIResponse> {
+  async sendQuery(query: string, userId?: string): Promise<GlobalAIResponse> {
     try {
       const response = await fetch(`${import.meta.env.VITE_LLM_SERVER_URL}/api/global-ai/query`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ query }),
+        body: JSON.stringify({ query, userId }),
       });
 
       if (!response.ok) {
