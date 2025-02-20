@@ -9,8 +9,8 @@
 .suggestions__chip {
   font-size: var(--font-size-sm) !important;
   color: var(--text-primary);
-  background: rgba(0, 0, 0, 0.03);
-  border-color: var(--text-primary);
+  background: var(--background-primary);
+  border-color: var(--background-primary);
 }
 
 .suggestions__chip:hover {
