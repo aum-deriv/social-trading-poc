@@ -4,12 +4,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-start;
   gap: var(--spacing-lg);
-  overflow-y: scroll;
+  overflow-y: auto;
   padding: var(--spacing-md);
   scrollbar-width: none;
   scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.chat-content::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
 }
 
 .chat-content__message {
