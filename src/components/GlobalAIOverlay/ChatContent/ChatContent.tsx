@@ -4,7 +4,6 @@ import ThinkingLoader from '../ThinkingLoader';
 import DataAttachments from '../DataAttachments';
 import { ChatMessage as ChatMessageType } from '@/types/ai.types';
 import './ChatContent.css';
-import RetryIcon from '@/assets/icons/RetryIcon';
 
 interface ChatContentProps {
   messages: ChatMessageType[];
