@@ -1,0 +1,19 @@
+.suggestions {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.suggestions__chip {
+  font-size: var(--font-size-sm) !important;
+  color: var(--text-primary);
+  background: rgba(0, 0, 0, 0.03);
+  border-color: var(--text-primary);
+}
+
+.suggestions__chip:hover {
+  color: var(--text-inverted);
+  background: var(--background-inverted);
+  border-color: var(--text-primary);
+}

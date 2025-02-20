@@ -27,7 +27,7 @@ Node.js server that provides AI-powered insights for social trading posts using 
 - Returns server status
 - Response: `{ "status": "ok" }`
 
-### AI Insights
+### AI Endpoints
 Base path: `/api/ai`
 
 #### Get Feed Insights
@@ -53,6 +53,73 @@ Base path: `/api/ai`
 - Error Responses:
   - 404: User not found
   - 500: Internal server error
+
+#### Global AI Chat
+- **POST** `/api/ai/global/chat`
+- Processes natural language queries about social trading
+- Request Body:
+  ```json
+  {
+    "query": "string"
+  }
+  ```
+- Response:
+  ```json
+  {
+    "type": "data_query | product_info | invalid",
+    "answer": "AI-generated response text",
+    "data": {  // Only for data_query type
+      "items": [
+        {
+          "type": "leader | strategy | copier | market",
+          "aiScore": number,
+          "analysis": {
+            "strengths": string[],
+            "risks": string[],
+            "recommendation": string
+          },
+          "data": object,  // Actual data object
+          "id": string
+        }
+      ],
+      "summary": {
+        "total": number,
+        "averageScore": number,
+        "timeframe": string,
+        "analysis": {
+          "trends": string[],
+          "insights": string[]
+        }
+      }
+    },
+    "navigation": {  // Only for product_info type
+      "steps": string[],
+      "relevantScreens": string[],
+      "features": string[]
+    }
+  }
+  ```
+
+Features:
+- Natural language query processing
+- Context-aware responses
+- Data analysis with AI scoring
+- Navigation assistance
+- Product information
+- Risk assessment
+- Performance insights
+
+Query Types:
+1. Data Queries:
+   - Leader performance analysis
+   - Strategy comparisons
+   - Market trends
+   - Copier statistics
+2. Product Info:
+   - Feature explanations
+   - Navigation guidance
+   - How-to instructions
+   - Platform capabilities
 
 ## Error Handling
 All endpoints include proper error handling with appropriate status codes and error messages. In development mode, detailed error messages are included in the response.

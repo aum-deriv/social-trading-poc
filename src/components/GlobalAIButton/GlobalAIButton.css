@@ -16,7 +16,7 @@
 
 .global-ai-button__icon {
   font-size: 24px;
-  color: var(--primary-color-light);
+  color: var(--text-inverted);
   animation: pulse 2s infinite;
 }
 
