@@ -118,7 +118,6 @@
   align-items: center;
   gap: calc(var(--spacing-sm) * 0.75);
   position: relative;
-  z-index: 1;
 }
 
 .ai-button__text {

@@ -1,4 +1,6 @@
 import { useMemo, useState, useEffect, useRef } from 'react';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 import { useViewport } from '../../../../hooks';
 import AIButton from '../../../../components/AIButton';
 import ArrowUpTrend from '../../../../assets/icons/ArrowUpTrend';
@@ -158,13 +160,32 @@ export default function TrendingAssets({ assets, loading }: TrendingAssetsProps)
           <div className="trending-assets">
             {loading
               ? [...Array(5)].map((_, index) => (
-                  <div key={index} className="asset-card skeleton">
-                    <div className="asset-card__image skeleton-image">
-                      <img src={YahooLogo} alt="Yahoo Finance" className="skeleton-yahoo-logo" />
+                  <div key={index} className="asset-card">
+                    <div className="asset-card__image">
+                      <Skeleton circle width={isMobile ? 48 : 100} height={isMobile ? 48 : 100} />
                     </div>
                     <div className="asset-card__content">
-                      <div className="asset-card__title skeleton-text" />
-                      <div className="asset-card__price skeleton-text" />
+                      <div className="asset-card__header">
+                        <Skeleton
+                          width={120}
+                          height={20}
+                          style={{ marginBottom: 'var(--spacing-2xs)' }}
+                        />
+                        <Skeleton width={80} height={16} />
+                      </div>
+                      <div className="asset-card__stats">
+                        <div className="asset-card__left">
+                          <Skeleton
+                            width={80}
+                            height={20}
+                            style={{ marginBottom: 'var(--spacing-2xs)' }}
+                          />
+                          <Skeleton width={60} height={16} />
+                        </div>
+                        <div className="asset-card__ai-button">
+                          <Skeleton width={80} height={36} borderRadius={18} />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 ))
