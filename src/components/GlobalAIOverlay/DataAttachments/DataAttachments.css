@@ -1,0 +1,17 @@
+.data-attachments {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  width: 100%;
+}
+
+.data-attachments__card {
+  transform: scale(0.8);
+  transform-origin: top center;
+}
+
+.data-attachments__summary {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}

@@ -27,9 +27,6 @@ Node.js server that provides AI-powered insights for social trading posts using 
 - Returns server status
 - Response: `{ "status": "ok" }`
 
-### AI Endpoints
-Base path: `/api/ai`
-
 #### Get Feed Insights
 - **GET** `/api/ai/feed-insights/:userId`
 - Analyzes feed posts for a specific user
@@ -55,16 +52,16 @@ Base path: `/api/ai`
   - 500: Internal server error
 
 #### Global AI Chat
-- **POST** `/api/ai/global/chat`
+- **POST** `/api/global-ai/query`
 - Processes natural language queries about social trading
 - Request Body:
-  ```json
+  ```json 
   {
     "query": "string"
   }
   ```
 - Response:
-  ```json
+  ```typescript
   {
     "type": "data_query | product_info | invalid",
     "answer": "AI-generated response text",

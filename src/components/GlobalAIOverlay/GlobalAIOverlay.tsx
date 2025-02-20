@@ -2,18 +2,12 @@ import { useState } from 'react';
 import Overlay from '@/components/Overlay/Overlay';
 import ChampionLogo from '../../../public/champion_logo-white.svg';
 import { useAuth } from '@/context/AuthContext';
+import { globalAIService } from '@/services/globalAIService';
+import { ChatMessage } from '@/types/ai.types';
 import ChatContent from './ChatContent';
 import Suggestions from './Suggestions';
 import ChatInput from './ChatInput';
 import './GlobalAIOverlay.css';
-
-interface Message {
-  id: string;
-  from: string;
-  message: string;
-  timestamp: Date;
-  type: 'user' | 'ai';
-}
 
 interface GlobalAIOverlayProps {
   isOpen: boolean;
@@ -22,7 +16,7 @@ interface GlobalAIOverlayProps {
 
 const GlobalAIOverlay = ({ isOpen, onClose }: GlobalAIOverlayProps) => {
   const { user } = useAuth();
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const suggestions = [
@@ -35,32 +29,38 @@ const GlobalAIOverlay = ({ isOpen, onClose }: GlobalAIOverlayProps) => {
     setIsLoading(true);
     try {
       // Add user message
-      const userMessage = {
+      const userMessage: ChatMessage = {
         id: Date.now().toString(),
-        from: user?.displayName || 'User',
+        from: user?.displayName ?? 'User',
         message: query,
         timestamp: new Date(),
-        type: 'user' as const,
+        type: 'user',
       };
       setMessages(prev => [...prev, userMessage]);
 
       // Call API and add AI response
-      const response = await fetch('/api/ai/global/chat', {
-        method: 'POST',
-        body: JSON.stringify({ query }),
-      });
-      const data = await response.json();
+      const response = await globalAIService.sendQuery(query);
 
-      const aiMessage = {
+      const aiMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
         from: 'Champion AI',
-        message: data.answer,
+        message: response.answer,
         timestamp: new Date(),
-        type: 'ai' as const,
+        type: 'ai',
+        data: response.data,
+        navigation: response.navigation,
       };
       setMessages(prev => [...prev, aiMessage]);
     } catch (error) {
       console.error('Failed to get AI response:', error);
+      const errorMessage: ChatMessage = {
+        id: (Date.now() + 1).toString(),
+        from: 'Champion AI',
+        message: 'Sorry, I encountered an error. Please try again.',
+        timestamp: new Date(),
+        type: 'ai',
+      };
+      setMessages(prev => [...prev, errorMessage]);
     } finally {
       setIsLoading(false);
     }
@@ -73,8 +73,7 @@ const GlobalAIOverlay = ({ isOpen, onClose }: GlobalAIOverlayProps) => {
       className="global-ai-overlay"
       header={
         <div className="global-ai-overlay__header">
-          <img src={ChampionLogo} width="20px" />
-          Champion AI
+          <img src={ChampionLogo} width="20px" /> Champion AI
         </div>
       }
     >
