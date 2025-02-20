@@ -1,5 +1,12 @@
-.global-ai-overlay .overlay__content {
+.global-ai-overlay {
   padding: 20px;
+}
+
+.global-ai-overlay__header {
+  font-weight: 700;
+  font-size: larger;
+  color: var(--text-primary);
+
 }
 
 .global-ai-overlay__content {
@@ -9,14 +16,19 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+  gap: 2rem;
+  max-width: 720px;
 }
 
 
 .global-ai-overlay__content-chat {
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 2rem;
+}
 
+.global-ai-overlay__content-chat-input {
+  width: 100%;
 }

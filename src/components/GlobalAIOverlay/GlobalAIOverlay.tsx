@@ -10,12 +10,19 @@ interface GlobalAIOverlayProps {
 
 const GlobalAIOverlay = ({ isOpen, onClose }: GlobalAIOverlayProps) => {
   return (
-    <Overlay isOpen={isOpen} onClose={onClose} className="global-ai-overlay">
+    <Overlay
+      isOpen={isOpen}
+      onClose={onClose}
+      className="global-ai-overlay"
+      header={<div className="global-ai-overlay__header">Champion AI</div>}
+    >
       <div className="global-ai-overlay__content">
         <div className="global-ai-overlay__content-chat">
           <ChatMessage from="aum" message="hi"></ChatMessage>
         </div>
-        <AISearchBar />
+        <div className="global-ai-overlay__content-chat-input">
+          <AISearchBar />
+        </div>
       </div>
     </Overlay>
   );

@@ -1,4 +1,5 @@
 .ai-search-bar {
+  width: 100%;
   display: flex;
   align-items: center;
   background: var(--background-primary);
@@ -11,15 +12,15 @@
 .ai-search-bar::after {
   content: '';
   position: absolute;
-  inset: calc(var(--border-width) * -2);
-  border-radius: calc(var(--border-radius-lg) + var(--border-width) * 2);
+  inset: calc(var(--border-width-xs) * -2);
+  border-radius: calc(var(--border-radius-lg) + var(--border-width-xs) * 2);
   background: linear-gradient(
     45deg,
-    var(--brand-color),
+    var(--primary-color),
     var(--background-primary),
-    var(--brand-color),
+    var(--primary-color),
     var(--background-primary),
-    var(--brand-color),
+    var(--primary-color),
     var(--background-primary)
   );
   background-size: 400% 400%;

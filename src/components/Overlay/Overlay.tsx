@@ -8,9 +8,17 @@ interface OverlayProps {
   onExited?: () => void;
   children: React.ReactNode;
   className?: string;
+  header?: React.ReactNode;
 }
 
-const Overlay = ({ isOpen, onClose, onExited, children, className = '' }: OverlayProps) => {
+const Overlay = ({
+  isOpen,
+  onClose,
+  onExited,
+  children,
+  className = '',
+  header = 'text',
+}: OverlayProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const [animationState, setAnimationState] = useState<'entering' | 'exiting' | ''>('');
 
@@ -47,6 +55,7 @@ const Overlay = ({ isOpen, onClose, onExited, children, className = '' }: Overla
   return (
     <div className={`overlay ${animationState} ${className}`} onClick={handleBackdropClick}>
       <div className="overlay__header">
+        <div className="overlay__header-content">{header}</div>
         <button className="overlay__close" onClick={onClose}>
           <CloseIcon />
         </button>
