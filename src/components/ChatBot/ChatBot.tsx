@@ -145,8 +145,6 @@ const ChatBot: React.FC = () => {
           <span className="sparkle sparkle-1">✦</span>
           <span className="sparkle sparkle-2">✧</span>
           <span className="sparkle sparkle-3">✦</span>
-          <span className="sparkle sparkle-4">✧</span>
-          <span className="sparkle sparkle-5">✦</span>
         </div>
         <span className="toggle-content">
           <span className="toggle-icon">✦</span>

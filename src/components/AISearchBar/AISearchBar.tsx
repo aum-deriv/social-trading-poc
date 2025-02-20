@@ -7,7 +7,7 @@ interface AISearchBarProps {
   placeholder?: string;
 }
 
-const AISearchBar: FC<AISearchBarProps> = ({ onSearch, placeholder = 'Ask Champion' }) => {
+const AISearchBar: FC<AISearchBarProps> = ({ onSearch, placeholder }) => {
   const [query, setQuery] = useState('');
   const [isFocused, setIsFocused] = useState(false);
 

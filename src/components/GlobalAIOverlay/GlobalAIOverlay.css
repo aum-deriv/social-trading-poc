@@ -3,10 +3,13 @@
 }
 
 .global-ai-overlay__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   font-weight: 700;
   font-size: larger;
-  color: var(--text-primary);
-
+  color: #fff;
+  border-radius: 50px;
 }
 
 .global-ai-overlay__content {
@@ -18,6 +21,25 @@
   justify-content: flex-end;
   gap: 2rem;
   max-width: 720px;
+}
+
+.global-ai-overlay__content-suggestions {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.global-ai-overlay__content-suggestions > button{
+  color: var(--text-primary);
+  background: rgba(0, 0, 0, 0.03);
+  border-color: var(--text-primary);
+}
+
+.global-ai-overlay__content-suggestions > button:hover {
+  color: var(--text-inverted);
+  background: var(--background-inverted);
+  border-color: var(--text-primary);
 }
 
 

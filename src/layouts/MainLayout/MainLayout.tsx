@@ -63,7 +63,6 @@ const MainLayout = () => {
         />
       )}
       <GlobalAIOverlay isOpen={showGlobalAI} onClose={() => setShowGlobalAI(false)} />
-      <ChatBot />
     </div>
   );
 };
