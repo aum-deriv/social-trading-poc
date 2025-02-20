@@ -26,10 +26,7 @@ const GlobalAIOverlay = ({ isOpen, onClose }: GlobalAIOverlayProps) => {
       <div className="global-ai-overlay__content">
         <div className="global-ai-overlay__content-chat">
           <ChatMessage from="aum" message="hi"></ChatMessage>
-          <ChatMessage
-            className="global-ai-overlay__content-loader"
-            from="Champion AI is thinking..."
-          />
+          <div className="global-ai-overlay__content-loader">Champion AI is thinking...</div>
         </div>
         <div className="global-ai-overlay__content-suggestions">
           <Chip>How can I do social trading?</Chip>
