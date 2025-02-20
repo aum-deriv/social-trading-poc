@@ -25,3 +25,33 @@
   gap: var(--spacing-md);
   will-change: transform, opacity;
 }
+
+.chat-content__error {
+  width: 100%;
+  padding: var(--spacing-md);
+  background: var(--error-color);
+  border-radius: var(--border-radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+}
+
+.chat-content__error-message {
+  color: var(--text-inverted);
+  font-weight: var(--font-weight-medium);
+}
+
+.chat-content__retry-button {
+  padding: var(--spacing-sm) var(--spacing-md);
+  color: var(--text-inverted);
+  border: none;
+  cursor: pointer;
+  font-weight: var(--font-weight-medium);
+  transition: opacity var(--transition-fast);
+  background: none;
+}
+
+.chat-content__retry-button:hover {
+  opacity: 0.9;
+}

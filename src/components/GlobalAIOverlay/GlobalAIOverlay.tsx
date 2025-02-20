@@ -24,22 +24,28 @@ const GlobalAIOverlay = ({ onClose }: GlobalAIOverlayProps) => {
     'What are the best trading strategies?',
   ];
 
-  const handleQuery = async (query: string) => {
+  const [lastQuery, setLastQuery] = useState<string>('');
+  const [hasError, setHasError] = useState(false);
+
+  const sendQuery = async (query: string, addUserMessage = true) => {
     setIsLoading(true);
+    setHasError(false);
+
     try {
-      // Add user message
-      const userMessage: ChatMessage = {
-        id: Date.now().toString(),
-        from: user?.displayName ?? 'User',
-        message: query,
-        timestamp: new Date(),
-        type: 'user',
-      };
-      setMessages(prev => [...prev, userMessage]);
+      // Add user message only for new queries
+      if (addUserMessage) {
+        const userMessage: ChatMessage = {
+          id: Date.now().toString(),
+          from: user?.displayName ?? 'User',
+          message: query,
+          timestamp: new Date(),
+          type: 'user',
+        };
+        setMessages(prev => [...prev, userMessage]);
+      }
 
       // Call API and add AI response
       const response = await globalAIService.sendQuery(query, user?.id);
-
       const aiMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
         from: 'Champion AI',
@@ -50,20 +56,18 @@ const GlobalAIOverlay = ({ onClose }: GlobalAIOverlayProps) => {
         navigation: response.navigation,
       };
       setMessages(prev => [...prev, aiMessage]);
+      setLastQuery(''); // Clear lastQuery on success
     } catch (error) {
       console.error('Failed to get AI response:', error);
-      const errorMessage: ChatMessage = {
-        id: (Date.now() + 1).toString(),
-        from: 'Champion AI',
-        message: 'Sorry, I encountered an error. Please try again.',
-        timestamp: new Date(),
-        type: 'ai',
-      };
-      setMessages(prev => [...prev, errorMessage]);
+      setHasError(true);
+      setLastQuery(query); // Cache query only on error
     } finally {
       setIsLoading(false);
     }
   };
+
+  const handleQuery = (query: string) => sendQuery(query, true);
+  const handleRetry = () => lastQuery && sendQuery(lastQuery, false);
 
   return (
     <Overlay
@@ -77,7 +81,12 @@ const GlobalAIOverlay = ({ onClose }: GlobalAIOverlayProps) => {
       }
     >
       <div className="global-ai-overlay__container">
-        <ChatContent messages={messages} isLoading={isLoading} />
+        <ChatContent
+          messages={messages}
+          isLoading={isLoading}
+          hasError={hasError}
+          onRetry={handleRetry}
+        />
         {!messages.length && <Suggestions suggestions={suggestions} onSelect={handleQuery} />}
         <ChatInput isLoading={isLoading} onSubmit={handleQuery} />
       </div>
