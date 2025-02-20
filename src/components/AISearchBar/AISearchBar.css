@@ -25,14 +25,14 @@
   );
   background-size: 400% 400%;
   background-position: 0% 50%;
-  opacity: 0;
+  opacity: 1;
   transition: opacity var(--transition-normal);
   z-index: 0;
   animation: gradient 5s ease infinite;
 }
 
 .ai-search-bar--focused::after {
-  opacity: 1;
+  opacity: 0.2;
   box-shadow: var(--shadow-lg);
 }
 
