@@ -30,6 +30,18 @@ export default defineConfig({
             purpose: 'any maskable',
           },
         ],
+        screenshots: [
+          {
+            src: 'screenshot-1.png',
+            type: 'image/png',
+            sizes: '1080x1920',
+          },
+          {
+            src: 'screenshot-2.png',
+            type: 'image/png',
+            sizes: '1080x1920',
+          },
+        ],
       },
     }),
   ],
