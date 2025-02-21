@@ -97,7 +97,9 @@ const UserCard: FC<UserCardProps> = ({ user, rank, context }) => {
           </div>
           <div className="user-card__stat">
             <div className="user-card__stat-label">Total Profit - </div>
-            <div className="user-card__stat-value">{formatProfit(user.totalProfit)}</div>
+            <div className="user-card__stat-value">
+              {formatProfit(user.totalProfit ?? user.performance?.totalPnL)}
+            </div>
           </div>
         </div>
         <Button
