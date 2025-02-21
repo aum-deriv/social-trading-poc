@@ -10,9 +10,9 @@
   animation: loader-animation 1.5s ease-in-out infinite;
   background: linear-gradient(
     45deg,
-    rgba(from var(--background-primary) r g b / 0.7),
+    rgba(from var(--background-primary) r g b / 0.9),
     rgba(from var(--background-inverted) r g b / 0.1),
-    rgba(from var(--background-primary) r g b / 0.7)
+    rgba(from var(--background-primary) r g b / 0.9)
   );
   background-size: 200% 200%;
   background-position: 0% 50%;
