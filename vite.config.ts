@@ -12,22 +12,22 @@ export default defineConfig({
       includeAssets: ['champion_logo-blue.svg', 'apple-touch-icon-180x180.png', 'masked-icon.svg'],
       manifest: {
         name: 'Champion Social Trading',
-        short_name: 'Champion',
-        description: 'Social trading platform with AI insights',
+        short_name: 'Social Trader',
+        description: 'Social trading platform',
         theme_color: '#1a1a1a',
         background_color: '#1a1a1a',
         display: 'standalone',
         icons: [
           {
-            src: 'pwa-192x192.png',
+            src: 'champion-icon-192x192.png',
             sizes: '192x192',
             type: 'image/png',
           },
           {
-            src: 'pwa-512x512.png',
+            src: 'champion-icon-512x512.png',
             sizes: '512x512',
             type: 'image/png',
-            purpose: 'any maskable',
+            purpose: 'image/png',
           },
         ],
         screenshots: [
