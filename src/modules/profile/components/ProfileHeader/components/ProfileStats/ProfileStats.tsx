@@ -14,9 +14,16 @@ interface ProfileStatsProps {
   following: string[];
   strategies: Strategy[];
   onFollowAction: () => Promise<void>;
+  profileId: string;
 }
 
-const ProfileStats = ({ followers, following, strategies, onFollowAction }: ProfileStatsProps) => {
+const ProfileStats = ({
+  followers,
+  following,
+  strategies,
+  onFollowAction,
+  profileId,
+}: ProfileStatsProps) => {
   const [showFollowers, setShowFollowers] = useState(false);
   const [showFollowing, setShowFollowing] = useState(false);
   const [showStrategies, setShowStrategies] = useState(false);
@@ -38,7 +45,7 @@ const ProfileStats = ({ followers, following, strategies, onFollowAction }: Prof
   } = useFollowers(following);
 
   const handleCopyStrategy = async (strategyId: string, isCopying: boolean) => {
-    if (!currentUser?.id) return;
+    if (!currentUser?.id) return false;
 
     try {
       if (isCopying) {
@@ -46,19 +53,21 @@ const ProfileStats = ({ followers, following, strategies, onFollowAction }: Prof
         const response = await fetch(
           `${import.meta.env.VITE_JSON_SERVER_URL}/copyRelationships?copierId=${currentUser.id}&strategyId=${strategyId}`
         );
-        if (!response.ok) return;
+        if (!response.ok) return false;
         const relations = await response.json();
 
         // Delete the copy relationship
         if (relations.length > 0) {
-          await fetch(
+          const deleteResponse = await fetch(
             `${import.meta.env.VITE_JSON_SERVER_URL}/copyRelationships/${relations[0].id}`,
             { method: 'DELETE' }
           );
+          return deleteResponse.ok;
         }
+        return false;
       } else {
         // Start copying
-        await fetch(`${import.meta.env.VITE_JSON_SERVER_URL}/copyRelationships`, {
+        const response = await fetch(`${import.meta.env.VITE_JSON_SERVER_URL}/copyRelationships`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -70,12 +79,11 @@ const ProfileStats = ({ followers, following, strategies, onFollowAction }: Prof
             updatedAt: new Date().toISOString(),
           }),
         });
+        return response.ok;
       }
-
-      // Refetch profile data to update strategies
-      await onFollowAction();
     } catch (error) {
       console.error('Error handling strategy copy:', error);
+      return false;
     }
   };
 
@@ -164,15 +172,15 @@ const ProfileStats = ({ followers, following, strategies, onFollowAction }: Prof
 
       <FullscreenModal
         isOpen={showStrategies}
-        onClose={() => setShowStrategies(false)}
+        onClose={() => {
+          setShowStrategies(false);
+          onFollowAction(); // Refetch profile data when modal closes
+        }}
         title="Strategies"
       >
         <StrategyList
           strategies={strategies}
-          isOwnProfile={
-            currentUser?.userType === 'leader' &&
-            strategies.some(s => s.leaderId === currentUser.id)
-          }
+          isOwnProfile={currentUser?.id === profileId}
           onCopyStrategy={handleCopyStrategy}
         />
       </FullscreenModal>

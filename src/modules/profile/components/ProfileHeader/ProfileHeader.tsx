@@ -23,17 +23,7 @@ const ProfileHeader = ({
   onUnfollow,
   onProfileUpdate,
 }: ProfileHeaderProps) => {
-  const {
-    id,
-    username,
-    profilePicture,
-    userType,
-    followers = [],
-    following = [],
-    strategies = [],
-    displayName,
-    tradingPreferences,
-  } = profile;
+  const { id, username, profilePicture, userType, displayName, tradingPreferences } = profile;
 
   const handleUpgrade = (updatedUser: User) => {
     if (onProfileUpdate) {
@@ -57,10 +47,11 @@ const ProfileHeader = ({
           onUpgrade={handleUpgrade}
         />
         <ProfileStats
-          followers={followers}
-          following={following}
-          strategies={strategies}
+          followers={profile.followers || []}
+          following={profile.following || []}
+          strategies={profile.strategies || []}
           onFollowAction={onFollow}
+          profileId={profile.id}
         />
         {userType === UserType.LEADER && profile.performance && (
           <ProfilePerformance performance={profile.performance} />
