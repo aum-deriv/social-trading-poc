@@ -18,7 +18,29 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 // Middleware
-app.use(cors());
+
+// Enable CORS for all routes
+const corsOptions = {
+  origin: true, // this will allow all origins
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: [
+    'X-CSRF-Token',
+    'X-Requested-With',
+    'Accept',
+    'Accept-Version',
+    'Content-Length',
+    'Content-MD5',
+    'Content-Type',
+    'Date',
+    'X-Api-Version',
+    'Authorization',
+  ],
+};
+
+app.options('*', cors(corsOptions)); // enable pre-flight
+app.use(cors(corsOptions));
+
 app.use(express.json());
 
 // Health check endpoint
