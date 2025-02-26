@@ -25,7 +25,8 @@ export const createPost = async (data: CreatePostData) => {
   // Detect language using backend service
   const language = await detectLanguage(data.content.text);
 
-  const response = await fetch(`${import.meta.env.VITE_JSON_SERVER_URL}/posts`, {
+  // Create the post
+  const createResponse = await fetch(`${import.meta.env.VITE_JSON_SERVER_URL}/posts`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -47,20 +48,39 @@ export const createPost = async (data: CreatePostData) => {
     }),
   });
 
-  if (!response.ok) {
+  if (!createResponse.ok) {
     throw new Error('Failed to create post');
   }
 
-  return response.json();
+  const createdPost = await createResponse.json();
+
+  // Fetch the post again with expanded user data
+  const fetchExpandedResponse = await fetch(
+    `${import.meta.env.VITE_JSON_SERVER_URL}/posts/${createdPost.id}?_expand=user`
+  );
+  if (!fetchExpandedResponse.ok) {
+    throw new Error('Failed to fetch created post');
+  }
+
+  return fetchExpandedResponse.json();
 };
 
 export const addComment = async (postId: string, data: AddCommentData) => {
   // First get the current post
-  const getResponse = await fetch(`${import.meta.env.VITE_JSON_SERVER_URL}/posts/${postId}`);
-  if (!getResponse.ok) {
+  const fetchPostResponse = await fetch(
+    `${import.meta.env.VITE_JSON_SERVER_URL}/posts/${postId}?_expand=user`
+  );
+  if (!fetchPostResponse.ok) {
     throw new Error('Failed to fetch post');
   }
-  const post = await getResponse.json();
+  const post = await fetchPostResponse.json();
+
+  // Get the user data for the new comment
+  const userResponse = await fetch(`${import.meta.env.VITE_JSON_SERVER_URL}/users/${data.userId}`);
+  if (!userResponse.ok) {
+    throw new Error('Failed to fetch user data');
+  }
+  const user = await userResponse.json();
 
   // Add the new comment to existing comments
   const updatedPost = {
@@ -76,6 +96,7 @@ export const addComment = async (postId: string, data: AddCommentData) => {
           likes: [],
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
+          user: user,
         },
       ],
     },
@@ -94,7 +115,15 @@ export const addComment = async (postId: string, data: AddCommentData) => {
     throw new Error('Failed to add comment');
   }
 
-  return updateResponse.json();
+  // Fetch the updated post with expanded user data
+  const fetchUpdatedResponse = await fetch(
+    `${import.meta.env.VITE_JSON_SERVER_URL}/posts/${postId}?_expand=user`
+  );
+  if (!fetchUpdatedResponse.ok) {
+    throw new Error('Failed to fetch updated post');
+  }
+
+  return fetchUpdatedResponse.json();
 };
 
 const findAndUpdateComment = (
@@ -123,11 +152,13 @@ const findAndUpdateComment = (
 
 export const likeComment = async (postId: string, commentId: string, userId: string) => {
   // First get the current post
-  const getResponse = await fetch(`${import.meta.env.VITE_JSON_SERVER_URL}/posts/${postId}`);
-  if (!getResponse.ok) {
+  const fetchPostResponse = await fetch(
+    `${import.meta.env.VITE_JSON_SERVER_URL}/posts/${postId}?_expand=user`
+  );
+  if (!fetchPostResponse.ok) {
     throw new Error('Failed to fetch post');
   }
-  const post = await getResponse.json();
+  const post = await fetchPostResponse.json();
 
   // Update the comments with the new like
   const updatedComments = findAndUpdateComment(post.engagement.comments, commentId, userId);
@@ -153,16 +184,33 @@ export const likeComment = async (postId: string, commentId: string, userId: str
     throw new Error('Failed to like comment');
   }
 
-  return updateResponse.json();
+  // Fetch the updated post with expanded user data
+  const fetchUpdatedResponse = await fetch(
+    `${import.meta.env.VITE_JSON_SERVER_URL}/posts/${postId}?_expand=user`
+  );
+  if (!fetchUpdatedResponse.ok) {
+    throw new Error('Failed to fetch updated post');
+  }
+
+  return fetchUpdatedResponse.json();
 };
 
 export const addReply = async (postId: string, data: AddReplyData) => {
   // First get the current post
-  const getResponse = await fetch(`${import.meta.env.VITE_JSON_SERVER_URL}/posts/${postId}`);
-  if (!getResponse.ok) {
+  const fetchPostResponse = await fetch(
+    `${import.meta.env.VITE_JSON_SERVER_URL}/posts/${postId}?_expand=user`
+  );
+  if (!fetchPostResponse.ok) {
     throw new Error('Failed to fetch post');
   }
-  const post = await getResponse.json();
+  const post = await fetchPostResponse.json();
+
+  // Get the user data for the new reply
+  const userResponse = await fetch(`${import.meta.env.VITE_JSON_SERVER_URL}/users/${data.userId}`);
+  if (!userResponse.ok) {
+    throw new Error('Failed to fetch user data');
+  }
+  const user = await userResponse.json();
 
   // Find the parent comment and add the reply
   const updatedComments = post.engagement.comments.map((comment: Comment) => {
@@ -178,6 +226,7 @@ export const addReply = async (postId: string, data: AddReplyData) => {
             likes: [],
             createdAt: new Date().toISOString(),
             updatedAt: new Date().toISOString(),
+            user: user,
           },
         ],
       };
@@ -206,11 +255,21 @@ export const addReply = async (postId: string, data: AddReplyData) => {
     throw new Error('Failed to add reply');
   }
 
-  return updateResponse.json();
+  // Fetch the updated post with expanded user data
+  const fetchUpdatedResponse = await fetch(
+    `${import.meta.env.VITE_JSON_SERVER_URL}/posts/${postId}?_expand=user`
+  );
+  if (!fetchUpdatedResponse.ok) {
+    throw new Error('Failed to fetch updated post');
+  }
+
+  return fetchUpdatedResponse.json();
 };
 
 export const getUserPosts = async (userId: string) => {
-  const response = await fetch(`${import.meta.env.VITE_JSON_SERVER_URL}/posts?userId=${userId}`);
+  const response = await fetch(
+    `${import.meta.env.VITE_JSON_SERVER_URL}/posts?userId=${userId}&_expand=user`
+  );
   if (!response.ok) {
     throw new Error('Failed to fetch user posts');
   }
@@ -221,7 +280,7 @@ export const getPosts = async (activeTab: string, userId: string) => {
   if (activeTab === 'profile') {
     return getUserPosts(userId);
   } else if (activeTab === 'For you') {
-    const response = await fetch(`${import.meta.env.VITE_JSON_SERVER_URL}/posts`);
+    const response = await fetch(`${import.meta.env.VITE_JSON_SERVER_URL}/posts?_expand=user`);
     if (!response.ok) {
       throw new Error('Failed to fetch posts');
     }
@@ -232,15 +291,56 @@ export const getPosts = async (activeTab: string, userId: string) => {
 };
 
 export const getPost = async (postId: string) => {
-  const response = await fetch(`${import.meta.env.VITE_JSON_SERVER_URL}/posts/${postId}`);
+  const response = await fetch(
+    `${import.meta.env.VITE_JSON_SERVER_URL}/posts/${postId}?_expand=user`
+  );
   if (!response.ok) {
     throw new Error('Failed to fetch post');
   }
-  return response.json();
+  const post = await response.json();
+
+  // Fetch user data for each comment and reply
+  const commentsWithUsers = await Promise.all(
+    post.engagement.comments.map(async (comment: Comment) => {
+      const userResponse = await fetch(
+        `${import.meta.env.VITE_JSON_SERVER_URL}/users/${comment.userId}`
+      );
+      const user = await userResponse.json();
+
+      // If comment has replies, fetch user data for replies too
+      let repliesWithUsers: Comment[] = [];
+      if (comment.replies) {
+        repliesWithUsers = await Promise.all(
+          comment.replies.map(async (reply: Comment) => {
+            const replyUserResponse = await fetch(
+              `${import.meta.env.VITE_JSON_SERVER_URL}/users/${reply.userId}`
+            );
+            const replyUser = await replyUserResponse.json();
+            return { ...reply, user: replyUser };
+          })
+        );
+      }
+
+      return {
+        ...comment,
+        user,
+        replies: repliesWithUsers.length > 0 ? repliesWithUsers : comment.replies,
+      };
+    })
+  );
+
+  return {
+    ...post,
+    engagement: {
+      ...post.engagement,
+      comments: commentsWithUsers,
+    },
+  };
 };
 
 export const updatePost = async (postId: string, data: Post) => {
-  const response = await fetch(`${import.meta.env.VITE_JSON_SERVER_URL}/posts/${postId}`, {
+  // Update the post
+  const updateResponse = await fetch(`${import.meta.env.VITE_JSON_SERVER_URL}/posts/${postId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -248,11 +348,19 @@ export const updatePost = async (postId: string, data: Post) => {
     body: JSON.stringify(data),
   });
 
-  if (!response.ok) {
+  if (!updateResponse.ok) {
     throw new Error('Failed to update post');
   }
 
-  return response.json();
+  // Fetch the updated post with expanded user data
+  const fetchUpdatedResponse = await fetch(
+    `${import.meta.env.VITE_JSON_SERVER_URL}/posts/${postId}?_expand=user`
+  );
+  if (!fetchUpdatedResponse.ok) {
+    throw new Error('Failed to fetch updated post');
+  }
+
+  return fetchUpdatedResponse.json();
 };
 
 export const likePost = async (postId: string, userId: string) => {
@@ -295,8 +403,8 @@ export const getFollowingPosts = async (userId: string) => {
     }
     const user = await userResponse.json();
 
-    // Get all posts
-    const postsResponse = await fetch(`${import.meta.env.VITE_JSON_SERVER_URL}/posts`);
+    // Get all posts with expanded user data
+    const postsResponse = await fetch(`${import.meta.env.VITE_JSON_SERVER_URL}/posts?_expand=user`);
     if (!postsResponse.ok) {
       throw new Error('Failed to fetch posts');
     }

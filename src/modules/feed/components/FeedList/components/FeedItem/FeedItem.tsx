@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import type Post from '@/types/post.types';
 import type User from '@/types/user.types';
 import type { AIInsight } from '@/types/ai.types';
@@ -19,12 +20,21 @@ import TranslateButton from '@/components/TranslateButton';
 
 interface FeedItemProps {
   post: Post;
-  user?: User;
   currentUserId: string;
+  currentUser: User;
   insight?: AIInsight;
+  showComments?: boolean;
 }
 
-const FeedItem = ({ post, user, currentUserId, insight: initialInsight }: FeedItemProps) => {
+const FeedItem = ({
+  post,
+  currentUserId,
+  currentUser,
+  insight: initialInsight,
+  showComments = false,
+}: FeedItemProps) => {
+  const navigate = useNavigate();
+  const user = post.user;
   const [engagement, setEngagement] = useState(post.engagement);
   const [insight, setInsight] = useState<AIInsight | undefined>(initialInsight);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
@@ -133,7 +143,9 @@ const FeedItem = ({ post, user, currentUserId, insight: initialInsight }: FeedIt
         content={post.content}
         engagement={engagement}
         currentUserId={currentUserId}
-        currentUser={user}
+        currentUser={currentUser}
+        showComments={showComments}
+        onCommentClick={() => navigate(`/posts/${post.id}`)}
         onLike={handleLike}
         onComment={handleComment}
         onReplyToComment={handleReplyToComment}

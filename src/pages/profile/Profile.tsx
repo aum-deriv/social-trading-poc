@@ -50,7 +50,7 @@ const Profile = () => {
       />
       <div className="profile-page__content">
         <div className="profile-page__feed">
-          <FeedList currentUserId={profile.id} activeTab="profile" />
+          <FeedList currentUserId={profile.id} currentUser={profile} activeTab="profile" />
         </div>
       </div>
     </div>

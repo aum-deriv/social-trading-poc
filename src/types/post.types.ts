@@ -1,3 +1,5 @@
+import type User from './user.types';
+
 interface Post {
   id: string;
   userId: string;
@@ -13,6 +15,7 @@ interface Post {
   createdAt: string;
   updatedAt: string;
   language: 'EN' | 'NON-EN';
+  user?: User; // Added for json-server _expand
 }
 
 interface Comment {
@@ -23,6 +26,7 @@ interface Comment {
   replies?: Comment[]; // Nested comments
   createdAt: string;
   updatedAt: string;
+  user?: User; // Added for json-server _expand
 }
 
 export default Post;
