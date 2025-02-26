@@ -35,7 +35,7 @@
       "email": "pro@trading.com",
       "profilePicture": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
       "userType": "leader",
-      "followers": ["copier1", "copier3", "leader2"],
+      "followers": ["copier1", "copier3"],
       "following": ["copier1"],
       "accounts": ["acc3"],
       "performance": {
@@ -1462,50 +1462,13 @@
       },
       "engagement": {
         "likes": ["leader2"],
-        "comments": [
-          {
-            "id": "ead70926-7d03-4542-a8f9-9eb3b0f3983b",
-            "userId": "leader2",
-            "content": "Good post",
-            "likes": [],
-            "createdAt": "2025-02-26T10:35:59.882Z",
-            "updatedAt": "2025-02-26T10:35:59.882Z"
-          }
-        ],
+        "comments": [],
         "shares": 0
       },
       "language": "NON-EN",
       "createdAt": "2025-02-19T11:24:49.668Z",
       "updatedAt": "2025-02-19T11:24:49.668Z",
-      "id": "t2V0Fpk",
-      "user": {
-        "id": "leader1",
-        "username": "newTrader",
-        "displayName": "Sarah Johnson | FX Pro",
-        "email": "expert@trading.com",
-        "profilePicture": "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
-        "userType": "leader",
-        "followers": ["copier1", "copier2", "copier3"],
-        "following": [
-          "leader9",
-          "leader8",
-          "leader11",
-          "leader6",
-          "leader7",
-          "leader10",
-          "leader5",
-          "copier1"
-        ],
-        "accounts": ["acc1", "acc2"],
-        "performance": {
-          "winRate": 78.5,
-          "totalPnL": 245.8,
-          "monthlyReturn": 12.5,
-          "totalTrades": 156
-        },
-        "createdAt": "2024-01-01T00:00:00Z",
-        "updatedAt": "2024-01-01T00:00:00Z"
-      }
+      "id": "t2V0Fpk"
     }
   ],
   "contracts": [
