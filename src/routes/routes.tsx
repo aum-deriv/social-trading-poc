@@ -1,5 +1,6 @@
 import { RouteObject, Outlet } from 'react-router-dom';
 import { AuthProvider } from '@/context/AuthContext';
+import { UserProvider } from '@/context/UserContext';
 import AuthLayout from '@/layouts/AuthLayout';
 import MainLayout from '@/layouts/MainLayout';
 import Feed from '@pages/feed';
@@ -17,7 +18,9 @@ export const routes: RouteObject[] = [
   {
     element: (
       <AuthProvider>
-        <Outlet />
+        <UserProvider>
+          <Outlet />
+        </UserProvider>
       </AuthProvider>
     ),
     children: [

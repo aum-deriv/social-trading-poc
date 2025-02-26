@@ -20,17 +20,22 @@ interface PostEngagementProps {
   onLikeComment?: (commentId: string) => void;
   onReplyToComment: (commentId: string, content: string) => void;
   translationButton?: React.ReactNode;
+  showComments?: boolean;
+  onCommentClick?: () => void;
 }
 
 const PostEngagement = ({
   engagement,
   currentUserId,
+  currentUser,
   onLike,
   onComment,
   onShare,
   onLikeComment,
   onReplyToComment,
   translationButton,
+  showComments = false,
+  onCommentClick,
 }: PostEngagementProps) => {
   const { likes, comments, shares } = engagement;
   const isLiked = likes.includes(currentUserId);
@@ -61,13 +66,20 @@ const PostEngagement = ({
         </Button>
         {translationButton}
       </div>
-      <CommentSection
-        comments={comments}
-        currentUserId={currentUserId}
-        onAddComment={onComment}
-        onLikeComment={onLikeComment}
-        onReplyToComment={onReplyToComment}
-      />
+      {showComments ? (
+        <CommentSection
+          comments={comments}
+          currentUserId={currentUserId}
+          currentUser={currentUser}
+          onAddComment={onComment}
+          onLikeComment={onLikeComment}
+          onReplyToComment={onReplyToComment}
+        />
+      ) : (
+        <Button className="post-engagement__button" onClick={onCommentClick} variant="text">
+          {comments.length} Comments
+        </Button>
+      )}
     </div>
   );
 };

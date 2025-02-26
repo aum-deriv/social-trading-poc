@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
 import type Post from '@/types/post.types';
-import type User from '@/types/user.types';
 import FeedItem from './components/FeedItem';
 import { getPosts } from '../../services/postService';
 import AILoader from '@/components/AILoader';
 import ErrorState from '@/components/feedback/ErrorState';
 import './FeedList.css';
+import type User from '@/types/user.types';
 
 interface FeedListProps {
   currentUserId: string;
+  currentUser: User;
   activeTab: string;
   shouldRefresh?: boolean;
   onRefreshComplete?: () => void;
@@ -16,49 +17,14 @@ interface FeedListProps {
 
 const FeedList = ({
   currentUserId,
+  currentUser,
   activeTab,
   shouldRefresh,
   onRefreshComplete,
 }: FeedListProps) => {
   const [posts, setPosts] = useState<Post[]>([]);
-  const [usersCache, setUsersCache] = useState<{
-    [key: string]: User;
-  } | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
-  const fetchUsers = async () => {
-    if (!usersCache) {
-      try {
-        setLoading(true);
-        const response = await fetch(`${import.meta.env.VITE_JSON_SERVER_URL}/users`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch users');
-        }
-        const usersData: User[] = await response.json();
-
-        // Create a map of users for quick lookup
-        const usersMap = usersData.reduce(
-          (acc, user) => {
-            acc[user.id] = user;
-            return acc;
-          },
-          {} as { [key: string]: User }
-        );
-
-        setUsersCache(usersMap);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred');
-      } finally {
-        setLoading(false);
-      }
-    }
-  };
-
-  // Fetch and cache users only when currentUserId changes
-  useEffect(() => {
-    fetchUsers();
-  }, [currentUserId]);
 
   const fetchPosts = async () => {
     try {
@@ -72,16 +38,14 @@ const FeedList = ({
     }
   };
 
-  // Only fetch posts when activeTab changes
+  // Fetch posts when activeTab changes
   useEffect(() => {
-    if (usersCache) {
-      fetchPosts();
-    }
-  }, [activeTab, currentUserId, usersCache]);
+    fetchPosts();
+  }, [activeTab, currentUserId]);
 
   // Handle refresh separately
   useEffect(() => {
-    if (shouldRefresh && usersCache) {
+    if (shouldRefresh) {
       fetchPosts().then(() => {
         onRefreshComplete?.();
       });
@@ -98,7 +62,7 @@ const FeedList = ({
         message={error}
         onRetry={() => {
           setError(null);
-          fetchUsers();
+          fetchPosts();
         }}
       />
     );
@@ -113,8 +77,8 @@ const FeedList = ({
             <FeedItem
               key={post.id}
               post={post}
-              user={usersCache?.[post.userId]}
               currentUserId={currentUserId}
+              currentUser={currentUser}
             />
           ))
       ) : (
