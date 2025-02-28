@@ -42,8 +42,15 @@ export class DataService {
     }
   }
 
+  private validateId(id: string, type: string): void {
+    if (!id || !/^[a-zA-Z0-9_-]+$/.test(id)) {
+      throw new Error(`Invalid ${type} ID format`);
+    }
+  }
+
   async getPost(postId: string): Promise<Post | null> {
     try {
+      this.validateId(postId, 'post');
       const response = await fetch(`${JSON_SERVER_URL}/posts/${postId}`);
       if (!response.ok) throw new Error('Failed to fetch post');
       const data = await response.json();
@@ -68,9 +75,11 @@ export class DataService {
 
   async getUserStrategies(accountId: string): Promise<TradingStrategy[]> {
     try {
+      this.validateId(accountId, 'account');
+
       // First try to get strategies by accountId
       const accountResponse = await fetch(
-        `${JSON_SERVER_URL}/tradingStrategies?accountId=${accountId}`
+        `${JSON_SERVER_URL}/tradingStrategies?accountId=${encodeURIComponent(accountId)}`
       );
       if (!accountResponse.ok) throw new Error('Failed to fetch strategies by accountId');
       const accountData = (await accountResponse.json()) as TradingStrategy[];
@@ -82,7 +91,7 @@ export class DataService {
 
       // If no strategies found by accountId, try by leaderId
       const leaderResponse = await fetch(
-        `${JSON_SERVER_URL}/tradingStrategies?leaderId=${accountId}`
+        `${JSON_SERVER_URL}/tradingStrategies?leaderId=${encodeURIComponent(accountId)}`
       );
       if (!leaderResponse.ok) throw new Error('Failed to fetch strategies by leaderId');
       const leaderData = await leaderResponse.json();
@@ -95,7 +104,8 @@ export class DataService {
 
   async getUser(userId: string): Promise<User | null> {
     try {
-      const response = await fetch(`${JSON_SERVER_URL}/users/${userId}`);
+      this.validateId(userId, 'user');
+      const response = await fetch(`${JSON_SERVER_URL}/users/${encodeURIComponent(userId)}`);
       if (!response.ok) throw new Error('Failed to fetch user');
       const data = await response.json();
       return data as User;
