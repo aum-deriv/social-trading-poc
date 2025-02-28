@@ -51,7 +51,7 @@ export class DataService {
   async getPost(postId: string): Promise<Post | null> {
     try {
       this.validateId(postId, 'post');
-      const response = await fetch(`${JSON_SERVER_URL}/posts/${postId}`);
+      const response = await fetch(`${JSON_SERVER_URL}/posts/${encodeURIComponent(postId)}`);
       if (!response.ok) throw new Error('Failed to fetch post');
       const data = await response.json();
       return data as Post;
